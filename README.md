@@ -2,7 +2,7 @@
 
 ## Project Title
 
-**Development of a Machine Learning-Based System for Cardiopulmonary Sound Separation**
+**Machine Learning-Based System for Cardiopulmonary Sound Separation**
 
 ## Repository Purpose
 
@@ -54,7 +54,7 @@ The project does **not** focus on disease detection or medical diagnosis.
 The objectives of this project are:
 
 1. To study existing techniques for cardiopulmonary sound separation.
-2. To design and develop a machine learning-based system for sound separation.
+2. To design a machine learning-based system for sound separation.
 3. To implement and test the system using real audio datasets.
 4. To evaluate the performance of the system using suitable metrics.
 
