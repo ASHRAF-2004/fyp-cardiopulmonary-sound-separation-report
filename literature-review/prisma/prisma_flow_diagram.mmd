@@ -1,7 +1,20 @@
+%% Project: Machine Learning-Based System for Cardiopulmonary Sound Separation
 flowchart TD
-    A[Records identified from database searches: 0] --> B[Records after duplicates removed: 0]
-    B --> C[Records screened by title and abstract: 0]
-    C --> D[Records excluded: 0]
-    C --> E[Full-text reports assessed for eligibility: 0]
-    E --> F[Full-text reports excluded: 0]
-    E --> G[Studies included in literature review: 0]
+    A[Database searches not yet performed<br/>n = 0] --> C[Records identified total<br/>n = 20]
+    B[Existing local PDF set pending audit<br/>n = 20] --> C
+    C --> D[Duplicate check not started<br/>duplicates removed n = 0]
+    D --> E[Records after duplicate check<br/>n = 20]
+    E --> F[Title and abstract screening pending<br/>n = 20]
+    F --> G[Records excluded at title and abstract<br/>n = 0]
+    F --> H[Full text reports sought<br/>n = 0]
+    H --> I[Full text reports assessed<br/>n = 0]
+    I --> J[Full text reports excluded<br/>n = 0]
+    I --> K[Studies included in Chapter 2 review<br/>n = 0]
+
+    classDef pending fill:#fff4ce,stroke:#8a6d00,color:#222;
+    classDef neutral fill:#eef4ff,stroke:#315f9b,color:#222;
+    classDef included fill:#e8f5e9,stroke:#2e7d32,color:#222;
+
+    class A,B,D,F,H,I pending;
+    class C,E neutral;
+    class K included;

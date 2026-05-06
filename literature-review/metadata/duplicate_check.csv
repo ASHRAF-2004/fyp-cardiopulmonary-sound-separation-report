@@ -1,1 +1,1 @@
-duplicate_group_id,primary_paper_id,duplicate_paper_id,match_fields,decision,notes
+duplicate_group_id,primary_paper_id,possible_duplicate_paper_id,match_type,matched_title,matched_doi,similarity_notes,decision,decision_date,reviewer,notes

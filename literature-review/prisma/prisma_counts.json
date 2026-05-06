@@ -1,10 +1,36 @@
 {
-  "records_identified": 0,
-  "duplicates_removed": 0,
-  "records_screened": 0,
-  "records_excluded_title_abstract": 0,
-  "full_text_reports_assessed": 0,
-  "full_text_reports_excluded": 0,
-  "studies_included": 0,
-  "last_updated": ""
+  "review_title": "Machine Learning-Based System for Cardiopulmonary Sound Separation",
+  "phase": "Phase 1 tracking system prepared",
+  "last_updated": "2026-05-07",
+  "paper_collection_performed_in_phase_1": false,
+  "existing_local_pdfs_pending_audit": 20,
+  "identification": {
+    "records_identified_from_database_searches": 0,
+    "records_identified_from_existing_local_pdf_set": 20,
+    "records_identified_from_other_sources": 0,
+    "records_identified_total": 20
+  },
+  "deduplication": {
+    "duplicates_removed": 0,
+    "records_after_duplicates_removed": 20,
+    "deduplication_status": "not started"
+  },
+  "screening": {
+    "records_title_abstract_screened": 0,
+    "records_excluded_title_abstract": 0,
+    "records_awaiting_title_abstract_screening": 20
+  },
+  "eligibility": {
+    "full_text_reports_sought": 0,
+    "full_text_reports_assessed": 0,
+    "full_text_reports_excluded": 0
+  },
+  "included": {
+    "studies_included_in_literature_review": 0
+  },
+  "notes": [
+    "Counts are initialized from the 20 PDFs already present in literature-review/papers/pdfs.",
+    "No new searches, downloads, restricted PDFs, or publisher logins were performed in Phase 1.",
+    "Update counts after deduplication, title/abstract screening, and full-text screening."
+  ]
 }

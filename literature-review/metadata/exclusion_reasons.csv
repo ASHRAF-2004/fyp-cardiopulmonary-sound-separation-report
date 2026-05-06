@@ -1,7 +1,13 @@
-reason_id,reason,description
-E1,Not relevant to research question,
-E2,Not peer reviewed,
-E3,Full text unavailable,
-E4,Duplicate record,
-E5,Out of date range,
-E6,Wrong study type,
+reason_id,screening_stage,reason,description,applies_to_fyp_scope
+E01,title_abstract,Not related to sound separation,Study is not about source separation, denoising, or separation of audio signals.,Yes
+E02,title_abstract,No cardiopulmonary focus,Study does not involve heart sounds, lung sounds, chest sounds, respiratory sounds, or cardiopulmonary sound signals.,Yes
+E03,title_abstract,Disease detection only,Study focuses only on disease diagnosis or classification without separation/preprocessing/model evidence useful for this FYP.,Yes
+E04,title_abstract,No machine learning or signal processing method,Study does not describe an algorithmic, signal processing, or machine learning method relevant to separation.,Yes
+E05,title_abstract,Not academically credible,Record is not peer reviewed, not a reputable preprint, not a thesis/report, or lacks sufficient bibliographic traceability.,Yes
+E06,title_abstract,Duplicate record,Same paper already exists in the master list by DOI, title, or local PDF.,Yes
+E07,full_text,Full text unavailable,Full text cannot be accessed through open/public/legal sources or the user's existing files.,Yes
+E08,full_text,Insufficient implementation detail,Full text does not describe preprocessing, features, model, algorithm, or evaluation sufficiently for Chapter 2 extraction.,Yes
+E09,full_text,No public or reusable dataset evidence,Study relies only on private data and does not provide enough transferable dataset or method evidence for this FYP.,Yes
+E10,full_text,Out of scope application,Study is mainly clinical diagnosis, hardware-only sensing, or unrelated software/prototype work with no useful separation method.,Yes
+E11,full_text,Wrong document type,Editorial, poster, abstract-only item, patent, marketing page, or inaccessible non-research document.,Yes
+E12,full_text,Non-English full text,Full text is not in English and no reliable English metadata or translation is available for screening.,Maybe

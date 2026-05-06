@@ -1,1 +1,1 @@
-search_id,date,database,query,filters,results_found,results_exported,notes
+search_id,date_searched,source,search_string,search_concepts,filters,date_range,language,access_method,results_returned,records_exported,records_added_to_master,export_file,performed_by,notes

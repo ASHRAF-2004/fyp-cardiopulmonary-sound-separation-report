@@ -1,1 +1,1 @@
-paper_id,title,authors,year,venue,doi,url,database,search_query,date_found,pdf_path,status,notes
+paper_id,record_source,source_record_id,title,authors,publication_year,publication_type,venue_or_journal,doi,url,dataset_names,task_focus,method_family,uses_public_dataset,scope_match,local_pdf_path,zotero_key,bibtex_key,duplicate_group_id,screening_status,inclusion_status,exclusion_reason_id,notes,last_updated
