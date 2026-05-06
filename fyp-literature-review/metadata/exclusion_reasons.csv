@@ -1,0 +1,7 @@
+reason_id,reason,description
+E1,Not relevant to research question,
+E2,Not peer reviewed,
+E3,Full text unavailable,
+E4,Duplicate record,
+E5,Out of date range,
+E6,Wrong study type,
