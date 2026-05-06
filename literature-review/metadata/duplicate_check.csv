@@ -1,1 +1,2 @@
 duplicate_group_id,primary_paper_id,possible_duplicate_paper_id,match_type,matched_title,matched_doi,similarity_notes,decision,decision_date,reviewer,notes
+D001,P009,P008,same authors/model/topic; preprint versus peer-reviewed article,NeoSSNet / real-time neonatal chest sound separation,No DOI for P008; P009 DOI 10.1109/OJEMB.2024.3401571,P008 is the 2023 arXiv/preprint version of the NeoSSNet neonatal chest sound separation work retained as P009.,Exclude P008 as duplicate/earlier version; retain P009,2026-05-07,Codex local PDF audit,No PDF deleted.

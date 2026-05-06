@@ -1,13 +1,14 @@
 reason_id,screening_stage,reason,description,applies_to_fyp_scope
-E01,title_abstract,Not related to sound separation,Study is not about source separation, denoising, or separation of audio signals.,Yes
-E02,title_abstract,No cardiopulmonary focus,Study does not involve heart sounds, lung sounds, chest sounds, respiratory sounds, or cardiopulmonary sound signals.,Yes
-E03,title_abstract,Disease detection only,Study focuses only on disease diagnosis or classification without separation/preprocessing/model evidence useful for this FYP.,Yes
-E04,title_abstract,No machine learning or signal processing method,Study does not describe an algorithmic, signal processing, or machine learning method relevant to separation.,Yes
-E05,title_abstract,Not academically credible,Record is not peer reviewed, not a reputable preprint, not a thesis/report, or lacks sufficient bibliographic traceability.,Yes
-E06,title_abstract,Duplicate record,Same paper already exists in the master list by DOI, title, or local PDF.,Yes
-E07,full_text,Full text unavailable,Full text cannot be accessed through open/public/legal sources or the user's existing files.,Yes
-E08,full_text,Insufficient implementation detail,Full text does not describe preprocessing, features, model, algorithm, or evaluation sufficiently for Chapter 2 extraction.,Yes
-E09,full_text,No public or reusable dataset evidence,Study relies only on private data and does not provide enough transferable dataset or method evidence for this FYP.,Yes
-E10,full_text,Out of scope application,Study is mainly clinical diagnosis, hardware-only sensing, or unrelated software/prototype work with no useful separation method.,Yes
-E11,full_text,Wrong document type,Editorial, poster, abstract-only item, patent, marketing page, or inaccessible non-research document.,Yes
-E12,full_text,Non-English full text,Full text is not in English and no reliable English metadata or translation is available for screening.,Maybe
+E01,title_abstract,Not about sound or audio,"Study does not analyze sound, audio, acoustic, PCG, lung sound, respiratory sound, or cardiopulmonary signal data.",Exclude
+E02,title_abstract,Not machine learning or signal separation,"Study does not contain a relevant machine learning, signal processing, denoising, or source separation method.",Exclude
+E03,title_abstract,Disease detection only,"Study focuses on diagnosis, prognosis, disease classification, or patient care without useful separation, denoising, dataset, preprocessing, or evaluation contribution for this FYP.",Exclude
+E04,title_abstract,No public or usable dataset information,"Study cannot support the planned public-dataset implementation because dataset access or description is insufficient.",Maybe
+E05,full_text,Insufficient method or evaluation detail,"Full text does not provide enough method, dataset, or metric detail for extraction or comparison.",Maybe
+E06,duplicate,Duplicate or earlier version,"Record is a duplicate, preprint, or earlier version of a more complete retained paper; PDF is kept for PRISMA traceability.",Exclude
+E07,full_text,Restricted or inaccessible full text,"Full text could not be accessed from local PDFs without login or restricted download; no login was attempted.",Exclude
+E08,title_abstract,Non-audio biomedical work,"Study is biomedical but does not involve audio, sound, or cardiopulmonary acoustic signals.",Exclude
+E09,title_abstract,Hardware-only scope,"Study focuses on sensor/hardware design only and does not provide usable ML or separation workflow evidence.",Maybe
+E10,title_abstract,Outside software prototype scope,"Study is not suitable for the planned Python proof-of-concept or Software Engineering prototype scope.",Maybe
+E11,full_text,Review background only,"Review paper is useful for background, datasets, or terminology but does not provide a directly implementable separation method.",Maybe
+E12,title_abstract,Classification only with useful background,"Study is classification-focused but contains potentially useful preprocessing, feature, dataset, or metric information.",Maybe
+E13,title_abstract,General audio only,"Study is about generic audio or speech source separation and has no cardiopulmonary, heart, lung, respiratory, or biomedical audio focus.",Maybe
