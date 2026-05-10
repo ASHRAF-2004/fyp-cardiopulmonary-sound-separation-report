@@ -1,7 +1,7 @@
 {
   "review_title": "Machine Learning-Based System for Cardiopulmonary Sound Separation",
-  "phase": "Phase 2 local PDF audit completed",
-  "last_updated": "2026-05-07",
+  "phase": "Phase 3 additional candidate metadata collection completed",
+  "last_updated": "2026-05-10",
   "paper_collection_performed_in_phase_2": false,
   "existing_local_pdfs_audited": 20,
   "identification": {
@@ -43,5 +43,109 @@
     "No new searches, downloads, restricted PDFs, or publisher logins were performed.",
     "Maybe papers are retained for background, datasets, preprocessing, metrics, or general audio separation context.",
     "Excluded papers remain recorded for PRISMA tracking; no PDF files were deleted."
+  ],
+  "paper_collection_performed_in_phase_3": true,
+  "phase_3_pdf_downloads_performed": false,
+  "phase_3_logins_or_restricted_access_performed": false,
+  "previous_audited_pdfs": 20,
+  "new_candidate_records_added": 50,
+  "total_records_after_phase_3": 70,
+  "phase_3_duplicate_candidates_skipped": 15,
+  "decision_summary_after_phase_3": {
+    "Include": 52,
+    "Maybe": 16,
+    "Exclude": 2
+  },
+  "phase_3_sources_used": [
+    "Crossref",
+    "OpenAlex",
+    "PubMed",
+    "Semantic Scholar",
+    "arXiv"
+  ],
+  "phase_3_search_queries": [
+    {
+      "query_id": "Q01",
+      "search_string": "\"cardiopulmonary sound separation\""
+    },
+    {
+      "query_id": "Q02",
+      "search_string": "\"heart lung sound separation\""
+    },
+    {
+      "query_id": "Q03",
+      "search_string": "\"heart and lung sound separation\""
+    },
+    {
+      "query_id": "Q04",
+      "search_string": "\"cardiac respiratory sound separation\""
+    },
+    {
+      "query_id": "Q05",
+      "search_string": "\"stethoscope sound separation\""
+    },
+    {
+      "query_id": "Q06",
+      "search_string": "\"auscultation sound separation\""
+    },
+    {
+      "query_id": "Q07",
+      "search_string": "\"biomedical audio source separation\""
+    },
+    {
+      "query_id": "Q08",
+      "search_string": "\"deep learning\" \"heart lung sound separation\""
+    },
+    {
+      "query_id": "Q09",
+      "search_string": "\"machine learning\" \"cardiopulmonary sound separation\""
+    },
+    {
+      "query_id": "Q10",
+      "search_string": "\"U-Net\" \"heart sound\" \"lung sound\" separation"
+    },
+    {
+      "query_id": "Q11",
+      "search_string": "\"source separation\" \"heart sound\" \"lung sound\""
+    },
+    {
+      "query_id": "Q12",
+      "search_string": "\"non-negative matrix factorization\" \"heart lung sound separation\""
+    },
+    {
+      "query_id": "Q13",
+      "search_string": "\"heart sound denoising deep learning\""
+    },
+    {
+      "query_id": "Q14",
+      "search_string": "\"lung sound denoising deep learning\""
+    },
+    {
+      "query_id": "Q15",
+      "search_string": "\"cardiopulmonary sound dataset\""
+    },
+    {
+      "query_id": "Q16",
+      "search_string": "\"heart sound dataset\""
+    },
+    {
+      "query_id": "Q17",
+      "search_string": "\"lung sound dataset\""
+    },
+    {
+      "query_id": "Q18",
+      "search_string": "\"source separation metrics\" \"biomedical audio\""
+    }
+  ],
+  "phase_3_access_summary": {
+    "Metadata Only": 0,
+    "Open Access": 15,
+    "University Access Needed": 35
+  },
+  "phase_3_notes": [
+    "Only public metadata APIs were queried.",
+    "No PDFs were downloaded.",
+    "No publisher, university, IEEE, ScienceDirect, Springer, or ResearchGate login was attempted.",
+    "Restricted or non-open-access records are queued for manual Zotero/university-access handling by the user."
   ]
 }
