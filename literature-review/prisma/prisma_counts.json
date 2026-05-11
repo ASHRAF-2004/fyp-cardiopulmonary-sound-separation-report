@@ -1,6 +1,6 @@
 {
   "review_title": "Machine Learning-Based System for Cardiopulmonary Sound Separation",
-  "phase": "Manual PDF access results update completed",
+  "phase": "Phase 6 newly downloaded PDF audit completed",
   "last_updated": "2026-05-11",
   "paper_collection_performed_in_phase_2": false,
   "existing_local_pdfs_audited": 20,
@@ -29,8 +29,8 @@
     "full_text_reports_marked_maybe": 10
   },
   "included": {
-    "studies_included_in_literature_review": 18,
-    "studies_marked_maybe_for_background_or_later_review": 16,
+    "studies_included_in_literature_review": 17,
+    "studies_marked_maybe_for_background_or_later_review": 17,
     "studies_excluded": 36
   },
   "decision_summary": {
@@ -220,5 +220,52 @@
     "No searches, downloads, logins, or credential handling were performed by Codex.",
     "Manual full-text access exclusions are retained for PRISMA tracking.",
     "The enhanced VMD paper remains Maybe because online full text is readable even though PDF download is unavailable."
+  ],
+  "phase_6_pdf_audit": {
+    "previously_audited_pdfs": 20,
+    "newly_audited_pdfs": 17,
+    "pdfs_in_folder_after_user_downloads": 37,
+    "unmatched_new_pdfs": 0,
+    "new_pdf_paper_ids_audited": [
+      "P021",
+      "P022",
+      "P023",
+      "P025",
+      "P029",
+      "P030",
+      "P035",
+      "P036",
+      "P037",
+      "P038",
+      "P039",
+      "P040",
+      "P065",
+      "P066",
+      "P068",
+      "P069",
+      "P070"
+    ],
+    "online_only_not_pdf_audited": [
+      "P027"
+    ],
+    "decision_changes": {
+      "P030": "Include -> Maybe after full-text weakness check"
+    },
+    "new_duplicate_flags": [
+      "D017",
+      "D018"
+    ],
+    "pre_2022_exclusions_changed": 0
+  },
+  "decision_summary_after_phase_6": {
+    "Include": 17,
+    "Maybe": 17,
+    "Exclude": 36
+  },
+  "notes_after_phase_6": [
+    "Audited only newly downloaded local PDFs.",
+    "No new searches, downloads, logins, record deletions, or PDF deletions were performed.",
+    "P027 remains online-only metadata/full text and was not excluded because the PDF is unavailable.",
+    "Pre-2022 exclusions were left unchanged."
   ]
 }

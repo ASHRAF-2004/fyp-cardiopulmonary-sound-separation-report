@@ -4,6 +4,40 @@ Project: Machine Learning-Based System for Cardiopulmonary Sound Separation
 
 Phase 2 note: references are grouped by local audit decision. Excluded papers are retained for PRISMA traceability but should not be used as Chapter 2 evidence unless discussing exclusions.
 
+<!-- Phase 6 PDF audit references starts -->
+
+## Phase 6 PDF-Audited New Records
+
+Audited on 2026-05-11. These decisions supersede the Phase 3 metadata-only candidate labels for the papers listed here.
+
+### Include After Full-Text Audit
+
+- [P021] Yang Yi Poh, Ethan Grooby, Kenneth Tan, Atul Malhotra, Mehrtash Harandi, Faezeh Marzbanrad. (2026). Reprogramming Automatic Speech Recognition Models for Neonatal Chest Sound Separation. *IEEE Journal of Biomedical and Health Informatics*. https://doi.org/10.1109/jbhi.2026.3669531 Decision: Include; relevance 5/5.
+- [P022] Yuqi Wang, Han Yang, Zhixing Gao, Zhiwei Dai, Kang Yu, Tingting Song, Hao Yang, Yunfeng Wang, Jun Zhang. (2025). A Phase-Enhanced Neural Network With Dual-Path Transformer for Single-Channel Chest Sound Separation. *IEEE Journal of Biomedical and Health Informatics*. https://doi.org/10.1109/jbhi.2025.3631643 Decision: Include; relevance 5/5.
+- [P023] Yasaman Torabi, Shahram Shirani, James P. Reilly. (2025). Large Language Model-based Nonnegative Matrix Factorization For Cardiorespiratory Sound Separation. *arXiv*. https://doi.org/10.48550/arxiv.2502.05757 Decision: Include; relevance 5/5.
+- [P025] Yasaman Torabi, Shahram Shirani, James P. Reilly. (2023). A New Non-Negative Matrix Factorization Approach for Blind Source Separation of Cardiovascular and Respiratory Sound Based on the Periodicity of Heart and Lung Function. *arXiv*. https://doi.org/10.48550/arxiv.2305.01889 Decision: Include; relevance 5/5.
+- [P029] Tung-Sheng Tsai, Chun-Chieh Hsu, Ching-Lung Hsieh, Yi-Jui Liu. (2023). Separation of Heart and Lung Sounds by A Deep Network-Based Model. *2023 International Conference on Knowledge Innovation and Invention (ICKII)*. https://doi.org/10.1109/ickii58656.2023.10332660 Decision: Include; relevance 4/5.
+- [P035] Leiming Zhang, Fuliang He, Hao Tan, Wangquan Wang, Shiyuan Wang. (2026). An efficient lung sound separation algorithm base on GIHO-VMD. *Computer Methods and Programs in Biomedicine*. https://doi.org/10.1016/j.cmpb.2025.109124 Decision: Include; relevance 5/5.
+- [P037] Jie Zheng, Yixuan Wang, Jinglong Niu, Yan Shi, Fei Xie. (2025). Identifying the Respiratory Sound Based on Single-Channel Separation and Hyperdimensional Computing. *IEEE Sensors Journal*. https://doi.org/10.1109/jsen.2025.3557909 Decision: Include; relevance 4/5.
+- [P038] Yasaman Torabi, Shahram Shirani, James P. Reilly. (2024). Manikin-Recorded Cardiopulmonary Sounds Dataset Using Digital Stethoscope. *arXiv / Dataset paper*. https://doi.org/10.48550/arxiv.2410.03280 Decision: Include; relevance 5/5.
+- [P040] Davood Fattahi, Reza Sameni, Ethan Grooby, Kenneth Tan, Lindsay Zhou, Arrabella King, Ashwin Ramanathan, Atul Malhotra, Faezeh Marzbanrad. (2022). A Blind Filtering Framework for Noisy Neonatal Chest Sounds. *IEEE Access*. https://doi.org/10.1109/access.2022.3170052 Decision: Include; relevance 5/5.
+
+### Maybe After Full-Text Audit
+
+- [P030] K. Sathesh, S. Rajasekaran, P. Jayapal Reddy, T. Manasa, G. Mythresh. (2022). Real Time Lung Sound Separation from Cardiac Sounds by Adaptive Algorithm Technique. *International Journal of Scientific Engineering and Research*. https://doi.org/10.70729/se22324220809 Decision: Maybe; relevance 2/5.
+- [P036] Jayanthi Chittipothala, K. Sathesh, E. Aravindraj, T. Anjum, V. Deena Yasmeen, Gollapalle Dharshitha. (2025). ASIC-Based Lung Sound Separation: Performance Analysis of Adaptive Line Enhancer with Least Mean Square Algorithm Across Scaled CMOS Technologies. *2025 IEEE International Conference for Women in Innovation, Technology & Entrepreneurship (ICWITE)*. https://doi.org/10.1109/icwite64848.2025.11306941 Decision: Maybe; relevance 2/5.
+- [P039] Bruno Rocha, Diogo Pessoa, Alda Marques, P. Carvalho, Rui Pedro Paiva. (2023). Automatic Wheeze Segmentation Using Harmonic-Percussive Source Separation and Empirical Mode Decomposition. *IEEE Journal of Biomedical and Health Informatics*. https://doi.org/10.1109/jbhi.2023.3248265 Decision: Maybe; relevance 3/5.
+- [P065] Pamuditha Somarathne, Yu Yao, Sandun Herath, Tongliang Liu, Paul Breen, Neil Anderson, Girish N. N. Gargiulo, Anusha Withana. (2026). A Dual Classifier-Regressor Architecture for Heart Sound Onset/Offset Detection. *IEEE Transactions on Biomedical Engineering*. https://doi.org/10.1109/tbme.2026.3654558 Decision: Maybe; relevance 3/5.
+- [P066] Shams Nafisa Ali, Afia Zahin, Samiul Based Shuvo, Nusrat Binta Nizam, Shoyad Ibn Sabur Khan Nuhash, Sayeed Sajjad Razin, S.M. Sakeef Sani, Farihin Rahman, Nawshad Binta Nizam, Farhat Binte Azam, Rakib Hossen, Sumaiya Ohab, Nawsabah Noor, Taufiq Hasan. (2026). BUET multi-disease heart sound dataset: A comprehensive auscultation dataset for developing computer-aided diagnostic systems. *Computer Methods and Programs in Biomedicine Update*. https://doi.org/10.1016/j.cmpbup.2026.100237 Decision: Maybe; relevance 3/5.
+- [P070] Manas Pal, Ravi Ranjan, Vikalp Kumar, Veer Dwij Ogrkumar. (2026). Phonocardiogram Signal Processing with Heart Sound Classification Using Transfer Learning. *2026 International Conference on Artificial Intelligence and Technology Management in Smart Infrastructure (IATMSI)*. https://doi.org/10.1109/iatmsi68868.2026.11466265 Decision: Maybe; relevance 2/5.
+
+### Exclude After Full-Text Audit
+
+- [P068] Aikeliyaer Ainiwaer, Tom J.A.J. Konings, Kaisaierjiang Kadier, Xiang Ma, Muhammet Emin Akpulat, Frits W. Prinzen, Tammo Delhaas, Hongxing Luo. (2026). Coronary artery disease diagnosis with signal processing and machine learning of heart sound signals: a systematic review. *NPJ Digital Medicine*. https://doi.org/10.1038/s41746-026-02530-8 Decision: Exclude; relevance 1/5.
+- [P069] Aswin Jose, Roeland P-J E. Decorte, Laurent Locquet. (2026). Instant Preliminary Cardiac Analysis from Smartphone Auscultation: A Real-World Canine Heart Sound Dataset and Evaluation. *arXiv*. No DOI recorded Decision: Exclude; relevance 1/5.
+
+<!-- Phase 6 PDF audit references ends -->
+
 ## Include Papers
 
 - [P005] Ethan Grooby, Chiranjibi Sitaula, Davood Fattahi, Reza Sameni, Kenneth Tan, Lindsay Zhou, Arrabella King, Ashwin Ramanathan, Atul Malhotra, Guy Dumont, Faezeh Marzbanrad. (2023). Noisy Neonatal Chest Sound Separation for High-Quality Heart and Lung Sounds. *IEEE Journal of Biomedical and Health Informatics*. https://doi.org/10.1109/JBHI.2022.3215995 Decision: Include; relevance 5/5.

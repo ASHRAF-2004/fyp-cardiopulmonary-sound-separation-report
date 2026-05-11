@@ -89,6 +89,35 @@
 - State which methods, datasets, and metrics will inform Chapter 3 methodology.
 - Transition to the proposed system design and implementation approach.
 
+<!-- Phase 6 PDF audit guidance starts -->
+
+## Phase 6 Chapter 2 Use Guidance
+
+- Prioritize full-text-audited separation papers over metadata-only candidates.
+- Use the 2026 Whisper reprogramming paper, 2025 phase-enhanced PENN paper, 2022 blind filtering paper, GIHO-VMD, LingoNMF, periodicity-NMF, and the manikin cardiopulmonary dataset as the strongest newly audited evidence.
+- Treat ALE/FxLMS hardware papers, PCG-only segmentation/classification papers, and diagnosis-only datasets as background or Maybe evidence only.
+- Keep P027 online-only for possible later manual evaluation; do not exclude it only because the PDF is unavailable.
+
+Recommended first papers for Chapter 2 after Phase 6:
+
+- P021: Reprogramming Automatic Speech Recognition Models for Neonatal Chest Sound Separation
+- P022: A Phase-Enhanced Neural Network With Dual-Path Transformer for Single-Channel Chest Sound Separation
+- P040: A Blind Filtering Framework for Noisy Neonatal Chest Sounds
+- P035: An efficient lung sound separation algorithm base on GIHO-VMD
+- P023: Large Language Model-based Nonnegative Matrix Factorization For Cardiorespiratory Sound Separation
+- P025: A New Non-Negative Matrix Factorization Approach for Blind Source Separation of Cardiovascular and Respiratory Sound Based on the Periodicity of Heart and Lung Function
+- P038: Manikin-Recorded Cardiopulmonary Sounds Dataset Using Digital Stethoscope
+- P009: retain from Phase 2 audited shortlist
+- P013: retain from Phase 2 audited shortlist
+- P015: retain from Phase 2 audited shortlist
+- P016: retain from Phase 2 audited shortlist
+- P017: retain from Phase 2 audited shortlist
+- P018: retain from Phase 2 audited shortlist
+- P020: retain from Phase 2 audited shortlist
+- P029: Separation of Heart and Lung Sounds by A Deep Network-Based Model
+
+<!-- Phase 6 PDF audit guidance ends -->
+
 <!-- Phase 4 category adjustment starts -->
 
 ## Phase 4 Screening Categories for Candidate Papers
