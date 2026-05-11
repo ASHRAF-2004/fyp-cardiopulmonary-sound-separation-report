@@ -8,6 +8,8 @@ Current handbook used for comparison: `resources/guidelines/FYP Handbook T2610.p
 
 Audit date: 2026-05-11
 
+Refactor update: 2026-05-12
+
 ## Resource Inventory
 
 | Path | What Exists | Notes for Report Workflow |
@@ -72,20 +74,60 @@ Result:
 quarto : The term 'quarto' is not recognized as the name of a cmdlet, function, script file, or operable program.
 ```
 
-Implication: Quarto is not currently available on PATH. No render test was run because the user requested no proof-of-concept generation in this phase.
+Implication: Quarto is not currently available on PATH. During the planning phase no render test was run; during the 2026-05-12 refactor phase, DOCX and Typst/PDF render commands were attempted and both were blocked by the missing `quarto` command.
 
 ## Recommendation
 
 Do not use `resources/tools/FYP1-main/` as-is.
 
-Use it as a reference and refactor its useful ideas into a new Word-first Quarto workflow under `report/`:
+Use it as a reference and refactor its useful ideas into a new Word-first Quarto workflow under `report/quarto/`:
 
 - Reuse the idea of Markdown/Quarto source files.
 - Reuse the FYP front matter logic and optional Typst/PDF styling only after updating it for T2610.
 - Use the current handbook, not the bundled T2510 PDF/Markdown, as the rule source.
 - Use `resources/templates/Template - Content.docx` and `resources/templates/Template - Cover Page and Title Page.docx` as the basis for DOCX styling and front matter.
 - Link citations to `literature-review/references/references.bib`.
-- Keep the old tool untouched until a separate refactor phase is approved.
+- Keep the old tool untouched until a successful DOCX render proves the new active workflow works.
+
+## Refactor Result: 2026-05-12
+
+| Item | Result |
+|---|---|
+| Active workflow created | Yes: `report/quarto/`. |
+| Main source | `report/quarto/paper.qmd`, placeholder content only. |
+| Quarto config | `report/quarto/_quarto.yml`. |
+| DOCX reference template | `report/quarto/templates/fyp-reference.docx`. |
+| Cover/title template copy | `report/quarto/templates/fyp-cover-title-reference.docx`. |
+| Bibliography integration | Direct path to `../../literature-review/references/references.bib`. |
+| Render helper | `report/quarto/scripts/render-report.ps1`. |
+| Validation helper | `report/quarto/scripts/validate-report.ps1`. |
+| DOCX render test | Attempted; failed because `quarto` is not recognized on PATH. |
+| PDF render test | Attempted; failed because `quarto` is not recognized on PATH. |
+| Old tool archive | Not performed. Archive is blocked until DOCX render succeeds. |
+
+What was kept from the old tool:
+
+- The Quarto/Markdown authoring idea.
+- The broad FYP1 front matter and chapter skeleton concept.
+- The MMU logo asset, copied into `report/quarto/assets/figures/mmu-logo.png`.
+- The optional idea of a Typst/PDF path, but not the old T2510-specific implementation.
+
+What was removed from the active workflow:
+
+- The old T2510 handbook source and converted markdown.
+- The old sample `references.bib`.
+- The old PDF-first README instructions.
+- The old single-purpose Typst-only output assumption.
+- The old example image/showcase assets.
+
+Current archive rule:
+
+```powershell
+New-Item -ItemType Directory -Force -Path resources/tools/archive
+Move-Item -LiteralPath resources/tools/FYP1-main -Destination resources/tools/archive/FYP1-main-old
+```
+
+Run the archive command only after `report/generated/paper.docx` exists from a successful Quarto render.
 
 ## Refactor Risk Notes
 

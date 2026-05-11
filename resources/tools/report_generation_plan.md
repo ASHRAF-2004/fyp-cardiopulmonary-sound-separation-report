@@ -4,7 +4,24 @@ Project title: **Machine Learning-Based System for Cardiopulmonary Sound Separat
 
 Main recommendation: **Use Quarto as the report authoring and automation workflow, generate DOCX as the primary university-compatible output, and generate PDF only as a checking/backup output.**
 
-Do not use pure LaTeX as the main workflow. Do not manually format the final report in Word. Do not refactor the old tool until the next phase.
+Do not use pure LaTeX as the main workflow. Do not manually format the final report in Word. The clean active workflow now lives under `report/quarto/`; the old `resources/tools/FYP1-main/` folder remains as a source/archive candidate until the new workflow can successfully render DOCX.
+
+## Implementation Status: 2026-05-12
+
+| Item | Status |
+|---|---|
+| Active Quarto workflow folder | Created at `report/quarto/`. |
+| Main source file | Created at `report/quarto/paper.qmd` with placeholder content only. |
+| Quarto project config | Created at `report/quarto/_quarto.yml`. |
+| DOCX reference template | Copied to `report/quarto/templates/fyp-reference.docx` from the current resource template. |
+| Cover/title reference template | Copied to `report/quarto/templates/fyp-cover-title-reference.docx`. |
+| Bibliography integration | Linked directly to `../../literature-review/references/references.bib`; literature-review data was not modified. |
+| Placeholder figure asset | Created at `report/quarto/assets/figures/report-workflow-placeholder.png`. |
+| Render helper | Created at `report/quarto/scripts/render-report.ps1`. |
+| Validation helper | Created at `report/quarto/scripts/validate-report.ps1`. |
+| DOCX render test | Attempted; blocked because Quarto is not installed or not available on PATH. |
+| PDF render test | Attempted via Typst target; blocked because Quarto is not installed or not available on PATH. |
+| Old tool archive | Not performed yet. It must only be moved after DOCX render succeeds. |
 
 ## Decision
 
@@ -22,7 +39,7 @@ Do not use pure LaTeX as the main workflow. Do not manually format the final rep
 - It appears designed mainly for PDF output.
 - It bundles an older `FYP Handbook T2510.pdf`, while the current source of truth is `resources/guidelines/FYP Handbook T2610.pdf`.
 - It does not currently provide a DOCX-first workflow.
-- Quarto is not installed or not available on PATH on this machine.
+- Quarto is not installed or not available on PATH on this machine. This blocked the first render test on 2026-05-12.
 
 ## Target Workflow
 
@@ -40,55 +57,32 @@ flowchart TD
   H --> J[Validation checklist: formatting, numbering, citations, captions]
 ```
 
-## Proposed Final Source Structure
+## Active Source Structure
 
 Reuse the existing `report/` folder and keep chapter ownership clear:
 
 ```text
 report/
-  _quarto.yml
-  index.qmd
-  metadata/
-    project.yml
-  frontmatter/
-    00-cover-and-title.qmd
-    01-copyright.qmd
-    02-declaration.qmd
-    03-acknowledgements.qmd
-    04-abstract.qmd
-    05-lists.qmd
-  chapter-1-introduction/
-    chapter.qmd
-  chapter-2-literature-review/
-    chapter.qmd
-  chapter-3-methodology/
-    chapter.qmd
-  chapter-4-design-and-implementation/
-    chapter.qmd
-  chapter-5-testing-and-evaluation/
-    chapter.qmd
-  final-report/
-    notes.md
-  appendices/
-    appendix-a-gantt-chart.qmd
-    appendix-b-fyp1-meeting-logs.qmd
-    appendix-c-turnitin-similarity.qmd
-    appendix-d-technical-documentation.qmd
-  assets/
-    figures/
-    tables/
-    diagrams/
-  templates/
-    fyp-reference.docx
-    fyp-cover-title-reference.docx
-  styles/
-    apa.csl
-  scripts/
-    render-report.ps1
-    validate-report.ps1
+  quarto/
+    _quarto.yml
+    paper.qmd
+    README.md
+    assets/
+      figures/
+        mmu-logo.png
+        report-workflow-placeholder.png
+    templates/
+      fyp-reference.docx
+      fyp-cover-title-reference.docx
+    styles/
+      apa.csl
+    scripts/
+      render-report.ps1
+      validate-report.ps1
   generated/
-    fyp1-report.docx
-    fyp1-report.pdf
+    .gitkeep
+    paper.docx
+    paper.pdf
 ```
 
 Notes:
@@ -98,21 +92,19 @@ Notes:
 - `chapter-4-design-and-implementation/` can hold the FYP1 "System Design" source for now, or it can be split later for FYP2.
 - `generated/` should be ignored as output and should be the only destination for generated DOCX/PDF files.
 
-## Files to Create Later
+## Active Files Created
 
 | File | Purpose |
 |---|---|
-| `report/_quarto.yml` | Quarto project configuration, bibliography path, output settings, cross-reference settings, and format definitions. |
-| `report/index.qmd` | Main assembly file that includes front matter, chapters, references, and appendices in handbook order. |
-| `report/metadata/project.yml` | Project ID, title, student name/ID, programme, supervisor, submission month/year, term, course code. |
-| `report/frontmatter/*.qmd` | Editable front matter content. |
-| `report/*/chapter.qmd` | Modular chapter source files. |
-| `report/appendices/*.qmd` | Required FYP1 appendix sources. |
-| `report/templates/fyp-reference.docx` | DOCX reference template derived from `resources/templates/Template - Content.docx`. |
-| `report/templates/fyp-cover-title-reference.docx` | Cover/title reference derived from `resources/templates/Template - Cover Page and Title Page.docx` if needed. |
-| `report/styles/apa.csl` | APA citation style file for DOCX output. |
-| `report/scripts/render-report.ps1` | Repeatable render command. |
-| `report/scripts/validate-report.ps1` | Formatting/citation/output checklist. |
+| `report/quarto/_quarto.yml` | Quarto project configuration, bibliography path, output settings, cross-reference settings, and format definitions. |
+| `report/quarto/paper.qmd` | Single-file placeholder FYP1 report in handbook order. |
+| `report/quarto/README.md` | Current active workflow instructions only. |
+| `report/quarto/templates/fyp-reference.docx` | DOCX reference template derived from `resources/templates/Template - Content.docx`. |
+| `report/quarto/templates/fyp-cover-title-reference.docx` | Cover/title template copy derived from `resources/templates/Template - Cover Page and Title Page.docx`. |
+| `report/quarto/styles/apa.csl` | Local APA-like CSL fallback for render testing. Replace with the official APA CSL before final submission if exact APA formatting is required. |
+| `report/quarto/scripts/render-report.ps1` | Repeatable render command. |
+| `report/quarto/scripts/validate-report.ps1` | Local validation checklist. |
+| `report/generated/.gitkeep` | Keeps the generated output folder present before first render. |
 
 ## Files to Keep
 
@@ -122,28 +114,34 @@ Notes:
 - Keep all `literature-review/` data untouched.
 - Keep existing `report/` chapter folders unless the user approves a rename.
 
-## Files Not to Replace Yet
+## Old Tool Handling
 
 - Do not replace `resources/tools/FYP1-main/paper.qmd`.
 - Do not replace `resources/tools/FYP1-main/_extensions/mmu-fyp/*`.
 - Do not replace `literature-review/references/references.bib`.
-- Do not generate `report/generated/*.docx` or `report/generated/*.pdf` in this planning phase.
+- Do not archive the old tool until `report/generated/paper.docx` is successfully generated.
+- After successful DOCX render, archive with:
+
+```powershell
+New-Item -ItemType Directory -Force -Path resources/tools/archive
+Move-Item -LiteralPath resources/tools/FYP1-main -Destination resources/tools/archive/FYP1-main-old
+```
 
 ## Quarto Configuration Direction
 
-The future `report/index.qmd` should be a single assembly document using includes, rather than relying on Quarto book output. This keeps DOCX output simpler and more predictable:
+The active workflow currently uses a single `report/quarto/paper.qmd` document. This keeps DOCX output simpler and more predictable for the first working render. It can later be split into included chapter files if the single source becomes hard to maintain:
 
 ```markdown
 {{< include frontmatter/01-copyright.qmd >}}
 {{< include frontmatter/02-declaration.qmd >}}
-{{< include chapter-1-introduction/chapter.qmd >}}
-{{< include chapter-2-literature-review/chapter.qmd >}}
+{{< include chapters/chapter-1-introduction.qmd >}}
+{{< include chapters/chapter-2-literature-review.qmd >}}
 ```
 
 The future Quarto configuration should use:
 
 ```yaml
-bibliography: ../literature-review/references/references.bib
+bibliography: ../../literature-review/references/references.bib
 csl: styles/apa.csl
 format:
   docx:
@@ -354,28 +352,74 @@ quarto --version
 
 ## Future Verification Commands
 
-Do not run these until the report scaffold/refactor phase is approved.
-
 ```powershell
 quarto --version
-quarto render report/index.qmd --to docx --output-dir report/generated
-quarto render report/index.qmd --to typst --output-dir report/generated
+quarto render report/quarto/paper.qmd --to docx --output-dir report/generated
+quarto render report/quarto/paper.qmd --to typst --output-dir report/generated
 ```
 
 Expected checks after render:
 
-- `report/generated/fyp1-report.docx` exists.
-- Optional `report/generated/fyp1-report.pdf` exists if PDF generation is enabled.
+- `report/generated/paper.docx` exists.
+- Optional `report/generated/paper.pdf` exists if PDF generation is enabled.
 - Citations compile without missing keys.
 - References render from `literature-review/references/references.bib`.
 - Figure and table captions appear in the correct positions.
 - Generated files are placed only in `report/generated/`.
 
+## Render Test Result: 2026-05-12
+
+DOCX command attempted:
+
+```powershell
+quarto render .\report\quarto\paper.qmd --to docx --output-dir .\report\generated
+```
+
+Result:
+
+```text
+quarto : The term 'quarto' is not recognized as the name of a cmdlet, function, script file, or operable program.
+```
+
+PDF command attempted:
+
+```powershell
+quarto render .\report\quarto\paper.qmd --to typst --output-dir .\report\generated
+```
+
+Result:
+
+```text
+quarto : The term 'quarto' is not recognized as the name of a cmdlet, function, script file, or operable program.
+```
+
+Exact missing dependency steps:
+
+1. Install Quarto for Windows from `https://quarto.org/docs/get-started/`.
+2. Close and reopen PowerShell.
+3. Confirm:
+
+```powershell
+quarto --version
+```
+
+4. Run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\report\quarto\scripts\render-report.ps1
+```
+
+5. If DOCX succeeds and PDF is desired, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\report\quarto\scripts\render-report.ps1 -Pdf
+```
+
+6. Only after `report/generated/paper.docx` exists, archive the old tool.
+
 ## Phase Boundary
 
-This phase created planning and audit documents only.
-
 No full report chapters were written.
-No DOCX or PDF was generated.
-No proof-of-concept was created.
+No DOCX or PDF was generated because Quarto is missing from PATH.
+No full proof-of-concept output was created.
 No `literature-review/` tracking data was modified.

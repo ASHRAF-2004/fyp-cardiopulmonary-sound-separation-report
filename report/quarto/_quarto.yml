@@ -1,0 +1,35 @@
+project:
+  type: default
+  output-dir: ../generated
+
+metadata-files: []
+
+bibliography: ../../literature-review/references/references.bib
+csl: styles/apa.csl
+link-citations: true
+
+toc: true
+toc-depth: 3
+number-sections: true
+
+crossref:
+  fig-prefix: Figure
+  tbl-prefix: Table
+  chapters: true
+
+format:
+  docx:
+    reference-doc: templates/fyp-reference.docx
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  typst:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    mainfont: Arial
+
+execute:
+  echo: false
+  warning: false
+  message: false
