@@ -20,6 +20,7 @@
 - Review public respiratory or lung sound datasets such as ICBHI resources.
 - Compare dataset properties: signal type, sampling rate, labels, noise, recording device, availability, and licensing.
 - Identify dataset limitations for supervised separation, such as lack of clean ground-truth isolated sources.
+- Include HLS-CMDS (P038) as a priority dataset because it provides heart-only, lung-only, mixed heart-lung, and corresponding source recordings; cite the descriptor paper DOI 10.1109/IEEEDATA.2025.3566012 and record dataset access through DOI/PID 10.17632/8972jxbpmp.
 
 ## 2.4 Preprocessing and Signal Representation
 
@@ -94,7 +95,7 @@
 ## Phase 6 Chapter 2 Use Guidance
 
 - Prioritize full-text-audited separation papers over metadata-only candidates.
-- Use the 2026 Whisper reprogramming paper, 2025 phase-enhanced PENN paper, 2022 blind filtering paper, GIHO-VMD, LingoNMF, periodicity-NMF, and the manikin cardiopulmonary dataset as the strongest newly audited evidence.
+- Use the 2026 Whisper reprogramming paper, 2025 phase-enhanced PENN paper, 2022 blind filtering paper, GIHO-VMD, LingoNMF, periodicity-NMF, and the HLS-CMDS dataset descriptor as the strongest newly audited evidence.
 - Treat ALE/FxLMS hardware papers, PCG-only segmentation/classification papers, and diagnosis-only datasets as background or Maybe evidence only.
 - Keep P027 online-only for possible later manual evaluation; do not exclude it only because the PDF is unavailable.
 
@@ -106,7 +107,7 @@ Recommended first papers for Chapter 2 after Phase 6:
 - P035: An efficient lung sound separation algorithm base on GIHO-VMD
 - P023: Large Language Model-based Nonnegative Matrix Factorization For Cardiorespiratory Sound Separation
 - P025: A New Non-Negative Matrix Factorization Approach for Blind Source Separation of Cardiovascular and Respiratory Sound Based on the Periodicity of Heart and Lung Function
-- P038: Manikin-Recorded Cardiopulmonary Sounds Dataset Using Digital Stethoscope
+- P038: Descriptor: Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS)
 - P009: retain from Phase 2 audited shortlist
 - P013: retain from Phase 2 audited shortlist
 - P015: retain from Phase 2 audited shortlist

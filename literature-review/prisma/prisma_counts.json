@@ -1,7 +1,7 @@
 {
   "review_title": "Machine Learning-Based System for Cardiopulmonary Sound Separation",
   "phase": "Phase 6 newly downloaded PDF audit completed",
-  "last_updated": "2026-05-11",
+  "last_updated": "2026-05-12",
   "paper_collection_performed_in_phase_2": false,
   "existing_local_pdfs_audited": 20,
   "identification": {
@@ -267,5 +267,6 @@
     "No new searches, downloads, logins, record deletions, or PDF deletions were performed.",
     "P027 remains online-only metadata/full text and was not excluded because the PDF is unavailable.",
     "Pre-2022 exclusions were left unchanged."
-  ]
+  ],
+  "phase_6_verification": "Completed local verification on 2026-05-12: 37 PDFs matched, 17 newly downloaded PDFs audited, 0 unmatched PDFs, P027 remains online-only, P069 arXiv metadata corrected from local PDF text; no PRISMA count changes required."
 }
