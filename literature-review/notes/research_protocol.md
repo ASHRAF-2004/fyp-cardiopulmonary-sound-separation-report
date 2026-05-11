@@ -74,7 +74,17 @@ AND ("separation" OR "denoising")
 
 These terms may appear in background papers, but papers focused only on diagnosis or classification should be excluded unless they provide reusable preprocessing, dataset, feature, or separation evidence.
 
+<!-- Year range rule starts -->
+
+## Publication Year Range Rule
+
+Only studies published from 2022 to 2026 are included in the review. Papers published before 2022 are retained in the tracking files for PRISMA transparency but are excluded from Include/Maybe decisions with the reason: Outside publication year range: before 2022. Papers after 2026 are excluded unless they are clearly valid online-first 2026 records.
+
+<!-- Year range rule ends -->
+
 ## Inclusion Criteria
+
+- Publication year must be from 2022 to 2026 inclusive.
 
 - The study is relevant to heart sound, lung sound, chest sound, respiratory sound, or cardiopulmonary sound processing.
 - The study includes audio separation, denoising, source separation, signal decomposition, or a closely related method useful for separation.
@@ -86,6 +96,8 @@ These terms may appear in background papers, but papers focused only on diagnosi
 - The paper is written in English or has reliable English metadata and enough readable content for screening.
 
 ## Exclusion Criteria
+
+- Exclude papers published before 2022 with the reason: Outside publication year range: before 2022.
 
 - The study is only about disease detection, diagnosis, or classification with no useful separation, preprocessing, feature, dataset, or model evidence.
 - The study is unrelated to cardiopulmonary, heart, lung, respiratory, chest, or audio source separation.
@@ -176,3 +188,15 @@ Use PDF extraction only on local files that already exist in the repository. Do 
 - Keep disease detection outside the main review unless it contributes reusable preprocessing, dataset, model, or evaluation evidence.
 - Prefer methods that are explainable in a viva and realistic for a student FYP prototype.
 - Keep evidence traceable from every Chapter 2 claim back to `paper_id`, BibTeX key, and source PDF or URL.
+
+<!-- Manual access restrictions starts -->
+
+## Manual Full-Text Access Notes
+
+- SSRN records that are removed or under review are excluded as full text unavailable.
+- Records unavailable through university access are excluded at the full-text retrieval/access stage and retained for PRISMA tracking.
+- Avoid IOP Science as a future priority source due to access limitations.
+- Avoid ASTM Digital Library as a future priority source due to access limitations.
+- Papers readable online but not downloadable as PDF may remain Include/Maybe if the online full text is sufficient for screening and extraction.
+
+<!-- Manual access restrictions ends -->

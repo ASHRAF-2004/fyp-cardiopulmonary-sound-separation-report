@@ -1,7 +1,7 @@
 {
   "review_title": "Machine Learning-Based System for Cardiopulmonary Sound Separation",
-  "phase": "Phase 3 additional candidate metadata collection completed",
-  "last_updated": "2026-05-10",
+  "phase": "Manual PDF access results update completed",
+  "last_updated": "2026-05-11",
   "paper_collection_performed_in_phase_2": false,
   "existing_local_pdfs_audited": 20,
   "identification": {
@@ -29,9 +29,9 @@
     "full_text_reports_marked_maybe": 10
   },
   "included": {
-    "studies_included_in_literature_review": 8,
-    "studies_marked_maybe_for_background_or_later_review": 10,
-    "studies_excluded": 2
+    "studies_included_in_literature_review": 18,
+    "studies_marked_maybe_for_background_or_later_review": 16,
+    "studies_excluded": 36
   },
   "decision_summary": {
     "Include": 8,
@@ -147,5 +147,78 @@
     "No PDFs were downloaded.",
     "No publisher, university, IEEE, ScienceDirect, Springer, or ResearchGate login was attempted.",
     "Restricted or non-open-access records are queued for manual Zotero/university-access handling by the user."
+  ],
+  "phase_4_pdf_downloads_performed": false,
+  "phase_4_logins_or_restricted_access_performed": false,
+  "phase_4_metadata_records_verified": 50,
+  "phase_4_priority_summary": {
+    "Priority 1": 16,
+    "Priority 2": 19,
+    "Priority 3": 15
+  },
+  "phase_4_new_candidate_decision_summary": {
+    "Include": 29,
+    "Maybe": 18,
+    "Exclude": 3
+  },
+  "decision_summary_after_phase_4": {
+    "Include": 18,
+    "Maybe": 16,
+    "Exclude": 36
+  },
+  "phase_4_notes": [
+    "Reviewed only title, abstract, keywords, DOI, source, and notes for the 50 Phase 3 metadata candidates.",
+    "No PDFs were downloaded and no restricted portals were accessed.",
+    "Priority 1 records should be downloaded first through Zotero/manual university access by the user.",
+    "Disease-only and weak off-scope records were downgraded to Maybe or Exclude."
+  ],
+  "year_range_rule": {
+    "include_maybe_year_start": 2022,
+    "include_maybe_year_end": 2026,
+    "pre_2022_exclusion_reason": "Outside publication year range: before 2022",
+    "records_before_2022_excluded": 28,
+    "records_2022_to_2026": 42,
+    "records_after_2026": 0
+  },
+  "decision_summary_after_year_range_update": {
+    "Include": 22,
+    "Maybe": 16,
+    "Exclude": 32
+  },
+  "total_records_after_year_range_update": 70,
+  "notes_after_year_range_update": [
+    "No papers or PDFs were deleted.",
+    "No new searches, downloads, or logins were performed.",
+    "All pre-2022 records were retained for PRISMA tracking and marked Exclude.",
+    "Only 2022-2026 records remain eligible for Include or Maybe."
+  ],
+  "manual_access_update": {
+    "pdfs_downloaded_by_user_pending_audit": 15,
+    "online_full_text_pdf_not_downloaded": 1,
+    "full_text_access_exclusions": 4,
+    "excluded_manual_access_paper_ids": [
+      "P024",
+      "P026",
+      "P028",
+      "P067"
+    ],
+    "online_only_paper_ids": [
+      "P027"
+    ],
+    "sources_to_avoid_as_future_priority": [
+      "IOP Science",
+      "ASTM Digital Library"
+    ]
+  },
+  "decision_summary_after_manual_access_update": {
+    "Include": 18,
+    "Maybe": 16,
+    "Exclude": 36
+  },
+  "notes_after_manual_access_update": [
+    "No records or PDFs were deleted.",
+    "No searches, downloads, logins, or credential handling were performed by Codex.",
+    "Manual full-text access exclusions are retained for PRISMA tracking.",
+    "The enhanced VMD paper remains Maybe because online full text is readable even though PDF download is unavailable."
   ]
 }

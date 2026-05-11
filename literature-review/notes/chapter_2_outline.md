@@ -88,3 +88,17 @@
 - Summarize the main findings from the literature.
 - State which methods, datasets, and metrics will inform Chapter 3 methodology.
 - Transition to the proposed system design and implementation approach.
+
+<!-- Phase 4 category adjustment starts -->
+
+## Phase 4 Screening Categories for Candidate Papers
+
+Use the Phase 4 fields in `metadata/papers_master.csv`, `metadata/download_queue.csv`, and `screening/title_abstract_screening.csv` when selecting papers for Chapter 2:
+
+- Priority 1: direct heart-lung, cardiopulmonary, chest sound, or cardiac-respiratory source separation papers to download and screen first.
+- Priority 2: useful backup papers for traditional methods, preprocessing, denoising, datasets, evaluation metrics, or implementation context.
+- Priority 3: weak, older, hardware-heavy, classification-only, or peripheral papers; do not download unless Chapter 2 needs extra support.
+- Use `useful_for` to group papers by background, related work, dataset, preprocessing, feature extraction, model/method, evaluation metrics, research gap, and software/prototype relevance.
+- Do not cite metadata-only candidates as final evidence until the PDF has been manually downloaded and screened.
+
+<!-- Phase 4 category adjustment ends -->
