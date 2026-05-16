@@ -30,7 +30,10 @@ quarto render report/quarto/paper.qmd --to typst --output-dir report/generated
 
 | File | Purpose |
 |---|---|
-| `paper.qmd` | Placeholder FYP1 report source in handbook order. |
+| `paper.qmd` | Main FYP1 report source in handbook order; includes the drafted chapter files. |
+| `chapters/chapter-1.qmd` | Imported Chapter 1 introduction draft. |
+| `chapters/chapter-2.qmd` | Imported Chapter 2 literature review draft. |
+| `chapters/chapter-3.qmd` | Imported Chapter 3 methodology draft. |
 | `_quarto.yml` | Quarto configuration for DOCX and optional Typst/PDF rendering. |
 | `templates/fyp-reference.docx` | DOCX style reference copied from the current resource template. |
 | `styles/apa.csl` | Local APA-like CSL fallback for render testing. Replace with official APA CSL before final submission if exact APA formatting is required. |

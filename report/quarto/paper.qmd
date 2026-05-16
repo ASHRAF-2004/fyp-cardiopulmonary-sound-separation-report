@@ -149,91 +149,11 @@ This placeholder section is reserved for the generated or Word-updated list of f
 
 {{< pagebreak >}}
 
-# Chapter 1: Introduction
+{{< include chapters/chapter-1.qmd >}}
 
-## Overview
+{{< include chapters/chapter-2.qmd >}}
 
-Placeholder content for the project overview.
-
-## Problem Statement
-
-Placeholder content for the problem statement.
-
-## Project Objectives
-
-1. Placeholder objective 1.
-2. Placeholder objective 2.
-3. Placeholder objective 3.
-
-## Project Scope
-
-Placeholder content for the project scope.
-
-## Project Limitations
-
-Placeholder content for project limitations.
-
-## Methodology
-
-The final report workflow will refer to figures by number. For example, @fig-report-workflow shows a placeholder workflow figure.
-
-![Placeholder report-generation workflow](assets/figures/report-workflow-placeholder.png){#fig-report-workflow width=80%}
-
-## Target Audience
-
-Placeholder content for target audience.
-
-## Summary
-
-Placeholder chapter summary.
-
-# Chapter 2: Literature Review
-
-## Overview
-
-Placeholder literature review text with a test citation to the existing bibliography [@onomichi2023lungseparation].
-
-## Current Related Work Themes
-
-Placeholder synthesis for cardiopulmonary sound separation, heart-lung sound separation, biomedical audio source separation, preprocessing, datasets, models, and evaluation metrics.
-
-## Comparative Summary
-
-@tbl-placeholder-comparison is a placeholder table used to verify table captions and cross-references.
-
-| Theme | Report Use | Source Status |
-|---|---|---|
-| Cardiopulmonary sound separation | Core related work | To be filled from audited literature |
-| Audio preprocessing | Methodology support | To be filled from audited literature |
-| Evaluation metrics | Evaluation design | To be filled from audited literature |
-
-: Placeholder literature-review comparison table {#tbl-placeholder-comparison}
-
-## Summary
-
-Placeholder literature review summary.
-
-# Chapter 3: Requirements Analysis
-
-## Overview
-
-Placeholder content for requirements analysis.
-
-## Fact-Finding Techniques
-
-Placeholder content for fact-finding techniques.
-
-## Functional Requirements
-
-Placeholder functional requirements.
-
-## Non-functional Requirements
-
-Placeholder non-functional requirements.
-
-## User Requirements
-
-Placeholder user requirements.
+{{< include chapters/chapter-3.qmd >}}
 
 # Chapter 4: System Design
 
