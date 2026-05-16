@@ -139,3 +139,11 @@ Use the Phase 4 fields in `metadata/papers_master.csv`, `metadata/download_queue
 - Added 25 metadata-only records from 2022-2026 public metadata searches.
 - Prioritize P073 first for Zotero because it is the strongest new direct cardiorespiratory sound separation paper.
 - Use Phase 7 Maybe records mainly for dataset, preprocessing, evaluation, and prototype context; do not use Exclude records in Chapter 2 unless explaining search boundaries.
+## Final Chapter 2 Evidence Plan
+
+- Use `notes/chapter_2_evidence_map.md` as the source map for Chapter 2 writing.
+- Recommended writing set: 35 papers (P002, P005, P009, P011, P013, P015, P016, P017, P018, P019, P020, P021, P022, P023, P025, P029, P035, P037, P038, P039, P040, P065, P066, P073, P074, P075, P076, P077, P078, P080, P081, P082, P083, P084, P086).
+- High-priority core papers should lead the related-work synthesis; Medium papers should support datasets, preprocessing, evaluation, and software/prototype context.
+- Keep Low-priority Maybe records as backup only. Do not delete them; they remain useful for PRISMA traceability and optional background.
+- Do not use Exclude records as evidence except when explaining screening/access limitations.
+- Write Chapter 2 thematically, not as one paragraph per paper.
