@@ -9,7 +9,7 @@ This is the active report-generation workflow for the FYP1 interim report. It fo
 The primary output is MS Word DOCX:
 
 ```powershell
-quarto render report/quarto/paper.qmd --to docx --output-dir report/generated
+powershell -ExecutionPolicy Bypass -File report/quarto/scripts/render-report.ps1
 ```
 
 Expected file:
@@ -40,6 +40,23 @@ quarto render report/quarto/paper.qmd --to typst --output-dir report/generated
 | `assets/figures/` | Placeholder figures and copied neutral assets used by the report source. |
 | `scripts/render-report.ps1` | Repeatable render helper. |
 | `scripts/validate-report.ps1` | Local validation helper. |
+| `scripts/fix-docx-format.py` | Post-render DOCX formatter for section page numbering, headers/footers, header/footer font sizes, heading numbering cleanup, and Word field update settings. |
+
+## Cover, TOC, and Page Numbering Method
+
+The active workflow recreates the cover and title pages in `paper.qmd` using the structure from `templates/fyp-cover-title-reference.docx`, `resources/templates/Sample.pdf`, and the FYP handbook. Quarto renders the main DOCX with `templates/fyp-reference.docx`.
+
+Quarto's automatic DOCX table of contents is disabled because it is inserted before the cover pages. Instead, `paper.qmd` places a Word TOC field after the abstract, matching the expected front-matter order.
+
+After Quarto renders `report/generated/paper.docx`, `scripts/fix-docx-format.py` post-processes the generated DOCX to:
+
+- remove Word-template heading-style numbering so only Quarto numbering is used;
+- keep cover/title pages unnumbered;
+- set front matter page numbering to lower-case Roman numerals starting at iii;
+- restart Chapter 1 with Arabic numbering from 1;
+- add the project header and prepared-by footer;
+- set header text to 10 pt and footer text to 8 pt;
+- enable Word field updates when the DOCX is opened.
 
 ## Dependencies
 
@@ -72,6 +89,8 @@ After a successful DOCX render, open the DOCX and verify:
 
 - cover/title page layout
 - top-right page numbering
+- header text at 10 pt
+- footer text at 8 pt
 - Roman preliminary page numbering
 - Arabic numbering from Chapter 1
 - body margins and title-page margins

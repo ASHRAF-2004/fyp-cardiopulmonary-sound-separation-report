@@ -2,7 +2,7 @@
 
 Draft status: first academic FYP1 methodology draft. This chapter is aligned with the proposal for `Machine Learning-Based System for Cardiopulmonary Sound Separation` and describes a software prototype/proof-of-concept methodology. The final technical details should be updated after the prototype implementation is confirmed.
 
-## 3.1 Introduction
+## Introduction
 
 This chapter describes the methodology proposed for developing the machine learning-based cardiopulmonary sound separation system. The project is an application-based Software Engineering project with a prototype/proof-of-concept contribution. Its purpose is to process mixed cardiopulmonary audio and produce two separated audio outputs: a heart sound output and a lung sound output.
 
@@ -10,7 +10,7 @@ The methodology is designed around the project objectives stated in Chapter 1. T
 
 The literature review in Chapter 2 shows that cardiopulmonary sound separation can be approached using traditional signal processing, hybrid signal-processing and machine-learning methods, and deep learning models. It also shows that dataset selection and evaluation are major issues because not all heart sound or lung sound datasets provide paired mixed and source signals. Therefore, this methodology emphasizes a reproducible software workflow, careful dataset selection, preprocessing, model-based separation, and signal-level evaluation.
 
-## 3.2 Research / Development Approach
+## Research / Development Approach
 
 This project follows an applied research and prototype development approach. The research component is used to study cardiopulmonary sound separation methods, identify suitable datasets, and select appropriate evaluation metrics. The development component is used to design and implement a software prototype that applies these methods to mixed cardiopulmonary audio.
 
@@ -28,7 +28,7 @@ The expected development workflow is:
 8. Evaluate the outputs using suitable separation or signal-quality metrics.
 9. Document the results, limitations, and future improvements.
 
-## 3.3 System Development Methodology
+## System Development Methodology
 
 The project will use an iterative prototyping methodology. This methodology is suitable because the final system depends on dataset availability, preprocessing quality, model feasibility, and evaluation results. Iterative prototyping allows the project to begin with a simple working pipeline and then improve the preprocessing, model, and interface in stages.
 
@@ -46,7 +46,7 @@ The proposed development phases are:
 
 This approach supports the FYP1 requirement to demonstrate a clear development plan while leaving space for implementation refinement in the next phase.
 
-## 3.4 Dataset Selection and Preparation
+## Dataset Selection and Preparation
 
 Public or accessible datasets will be used for training, testing, or evaluation. Dataset selection is important because a dataset designed for disease classification is not necessarily suitable for heart-lung source separation. For this project, the preferred dataset should contain mixed cardiopulmonary recordings and corresponding heart/lung source signals, because source signals allow direct evaluation of the separated outputs.
 
@@ -72,7 +72,7 @@ The preparation process will include:
 5. Splitting data into training, validation, and testing subsets if the selected model requires training.
 6. Keeping notes on any excluded files, missing files, or unusable samples.
 
-## 3.5 Audio Preprocessing
+## Audio Preprocessing
 
 Audio preprocessing is required before model inference or training because raw recordings may differ in sampling rate, duration, amplitude, noise level, and channel format. The preprocessing stage will convert audio data into a consistent format suitable for the selected model.
 
@@ -89,7 +89,7 @@ The proposed preprocessing steps are:
 
 The preprocessing design will remain conservative. It should improve consistency without changing the purpose of the task or introducing unsupported assumptions. Since Chapter 2 shows that preprocessing and signal quality affect separation outcomes, this stage will be treated as part of the system pipeline rather than as a minor helper step [@roy2024pcgreview; @zhao2024heartanalysis].
 
-## 3.6 Feature Extraction / Input Representation
+## Feature Extraction / Input Representation
 
 The input representation will depend on the final separation model. Two main options are considered.
 
@@ -99,7 +99,7 @@ The second option is time-frequency processing, where the audio is converted int
 
 For the first prototype, the input representation should be selected based on feasibility and compatibility with the chosen model. A practical approach is to begin with short audio windows and a time-frequency representation, then reconstruct separated heart and lung waveform outputs after model inference. The final choice will be documented after implementation testing.
 
-## 3.7 Machine Learning Model Approach
+## Machine Learning Model Approach
 
 The machine learning model will be selected to balance relevance, feasibility, explainability, and implementation effort. Chapter 2 identifies several possible method families, including NMF-based methods, hybrid decomposition and neural methods, U-Net-style deep learning models, attention-based methods, and phase-aware transformer models [@grooby2023noisyneonatal; @wang2023mcunet; @zhang2025jassnet; @wang2025phase2].
 
@@ -120,7 +120,7 @@ The initial model direction may follow one of three feasible paths:
 
 More complex methods such as attention networks, phase-aware transformers, or pretrained-model reprogramming are useful as literature references, but they may be too large for a first prototype unless simplified carefully [@poh2024neossnet; @zhang2025jassnet; @wang2025phase2]. The final method choice will be confirmed after dataset inspection and prototype testing.
 
-## 3.8 System Architecture Overview
+## System Architecture Overview
 
 The proposed system architecture is modular. Each module has a clear responsibility so that the prototype can be tested and improved step by step. At a high level, the system will include an input module, preprocessing module, feature/input representation module, separation model module, output management module, evaluation module, and user interaction or interface layer.
 
@@ -137,7 +137,7 @@ The proposed processing flow is:
 
 This architecture supports the software-system focus of the project. It avoids treating the model as a standalone script and instead places the model inside a complete audio-processing workflow.
 
-## 3.9 System Modules
+## System Modules
 
 The proposed system modules are:
 
@@ -155,7 +155,7 @@ The proposed system modules are:
 
 These modules may be implemented as Python scripts, backend services, or application components depending on the final prototype design.
 
-## 3.10 Evaluation Methodology
+## Evaluation Methodology
 
 The evaluation methodology will focus on separation quality and system behavior, not disease diagnosis. If the selected dataset provides reference heart and lung source signals, the separated outputs can be compared directly with the references. This is why HLS-CMDS is useful as a dataset candidate: it includes mixed recordings and corresponding source signals for mixed recordings [@torabi2025hlscmds].
 
@@ -170,7 +170,7 @@ The proposed evaluation will include:
 
 The exact metrics will be finalized after confirming the dataset and model. Possible metric categories include signal-to-noise improvement, reconstruction error, correlation or similarity with reference sources, and source-separation quality measures. If reference source signals are not available for some data, the evaluation will be limited to qualitative inspection and indirect signal-quality measures. Classification accuracy will not be used as the main evaluation metric because the project objective is separation rather than disease detection.
 
-## 3.11 Tools and Technologies
+## Tools and Technologies
 
 The project will use tools and technologies suitable for Python-based audio processing, machine learning, and software prototyping.
 
@@ -186,7 +186,7 @@ The project will use tools and technologies suitable for Python-based audio proc
 
 The final toolset should be confirmed during implementation. Tools should be selected based on project feasibility, reproducibility, and compatibility with the selected dataset and model.
 
-## 3.12 Chapter Summary
+## Chapter Summary
 
 This chapter presented the proposed methodology for the machine learning-based cardiopulmonary sound separation system. The project will follow an iterative software prototyping approach, using public or accessible datasets, audio preprocessing, feature or input representation, a feasible machine learning-based separation method, modular system architecture, and separation-focused evaluation.
 

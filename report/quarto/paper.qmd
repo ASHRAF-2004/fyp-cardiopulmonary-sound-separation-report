@@ -1,21 +1,29 @@
 ---
 project-title: "Machine Learning-Based System for Cardiopulmonary Sound Separation"
-project-id: "FYP01-SE-T2610-0000"
-student-id: "<STUDENT ID>"
-student-name: "<STUDENT NAME>"
-programme: "<PROGRAMME OF STUDY>"
-supervisor-name: "<SUPERVISOR NAME>"
-submission-month-year: "<SUBMISSION MONTH AND YEAR>"
+project-id: "985"
+student-id: "1221303805"
+student-name: "AL-SALOUL, ASHRAF ALI HUSSEIN"
+programme: "BACHELOR OF COMPUTER SCIENCE B.CS (HONS) SOFTWARE ENGINEERING"
+degree-name: "BACHELOR OF COMPUTER SCIENCE"
+supervisor-name: "Arshad Jamal"
+submission-month-year: "MAY 2026"
+submission-year: "2026"
 course-code: "CPT6314"
-term-info: "T2610"
+term-info: "2610 Term"
+report-type: "INTERIM"
+project-phase: "Project I"
 ---
+
+<!-- =========================================================================
+     COVER AND TITLE PAGES
+     ========================================================================= -->
 
 ::: {custom-style="Title"}
 FINAL YEAR PROJECT INTERIM REPORT
 :::
 
 ::: {custom-style="Title"}
-<APPROVED PROJECT ID>
+985
 :::
 
 ::: {custom-style="Title"}
@@ -23,25 +31,29 @@ Machine Learning-Based System for Cardiopulmonary Sound Separation
 :::
 
 ::: {custom-style="Title"}
-<STUDENT ID>
+1221303805
 :::
 
 ::: {custom-style="Title"}
-<STUDENT NAME IN CAPITAL LETTERS>
+AL-SALOUL, ASHRAF ALI HUSSEIN
 :::
 
 ::: {custom-style="Title"}
-<PROGRAMME OF STUDY>
+Supervisor: Arshad Jamal
 :::
 
 ::: {custom-style="Title"}
-<SUBMISSION MONTH AND YEAR>
+BACHELOR OF COMPUTER SCIENCE B.CS (HONS) SOFTWARE ENGINEERING
+:::
+
+::: {custom-style="Title"}
+MAY 2026
 :::
 
 {{< pagebreak >}}
 
 ::: {custom-style="Title"}
-<APPROVED PROJECT ID>
+985
 :::
 
 ::: {custom-style="Title"}
@@ -53,13 +65,17 @@ BY
 :::
 
 ::: {custom-style="Title"}
-<STUDENT ID AND NAME IN CAPITAL LETTERS>
+1221303805 AL-SALOUL, ASHRAF ALI HUSSEIN
 :::
 
 PROJECT INTERIM REPORT SUBMITTED IN PARTIAL FULFILMENT OF THE REQUIREMENT FOR THE DEGREE OF
 
 ::: {custom-style="Title"}
-<PROGRAMME OF STUDY>
+BACHELOR OF COMPUTER SCIENCE B.CS (HONS) SOFTWARE ENGINEERING
+:::
+
+::: {custom-style="Title"}
+Supervisor: Arshad Jamal
 :::
 
 in the
@@ -75,14 +91,18 @@ MALAYSIA
 :::
 
 ::: {custom-style="Title"}
-<SUBMISSION MONTH AND YEAR>
+MAY 2026
 :::
 
 {{< pagebreak >}}
 
+<!-- =========================================================================
+     FRONT MATTER
+     ========================================================================= -->
+
 # Copyright {.unnumbered}
 
-(c) <YEAR OF REPORT SUBMISSION> Universiti Telekom Sdn. Bhd. ALL RIGHTS RESERVED.
+(c) 2026 Universiti Telekom Sdn. Bhd. ALL RIGHTS RESERVED.
 
 Copyright of this report belongs to Universiti Telekom Sdn. Bhd. as qualified by Regulation 7.2 (c) of the Multimedia University Intellectual Property and Commercialisation Policy. No part of this publication may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means, or for any purpose, without the express written permission of Universiti Telekom Sdn. Bhd. Due acknowledgement shall always be made of the use of any material contained in, or derived from, this report.
 
@@ -92,39 +112,59 @@ Copyright of this report belongs to Universiti Telekom Sdn. Bhd. as qualified by
 
 I hereby declare that the work has been done by myself and no portion of the work contained in this report has been submitted in support of any application for any other degree or qualification of this or any other university or institution of learning.
 
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
-Name of candidate:
+Name of candidate: AL-SALOUL, ASHRAF ALI HUSSEIN
 
 Faculty of Computing & Informatics
 
 Multimedia University
 
-Date: DD: MM: YYYY
+Date:
 
 {{< pagebreak >}}
 
 # Acknowledgements {.unnumbered}
 
-Placeholder acknowledgements. Replace this section after supervisor details and final acknowledgement wording are confirmed.
+In the name of Allah, the Most Gracious, the Most Merciful.
+
+I would like to express my sincere gratitude to my supervisor, Arshad Jamal, for his guidance, patience, and continuous support throughout the development of this project. His advice has been valuable in shaping both the technical and academic direction of this work.
+
+I am also grateful to Multimedia University and the Faculty of Computing and Informatics for providing the academic environment, resources, and support necessary to complete this project.
+
+Finally, I would like to thank my family, friends, and colleagues for their encouragement, patience, and moral support throughout this journey.
 
 {{< pagebreak >}}
 
 # Abstract {.unnumbered}
 
-This placeholder abstract summarizes the planned FYP1 report for a machine learning-based system for cardiopulmonary sound separation. Replace this paragraph with the final abstract after the project scope, methodology, and expected deliverables are finalized.
+This interim report presents the first phase of a Final Year Project titled `Machine Learning-Based System for Cardiopulmonary Sound Separation`. The project focuses on developing a software prototype that processes mixed cardiopulmonary audio and produces separated heart sound and lung sound outputs. The project is motivated by the overlap between heart and lung sounds in chest recordings and by the need for a structured, reusable software workflow for sound separation rather than disease diagnosis.
+
+The report introduces the project background, problem statement, objectives, scope, literature review, and proposed methodology. The planned system includes public dataset selection, audio preprocessing, feature or input representation, machine learning-based separation, output generation, and evaluation using suitable signal-level metrics. The expected outcome is a proof-of-concept software system that demonstrates cardiopulmonary sound separation while avoiding unsupported clinical claims.
+
+{{< pagebreak >}}
+
+# Table of Contents {.unnumbered}
+
+```{=openxml}
+<w:p xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:r><w:fldChar w:fldCharType="begin"/></w:r>
+  <w:r><w:instrText xml:space="preserve"> TOC \o "1-3" \h \z \u </w:instrText></w:r>
+  <w:r><w:fldChar w:fldCharType="separate"/></w:r>
+  <w:r><w:t>Right-click and update field to generate the table of contents.</w:t></w:r>
+  <w:r><w:fldChar w:fldCharType="end"/></w:r>
+</w:p>
+```
 
 {{< pagebreak >}}
 
 # List of Tables {.unnumbered}
 
-This placeholder section is reserved for the generated or Word-updated list of tables.
+No finalized tables have been added at this draft stage. This section should be updated after final tables are inserted.
 
 {{< pagebreak >}}
 
 # List of Figures {.unnumbered}
 
-This placeholder section is reserved for the generated or Word-updated list of figures.
+No finalized figures have been added at this draft stage. This section should be updated after final figures and diagrams are inserted.
 
 {{< pagebreak >}}
 
@@ -134,6 +174,8 @@ This placeholder section is reserved for the generated or Word-updated list of f
 |---|---|
 | FYP | Final Year Project |
 | ML | Machine Learning |
+| PCG | Phonocardiogram |
+| HLS-CMDS | Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope |
 | DOCX | Microsoft Word Open XML Document |
 
 {{< pagebreak >}}
@@ -149,11 +191,21 @@ This placeholder section is reserved for the generated or Word-updated list of f
 
 {{< pagebreak >}}
 
+<!-- =========================================================================
+     MAIN CHAPTERS
+     ========================================================================= -->
+
 {{< include chapters/chapter-1.qmd >}}
+
+{{< pagebreak >}}
 
 {{< include chapters/chapter-2.qmd >}}
 
+{{< pagebreak >}}
+
 {{< include chapters/chapter-3.qmd >}}
+
+{{< pagebreak >}}
 
 # Chapter 4: System Design
 
@@ -189,6 +241,8 @@ Placeholder interface design notes.
 
 Placeholder system design summary.
 
+{{< pagebreak >}}
+
 # Chapter 5: Implementation Plan
 
 ## Development Phase
@@ -203,9 +257,17 @@ Placeholder testing phase.
 
 Placeholder deployment phase, if applicable.
 
+{{< pagebreak >}}
+
 # Chapter 6: Conclusion
 
 Placeholder conclusion for FYP1 progress and next-phase work.
+
+{{< pagebreak >}}
+
+<!-- =========================================================================
+     REFERENCES
+     ========================================================================= -->
 
 # References {.unnumbered}
 
@@ -213,6 +275,10 @@ Placeholder conclusion for FYP1 progress and next-phase work.
 :::
 
 {{< pagebreak >}}
+
+<!-- =========================================================================
+     APPENDICES
+     ========================================================================= -->
 
 # Appendix A: Gantt Chart {.unnumbered}
 

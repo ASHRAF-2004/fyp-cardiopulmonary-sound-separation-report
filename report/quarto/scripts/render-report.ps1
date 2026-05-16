@@ -8,6 +8,8 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $repoRoot = Resolve-Path (Join-Path $scriptDir "..\..\..")
 $paper = Join-Path $repoRoot "report\quarto\paper.qmd"
 $outputDir = Join-Path $repoRoot "report\generated"
+$docx = Join-Path $outputDir "paper.docx"
+$postProcess = Join-Path $scriptDir "fix-docx-format.py"
 
 if (-not (Get-Command quarto -ErrorAction SilentlyContinue)) {
   Write-Error "Quarto is not installed or not available on PATH. Install Quarto, reopen PowerShell, then run: quarto --version"
@@ -19,6 +21,16 @@ Write-Host "Rendering DOCX..."
 & quarto render $paper --to docx --output-dir $outputDir
 if ($LASTEXITCODE -ne 0) {
   throw "DOCX render failed with exit code $LASTEXITCODE"
+}
+
+if (-not (Test-Path $postProcess)) {
+  throw "DOCX post-processing script not found: $postProcess"
+}
+
+Write-Host "Applying FYP DOCX formatting post-process..."
+& python $postProcess $docx $docx
+if ($LASTEXITCODE -ne 0) {
+  throw "DOCX post-processing failed with exit code $LASTEXITCODE"
 }
 
 if ($Pdf) {

@@ -1,22 +1,35 @@
 %% Project: Machine Learning-Based System for Cardiopulmonary Sound Separation
+%% Source counts: literature-review/prisma/prisma_counts.json, updated 2026-05-16
+%% Final decision counts: Include = 18, Maybe = 31, Exclude = 47, total = 96
 flowchart TD
-    A[Database searches not performed in Phase 2<br/>n = 0] --> C[Records identified total<br/>n = 20]
-    B[Existing local PDF set audited<br/>n = 20] --> C
-    C --> D[Duplicate or earlier-version record flagged<br/>n = 1]
-    D --> E[Unique study set after duplicate flagging<br/>n = 19]
-    C --> F[All local PDF records screened<br/>n = 20]
-    F --> G[Records excluded<br/>n = 2]
-    F --> H[Full text reports assessed<br/>n = 20]
-    H --> I[Included studies<br/>n = 8]
-    H --> J[Maybe/background studies<br/>n = 10]
-    H --> K[Excluded studies retained for PRISMA<br/>n = 2]
+    A[Records identified from existing local PDF set<br/>n = 20]
+    B[New public metadata records added<br/>n = 76<br/>Phase 3 = 50; Phase 7 = 26]
+    C[Duplicate candidates skipped before adding<br/>n = 45<br/>Phase 3 = 15; Phase 7 = 30]
+    C --> C1[Not added to papers_master.csv<br/>tracked in duplicate review notes]
 
-    classDef pending fill:#fff4ce,stroke:#8a6d00,color:#222;
-    classDef neutral fill:#eef4ff,stroke:#315f9b,color:#222;
-    classDef included fill:#e8f5e9,stroke:#2e7d32,color:#222;
-    classDef excluded fill:#fdecea,stroke:#b3261e,color:#222;
+    A --> D[Records retained in papers_master.csv<br/>n = 96]
+    B --> D
 
-    class A,J pending;
-    class B,C,D,E,F,H neutral;
-    class I included;
-    class G,K excluded;
+    D --> E[Title, abstract, and metadata screening completed<br/>n = 96]
+    E --> F[Records excluded after screening, year-range,<br/>duplicate, scope, or access updates<br/>n = 47]
+    E --> G[Records retained for literature-review use<br/>n = 49]
+
+    G --> H[Studies included in literature review<br/>n = 18]
+    G --> I[Maybe/background studies retained<br/>n = 31]
+
+    D --> J[Full-text or access screening documented<br/>n = 71]
+    D --> K[Phase 7 metadata-only records pending full-text download<br/>n = 25]
+
+    classDef source fill:#eef4ff,stroke:#315f9b,color:#111;
+    classDef duplicate fill:#fff4ce,stroke:#8a6d00,color:#111;
+    classDef process fill:#f6f8fa,stroke:#59636e,color:#111;
+    classDef included fill:#e8f5e9,stroke:#2e7d32,color:#111;
+    classDef maybe fill:#fff8e1,stroke:#f57f17,color:#111;
+    classDef excluded fill:#fdecea,stroke:#b3261e,color:#111;
+
+    class A,B source;
+    class C,C1 duplicate;
+    class D,E,G,J,K process;
+    class H included;
+    class I maybe;
+    class F excluded;

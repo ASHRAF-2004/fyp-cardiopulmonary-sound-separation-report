@@ -8,7 +8,7 @@ bibliography: ../../literature-review/references/references.bib
 csl: styles/apa.csl
 link-citations: true
 
-toc: true
+toc: false
 toc-depth: 3
 number-sections: true
 
@@ -20,7 +20,7 @@ crossref:
 format:
   docx:
     reference-doc: templates/fyp-reference.docx
-    toc: true
+    toc: false
     toc-depth: 3
     number-sections: true
   typst:
