@@ -1,0 +1,2136 @@
+{
+  "year_start": 2022,
+  "year_end": 2026,
+  "queries": [
+    "cardiopulmonary sound separation",
+    "heart lung sound separation",
+    "heart and lung sound separation",
+    "\"chest sound separation\" \"deep learning\"",
+    "single-channel chest sound separation",
+    "neonatal chest sound separation",
+    "cardiorespiratory sound separation",
+    "respiratory cardiac sound separation",
+    "\"stethoscope sound separation\" \"machine learning\"",
+    "\"auscultation sound separation\" \"deep learning\"",
+    "\"biomedical audio source separation\" \"deep learning\"",
+    "\"U-Net\" \"heart sound\" \"lung sound\" separation",
+    "\"transformer\" \"chest sound separation\"",
+    "\"nonnegative matrix factorization\" \"heart lung sound separation\"",
+    "\"variational mode decomposition\" \"heart lung sound separation\"",
+    "heart lung sound dataset",
+    "cardiopulmonary sound dataset",
+    "\"digital stethoscope dataset\" \"heart lung\"",
+    "\"source separation metrics\" \"biomedical audio\"",
+    "\"respiratory sound separation\" \"cardiac sound\""
+  ],
+  "logs": [
+    {
+      "query": "cardiopulmonary sound separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "cardiopulmonary sound separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "cardiopulmonary sound separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "cardiopulmonary sound separation",
+      "source": "PubMed",
+      "results_returned": 3,
+      "records_exported": 3,
+      "status": "ok"
+    },
+    {
+      "query": "cardiopulmonary sound separation",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "heart lung sound separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart lung sound separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "heart lung sound separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart lung sound separation",
+      "source": "PubMed",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart lung sound separation",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "heart and lung sound separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart and lung sound separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "heart and lung sound separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart and lung sound separation",
+      "source": "PubMed",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart and lung sound separation",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "\"chest sound separation\" \"deep learning\"",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"chest sound separation\" \"deep learning\"",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"chest sound separation\" \"deep learning\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"chest sound separation\" \"deep learning\"",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"chest sound separation\" \"deep learning\"",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "single-channel chest sound separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "single-channel chest sound separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "single-channel chest sound separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "single-channel chest sound separation",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "single-channel chest sound separation",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: Unknown Error"
+    },
+    {
+      "query": "neonatal chest sound separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "neonatal chest sound separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "neonatal chest sound separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "neonatal chest sound separation",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "neonatal chest sound separation",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "cardiorespiratory sound separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "cardiorespiratory sound separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "cardiorespiratory sound separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "cardiorespiratory sound separation",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "cardiorespiratory sound separation",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "respiratory cardiac sound separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "respiratory cardiac sound separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "respiratory cardiac sound separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "respiratory cardiac sound separation",
+      "source": "PubMed",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "respiratory cardiac sound separation",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "\"stethoscope sound separation\" \"machine learning\"",
+      "source": "OpenAlex",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"stethoscope sound separation\" \"machine learning\"",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"stethoscope sound separation\" \"machine learning\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"stethoscope sound separation\" \"machine learning\"",
+      "source": "PubMed",
+      "results_returned": 1,
+      "records_exported": 1,
+      "status": "ok"
+    },
+    {
+      "query": "\"stethoscope sound separation\" \"machine learning\"",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "\"auscultation sound separation\" \"deep learning\"",
+      "source": "OpenAlex",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"auscultation sound separation\" \"deep learning\"",
+      "source": "Semantic Scholar",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"auscultation sound separation\" \"deep learning\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"auscultation sound separation\" \"deep learning\"",
+      "source": "PubMed",
+      "results_returned": 4,
+      "records_exported": 4,
+      "status": "ok"
+    },
+    {
+      "query": "\"auscultation sound separation\" \"deep learning\"",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: TimeoutError: The read operation timed out"
+    },
+    {
+      "query": "\"biomedical audio source separation\" \"deep learning\"",
+      "source": "OpenAlex",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"biomedical audio source separation\" \"deep learning\"",
+      "source": "Semantic Scholar",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"biomedical audio source separation\" \"deep learning\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"biomedical audio source separation\" \"deep learning\"",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"biomedical audio source separation\" \"deep learning\"",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"U-Net\" \"heart sound\" \"lung sound\" separation",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"U-Net\" \"heart sound\" \"lung sound\" separation",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"U-Net\" \"heart sound\" \"lung sound\" separation",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"U-Net\" \"heart sound\" \"lung sound\" separation",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"U-Net\" \"heart sound\" \"lung sound\" separation",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"transformer\" \"chest sound separation\"",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"transformer\" \"chest sound separation\"",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"transformer\" \"chest sound separation\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"transformer\" \"chest sound separation\"",
+      "source": "PubMed",
+      "results_returned": 2,
+      "records_exported": 2,
+      "status": "ok"
+    },
+    {
+      "query": "\"transformer\" \"chest sound separation\"",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"nonnegative matrix factorization\" \"heart lung sound separation\"",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"nonnegative matrix factorization\" \"heart lung sound separation\"",
+      "source": "Semantic Scholar",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"nonnegative matrix factorization\" \"heart lung sound separation\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"nonnegative matrix factorization\" \"heart lung sound separation\"",
+      "source": "PubMed",
+      "results_returned": 1,
+      "records_exported": 1,
+      "status": "ok"
+    },
+    {
+      "query": "\"nonnegative matrix factorization\" \"heart lung sound separation\"",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"variational mode decomposition\" \"heart lung sound separation\"",
+      "source": "OpenAlex",
+      "results_returned": 4,
+      "records_exported": 4,
+      "status": "ok"
+    },
+    {
+      "query": "\"variational mode decomposition\" \"heart lung sound separation\"",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"variational mode decomposition\" \"heart lung sound separation\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"variational mode decomposition\" \"heart lung sound separation\"",
+      "source": "PubMed",
+      "results_returned": 1,
+      "records_exported": 1,
+      "status": "ok"
+    },
+    {
+      "query": "\"variational mode decomposition\" \"heart lung sound separation\"",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart lung sound dataset",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart lung sound dataset",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "heart lung sound dataset",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "heart lung sound dataset",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "heart lung sound dataset",
+      "source": "arXiv",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "cardiopulmonary sound dataset",
+      "source": "OpenAlex",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "cardiopulmonary sound dataset",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "cardiopulmonary sound dataset",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "cardiopulmonary sound dataset",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "cardiopulmonary sound dataset",
+      "source": "arXiv",
+      "results_returned": 1,
+      "records_exported": 1,
+      "status": "ok"
+    },
+    {
+      "query": "\"digital stethoscope dataset\" \"heart lung\"",
+      "source": "OpenAlex",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"digital stethoscope dataset\" \"heart lung\"",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"digital stethoscope dataset\" \"heart lung\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"digital stethoscope dataset\" \"heart lung\"",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"digital stethoscope dataset\" \"heart lung\"",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"source separation metrics\" \"biomedical audio\"",
+      "source": "OpenAlex",
+      "results_returned": 1,
+      "records_exported": 1,
+      "status": "ok"
+    },
+    {
+      "query": "\"source separation metrics\" \"biomedical audio\"",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"source separation metrics\" \"biomedical audio\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"source separation metrics\" \"biomedical audio\"",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"source separation metrics\" \"biomedical audio\"",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"respiratory sound separation\" \"cardiac sound\"",
+      "source": "OpenAlex",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"respiratory sound separation\" \"cardiac sound\"",
+      "source": "Semantic Scholar",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "error: HTTPError: HTTP Error 429: "
+    },
+    {
+      "query": "\"respiratory sound separation\" \"cardiac sound\"",
+      "source": "Crossref",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    },
+    {
+      "query": "\"respiratory sound separation\" \"cardiac sound\"",
+      "source": "PubMed",
+      "results_returned": 0,
+      "records_exported": 0,
+      "status": "ok"
+    },
+    {
+      "query": "\"respiratory sound separation\" \"cardiac sound\"",
+      "source": "arXiv",
+      "results_returned": 6,
+      "records_exported": 6,
+      "status": "ok"
+    }
+  ],
+  "duplicates_skipped": [
+    {
+      "match_type": "doi",
+      "title": "Monaural cardiopulmonary sound separation via complex-valued deep autoencoder and cyclostationarity",
+      "doi": "10.1088/2057-1976/acbc7f",
+      "sources": [
+        "Crossref",
+        "OpenAlex",
+        "PubMed",
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "A multi-channel UNet framework based on SNMF-DCNN for robust heart-lung-sound separation",
+      "doi": "10.1016/j.compbiomed.2023.107282",
+      "sources": [
+        "OpenAlex",
+        "PubMed"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Separation of Cardiopulmonary Sound Signals for Classification of Respiratory Diseases",
+      "doi": "10.1109/apsipaasc63619.2025.10848841",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Semi-Supervised Learning-Based End-to-End Network for Single-Channel Cardiopulmonary Sound Separation",
+      "doi": "10.2139/ssrn.4829498",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Unsupervised framework for single channel heart and lung sounds separation in data constrained environments",
+      "doi": "10.1016/j.apacoust.2024.110076",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "JASSNet: Heart and lung sound separation network based on joint attention mechanism and Semi-Supervised learning",
+      "doi": "10.1016/j.bspc.2025.107525",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Real Time Lung Sound Separation from Cardiac Sounds by Adaptive Algorithm Technique",
+      "doi": "10.70729/se22324220809",
+      "sources": [
+        "Crossref"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Heart-lung sound separation by nonnegative matrix factorization and deep learning",
+      "doi": "10.1016/j.bspc.2022.104180",
+      "sources": [
+        "Crossref",
+        "OpenAlex",
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Noisy Neonatal Chest Sound Separation for High-Quality Heart and Lung Sounds",
+      "doi": "10.1109/jbhi.2022.3215995",
+      "sources": [
+        "Crossref",
+        "OpenAlex",
+        "PubMed"
+      ]
+    },
+    {
+      "match_type": "title",
+      "title": "Heart-Lung Sound Separation by Nonnegative Matrix Factorization and Deep Learning",
+      "doi": "10.2139/ssrn.4017034",
+      "sources": [
+        "Crossref",
+        "OpenAlex",
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Embedded Platform-Based Heart-Lung Sound Separation Using Variational Mode Decomposition",
+      "doi": "10.1007/978-3-031-25194-8_13",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Research on heart and lung sound separation method based on DAE–NMF–VMD",
+      "doi": "10.1186/s13634-024-01152-0",
+      "sources": [
+        "Crossref",
+        "OpenAlex",
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "HEART SOUND NOISE SEPARATION FROM LUNG SOUND BASED ON ENHANCED VARIATIONAL MODE DECOMPOSITION FOR DIAGNOSING PULMONARY DISEASES",
+      "doi": "10.4015/s1016237223500357",
+      "sources": [
+        "Crossref"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "NeoSSNet: Real-Time Neonatal Chest Sound Separation Using Deep Learning.",
+      "doi": "10.1109/ojemb.2024.3401571",
+      "sources": [
+        "Crossref",
+        "OpenAlex",
+        "PubMed",
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "title",
+      "title": "Real-time Neonatal Chest Sound Separation using Deep Learning",
+      "doi": "10.48550/arxiv.2310.17116",
+      "sources": [
+        "OpenAlex",
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Unsupervised Deep Learning of Sparse Signals against Low-Rank Backgrounds with Application to Online Lung Sound Separation",
+      "doi": "10.18178/ijsps.11.1.1-6",
+      "sources": [
+        "Crossref"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "A Phase-Enhanced Neural Network With Dual-Path Transformer for Single-Channel Chest Sound Separation",
+      "doi": "10.1109/jbhi.2025.3631643",
+      "sources": [
+        "Crossref",
+        "OpenAlex",
+        "PubMed"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "A Blind Filtering Framework for Noisy Neonatal Chest Sounds",
+      "doi": "10.1109/access.2022.3170052",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Identifying the Respiratory Sound Based on Single-Channel Separation and Hyperdimensional Computing",
+      "doi": "10.1109/jsen.2025.3557909",
+      "sources": [
+        "Crossref"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Reprogramming Automatic Speech Recognition Models for Neonatal Chest Sound Separation",
+      "doi": "10.1109/jbhi.2026.3669531",
+      "sources": [
+        "Crossref",
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "title",
+      "title": "Noisy Neonatal Chest Sound Separation for High-Quality Heart and Lung Sounds",
+      "doi": "10.48550/arxiv.2201.03211",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Large Language Model-based Nonnegative Matrix Factorization For Cardiorespiratory Sound Separation",
+      "doi": "10.48550/arxiv.2502.05757",
+      "sources": [
+        "OpenAlex",
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Generative AI Respiratory and Cardiac Sound Separation Using Variational Autoencoders (VAEs)",
+      "doi": "10.3390/cmsf2025010009",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "An End-to-End Deep Learning Framework for Real-Time Denoising of Heart Sounds for Cardiac Disease Detection in Unseen Noise",
+      "doi": "10.1109/access.2023.3292551",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Deep Learning in Heart Sound Analysis: From Techniques to Clinical Applications",
+      "doi": "10.34133/hds.0182",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "title",
+      "title": "A New Non-Negative Matrix Factorization Approach for Blind Source Separation of Cardiovascular and Respiratory Sound Based on the Periodicity of Heart and Lung Function",
+      "doi": "",
+      "sources": [
+        "Semantic Scholar"
+      ]
+    },
+    {
+      "match_type": "title",
+      "title": "Research on Heart and Lung Sound Separation Method Based on DAE-NMF-VMD",
+      "doi": "10.21203/rs.3.rs-3404750/v1",
+      "sources": [
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "An efficient lung sound separation algorithm base on GIHO-VMD.",
+      "doi": "10.1016/j.cmpb.2025.109124",
+      "sources": [
+        "PubMed"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Descriptor: Heart and Lung Sounds Dataset Recorded From a Clinical Manikin Using Digital Stethoscope (HLS-CMDS)",
+      "doi": "10.1109/ieeedata.2025.3566012",
+      "sources": [
+        "Crossref",
+        "OpenAlex"
+      ]
+    },
+    {
+      "match_type": "doi",
+      "title": "Feature-Based Fusion Using CNN for Lung and Heart Sound Classification",
+      "doi": "10.3390/s22041521",
+      "sources": [
+        "Crossref",
+        "OpenAlex"
+      ]
+    }
+  ],
+  "candidate_count_after_dedup": 141,
+  "screened_useful_count": 46,
+  "selected_count": 35,
+  "selected": [
+    {
+      "title": "Digital Stethoscope Use in Neonates: A Systematic Review",
+      "authors": "Meagan Roff; Olivia Slifirski; Ethan Grooby; Faezeh Marzbanrad; Anil K. Malhotra",
+      "year": 2023,
+      "doi": "10.5005/jp-journals-11002-0068",
+      "official_url": "https://doi.org/10.5005/jp-journals-11002-0068",
+      "venue": "Newborn",
+      "publication_type": "review",
+      "abstract": "Aim: To assess the evidence for the use of digital stethoscopes in neonates and evaluate whether they are effective, appropriate, and advantageous for neonatal auscultation.Methods: A systematic review and narrative synthesis of studies published between January 1, 1990 and May 29, 2023 was conducted following searches of MEDLINE, Embase, PubMed, Scopus, and Google Scholar databases, as well as trial registries.Results: Of 3,852 records identified, a total of 41 papers were eligible and included in the narrative synthesis.Thirteen records were non-full-text articles, either in the form of journal letters or conference abstracts, and these were included separately for completion purposes but may be unreliable.Twenty eight papers were full-text articles and were included in a full qualitative analysis.Digital stethoscopes have been studied in neonatology across various clinical areas, including artificial intelligence for sound quality assessment and chest sound separation (n = 5), cardiovascular sounds (n = 11), respiratory sounds (n = 4), bowel sounds (n = 4), swallowing sounds (n = 2), and telemedicine (n = 2).This paper discusses the potential utility of digital stethoscope technology for the interpretation of neonatal sounds for both humans and artificial intelligence.The limitations of current devices are also assessed. Conclusions:The utilization of digital stethoscopes in neonatology is an emerging field with a wide range of potential applications, which has the capacity to advance neonatal auscultation.Artificial intelligence and digital stethoscope technology offer novel objective avenues for automatic pathological sound detection.Further, digital stethoscopes may improve our scientific understanding of normal neonatal physiology and can be employed in telemedicine to facilitate remote medical access.Digital stethoscopes can also provide phonocardiograms, enabling enhanced interpretation of neonatal cardiac sounds.However, current digital stethoscopes necessitate refinement as they consistently produce low-quality sounds when used on neonates.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4387104586",
+      "is_oa": true,
+      "cited_by_count": 3,
+      "queries": [
+        "\"chest sound separation\" \"deep learning\"",
+        "respiratory cardiac sound separation"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "digital stethoscope use in neonates a systematic review",
+      "screen_score": 6,
+      "relevance_score": 5,
+      "initial_decision": "Include",
+      "download_priority": "Priority 1",
+      "reason_for_decision": "Highly relevant metadata candidate: direct heart/lung or chest sound separation; dataset relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "direct heart/lung or chest sound separation",
+        "dataset relevance"
+      ],
+      "paper_id": "P071"
+    },
+    {
+      "title": "A system for biomedical audio signal processing based on high performance computing techniques",
+      "authors": "Antonio J. Muñoz-Montoro; Pablo Revuelta Sanz; Alberto Villalón-Fernández; Rubén Múñiz; José Ranilla",
+      "year": 2022,
+      "doi": "10.3233/ica-220686",
+      "official_url": "https://doi.org/10.3233/ica-220686",
+      "venue": "Integrated Computer-Aided Engineering",
+      "publication_type": "article",
+      "abstract": "In this paper, a noninvasive portable prototype is presented for biomedical audio signal processing. The proposed prototype is suitable for monitoring the health of patients. The proposed hardware setup consists of a cost-effective microphone, multipurpose microcontroller and computing node that could be a mobile phone or general-purpose computer. Using parallel and high-performance techniques, this setup allows one to register and wirelessly multicast the recorded biomedical signals to computing nodes in real time. The developed prototype was used as a case study to estimate the heart rate (HR) from the captured biomedical audio signal. In this regard, the developed algorithm for estimating HR comprises three stages: preprocessing, separation, and HR estimation. In the first stage, the signal captured by the microphone is adapted for processing. Subsequently, a separation stage was proposed to alleviate the acoustic interference between the lungs and heart. The separation is performed by combining a non-negative matrix factorization algorithm, clustering approach, and soft-filter strategy. Finally, HR estimation was obtained using a novel and efficient method based on the autocorrelation function. The developed prototype could be used not only for the estimation of the HR, but also for the retrieval of other biomedical information related to the recording of cardiac or respiratory audio signals. The proposed method was evaluated using well-known datasets and compared with state-of-the-art algorithms for source-separation. The results showed that it is possible to obtain an accurate separation and reliable real-time estimation in terms of source separation metrics and relative error in the tested scenarios by combining multi-core architectures with parallel and high-performance techniques. Finally, the proposed prototype was validated in a real-world scenario.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4284713489",
+      "is_oa": true,
+      "cited_by_count": 8,
+      "queries": [
+        "\"source separation metrics\" \"biomedical audio\""
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "a system for biomedical audio signal processing based on high performance computing techniques",
+      "screen_score": 5,
+      "relevance_score": 5,
+      "initial_decision": "Include",
+      "download_priority": "Priority 1",
+      "reason_for_decision": "Highly relevant metadata candidate: biomedical source separation relevance; dataset relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "biomedical source separation relevance",
+        "dataset relevance"
+      ],
+      "paper_id": "P072"
+    },
+    {
+      "title": "Cardiorespiratory Sound Separation Using Singular Spectrum Analysis",
+      "authors": "Bowen Han; Wei Quan",
+      "year": 2025,
+      "doi": "10.1109/icsps66615.2025.11347745",
+      "official_url": "https://doi.org/10.1109/icsps66615.2025.11347745",
+      "venue": "",
+      "publication_type": "article",
+      "abstract": "Cardiorespiratory signal separation is a critical task in biomedical signal processing, with significant implications for improving the accuracy of cardiovascular and pulmonary disease diagnoses. The presence of complex mixed signals and noise complicates the separation of cardiac and respiratory sounds from a single-channel recording. Traditional separation methods struggle due to the overlapping frequency ranges of these physiological signals. In this work, we propose a multi-stage Singular Spectrum Analysis (MSSA)-based framework for the separation of cardiac and respiratory sounds. The approach utilizes a two-stage SSA process where the first stage isolates the cardiac components through periodic structure analysis, while the second stage extracts respiratory components based on relative variance and cross-correlation. Key features of this method include a systematic selection of RCs that ensure high-quality signal separation, preserving physiological integrity. The framework was validated on real-world cardiorespiratory recordings obtained via electronic digital stethoscopes, demonstrating robustness across varying recording conditions.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W7125815600",
+      "is_oa": false,
+      "cited_by_count": 0,
+      "queries": [
+        "cardiorespiratory sound separation"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "cardiorespiratory sound separation using singular spectrum analysis",
+      "screen_score": 5,
+      "relevance_score": 5,
+      "initial_decision": "Include",
+      "download_priority": "Priority 1",
+      "reason_for_decision": "Highly relevant metadata candidate: direct heart/lung or chest sound separation; method/model relevance",
+      "chapter_2_use": "related work; model; evaluation; research gap",
+      "screening_reasons": [
+        "direct heart/lung or chest sound separation",
+        "method/model relevance"
+      ],
+      "paper_id": "P073"
+    },
+    {
+      "title": "Lung disease recognition methods using audio-based analysis with machine learning.",
+      "authors": "Sabry AH; I Dallal Bashi O; Nik Ali NH; Mahmood Al Kubaisi Y",
+      "year": 2024,
+      "doi": "10.1016/j.heliyon.2024.e26218",
+      "pmid": "38420389",
+      "official_url": "https://pubmed.ncbi.nlm.nih.gov/38420389/",
+      "venue": "Heliyon",
+      "publication_type": "Journal Article; Review",
+      "abstract": "The use of computer-based automated approaches and improvements in lung sound recording techniques have made lung sound-based diagnostics even better and devoid of subjectivity errors. Using a computer to evaluate lung sound features more thoroughly with the use of analyzing changes in lung sound behavior, recording measurements, suppressing the presence of noise contaminations, and graphical representations are all made possible by computer-based lung sound analysis. This paper starts with a discussion of the need for this research area, providing an overview of the field and the motivations behind it. Following that, it details the survey methodology used in this work. It presents a discussion on the elements of sound-based lung disease classification using machine learning algorithms. This includes commonly prior considered datasets, feature extraction techniques, pre-processing methods, artifact removal methods, lung-heart sound separation, deep learning algorithms, and wavelet transform of lung audio signals. The study introduces studies that review lung screening including a summary table of these references and discusses the literature gaps in the existing studies. It is concluded that the use of sound-based machine learning in the classification of respiratory diseases has promising results. While we believe this material will prove valuable to physicians and researchers exploring sound-signal-based machine learning, large-scale investigations remain essential to solidify the findings and foster wider adoption within the medical community.",
+      "source_database": "PubMed",
+      "source_record_id": "38420389",
+      "is_oa": true,
+      "cited_by_count": 0,
+      "queries": [
+        "\"nonnegative matrix factorization\" \"heart lung sound separation\"",
+        "heart lung sound dataset",
+        "heart lung sound separation"
+      ],
+      "sources": [
+        "OpenAlex",
+        "PubMed"
+      ],
+      "title_key": "lung disease recognition methods using audio based analysis with machine learning",
+      "screen_score": 3,
+      "relevance_score": 4,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P074"
+    },
+    {
+      "title": "Manikin-Recorded Cardiopulmonary Sounds Dataset Using Digital Stethoscope",
+      "authors": "Yasaman Torabi; Shahram Shirani; James P. Reilly",
+      "year": 2024,
+      "doi": "10.48550/arxiv.2410.03280",
+      "official_url": "https://doi.org/10.48550/arxiv.2410.03280",
+      "venue": "arXiv (Cornell University)",
+      "publication_type": "preprint",
+      "abstract": "Heart and lung sounds are crucial for healthcare monitoring. Recent improvements in stethoscope technology have made it possible to capture patient sounds with enhanced precision. In this dataset, we used a digital stethoscope to capture both heart and lung sounds, including individual and mixed recordings. To our knowledge, this is the first dataset to offer both separate and mixed cardiorespiratory sounds. The recordings were collected from a clinical manikin, a patient simulator designed to replicate human physiological conditions, generating clean heart and lung sounds at different body locations. This dataset includes both normal sounds and various abnormalities (i.e., murmur, atrial fibrillation, tachycardia, atrioventricular block, third and fourth heart sound, wheezing, crackles, rhonchi, pleural rub, and gurgling sounds). The dataset includes audio recordings of chest examinations performed at different anatomical locations, as determined by specialist nurses. Each recording has been enhanced using frequency filters to highlight specific sound types. This dataset is useful for applications in artificial intelligence, such as automated cardiopulmonary disease detection, sound classification, unsupervised separation techniques, and deep learning algorithms related to audio signal processing.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4403894870",
+      "is_oa": true,
+      "cited_by_count": 0,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "manikin recorded cardiopulmonary sounds dataset using digital stethoscope",
+      "screen_score": 3,
+      "relevance_score": 4,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P075"
+    },
+    {
+      "title": "Manikin-Recorded Cardiopulmonary Sounds Dataset Using Digital Stethoscope",
+      "authors": "Yasaman Torabi; Shahram Shirani; James P. Reilly",
+      "year": 2024,
+      "doi": "",
+      "arxiv_id": "2410.03280v1",
+      "official_url": "http://arxiv.org/abs/2410.03280v1",
+      "venue": "arXiv",
+      "publication_type": "Preprint",
+      "abstract": "Heart and lung sounds are crucial for healthcare monitoring. Recent improvements in stethoscope technology have made it possible to capture patient sounds with enhanced precision. In this dataset, we used a digital stethoscope to capture both heart and lung sounds, including individual and mixed recordings. To our knowledge, this is the first dataset to offer both separate and mixed cardiorespiratory sounds. The recordings were collected from a clinical manikin, a patient simulator designed to replicate human physiological conditions, generating clean heart and lung sounds at different body locations. This dataset includes both normal sounds and various abnormalities (i.e., murmur, atrial fibrillation, tachycardia, atrioventricular block, third and fourth heart sound, wheezing, crackles, rhonchi, pleural rub, and gurgling sounds). The dataset includes audio recordings of chest examinations performed at different anatomical locations, as determined by specialist nurses. Each recording has been enhanced using frequency filters to highlight specific sound types. This dataset is useful for applications in artificial intelligence, such as automated cardiopulmonary disease detection, sound classification, unsupervised separation techniques, and deep learning algorithms related to audio signal processing.",
+      "source_database": "arXiv",
+      "source_record_id": "2410.03280v1",
+      "is_oa": true,
+      "cited_by_count": 0,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "arXiv"
+      ],
+      "title_key": "manikin recorded cardiopulmonary sounds dataset using digital stethoscope",
+      "screen_score": 3,
+      "relevance_score": 4,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P076"
+    },
+    {
+      "title": "Deep Learning-Based Classification of Chest Diseases Using X-rays, CT Scans, and Cough Sound Images",
+      "authors": "Hassaan Malik; Tayyaba Anees; Ahmad Sami Al-Shamaylehs; Salman Z. Alharthi; Wajeeha Khalil; Adnan Akhunzada",
+      "year": 2023,
+      "doi": "10.3390/diagnostics13172772",
+      "official_url": "https://doi.org/10.3390/diagnostics13172772",
+      "venue": "Diagnostics",
+      "publisher": "MDPI AG",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>Chest disease refers to a variety of lung disorders, including lung cancer (LC), COVID-19, pneumonia (PNEU), tuberculosis (TB), and numerous other respiratory disorders. The symptoms (i.e., fever, cough, sore throat, etc.) of these chest diseases are similar, which might mislead radiologists and health experts when classifying chest diseases. Chest X-rays (CXR), cough sounds, and computed tomography (CT) scans are utilized by researchers and doctors to identify chest diseases such as LC, COVID-19, PNEU, and TB. The objective of the work is to identify nine different types of chest diseases, including COVID-19, edema (EDE), LC, PNEU, pneumothorax (PNEUTH), normal, atelectasis (ATE), and consolidation lung (COL). Therefore, we designed a novel deep learning (DL)-based chest disease detection network (DCDD_Net) that uses a CXR, CT scans, and cough sound images for the identification of nine different types of chest diseases. The scalogram method is used to convert the cough sounds into an image. Before training the proposed DCDD_Net model, the borderline (BL) SMOTE is applied to balance the CXR, CT scans, and cough sound images of nine chest diseases. The proposed DCDD_Net model is trained and evaluated on 20 publicly available benchmark chest disease datasets of CXR, CT scan, and cough sound images. The classification performance of the DCDD_Net is compared with four baseline models, i.e., InceptionResNet-V2, EfficientNet-B0, DenseNet-201, and Xception, as well as state-of-the-art (SOTA) classifiers. The DCDD_Net achieved an accuracy of 96.67%, a precision of 96.82%, a recall of 95.76%, an F1-score of 95.61%, and an area under the curve (AUC) of 99.43%. The results reveal that DCDD_Net outperformed the other four baseline models in terms of many performance evaluation metrics. Thus, the proposed DCDD_Net model can provide significant assistance to radiologists and medical experts. Additionally, the proposed model was also shown to be resilient by statistical evaluations of the datasets using McNemar and ANOVA tests.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.3390/diagnostics13172772",
+      "is_oa": false,
+      "cited_by_count": 18,
+      "queries": [
+        "\"chest sound separation\" \"deep learning\""
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "deep learning based classification of chest diseases using x rays ct scans and cough sound images",
+      "screen_score": 4,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance; evaluation metric relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance",
+        "evaluation metric relevance"
+      ],
+      "paper_id": "P077"
+    },
+    {
+      "title": "Deep learning-based lung sound analysis for intelligent stethoscope",
+      "authors": "Dong-Min Huang; Jia Huang; Kun Qiao; Nanshan Zhong; Hongzhou Lu; Wenjin Wang",
+      "year": 2023,
+      "doi": "10.1186/s40779-023-00479-3",
+      "official_url": "https://doi.org/10.1186/s40779-023-00479-3",
+      "venue": "Military Medical Research",
+      "publication_type": "review",
+      "abstract": "Auscultation is crucial for the diagnosis of respiratory system diseases. However, traditional stethoscopes have inherent limitations, such as inter-listener variability and subjectivity, and they cannot record respiratory sounds for offline/retrospective diagnosis or remote prescriptions in telemedicine. The emergence of digital stethoscopes has overcome these limitations by allowing physicians to store and share respiratory sounds for consultation and education. On this basis, machine learning, particularly deep learning, enables the fully-automatic analysis of lung sounds that may pave the way for intelligent stethoscopes. This review thus aims to provide a comprehensive overview of deep learning algorithms used for lung sound analysis to emphasize the significance of artificial intelligence (AI) in this field. We focus on each component of deep learning-based lung sound analysis systems, including the task categories, public datasets, denoising methods, and, most importantly, existing deep learning methods, i.e., the state-of-the-art approaches to convert lung sounds into two-dimensional (2D) spectrograms and use convolutional neural networks for the end-to-end recognition of respiratory diseases or abnormal lung sounds. Additionally, this review highlights current challenges in this field, including the variety of devices, noise sensitivity, and poor interpretability of deep models. To address the poor reproducibility and variety of deep learning in this field, this review also provides a scalable and flexible open-source framework that aims to standardize the algorithmic workflow and provide a solid basis for replication and future extension: https://github.com/contactless-healthcare/Deep-Learning-for-Lung-Sound-Analysis .",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4387032904",
+      "is_oa": true,
+      "cited_by_count": 72,
+      "queries": [
+        "\"chest sound separation\" \"deep learning\"",
+        "\"stethoscope sound separation\" \"machine learning\""
+      ],
+      "sources": [
+        "Crossref",
+        "OpenAlex"
+      ],
+      "title_key": "deep learning based lung sound analysis for intelligent stethoscope",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P078"
+    },
+    {
+      "title": "Acoustic-Based Deep Learning Architectures for Lung Disease Diagnosis: A Comprehensive Overview",
+      "authors": "Alyaa Hamel Sfayyih; Ahmad H. Sabry; Shymaa Mohammed Jameel; Nasri Sulaiman; Safanah M. Raafat; Amjad J. Humaidi; Yasir Mahmood Al Kubaiaisi",
+      "year": 2023,
+      "doi": "10.3390/diagnostics13101748",
+      "official_url": "https://doi.org/10.3390/diagnostics13101748",
+      "venue": "Diagnostics",
+      "publication_type": "review",
+      "abstract": "Lung auscultation has long been used as a valuable medical tool to assess respiratory health and has gotten a lot of attention in recent years, notably following the coronavirus epidemic. Lung auscultation is used to assess a patient's respiratory role. Modern technological progress has guided the growth of computer-based respiratory speech investigation, a valuable tool for detecting lung abnormalities and diseases. Several recent studies have reviewed this important area, but none are specific to lung sound-based analysis with deep-learning architectures from one side and the provided information was not sufficient for a good understanding of these techniques. This paper gives a complete review of prior deep-learning-based architecture lung sound analysis. Deep-learning-based respiratory sound analysis articles are found in different databases including the Plos, ACM Digital Libraries, Elsevier, PubMed, MDPI, Springer, and IEEE. More than 160 publications were extracted and submitted for assessment. This paper discusses different trends in pathology/lung sound, the common features for classifying lung sounds, several considered datasets, classification methods, signal processing techniques, and some statistical information based on previous study findings. Finally, the assessment concludes with a discussion of potential future improvements and recommendations.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4376875175",
+      "is_oa": true,
+      "cited_by_count": 49,
+      "queries": [
+        "\"U-Net\" \"heart sound\" \"lung sound\" separation"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "acoustic based deep learning architectures for lung disease diagnosis a comprehensive overview",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P079"
+    },
+    {
+      "title": "Auscultation-Based Pulmonary Disease Detection through Parallel Transformation and Deep Learning",
+      "authors": "Rehan Khan; Shafi Ullah Khan; Umer Saeed; In-Soo Koo",
+      "year": 2024,
+      "doi": "10.3390/bioengineering11060586",
+      "official_url": "https://doi.org/10.3390/bioengineering11060586",
+      "venue": "Bioengineering",
+      "publisher": "MDPI AG",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>Respiratory diseases are among the leading causes of death, with many individuals in a population frequently affected by various types of pulmonary disorders. Early diagnosis and patient monitoring (traditionally involving lung auscultation) are essential for the effective management of respiratory diseases. However, the interpretation of lung sounds is a subjective and labor-intensive process that demands considerable medical expertise, and there is a good chance of misclassification. To address this problem, we propose a hybrid deep learning technique that incorporates signal processing techniques. Parallel transformation is applied to adventitious respiratory sounds, transforming lung sound signals into two distinct time-frequency scalograms: the continuous wavelet transform and the mel spectrogram. Furthermore, parallel convolutional autoencoders are employed to extract features from scalograms, and the resulting latent space features are fused into a hybrid feature pool. Finally, leveraging a long short-term memory model, a feature from the latent space is used as input for classifying various types of respiratory diseases. Our work is evaluated using the ICBHI-2017 lung sound dataset. The experimental findings indicate that our proposed method achieves promising predictive performance, with average values for accuracy, sensitivity, specificity, and F1-score of 94.16%, 89.56%, 99.10%, and 89.56%, respectively, for eight-class respiratory diseases; 79.61%, 78.55%, 92.49%, and 78.67%, respectively, for four-class diseases; and 85.61%, 83.44%, 83.44%, and 84.21%, respectively, for binary-class (normal vs. abnormal) lung sounds.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.3390/bioengineering11060586",
+      "is_oa": false,
+      "cited_by_count": 23,
+      "queries": [
+        "\"auscultation sound separation\" \"deep learning\""
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "auscultation based pulmonary disease detection through parallel transformation and deep learning",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P080"
+    },
+    {
+      "title": "StethAid: A Digital Auscultation Platform for Pediatrics",
+      "authors": "Youness Arjoune; Trong Nguyen; Tyler Salvador; Anha Telluri; Jonathan C. Schroeder; Robert L. Geggel; Joseph W. May; Dinesh K. Pillai; Stephen J. Teach; Shilpa J. Patel; Robin Winkler Doroshow; Raj Shekhar",
+      "year": 2023,
+      "doi": "10.3390/s23125750",
+      "official_url": "https://doi.org/10.3390/s23125750",
+      "venue": "Sensors",
+      "publication_type": "article",
+      "abstract": "(1) Background: Mastery of auscultation can be challenging for many healthcare providers. Artificial intelligence (AI)-powered digital support is emerging as an aid to assist with the interpretation of auscultated sounds. A few AI-augmented digital stethoscopes exist but none are dedicated to pediatrics. Our goal was to develop a digital auscultation platform for pediatric medicine. (2) Methods: We developed StethAid-a digital platform for artificial intelligence-assisted auscultation and telehealth in pediatrics-that consists of a wireless digital stethoscope, mobile applications, customized patient-provider portals, and deep learning algorithms. To validate the StethAid platform, we characterized our stethoscope and used the platform in two clinical applications: (1) Still's murmur identification and (2) wheeze detection. The platform has been deployed in four children's medical centers to build the first and largest pediatric cardiopulmonary datasets, to our knowledge. We have trained and tested deep-learning models using these datasets. (3) Results: The frequency response of the StethAid stethoscope was comparable to those of the commercially available Eko Core, Thinklabs One, and Littman 3200 stethoscopes. The labels provided by our expert physician offline were in concordance with the labels of providers at the bedside using their acoustic stethoscopes for 79.3% of lungs cases and 98.3% of heart cases. Our deep learning algorithms achieved high sensitivity and specificity for both Still's murmur identification (sensitivity of 91.9% and specificity of 92.6%) and wheeze detection (sensitivity of 83.7% and specificity of 84.4%). (4) Conclusions: Our team has created a technically and clinically validated pediatric digital AI-enabled auscultation platform. Use of our platform could improve efficacy and efficiency of clinical care for pediatric patients, reduce parental anxiety, and result in cost savings.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4381661841",
+      "is_oa": true,
+      "cited_by_count": 9,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "stethaid a digital auscultation platform for pediatrics",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P081"
+    },
+    {
+      "title": "Approaches for Respiratory Sound Analysis in Identification of Respiratory Diseases",
+      "authors": "Arunkumar Ram; Ghanshyam Jindal; Uttam Bagal; Gajanan Nagare",
+      "year": 2024,
+      "doi": "10.18502/fbt.v11i2.15347",
+      "official_url": "https://doi.org/10.18502/fbt.v11i2.15347",
+      "venue": "Frontiers in Biomedical Technologies",
+      "publisher": "Knowledge E DMCC",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>Purpose: Medical professionals throughout the world prefer to use conventional stethoscopes to listen to respiratory sounds. Listening to respiratory sounds through stethoscopes is a subjective matter, and proper diagnosis of the disease depends on the skills and ability of the doctor. Computerized analysis of respiratory sounds can help doctors and researchers to characterize different abnormal respiratory patterns and make informed decisions.\r\nMaterials and Methods: This study includes previously reported work in different normal and abnormal respiratory sounds. The IEEE, PubMed, Google Scholar and Elsevier databases were searched and studies with the keywords of lung sound analysis, respiratory sound analysis, and respiratory sound classification were included. Detailed characteristics of normal and abnormal respiratory sounds are mentioned. In addition, Time-amplitude characteristics of different respiratory sound plots are obtained using MATLAB and ICBHI database. This study systematically discusses different approaches for respiratory sound analysis like visual analysis of the time-amplitude signals, frequency analysis, and spectral analysis using fast Fourier transform, statistical analysis, and machine learning approach. A list of relevant datasets is mentioned that can help researchers to do further analysis in this domain.\r\nResults: The careful observations and analysis show the possibility of predicting respiratory diseases by extracting suitable parameters such as the frequency response and spectral characteristics of the signal. Power spectral density can help us to calculate the maximum, median frequency over an extended period. Using machine learning we can estimate the energy, entropy, spectral features, and wavelets of the signals.\r\nConclusion: Computer-based respiratory sound analysis can help medical professionals in making informed decisions. This will help in early diagnosis and devise effective treatment plans for the patients.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.18502/fbt.v11i2.15347",
+      "is_oa": false,
+      "cited_by_count": 4,
+      "queries": [
+        "respiratory cardiac sound separation"
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "approaches for respiratory sound analysis in identification of respiratory diseases",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P082"
+    },
+    {
+      "title": "A Development of a Sound Recognition-Based Cardiopulmonary Resuscitation Training System",
+      "authors": "Dong Hyun Choi; Yoon Ha Joo; Ki Hong Kim; Jeong Ho Park; Hyunjin Joo; Hyoun‐Joong Kong; Hyunju Lee; Kyoung Jun Song; Sungwan Kim",
+      "year": 2024,
+      "doi": "10.1109/jtehm.2024.3433448",
+      "official_url": "https://doi.org/10.1109/jtehm.2024.3433448",
+      "venue": "IEEE Journal of Translational Engineering in Health and Medicine",
+      "publication_type": "article",
+      "abstract": "The objective of this study was to develop a sound recognition-based cardiopulmonary resuscitation (CPR) training system that is accessible, cost-effective, easy-to-maintain and provides accurate CPR feedback. Beep-CPR, a novel device with accordion squeakers that emit high-pitched sounds during compression, was developed. The sounds emitted by Beep-CPR were recorded using a smartphone, segmented into 2-second audio fragments, and then transformed into spectrograms. A total of 6,065 spectrograms were generated from approximately 40 minutes of audio data, which were then randomly split into training, validation, and test datasets. Each spectrogram was matched with the depth, rate, and release velocity of the compression measured at the same time interval by the ZOLL X Series monitor/defibrillator. Deep learning models utilizing spectrograms as input were trained using transfer learning based on EfficientNet to predict the depth (Depth model), rate (Rate model), and release velocity (Recoil model) of compressions. Results: The mean absolute error (MAE) for the Depth model was 0.30 cm (95% confidence interval [CI]: 0.27-0.33). The MAE of the Rate model was 3.6/min (95% CI: 3.2-3.9). For the Recoil model, the MAE was 2.3 cm/s (95% CI: 2.1-2.5). External validation of the models demonstrated acceptable performance across multiple conditions, including the utilization of a newly-manufactured device, a fatigued device, and evaluation in an environment with altered spatial dimensions. We have developed a novel sound recognition-based CPR training system, that accurately measures compression quality during training. Significance: Beep-CPR is a cost-effective and easy-to-maintain solution that can improve the efficacy of CPR training by facilitating decentralized at-home training with performance feedback.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4401070530",
+      "is_oa": true,
+      "cited_by_count": 4,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "a development of a sound recognition based cardiopulmonary resuscitation training system",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P083"
+    },
+    {
+      "title": "Sound-Dr: Reliable Sound Dataset and Baseline Artificial Intelligence System for Respiratory Illnesses",
+      "authors": "Van Truong Hoang; Quang Nguyen; Quoc Cuong Nguyen; Xuan Phong Nguyen; Hoang Nguyen",
+      "year": 2023,
+      "doi": "10.36001/phmap.2023.v4i1.3604",
+      "official_url": "https://doi.org/10.36001/phmap.2023.v4i1.3604",
+      "venue": "PHM Society Asia-Pacific Conference",
+      "publisher": "PHM Society",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>As the burden of respiratory diseases continues to fall on society worldwide, this paper proposes a high-quality and reliable dataset of human sounds for studying respiratory illnesses, including pneumonia and COVID-19. It consists of coughing, mouth breathing, and nose breathing sounds together with metadata on related clinical characteristics. We also develop a proof-of-concept system for establishing baselines and benchmarking against multiple datasets, such as Coswara and COUGHVID. Our comprehensive experimentsshow that the Sound-Dr dataset has richer features, better performance, and is more robust to dataset shifts in various machine learning tasks. It is promising for a wide range of real-time applications on mobile devices. The proposed dataset and system will serve as practical tools to support healthcare professionals in diagnosing respiratory disorders. The dataset and code are publicly available here: https://github.com/ReML-AI/Sound-Dr/.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.36001/phmap.2023.v4i1.3604",
+      "is_oa": false,
+      "cited_by_count": 4,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "sound dr reliable sound dataset and baseline artificial intelligence system for respiratory illnesses",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P084"
+    },
+    {
+      "title": "Compressed Sensing of Acoustic Cardiopulmonary Signals Using a CNN-based Reconstruction Method",
+      "authors": "Rens Baeyens; Domenico Ragusa; Toon Stas; Kris Ides; Elisa Marenzi; Francesco Leporati; Walter Daems; Jan Steckel",
+      "year": 2025,
+      "doi": "10.1109/embc58623.2025.11253482",
+      "official_url": "https://doi.org/10.1109/embc58623.2025.11253482",
+      "venue": "",
+      "publication_type": "article",
+      "abstract": "Cardiopulmonary sounds contain a rich reservoir of vital and pathological information critical for clinical diagnosis. This paper presents a novel approach to cardiopulmonary data capturing with compressive sensing and reconstruction using a Convolutional Neural Network (CNN) based on the U-Net architecture. Applying traditional compressive sensing techniques to cardiopulmonary sounds presents several challenges. Cardiopulmonary sounds are inherently complex, with a substantial variation between captures. The traditional algorithms for compressive sensing rely on signal sparsity, whereas finding a sparse representation domain for cardiopulmonary sounds is a difficult task. Instead of finding a sparse domain manually, we propose training a convolutional encoder-decoder neural network for a pseudo-randomly undersampled set of signals without explicitly enforcing the sparsity concept. In this research, a CNN was trained for pseudo-randomly decimated input signals, evaluating a compression ratio of up to 30. The network is trained for respiratory sounds using the SPRSound dataset and for Phonocardiogram (PCG) signals using the CirCor Digiscope PCG dataset. Both these datasets have been evaluated for signal integrity after reconstruction and delivered promising results. The algorithm achieves reconstruction quality similar to that of previous research with a compression ratio three times higher than that of previous research applied to respiratory sounds. Since the principles of compressive sensing are applied in the sampling stage, the data compression requires no computation in the compression stage, and can therefore easily be implemented in low-cost edge devices.Clinical relevance- This work enables efficient compression of cardiopulmonary sounds, maintaining high signal integrity even at three times higher compression ratios than previous methods applied to respiratory sounds. It supports low-power, portable devices for real-time monitoring, improving accessibility for telemedicine and point-of-care diagnostics in respiratory and cardiovascular conditions.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4416962020",
+      "is_oa": false,
+      "cited_by_count": 2,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "compressed sensing of acoustic cardiopulmonary signals using a cnn based reconstruction method",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P085"
+    },
+    {
+      "title": "Deep learning for early detection of cardiovascular diseases via auscultation sound classification",
+      "authors": "Shreyas Kasture; Sudhanshu Maurya; Amit Kumar Sharma; Santhosh Chitraju Gopal Varma; Kashish Mirza; Firdous Sadaf Mohammad Ismail",
+      "year": 2026,
+      "doi": "10.11591/ijai.v15.i2.pp1746-1761",
+      "pmid": "",
+      "arxiv_id": "",
+      "official_url": "https://www.semanticscholar.org/paper/fedf2e43b3dc6183e04f2cf632166298b2ab1fa0",
+      "venue": "IAES International Journal of Artificial Intelligence (IJ-AI)",
+      "publication_type": "JournalArticle",
+      "abstract": "Heart diseases are one of the most prominent causes of death globally, which requires immediate and accurate diagnosis. The auscultation methods used in conventional medical practice, where the doctor listens to the sounds produced by the body without intervention is very ineffective because of the limitations in the actual skills and perception of the doctor. The main goal of this project will be designing a mobile-based system for the early detection of cardiovascular disease (CVD) by utilizing deep learning for auscultation sound classification. The approach involves the use of deep learning structures to classify cardiac sounds into normal and abnormal patterns on its own. Wavelet transformations, time-frequency representations, and Mel frequency cepstral coefficients (MFCC) have been used in feature extraction. The ResNet152V2 model showed high classification performance with area under the receiver operating characteristic curve (AUROC) of 0.9797 and 0.9636 on two datasets. Contrary to that, data augmentation, hyperparameter optimization, attention mechanisms, as well as input-output residual connections, led to better functionality and interpretability. This research seeks to overcome the limitations of traditional stethoscope use through the incorporation of sophisticated algorithms and the availability of mobile technology that could result in early diagnosis and prevention of CVDs, especially in underprivileged areas.",
+      "source_database": "Semantic Scholar",
+      "source_record_id": "fedf2e43b3dc6183e04f2cf632166298b2ab1fa0",
+      "is_oa": false,
+      "cited_by_count": 0,
+      "queries": [
+        "\"auscultation sound separation\" \"deep learning\""
+      ],
+      "sources": [
+        "Crossref",
+        "Semantic Scholar"
+      ],
+      "title_key": "deep learning for early detection of cardiovascular diseases via auscultation sound classification",
+      "screen_score": 3,
+      "relevance_score": 3,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 2",
+      "reason_for_decision": "Potentially useful Chapter 2 support: dataset relevance; method/model relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance"
+      ],
+      "paper_id": "P086"
+    },
+    {
+      "title": "A Low-Cost AI-Empowered Stethoscope and a Lightweight Model for Detecting Cardiac and Respiratory Diseases from Lung and Heart Auscultation Sounds",
+      "authors": "Miao Zhang; Min Li; Liang Guo; Jianya Liu",
+      "year": 2023,
+      "doi": "10.3390/s23052591",
+      "official_url": "https://doi.org/10.3390/s23052591",
+      "venue": "Sensors",
+      "publication_type": "article",
+      "abstract": "Cardiac and respiratory diseases are the primary causes of health problems. If we can automate anomalous heart and lung sound diagnosis, we can improve the early detection of disease and enable the screening of a wider population than possible with manual screening. We propose a lightweight yet powerful model for simultaneous lung and heart sound diagnosis, which is deployable in an embedded low-cost device and is valuable in remote areas or developing countries where Internet access may not be available. We trained and tested the proposed model with the ICBHI and the Yaseen datasets. The experimental results showed that our 11-class prediction model could achieve 99.94% accuracy, 99.84% precision, 99.89% specificity, 99.66% sensitivity, and 99.72% F1 score. We designed a digital stethoscope (around USD 5) and connected it to a low-cost, single-board-computer Raspberry Pi Zero 2W (around USD 20), on which our pretrained model can be smoothly run. This AI-empowered digital stethoscope is beneficial for anyone in the medical field, as it can automatically provide diagnostic results and produce digital audio records for further analysis.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4322502929",
+      "is_oa": true,
+      "cited_by_count": 27,
+      "queries": [
+        "heart lung sound dataset"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "a low cost ai empowered stethoscope and a lightweight model for detecting cardiac and respiratory diseases from lung and heart auscultation sounds",
+      "screen_score": 2,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: dataset relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance"
+      ],
+      "paper_id": "P087"
+    },
+    {
+      "title": "An Efficient Time-Domain End-to-End Single-Channel Bird Sound Separation Network",
+      "authors": "Chengyun Zhang; Yonghuan Chen; Zezhou Hao; Xinghui Gao",
+      "year": 2022,
+      "doi": "10.3390/ani12223117",
+      "official_url": "https://doi.org/10.3390/ani12223117",
+      "venue": "Animals",
+      "publisher": "MDPI AG",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>Bird sounds have obvious characteristics per species, and they are an important way for birds to communicate and transmit information. However, the recorded bird sounds in the field are usually mixed, which making it challenging to identify different bird species and to perform associated tasks. In this study, based on the supervised learning framework, we propose a bird sound separation network, a dual-path tiny transformer network, to directly perform end-to-end mixed species bird sound separation in the time-domain. This separation network is mainly composed of the dual-path network and the simplified transformer structure, which greatly reduces the computational resources required of the network. Experimental results show that our proposed separation network has good separation performance (SI-SNRi reaches 19.3 dB and SDRi reaches 20.1 dB), but compared with DPRNN and DPTNet, its parameters and floating point operations are greatly reduced, which means a higher separation efficiency and faster separation speed. The good separation performance and high separation efficiency indicate that our proposed separation network is valuable for distinguishing individual birds and studying the interaction between individual birds, as well as for realizing the automatic identification of bird species on a variety of mobile devices or edge computing devices.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.3390/ani12223117",
+      "is_oa": false,
+      "cited_by_count": 12,
+      "queries": [
+        "single-channel chest sound separation"
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "an efficient time domain end to end single channel bird sound separation network",
+      "screen_score": 2,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance; evaluation metric relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance",
+        "evaluation metric relevance"
+      ],
+      "paper_id": "P088"
+    },
+    {
+      "title": "LungHeart-AtMe: Adventitious Cardiopulmonary Sounds Classification Using MMoE with STFT and MFCCs Spectrograms",
+      "authors": "Changyan Chen†; Qing Zhang; Shirui Sheng; Huajie Huang; Yuhang Zhang; Yongfu Li",
+      "year": 2023,
+      "doi": "10.1109/aicas57966.2023.10168624",
+      "official_url": "https://doi.org/10.1109/aicas57966.2023.10168624",
+      "venue": "",
+      "publication_type": "article",
+      "abstract": "Adventitious cardiopulmonary (lung and heart) sound detection and classification through a digital stethoscope plays a vital role in early diagnosis and telehealth services. However, automatically detecting the adventitious sounds is challenging since they are easily susceptible to each other’s influence and noises. In this paper, for the first time, we simultaneously classify adventitious lung and heart sounds using our proposed LungHeart-AtMe model based on a mixed dataset of the ICBHI 2017 lung sounds dataset and the PhysioNet 2016 heart sounds dataset. Based on characteristics of lung and heart sounds, Wavelet Decomposition is applied first to perform noise reduction, then two time-frequency feature extraction techniques, which are Short Time Fourier Transform (STFT) and Mel Frequency Cepstral Coefficients (MFCCs), are chosen to extract preliminary features of sounds and transform sounds data to spectrograms that are easy to analyze. Our LungHeart-AtMe model is improved by introducing MMoE structure and by using the attention mechanism-based CNN model to extend its global feature extraction capability. From our experimental result, LungHeart-AtMe has achieved a Sensitivity of 71.55% and a Specificity of 28.06% for cardiopulmonary sounds classification.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4383501594",
+      "is_oa": false,
+      "cited_by_count": 10,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "lungheart atme adventitious cardiopulmonary sounds classification using mmoe with stft and mfccs spectrograms",
+      "screen_score": 2,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: dataset relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance"
+      ],
+      "paper_id": "P089"
+    },
+    {
+      "title": "A Comparative Analysis of Deep Learning Architectures for Multi-Label Audio Tagging and Source Separation",
+      "authors": "Venkata Sri Shanmukha Akhil Burra; Raja Sravan Kumar Kovvali; Prasanna Kumar Reddy",
+      "year": 2026,
+      "doi": "10.1109/icitiit68860.2026.11499547",
+      "pmid": "",
+      "arxiv_id": "",
+      "official_url": "https://www.semanticscholar.org/paper/e8f06a79ee6bc8477c3cc7e006adcf1a2ec972c2",
+      "venue": "2026 International Conference on Innovative Trends in Information Technology (ICITIIT)",
+      "publication_type": "Conference",
+      "abstract": "Analyzing complex sounds in an distinguishable environment is a growing field of research. In this research, we implemented a threephase architecture for single-label classification, multi-label audio tagging, and sound separation. For the first phase of classification, we considered the raw UrbanSound8K dataset, but for Phase 2 and Phase 3 we used a synthetic dataset that was developed from the UrbanSound8K dataset to generate overlapping sounds. In Phase 1 and Phase 2, we converted audio sources into Log-Mel spectrograms, and these spectrograms were then utilized for training with CNN, CRNN, and EfficientNet-B0 models. After training with the three different models in classification, we used Softmax and Sigmoid as output functions for obtaining results. For the third phase, we converted the synthetic dataset into magnitude spectrums and applied the UNet model; for calculating loss, we used the SI-SDR loss function as it is nearer to human hearing. For detection mechanisms, the EfficientNet-B0 model outperformed the CNN and CRNN models, producing 96.6% accuracy in single-label classification and an 84.3 % weighted average for multi-label classification. For audio separation, the U-Net performed effectively to improve audio quality. This research provides valuable results showing that the trained EfficientNet-B0 model performed better than custom CNN and CRNN models, demonstrating the efficiency of transfer learning",
+      "source_database": "Semantic Scholar",
+      "source_record_id": "e8f06a79ee6bc8477c3cc7e006adcf1a2ec972c2",
+      "is_oa": false,
+      "cited_by_count": 0,
+      "queries": [
+        "\"biomedical audio source separation\" \"deep learning\""
+      ],
+      "sources": [
+        "Semantic Scholar"
+      ],
+      "title_key": "a comparative analysis of deep learning architectures for multi label audio tagging and source separation",
+      "screen_score": 2,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance; evaluation metric relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance",
+        "evaluation metric relevance"
+      ],
+      "paper_id": "P090"
+    },
+    {
+      "title": "A dataset of heart sound regurgitation of patients with heart valve disorders",
+      "authors": "Mohammad Fraiwan; Ali Ibnian; Nishi Shahnaj Haider",
+      "year": 2025,
+      "doi": "10.1016/j.dib.2025.112081",
+      "official_url": "https://doi.org/10.1016/j.dib.2025.112081",
+      "venue": "Data in Brief",
+      "publisher": "Elsevier BV",
+      "publication_type": "journal-article",
+      "abstract": "",
+      "source_database": "Crossref",
+      "source_record_id": "10.1016/j.dib.2025.112081",
+      "is_oa": false,
+      "cited_by_count": 0,
+      "queries": [
+        "heart lung sound dataset"
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "a dataset of heart sound regurgitation of patients with heart valve disorders",
+      "screen_score": 2,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: dataset relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance"
+      ],
+      "paper_id": "P091"
+    },
+    {
+      "title": "Towards a Unified Rheumatic Heart Disease Imaging Dataset",
+      "authors": "Sarah Howson; Shaun Evans; Andrew E.C. Booth; Stephen Bacchi; Aashray Gupta; Joshua Kovoor; Brandon Stretton; Adam Nelson; Pramesh Kovoor",
+      "year": 2024,
+      "doi": "10.1016/j.hlc.2023.10.022",
+      "official_url": "https://doi.org/10.1016/j.hlc.2023.10.022",
+      "venue": "Heart, Lung and Circulation",
+      "publisher": "Elsevier BV",
+      "publication_type": "journal-article",
+      "abstract": "",
+      "source_database": "Crossref",
+      "source_record_id": "10.1016/j.hlc.2023.10.022",
+      "is_oa": false,
+      "cited_by_count": 0,
+      "queries": [
+        "heart lung sound dataset"
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "towards a unified rheumatic heart disease imaging dataset",
+      "screen_score": 2,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: dataset relevance",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance"
+      ],
+      "paper_id": "P092"
+    },
+    {
+      "title": "Deep Residual Learning for Image Recognition: A Survey",
+      "authors": "Muhammad Shafiq; Zhaoquan Gu",
+      "year": 2022,
+      "doi": "10.3390/app12188972",
+      "official_url": "https://doi.org/10.3390/app12188972",
+      "venue": "Applied Sciences",
+      "publication_type": "article",
+      "abstract": "Deep Residual Networks have recently been shown to significantly improve the performance of neural networks trained on ImageNet, with results beating all previous methods on this dataset by large margins in the image classification task. However, the meaning of these impressive numbers and their implications for future research are not fully understood yet. In this survey, we will try to explain what Deep Residual Networks are, how they achieve their excellent results, and why their successful implementation in practice represents a significant advance over existing techniques. We also discuss some open questions related to residual learning as well as possible applications of Deep Residual Networks beyond ImageNet. Finally, we discuss some issues that still need to be resolved before deep residual learning can be applied on more complex problems.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4295122555",
+      "is_oa": true,
+      "cited_by_count": 898,
+      "queries": [
+        "single-channel chest sound separation"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "deep residual learning for image recognition a survey",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P093"
+    },
+    {
+      "title": "Forest Sound Classification Dataset: FSC22",
+      "authors": "Meelan Bandara; Roshinie Jayasundara; Isuru Ariyarathne; Dulani Meedeniya; Charith Perera",
+      "year": 2023,
+      "doi": "10.3390/s23042032",
+      "official_url": "https://doi.org/10.3390/s23042032",
+      "venue": "Sensors",
+      "publisher": "MDPI AG",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>The study of environmental sound classification (ESC) has become popular over the years due to the intricate nature of environmental sounds and the evolution of deep learning (DL) techniques. Forest ESC is one use case of ESC, which has been widely experimented with recently to identify illegal activities inside a forest. However, at present, there is a limitation of public datasets specific to all the possible sounds in a forest environment. Most of the existing experiments have been done using generic environment sound datasets such as ESC-50, U8K, and FSD50K. Importantly, in DL-based sound classification, the lack of quality data can cause misguided information, and the predictions obtained remain questionable. Hence, there is a requirement for a well-defined benchmark forest environment sound dataset. This paper proposes FSC22, which fills the gap of a benchmark dataset for forest environmental sound classification. It includes 2025 sound clips under 27 acoustic classes, which contain possible sounds in a forest environment. We discuss the procedure of dataset preparation and validate it through different baseline sound classification models. Additionally, it provides an analysis of the new dataset compared to other available datasets. Therefore, this dataset can be used by researchers and developers who are working on forest observatory tasks.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.3390/s23042032",
+      "is_oa": false,
+      "cited_by_count": 28,
+      "queries": [
+        "cardiopulmonary sound dataset"
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "forest sound classification dataset fsc22",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P094"
+    },
+    {
+      "title": "Real-Time Multi-Level Neonatal Heart and Lung Sound Quality Assessment for Telehealth Applications",
+      "authors": "Ethan Grooby; Chiranjibi Sitaula; Davood Fattahi; Reza Sameni; Kenneth Tan; Lei Zhou; Alicia J. King; Arvind Ramanathan; Anil K. Malhotra; Guy A. Dumont; Faezeh Marzbanrad",
+      "year": 2022,
+      "doi": "10.1109/access.2022.3144355",
+      "official_url": "https://doi.org/10.1109/access.2022.3144355",
+      "venue": "IEEE Access",
+      "publication_type": "article",
+      "abstract": "In this study, a new method is proposed to assess heart and lung signal quality objectively and automatically on a 5-level scale in real-time, and to assess the effect of signal quality on vital sign estimation. A total of 207 10 s long chest sounds were taken from 119 preterm and full-term babies. Thirty of the recordings from ten subjects were obtained with synchronous vital signs from the Neonatal Intensive Care Unit (NICU). As a reference, seven annotators independently assessed the signal quality. For automatic quality classification, 400 features were extracted from the chest sounds. After feature ranking and selection, class balancing, and hyperparameter optimization, a variety of multi-class and ordinal classification and regression algorithms were trained. Then, heart rate and breathing rate were automatically estimated from the chest sounds. For the deep learning model, YAMNet, a deep convolutional neural network pre-trained on the AudioSet-Youtube corpus for sound classification was used. After modification of the final output layers of the neural network and class balancing, transfer learning was applied to YAMNet for heart and lung signal quality classification. The results of subject-wise leave-one-out cross-validation show that the best-performing models had a balanced accuracy of 56.8&#x0025; and 51.2&#x0025; for heart and lung qualities, respectively. The best-performing models for real-time analysis (&#x003C; 200 ms) had a balanced accuracy of 56.7&#x0025; and 46.3&#x0025;, respectively. Our experimental results underscore that increasing the signal quality leads to a reduction in vital sign error.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W3203753153",
+      "is_oa": true,
+      "cited_by_count": 27,
+      "queries": [
+        "\"chest sound separation\" \"deep learning\""
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "real time multi level neonatal heart and lung sound quality assessment for telehealth applications",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: dataset relevance; method/model relevance; appears diagnosis/classification focused",
+      "chapter_2_use": "dataset; methodology; evaluation dataset; research gap",
+      "screening_reasons": [
+        "dataset relevance",
+        "method/model relevance",
+        "appears diagnosis/classification focused"
+      ],
+      "paper_id": "P095"
+    },
+    {
+      "title": "A Survey of Audio Enhancement Algorithms for Music, Speech, Bioacoustics, Biomedical, Industrial, and Environmental Sounds by Image U-Net",
+      "authors": "Sania Gul; Muhammad Salman Khan",
+      "year": 2023,
+      "doi": "10.1109/access.2023.3344813",
+      "official_url": "https://doi.org/10.1109/access.2023.3344813",
+      "venue": "IEEE Access",
+      "publication_type": "article",
+      "abstract": "The recent surge in the use of Deep Neural Networks (DNNs) has also made its mark in the field of Audio Enhancement (AE), providing much better quality than the classical methods. Although, there are dedicated audio processing DNNs, yet, many recent models of AE have utilized U-Net: a DNN based on Convolutional Neural Network (CNN), fundamentally developed for image segmentation. It is found that the useful features hidden in the time domain are highlighted when the audio signal is converted to a spectrogram, which can be treated as an image. In this article, we will review the recent work, utilizing U-Nets for different AE applications. Different than other published reviews, this review focuses entirely on AE techniques based on image U-Nets. We will discuss the need for AE, U-Net comparison to other DNNs, the benefits of converting the audio to 2D, input representations that are useful for different AE applications, the architecture of vanilla U-Net and the pre-trained models, variations in vanilla architecture incorporated in different E models, and the state-of-the-art AE algorithms based on U-Net in various applications. Apart from speech and music, this article discusses a wide range of audio signals e.g. environmental, biomedical, bioacoustics, and industrial sounds, not covered collectively in a single article in previously published studies. The article ends with the discussion of colored spectrograms in future AE applications.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4390075410",
+      "is_oa": true,
+      "cited_by_count": 20,
+      "queries": [
+        "\"U-Net\" \"heart sound\" \"lung sound\" separation"
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "a survey of audio enhancement algorithms for music speech bioacoustics biomedical industrial and environmental sounds by image u net",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P096"
+    },
+    {
+      "title": "An End-to-End Deep Learning Framework For Multiple Audio Source Separation And Localization",
+      "authors": "Yu Chen; Bowen Liu; Zijian Zhang; Hun-Seok Kim",
+      "year": 2022,
+      "doi": "10.1109/icassp43922.2022.9746950",
+      "pmid": "",
+      "arxiv_id": "",
+      "official_url": "https://www.semanticscholar.org/paper/1e4fb40addfe0be90d12bbb2744dc5577a66bcc2",
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "publication_type": "JournalArticle; Conference",
+      "abstract": "Sound source separation and localization for situational awareness enables a wide range of applications such as hearing enhancement and audio beam-forming. We present an end-to-end deep learning framework to separate and localize multiple audio sources from the mixture of multi-channels. The proposed framework jointly estimates the separated sources and their time difference of arrival (TDOA) at different microphones, then it obtains the direction-of-arrival (DOA) for each source. A new structure to reconstruct the mixed signal is introduced for joint optimization of source separation and TDOA estimation. In addition, a discriminator network is added during the training phase to further improve the separation quality. Experiment results demonstrate that the proposed method achieves state-of-the-art accuracy on source separation as well as DOA estimation.",
+      "source_database": "Semantic Scholar",
+      "source_record_id": "1e4fb40addfe0be90d12bbb2744dc5577a66bcc2",
+      "is_oa": false,
+      "cited_by_count": 16,
+      "queries": [
+        "\"biomedical audio source separation\" \"deep learning\""
+      ],
+      "sources": [
+        "Semantic Scholar"
+      ],
+      "title_key": "an end to end deep learning framework for multiple audio source separation and localization",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P097"
+    },
+    {
+      "title": "Spherical-harmonics-based sound field decomposition and multichannel NMF for sound source separation",
+      "authors": "Mirco Pezzoli; Julio Carabias-Orti; Pedro Vera-Candeas; Fabio Antonacci; Augusto Sarti",
+      "year": 2024,
+      "doi": "10.1016/j.apacoust.2024.109888",
+      "official_url": "https://doi.org/10.1016/j.apacoust.2024.109888",
+      "venue": "Applied Acoustics",
+      "publisher": "Elsevier BV",
+      "publication_type": "journal-article",
+      "abstract": "",
+      "source_database": "Crossref",
+      "source_record_id": "10.1016/j.apacoust.2024.109888",
+      "is_oa": false,
+      "cited_by_count": 15,
+      "queries": [
+        "\"respiratory sound separation\" \"cardiac sound\"",
+        "cardiorespiratory sound separation"
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "spherical harmonics based sound field decomposition and multichannel nmf for sound source separation",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P098"
+    },
+    {
+      "title": "Predominant audio source separation in polyphonic music",
+      "authors": "Lekshmi Chandrika Reghunath; Rajeev Rajan",
+      "year": 2023,
+      "doi": "10.1186/s13636-023-00316-4",
+      "official_url": "https://doi.org/10.1186/s13636-023-00316-4",
+      "venue": "EURASIP Journal on Audio, Speech, and Music Processing",
+      "publisher": "Springer Science and Business Media LLC",
+      "publication_type": "journal-article",
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Predominant source separation is the separation of one or more desired predominant signals, such as voice or leading instruments, from polyphonic music. The proposed work uses time-frequency filtering on predominant source separation and conditional adversarial networks to improve the perceived quality of isolated sounds. The pitch tracks corresponding to the prominent sound sources of the polyphonic music are estimated using a predominant pitch extraction algorithm and a binary mask corresponding to each pitch track and its harmonics are generated. Time-frequency filtering is performed on the spectrogram of the input signal using a binary mask that isolates the dominant sources based on pitch. The perceptual quality of source-separated music signal is enhanced using a CycleGAN-based conditional adversarial network operating on spectrogram images. The proposed work is systematically evaluated using the IRMAS and ADC 2004 datasets. Subjective and objective evaluations have been carried out. The reconstructed spectrogram is converted back to music signals by applying the inverse short-time Fourier transform. The intelligibility of separated audio is enhanced using an intelligibility enhancement module based on an audio style transfer scheme. The performance of the proposed method is compared with state-of-the-art Demucs and Wave-U-Net architectures and shows competing performance both objectively and subjectively.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.1186/s13636-023-00316-4",
+      "is_oa": false,
+      "cited_by_count": 10,
+      "queries": [
+        "\"biomedical audio source separation\" \"deep learning\"",
+        "\"source separation metrics\" \"biomedical audio\""
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "predominant audio source separation in polyphonic music",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P099"
+    },
+    {
+      "title": "Noise-tolerant NMF-based parallel algorithm for respiratory rate estimation",
+      "authors": "Pablo Revuelta Sanz; Antonio J. Muñoz-Montoro; J. Torre-Cruz; F.J. Cañadas-Quesada; José Ranilla",
+      "year": 2024,
+      "doi": "10.1007/s11227-024-06411-3",
+      "official_url": "https://doi.org/10.1007/s11227-024-06411-3",
+      "venue": "The Journal of Supercomputing",
+      "publication_type": "article",
+      "abstract": "Abstract The accurate estimation of respiratory rate (RR) is crucial for assessing the respiratory system’s health in humans, particularly during auscultation processes. Despite the numerous automated RR estimation approaches proposed in the literature, challenges persist in accurately estimating RR in noisy environments, typical of real-life situations. This becomes especially critical when periodic noise patterns interfere with the target signal. In this study, we present a parallel driver designed to address the challenges of RR estimation in real-world environments, combining multi-core architectures with parallel and high-performance techniques. The proposed system employs a nonnegative matrix factorization (NMF) approach to mitigate the impact of noise interference in the input signal. This NMF approach is guided by pre-trained bases of respiratory sounds and incorporates an orthogonal constraint to enhance accuracy. The proposed solution is tailored for real-time processing on low-power hardware. Experimental results across various scenarios demonstrate promising outcomes in terms of accuracy and computational efficiency.",
+      "source_database": "OpenAlex",
+      "source_record_id": "https://openalex.org/W4402071670",
+      "is_oa": true,
+      "cited_by_count": 4,
+      "queries": [
+        "\"transformer\" \"chest sound separation\""
+      ],
+      "sources": [
+        "OpenAlex"
+      ],
+      "title_key": "noise tolerant nmf based parallel algorithm for respiratory rate estimation",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P100"
+    },
+    {
+      "title": "Separation of noisy multitone signals based on variational mode decomposition",
+      "authors": "Zhihua Pang; Chengtian Song; Bohu Liu",
+      "year": 2024,
+      "doi": "10.1063/5.0188377",
+      "official_url": "https://doi.org/10.1063/5.0188377",
+      "venue": "Journal of Applied Physics",
+      "publisher": "AIP Publishing",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>We have observed that Variational Mode Decomposition (VMD) exhibits instability in the denoising and separation of noisy multitone signals. Specifically, minor changes in factors such as signal-to-noise ratio, frequency spacing, sampling rate, and probability distribution can significantly impact the decomposition results. To address this issue, we have developed the Dual-VMD-correlation algorithm. This algorithm effectively mitigates the impact of beat effects when harmonics of closely spaced frequencies are superimposed, enabling stable denoising of noisy multitone signals and the separation of each individual tone signal. The algorithm holds promise for applications in frequency-modulated continuous wave laser detection. It can address challenges related to denoising laser echo signals interfered with by aerosols and the difficulty in separating backscatter interference from the target reflected signal spectrum.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.1063/5.0188377",
+      "is_oa": false,
+      "cited_by_count": 4,
+      "queries": [
+        "\"variational mode decomposition\" \"heart lung sound separation\""
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "separation of noisy multitone signals based on variational mode decomposition",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P101"
+    },
+    {
+      "title": "LiTasNeT",
+      "authors": "Amira Boulmaiz; Billel Meghni; Abdelghani Redjati; Ahmad Taher Azar",
+      "year": 2022,
+      "doi": "10.4018/ijskd.301261",
+      "official_url": "https://doi.org/10.4018/ijskd.301261",
+      "venue": "International Journal of Sociotechnology and Knowledge Development",
+      "publisher": "IGI Global",
+      "publication_type": "journal-article",
+      "abstract": "<p>Recent advances in deep learning techniques and acoustic sensor networks offer a new way for continuously monitoring birds. Deep learning methods have led to considerable progresses in audio source separation (ASS). However, it is still a challenge to deploy models based on deep learning on embedded devices. Therefore, find an efficient solution to compact these large models without affecting ASS performance has become an important research topic. In birds' natural habitat, it is common for several birds to sing simultaneously. This phenomenon will lead to false results when identifying a particular bird species. Separate required bird sound from the recorded mixture becomes indispensable. In this paper, a novel so-called Lite TasNet (LiTasNeT) is proposed. Based on conventional ASS methods, LiTasNeT has obtained leading results in several standardized ASS areas. LiTasNeT is designed with parameter-sharing scheme to lower the memory consumption. Moreover, his low latency natures make it definitely suitable for real-time on-device applications.</p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.4018/ijskd.301261",
+      "is_oa": false,
+      "cited_by_count": 3,
+      "queries": [
+        "\"chest sound separation\" \"deep learning\""
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "litasnet",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P102"
+    },
+    {
+      "title": "Bridging Auscultation and Tiny Machine Learning: A Digital Stethoscope Leveraging Convolutional Neural Networks on an Embedded Device for Organ Sound Analysis",
+      "authors": "Eray Mutlu; Valid Hüseyin; Görkem Serbes",
+      "year": 2024,
+      "doi": "10.18280/ts.410521",
+      "official_url": "https://doi.org/10.18280/ts.410521",
+      "venue": "Traitement du Signal",
+      "publisher": "International Information and Engineering Technology Association",
+      "publication_type": "journal-article",
+      "abstract": "",
+      "source_database": "Crossref",
+      "source_record_id": "10.18280/ts.410521",
+      "is_oa": false,
+      "cited_by_count": 3,
+      "queries": [
+        "\"stethoscope sound separation\" \"machine learning\""
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "bridging auscultation and tiny machine learning a digital stethoscope leveraging convolutional neural networks on an embedded device for organ sound analysis",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P103"
+    },
+    {
+      "title": "A strong anti-noise segmentation algorithm based on variational mode decomposition and multi-wavelet for wearable heart sound acquisition system",
+      "authors": "Shiji Xiahou; Yuhang Liang; Min Ma; Mingrui Du",
+      "year": 2022,
+      "doi": "10.1063/5.0071316",
+      "official_url": "https://doi.org/10.1063/5.0071316",
+      "venue": "Review of Scientific Instruments",
+      "publisher": "AIP Publishing",
+      "publication_type": "journal-article",
+      "abstract": "<jats:p>Wearable devices have now been widely used in the acquisition and measurement of heart sound signals with good effect. However, the wearable heart sound acquisition system (WHSAS) will face more noise compared with the traditional system, such as Gaussian white noise, powerline interference, colored noise, motion artifact noise, and lung sound noise, because users often wear these devices for running, walking, jumping or various strong noise occasions. In a strong noisy environment, WHSAS needs a high-precision segmentation algorithm. This paper proposes a segmentation algorithm based on Variational Mode Decomposition (VMD) and multi-wavelet. In the algorithm, various noises are layered and filtered out using VMD. The cleaner signal is fed into multi-wavelet to construct a time–frequency matrix. Then, the principal component analysis method is applied to reduce the dimension of the matrix. After extracting the high order Shannon envelope and Teager energy envelope of the heart sound, we accurately segment the signals. In this paper, the algorithm is verified through our developing WHSAS. The results demonstrate that the proposed algorithm can achieve high-precision segmentation of the heart sound under a mixed noise condition.</jats:p>",
+      "source_database": "Crossref",
+      "source_record_id": "10.1063/5.0071316",
+      "is_oa": false,
+      "cited_by_count": 3,
+      "queries": [
+        "\"variational mode decomposition\" \"heart lung sound separation\""
+      ],
+      "sources": [
+        "Crossref"
+      ],
+      "title_key": "a strong anti noise segmentation algorithm based on variational mode decomposition and multi wavelet for wearable heart sound acquisition system",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P104"
+    },
+    {
+      "title": "Visually Guided Audio Source Separation with Meta Consistency Learning",
+      "authors": "Md. Amirul Islam; Seyed shahabeddin Nabavi; Irina Kezele; Yangang Wang; Yuanhao Yu; Jingshan Tang",
+      "year": 2024,
+      "doi": "10.1109/wacv57701.2024.00299",
+      "pmid": "",
+      "arxiv_id": "",
+      "official_url": "https://www.semanticscholar.org/paper/58b36ff640f6dec4cef2b2cf7a027a2221683aac",
+      "venue": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+      "publication_type": "JournalArticle; Conference",
+      "abstract": "In this paper, we tackle the problem of visually guided audio source separation in the context of both known and unknown objects (e.g., musical instruments). Recent successful end-to-end deep learning approaches adopt a single network with fixed parameters to generalize across unseen test videos. However, it can be challenging to generalize in cases where the distribution shift between training and test videos is higher as they fail to utilize internal information of unknown test videos. Based on this observation, we introduce a meta-consistency driven test time adaptation scheme that enables the pretrained model to quickly adapt to known and unknown test music videos in order to bring substantial improvements. In particular, we design a self-supervised audio-visual consistency objective as an auxiliary task that learns the synchronization between audio and its corresponding visual embedding. Concretely, we apply a meta-consistency training scheme to further optimize the pretrained model for effective and faster test time adaptation. We obtain substantial performance gains with only a smaller number of gradient updates and without any additional parameters for the task of audio source separation. Extensive experimental results across datasets demonstrate the effectiveness of our proposed method.",
+      "source_database": "Semantic Scholar",
+      "source_record_id": "58b36ff640f6dec4cef2b2cf7a027a2221683aac",
+      "is_oa": false,
+      "cited_by_count": 2,
+      "queries": [
+        "\"biomedical audio source separation\" \"deep learning\""
+      ],
+      "sources": [
+        "Semantic Scholar"
+      ],
+      "title_key": "visually guided audio source separation with meta consistency learning",
+      "screen_score": 1,
+      "relevance_score": 2,
+      "initial_decision": "Maybe",
+      "download_priority": "Priority 3",
+      "reason_for_decision": "Weak but possibly useful metadata-only background candidate: method/model relevance",
+      "chapter_2_use": "background",
+      "screening_reasons": [
+        "method/model relevance"
+      ],
+      "paper_id": "P105"
+    }
+  ]
+}

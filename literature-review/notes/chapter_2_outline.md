@@ -21,6 +21,7 @@
 - Compare dataset properties: signal type, sampling rate, labels, noise, recording device, availability, and licensing.
 - Identify dataset limitations for supervised separation, such as lack of clean ground-truth isolated sources.
 - Include HLS-CMDS (P038) as a priority dataset because it provides heart-only, lung-only, mixed heart-lung, and corresponding source recordings; cite the descriptor paper DOI 10.1109/IEEEDATA.2025.3566012 and record dataset access through DOI/PID 10.17632/8972jxbpmp.
+- Add Phase 7 dataset/evaluation candidates: PhysioNet Challenge 2022/CirCor pediatric PCG data (P080) for heart-sound benchmarking context and Sound-Dr (P075) for respiratory dataset context; treat both as background/evaluation resources rather than paired heart-lung separation datasets.
 
 ## 2.4 Preprocessing and Signal Representation
 
@@ -28,6 +29,7 @@
 - Review time-domain, frequency-domain, and time-frequency representations.
 - Cover spectrograms, STFT, Mel spectrograms, wavelets, envelope features, and other relevant features.
 - Explain how preprocessing choices affect model training and separation quality.
+- Use Phase 7 denoising/preprocessing candidates (P081-P086) to discuss PCG/lung sound denoising, wavelet/UNet methods, transformer denoisers, and segmentation as supporting methods before separation.
 
 ## 2.5 Traditional Signal Processing Approaches
 
@@ -132,3 +134,8 @@ Use the Phase 4 fields in `metadata/papers_master.csv`, `metadata/download_queue
 - Do not cite metadata-only candidates as final evidence until the PDF has been manually downloaded and screened.
 
 <!-- Phase 4 category adjustment ends -->
+## Phase 7 Gap-Filling Notes
+
+- Added 25 metadata-only records from 2022-2026 public metadata searches.
+- Prioritize P073 first for Zotero because it is the strongest new direct cardiorespiratory sound separation paper.
+- Use Phase 7 Maybe records mainly for dataset, preprocessing, evaluation, and prototype context; do not use Exclude records in Chapter 2 unless explaining search boundaries.
