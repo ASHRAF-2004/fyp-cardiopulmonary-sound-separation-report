@@ -202,6 +202,11 @@ def apply_section_numbering(document_root: etree._Element) -> None:
 
     copyright_idx = find_paragraph_index(paragraphs, "Copyright")
     chapter1_idx = find_paragraph_index(paragraphs, "Chapter 1: Introduction")
+    references_idx = find_paragraph_index_with_style(
+        paragraphs,
+        "References",
+        "Heading1",
+    )
     appendix_a_idx = find_paragraph_index_with_style(
         paragraphs,
         "Appendix A: Full Literature Review Matrix",
@@ -212,8 +217,10 @@ def apply_section_numbering(document_root: etree._Element) -> None:
         "Appendix B: PRISMA Screening Summary",
         "Heading1",
     )
-    if copyright_idx == 0 or chapter1_idx == 0:
+    if copyright_idx == 0 or chapter1_idx == 0 or references_idx == 0:
         raise ValueError("Unable to insert section breaks at required positions")
+    if references_idx <= chapter1_idx:
+        raise ValueError("Unable to insert References Roman-numbering section break")
     if appendix_a_idx == 0 or appendix_b_idx == 0 or appendix_b_idx <= appendix_a_idx:
         raise ValueError("Unable to insert Appendix A landscape section breaks")
 
@@ -248,9 +255,19 @@ def apply_section_numbering(document_root: etree._Element) -> None:
         cover_margins=False,
         continuous=False,
     )
+    references_roman_sect = section_properties(
+        template_sect_pr,
+        page_fmt="lowerRoman",
+        start="14",
+        include_header_footer=True,
+        header_rel=header_rel,
+        footer_rel=footer_rel,
+        cover_margins=False,
+        continuous=False,
+    )
     appendix_landscape_sect = section_properties(
         template_sect_pr,
-        page_fmt="decimal",
+        page_fmt="lowerRoman",
         start=None,
         include_header_footer=True,
         header_rel=header_rel,
@@ -262,7 +279,7 @@ def apply_section_numbering(document_root: etree._Element) -> None:
     )
     portrait_continue_sect = section_properties(
         template_sect_pr,
-        page_fmt="decimal",
+        page_fmt="lowerRoman",
         start=None,
         include_header_footer=True,
         header_rel=header_rel,
@@ -273,7 +290,8 @@ def apply_section_numbering(document_root: etree._Element) -> None:
 
     set_paragraph_section(paragraphs[copyright_idx - 1], cover_sect)
     set_paragraph_section(paragraphs[chapter1_idx - 1], front_sect)
-    set_paragraph_section(paragraphs[appendix_a_idx - 1], body_sect)
+    set_paragraph_section(paragraphs[references_idx - 1], body_sect)
+    set_paragraph_section(paragraphs[appendix_a_idx - 1], references_roman_sect)
     set_paragraph_section(paragraphs[appendix_b_idx - 1], appendix_landscape_sect)
 
     if final_sect_pr is not None:

@@ -124,13 +124,13 @@ def box_texts(c: dict[str, int]) -> list[str]:
         "Identification",
         f"Records considered\n(n = {c['total_retained']})",
         (
-            "Records excluded after screening, duplicate, scope, year-range, or access checks\n"
+            "Records excluded\n"
             f"(n = {c['excluded']})"
         ),
-        f"Eligible backup records not cited in current draft\n(n = {c['eligible_backup']})",
+        f"Eligible backup records not cited in current report\n(n = {c['eligible_backup']})",
         f"Eligible records after screening\n(n = {c['useful']})",
         f"Eligible records after screening\n(n = {c['useful']})",
-        f"Eligible backup records not cited in current draft\n(n = {c['eligible_backup']})",
+        f"Eligible backup records not cited in current report\n(n = {c['eligible_backup']})",
         "Screening",
         f"Studies selected for Chapter 2 synthesis\n(n = {c['selected_for_chapter_2']})",
         (
@@ -357,19 +357,19 @@ def make_png_and_pdf(root: Path, c: dict[str, int]) -> None:
     draw_box(
         draw,
         excluded,
-        f"Records excluded after screening, duplicate, scope, year-range, or access checks\n(n = {c['excluded']})",
+        f"Records excluded\n(n = {c['excluded']})",
         fill="#fdecea",
         outline="#b3261e",
         font_size=23,
         bold_first=True,
     )
     draw_box(draw, retrieval, f"Eligible records after screening\n(n = {c['useful']})", font_size=25, bold_first=True)
-    draw_box(draw, pending, f"Eligible backup records not cited in current draft\n(n = {c['eligible_backup']})", fill="#fff8e1", outline="#ad7f00", font_size=24, bold_first=True)
+    draw_box(draw, pending, f"Eligible backup records not cited in current report\n(n = {c['eligible_backup']})", fill="#fff8e1", outline="#ad7f00", font_size=24, bold_first=True)
     draw_box(draw, assessed, f"Studies selected for Chapter 2 synthesis\n(n = {c['selected_for_chapter_2']})", font_size=26, bold_first=True)
     draw_box(
         draw,
         full_excluded,
-        f"Selected study composition:\nCore separation (n = {c['core_separation']})\nBackground/supplementary (n = {c['background_supplementary']})",
+        f"Selected study composition:\nCore separation studies (n = {c['core_separation']})\nBackground/supplementary studies (n = {c['background_supplementary']})",
         fill="#e8f5e9",
         outline="#2e7d32",
         font_size=22,
@@ -392,7 +392,7 @@ def make_png_and_pdf(root: Path, c: dict[str, int]) -> None:
 
     note_font = load_font(20)
     note = (
-        "Note: The Chapter 2 synthesis cites 35 selected papers: 18 core separation studies and "
+        "Note: The Chapter 2 synthesis uses 35 selected papers: 18 core separation studies and "
         "17 background/supplementary studies. Excluded records are not used as supporting evidence."
     )
     wrapped = textwrap.wrap(note, width=150)
@@ -423,44 +423,35 @@ def write_notes(root: Path, c: dict[str, int]) -> None:
                 "",
                 "Project title: **Machine Learning-Based System for Cardiopulmonary Sound Separation**",
                 "",
-                "## Source Files",
-                "",
-                "- `literature-review/prisma/prisma_counts.json`",
-                "- `literature-review/metadata/papers_master.csv`",
-                "- `literature-review/metadata/duplicate_check.csv`",
-                "- `literature-review/metadata/exclusion_reasons.csv`",
-                "- `literature-review/screening/title_abstract_screening.csv`",
-                "- `literature-review/screening/full_text_screening.csv`",
-                "",
                 "## Count Mapping",
                 "",
                 f"- Records identified from existing local PDF set: `{c['existing_pdf']}`.",
                 f"- Public database/metadata candidates seen: `{c['database_candidates_seen']}`. This combines `{c['new_records_added']}` added records and `{c['duplicates_skipped']}` duplicate candidates skipped before adding.",
                 f"- Duplicate candidates skipped before adding: `{c['duplicates_skipped']}` (`{c['phase3_duplicates']}` in Phase 3 and `{c['phase7_duplicates']}` in Phase 7).",
-                f"- Records retained in `papers_master.csv` and screened at title/abstract/metadata level: `{c['total_retained']}`.",
+                f"- Records considered: `{c['total_retained']}`.",
                 f"- Records excluded in the final project decision state: `{c['excluded']}`.",
                 f"- Records retained for literature-review use: `{c['useful']}`.",
-                f"- Studies selected and cited in the current Chapter 2 synthesis: `{c['selected_for_chapter_2']}`.",
+                f"- Studies selected and used in the current Chapter 2 synthesis: `{c['selected_for_chapter_2']}`.",
                 f"- Core separation studies in the current Chapter 2 synthesis: `{c['core_separation']}`.",
                 f"- Background/supplementary studies in the current Chapter 2 synthesis: `{c['background_supplementary']}`.",
-                f"- Eligible backup records not cited in the current Chapter 2 draft: `{c['eligible_backup']}`.",
+                f"- Eligible backup records not cited in the current report: `{c['eligible_backup']}`.",
                 f"- Final decision count marked Include in the screening data: `{c['included']}`.",
-                f"- Final decision count marked Maybe/background in the screening data: `{c['maybe']}`.",
+                f"- Final decision count marked background/supplementary in the screening data: `{c['maybe']}`.",
                 f"- Full-text/access screening rows documented: `{c['full_text_documented']}`.",
                 f"- Reports assessed for eligibility from accessible full text or online full text: `{c['reports_assessed']}`.",
                 f"- Full text unavailable / not retrieved in the full-text screening table: `{c['reports_not_retrieved']}`.",
-                f"- Phase 7 metadata-only records not yet represented in `full_text_screening.csv`: `{c['metadata_only_pending']}`.",
+                f"- Phase 7 metadata-only records not yet represented in the full-text screening table: `{c['metadata_only_pending']}`.",
                 "",
                 "## Interpretation Notes",
                 "",
                 "- The report-facing PRISMA diagram now distinguishes screening decisions from the Chapter 2 synthesis selection.",
-                "- The current Chapter 2 draft cites `35` selected papers from the `49` eligible records.",
-                "- The `35` cited papers consist of `18` core separation studies and `17` background/supplementary studies.",
-                "- The remaining `14` eligible records are retained as backup/background evidence but are not cited in the current Chapter 2 draft.",
+                "- The current report uses `35` selected papers from the `49` eligible records.",
+                "- The `35` selected papers consist of `18` core separation studies and `17` background/supplementary studies.",
+                "- The remaining `14` eligible records are retained as backup/background evidence but are not cited in the current report.",
                 "- Excluded records are not used as supporting evidence in the report.",
                 "- The review tracking combines local PDF auditing, public metadata screening, year-range checks, duplicate handling, and manual access updates. Therefore, the diagram is a project-specific PRISMA-style mapping rather than a claim that every retained metadata record has a retrieved full text.",
                 "- No paper decisions were changed when generating this diagram.",
-                "- The Mermaid diagram remains as backup/source evidence, but the report figure uses the professionally rendered PRISMA 2020-style output.",
+                "- The report figure uses the professionally rendered PRISMA 2020-style output.",
                 "",
             ]
         ),
@@ -481,7 +472,7 @@ def main() -> int:
         f"({counts['core_separation']} core + {counts['background_supplementary']} background/supplementary); "
         f"eligible backup not cited: {counts['eligible_backup']}"
     )
-    print(f"Screening decisions: Include {counts['included']}; Maybe/background {counts['maybe']}; Exclude {counts['excluded']}")
+    print(f"Screening decisions: Include {counts['included']}; background/supplementary {counts['maybe']}; Exclude {counts['excluded']}")
     return 0
 
 

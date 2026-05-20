@@ -175,6 +175,18 @@ def section_orientations():
             result.append(pg.get(f"{{{ns['w']}}}orient", "portrait"))
     return result
 
+def section_page_numbering():
+    result = []
+    for sect in body_root.xpath(".//w:sectPr", namespaces=ns):
+        pg = sect.find("w:pgSz", namespaces=ns)
+        pg_num = sect.find("w:pgNumType", namespaces=ns)
+        result.append({
+            "orient": pg.get(f"{{{ns['w']}}}orient", "portrait") if pg is not None else "portrait",
+            "fmt": (pg_num.get(f"{{{ns['w']}}}fmt") or "") if pg_num is not None else "",
+            "start": (pg_num.get(f"{{{ns['w']}}}start") or "") if pg_num is not None else "",
+        })
+    return result
+
 def body_child_index(target):
     for i, child in enumerate(list(body)):
         if child is target:
@@ -204,6 +216,7 @@ matrix_run_sizes_ok = bool(matrix_runs) and all(
 )
 matrix_header_repeats = bool(matrix_rows) and matrix_rows[0].find("w:trPr/w:tblHeader", namespaces=ns) is not None
 orientations = section_orientations()
+section_numbers = section_page_numbering()
 toc_instrs = section_instrs("Table of Contents", "List of Tables")
 table_anchors = section_hyperlink_anchors("List of Tables", "List of Figures")
 figure_anchors = section_hyperlink_anchors("List of Figures", "List of Abbreviations/Symbols")
@@ -246,6 +259,11 @@ checks = {
     "chapter 1 appears after front matter": plain.find("Chapter 1: Introduction") > plain.find("List of Appendices"),
     "no obvious repeated subsection numbering": not re.search(r"\\b(\\d+\\.\\d+)\\s+\\1\\b", plain),
     "Word fields update on open": "updateFields" in settings,
+    "front matter Roman numbering starts at iii": any(section["fmt"] == "lowerRoman" and section["start"] == "3" for section in section_numbers),
+    "main chapters use Arabic numbering from 1": any(section["fmt"] == "decimal" and section["start"] == "1" for section in section_numbers),
+    "References Roman numbering starts at xiv": any(section["fmt"] == "lowerRoman" and section["start"] == "14" for section in section_numbers),
+    "Appendix A landscape section continues Roman numbering": any(section["orient"] == "landscape" and section["fmt"] == "lowerRoman" and section["start"] == "" for section in section_numbers),
+    "post-Appendix A sections continue Roman numbering": section_numbers[-1]["fmt"] == "lowerRoman" and section_numbers[-1]["start"] == "" and section_numbers[-1]["orient"] == "portrait",
     "Table of Contents is a navigatable Word TOC field": any("TOC" in instr and "\\h" in instr and '"1-3"' in instr for instr in toc_instrs),
     "List of Tables uses generated internal hyperlinks": len(table_anchors) == table_caption_bookmarks and table_caption_bookmarks > 0 and all(anchor.startswith("_FYPTable") for anchor in table_anchors),
     "List of Tables has PAGEREF fields": sum(1 for instr in section_instrs("List of Tables", "List of Figures") if "PAGEREF _FYPTable" in instr and "\\h" in instr) == table_caption_bookmarks,
