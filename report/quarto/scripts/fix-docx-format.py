@@ -169,6 +169,17 @@ def find_paragraph_index(paragraphs: list[etree._Element], needle: str) -> int:
     raise ValueError(f"Could not find paragraph containing: {needle}")
 
 
+def find_paragraph_index_with_style(
+    paragraphs: list[etree._Element],
+    needle: str,
+    style_id: str,
+) -> int:
+    for idx, p in enumerate(paragraphs):
+        if paragraph_style_id(p) == style_id and needle in paragraph_text(p):
+            return idx
+    raise ValueError(f"Could not find {style_id} paragraph containing: {needle}")
+
+
 def first_rel_ids(final_sect_pr: etree._Element | None) -> tuple[str | None, str | None]:
     if final_sect_pr is None:
         return None, None
@@ -191,8 +202,16 @@ def apply_section_numbering(document_root: etree._Element) -> None:
 
     copyright_idx = find_paragraph_index(paragraphs, "Copyright")
     chapter1_idx = find_paragraph_index(paragraphs, "Chapter 1: Introduction")
-    appendix_a_idx = find_paragraph_index(paragraphs, "Appendix A: Full Literature Review Matrix")
-    appendix_b_idx = find_paragraph_index(paragraphs, "Appendix B: PRISMA Screening Summary")
+    appendix_a_idx = find_paragraph_index_with_style(
+        paragraphs,
+        "Appendix A: Full Literature Review Matrix",
+        "Heading1",
+    )
+    appendix_b_idx = find_paragraph_index_with_style(
+        paragraphs,
+        "Appendix B: PRISMA Screening Summary",
+        "Heading1",
+    )
     if copyright_idx == 0 or chapter1_idx == 0:
         raise ValueError("Unable to insert section breaks at required positions")
     if appendix_a_idx == 0 or appendix_b_idx == 0 or appendix_b_idx <= appendix_a_idx:
@@ -397,13 +416,181 @@ def body_child_index(body: etree._Element, target: etree._Element) -> int:
     raise ValueError("Document child not found")
 
 
+def paragraph_style_id(p: etree._Element) -> str:
+    style = p.find("w:pPr/w:pStyle", namespaces=NS)
+    return style.get(w("val")) if style is not None else ""
+
+
+def next_bookmark_id(document_root: etree._Element) -> int:
+    ids: list[int] = []
+    for elem in document_root.xpath(".//w:bookmarkStart", namespaces=NS):
+        raw = elem.get(w("id"))
+        if raw is not None and raw.isdigit():
+            ids.append(int(raw))
+    return (max(ids) + 1) if ids else 1
+
+
+def add_bookmark_to_paragraph(p: etree._Element, name: str, bookmark_id: int) -> None:
+    start = etree.Element(w("bookmarkStart"))
+    start.set(w("id"), str(bookmark_id))
+    start.set(w("name"), name)
+
+    end = etree.Element(w("bookmarkEnd"))
+    end.set(w("id"), str(bookmark_id))
+
+    insert_at = 0
+    if len(p) and p[0].tag == w("pPr"):
+        insert_at = 1
+    p.insert(insert_at, start)
+    p.append(end)
+
+
+def page_break_paragraph() -> etree._Element:
+    p = etree.Element(w("p"))
+    run = etree.SubElement(p, w("r"))
+    br = etree.SubElement(run, w("br"))
+    br.set(w("type"), "page")
+    return p
+
+
+def list_paragraph(bookmark_name: str, text: str) -> etree._Element:
+    p = etree.Element(w("p"))
+    p_pr = etree.SubElement(p, w("pPr"))
+    style = etree.SubElement(p_pr, w("pStyle"))
+    style.set(w("val"), "TOC1")
+
+    hyperlink = etree.SubElement(p, w("hyperlink"))
+    hyperlink.set(w("anchor"), bookmark_name)
+    hyperlink.set(w("history"), "1")
+
+    run = etree.SubElement(hyperlink, w("r"))
+    r_pr = etree.SubElement(run, w("rPr"))
+    r_style = etree.SubElement(r_pr, w("rStyle"))
+    r_style.set(w("val"), "Hyperlink")
+    t = etree.SubElement(run, w("t"))
+    t.text = text
+
+    tab_run = etree.SubElement(p, w("r"))
+    etree.SubElement(tab_run, w("tab"))
+    for run in field_run(f"PAGEREF {bookmark_name} \\h", "", None):
+        p.append(run)
+    return p
+
+
+def replace_body_range(
+    body: etree._Element,
+    start_para: etree._Element,
+    end_para: etree._Element,
+    replacement: list[etree._Element],
+) -> None:
+    start = body_child_index(body, start_para) + 1
+    end = body_child_index(body, end_para)
+    for child in list(body)[start:end]:
+        body.remove(child)
+    for offset, elem in enumerate(replacement):
+        body.insert(start + offset, elem)
+
+
+def caption_entries(document_root: etree._Element, prefix: str) -> list[tuple[str, etree._Element]]:
+    entries: list[tuple[str, etree._Element]] = []
+    for p in document_root.xpath(".//w:p", namespaces=NS):
+        if paragraph_style_id(p) != "ImageCaption":
+            continue
+        text = paragraph_text(p).replace("\xa0", " ")
+        if text.startswith(f"{prefix} "):
+            entries.append((text, p))
+    return entries
+
+
+def appendix_heading_entries(document_root: etree._Element) -> list[tuple[str, etree._Element]]:
+    entries: list[tuple[str, etree._Element]] = []
+    for p in document_root.xpath(".//w:p", namespaces=NS):
+        text = paragraph_text(p).replace("\xa0", " ")
+        if paragraph_style_id(p) == "Heading1" and text.startswith("Appendix "):
+            entries.append((text, p))
+    return entries
+
+
+def apply_navigation_lists(document_root: etree._Element) -> None:
+    body = document_root.find("w:body", namespaces=NS)
+    if body is None:
+        raise ValueError("DOCX document body not found")
+
+    paragraphs = body.findall("w:p", namespaces=NS)
+    lot_heading = paragraphs[find_paragraph_index(paragraphs, "List of Tables")]
+    lof_heading = paragraphs[find_paragraph_index(paragraphs, "List of Figures")]
+    loa_heading = paragraphs[find_paragraph_index(paragraphs, "List of Appendices")]
+    abbreviations_heading = paragraphs[find_paragraph_index(paragraphs, "List of Abbreviations/Symbols")]
+    chapter1_heading = paragraphs[find_paragraph_index(paragraphs, "Chapter 1: Introduction")]
+
+    bookmark_id = next_bookmark_id(document_root)
+    tables: list[tuple[str, str]] = []
+    for idx, (text, para) in enumerate(caption_entries(document_root, "Table"), start=1):
+        name = f"_FYPTable{idx:03d}"
+        add_bookmark_to_paragraph(para, name, bookmark_id)
+        bookmark_id += 1
+        tables.append((name, text))
+
+    figures: list[tuple[str, str]] = []
+    for idx, (text, para) in enumerate(caption_entries(document_root, "Figure"), start=1):
+        name = f"_FYPFigure{idx:03d}"
+        add_bookmark_to_paragraph(para, name, bookmark_id)
+        bookmark_id += 1
+        figures.append((name, text))
+
+    appendices: list[tuple[str, str]] = []
+    for idx, (text, para) in enumerate(appendix_heading_entries(document_root), start=1):
+        name = f"_FYPAppendix{idx:03d}"
+        add_bookmark_to_paragraph(para, name, bookmark_id)
+        bookmark_id += 1
+        appendices.append((name, text))
+
+    if not tables:
+        raise ValueError("No table captions found for navigatable List of Tables")
+    if not figures:
+        raise ValueError("No figure captions found for navigatable List of Figures")
+    if not appendices:
+        raise ValueError("No appendix headings found for navigatable List of Appendices")
+
+    replace_body_range(
+        body,
+        lot_heading,
+        lof_heading,
+        [list_paragraph(name, text) for name, text in tables] + [page_break_paragraph()],
+    )
+    replace_body_range(
+        body,
+        lof_heading,
+        abbreviations_heading,
+        [list_paragraph(name, text) for name, text in figures] + [page_break_paragraph()],
+    )
+    replace_body_range(
+        body,
+        loa_heading,
+        chapter1_heading,
+        [list_paragraph(name, text) for name, text in appendices] + [page_break_paragraph()],
+    )
+
+
 def format_appendix_matrix_table(document_root: etree._Element) -> None:
     body = document_root.find("w:body", namespaces=NS)
     if body is None:
         raise ValueError("DOCX document body not found")
     paragraphs = body.findall("w:p", namespaces=NS)
-    appendix_a = paragraphs[find_paragraph_index(paragraphs, "Appendix A: Full Literature Review Matrix")]
-    appendix_b = paragraphs[find_paragraph_index(paragraphs, "Appendix B: PRISMA Screening Summary")]
+    appendix_a = paragraphs[
+        find_paragraph_index_with_style(
+            paragraphs,
+            "Appendix A: Full Literature Review Matrix",
+            "Heading1",
+        )
+    ]
+    appendix_b = paragraphs[
+        find_paragraph_index_with_style(
+            paragraphs,
+            "Appendix B: PRISMA Screening Summary",
+            "Heading1",
+        )
+    ]
     start = body_child_index(body, appendix_a)
     end = body_child_index(body, appendix_b)
 
@@ -577,6 +764,7 @@ def patch_docx(input_path: Path, output_path: Path) -> None:
         footer_path = tmp / "word" / "footer1.xml"
 
         document_root = parse_xml(document_path.read_bytes())
+        apply_navigation_lists(document_root)
         apply_section_numbering(document_root)
         format_appendix_matrix_table(document_root)
         document_path.write_bytes(xml_bytes(document_root))

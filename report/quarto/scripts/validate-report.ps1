@@ -92,6 +92,7 @@ def visible_text_runs_have_size(root, expected):
 body_root = etree.fromstring(document.encode("utf-8"))
 body = body_root.find("w:body", namespaces=ns)
 paragraphs = body.findall("w:p", namespaces=ns)
+all_paragraphs = body_root.xpath(".//w:p", namespaces=ns)
 
 def para_text(p):
     return "".join(p.xpath(".//w:t/text()", namespaces=ns)).strip()
@@ -101,6 +102,70 @@ def find_para(needle):
         if needle in para_text(p):
             return i, p
     return -1, None
+
+def find_para_with_style(needle, style_id):
+    for i, p in enumerate(paragraphs):
+        style = p.find("w:pPr/w:pStyle", namespaces=ns)
+        current_style = style.get(f"{{{ns['w']}}}val") if style is not None else ""
+        if current_style == style_id and needle in para_text(p):
+            return i, p
+    return -1, None
+
+def section_children_between(start_needle, end_needle):
+    _, start_para = find_para(start_needle)
+    _, end_para = find_para(end_needle)
+    if start_para is None or end_para is None:
+        return []
+    start = body_child_index(start_para) + 1
+    end = body_child_index(end_para)
+    if start < 0 or end <= start:
+        return []
+    return list(body)[start:end]
+
+def section_instrs(start_needle, end_needle):
+    instrs = []
+    for child in section_children_between(start_needle, end_needle):
+        instrs.extend(child.xpath(".//w:instrText/text()", namespaces=ns))
+    return instrs
+
+def section_hyperlink_anchors(start_needle, end_needle):
+    anchors = []
+    for child in section_children_between(start_needle, end_needle):
+        anchors.extend(child.xpath(".//w:hyperlink/@w:anchor", namespaces=ns))
+    return anchors
+
+def section_has_table(start_needle, end_needle):
+    return any(child.tag == f"{{{ns['w']}}}tbl" for child in section_children_between(start_needle, end_needle))
+
+def caption_bookmark_count(prefix):
+    count = 0
+    for p in all_paragraphs:
+        style = p.find("w:pPr/w:pStyle", namespaces=ns)
+        style_id = style.get(f"{{{ns['w']}}}val") if style is not None else ""
+        text = para_text(p).replace("\u00a0", " ")
+        if style_id == "ImageCaption" and text.startswith(prefix + " "):
+            names = [
+                b.get(f"{{{ns['w']}}}name")
+                for b in p.xpath("./w:bookmarkStart", namespaces=ns)
+            ]
+            if any(name.startswith("_FYP" + prefix) for name in names):
+                count += 1
+    return count
+
+def heading_bookmark_count(prefix):
+    count = 0
+    for p in paragraphs:
+        style = p.find("w:pPr/w:pStyle", namespaces=ns)
+        style_id = style.get(f"{{{ns['w']}}}val") if style is not None else ""
+        text = para_text(p).replace("\u00a0", " ")
+        if style_id == "Heading1" and text.startswith(prefix):
+            names = [
+                b.get(f"{{{ns['w']}}}name")
+                for b in p.xpath("./w:bookmarkStart", namespaces=ns)
+            ]
+            if any(name.startswith("_FYPAppendix") for name in names):
+                count += 1
+    return count
 
 def section_orientations():
     result = []
@@ -117,8 +182,8 @@ def body_child_index(target):
     return -1
 
 def appendix_matrix_table():
-    a_idx, a_para = find_para("Appendix A: Full Literature Review Matrix")
-    b_idx, b_para = find_para("Appendix B: PRISMA Screening Summary")
+    a_idx, a_para = find_para_with_style("Appendix A: Full Literature Review Matrix", "Heading1")
+    b_idx, b_para = find_para_with_style("Appendix B: PRISMA Screening Summary", "Heading1")
     if a_para is None or b_para is None:
         return None
     start = body_child_index(a_para)
@@ -139,6 +204,31 @@ matrix_run_sizes_ok = bool(matrix_runs) and all(
 )
 matrix_header_repeats = bool(matrix_rows) and matrix_rows[0].find("w:trPr/w:tblHeader", namespaces=ns) is not None
 orientations = section_orientations()
+toc_instrs = section_instrs("Table of Contents", "List of Tables")
+table_anchors = section_hyperlink_anchors("List of Tables", "List of Figures")
+figure_anchors = section_hyperlink_anchors("List of Figures", "List of Abbreviations/Symbols")
+appendix_anchors = section_hyperlink_anchors("List of Appendices", "Chapter 1: Introduction")
+table_caption_bookmarks = caption_bookmark_count("Table")
+figure_caption_bookmarks = caption_bookmark_count("Figure")
+appendix_heading_bookmarks = heading_bookmark_count("Appendix ")
+
+repo = Path(r"$repoRoot")
+bib_text = Path(r"$bib").read_text(encoding="utf-8")
+bib_keys = set(re.findall(r"^@\w+\{([^,]+),", bib_text, flags=re.M))
+source_paths = [
+    repo / "report/quarto/paper.qmd",
+    repo / "report/quarto/chapters/chapter-1.qmd",
+    repo / "report/quarto/chapters/chapter-2.qmd",
+    repo / "report/quarto/chapters/chapter-3.qmd",
+    repo / "report/quarto/chapters/chapter-4.qmd",
+    repo / "report/quarto/chapters/chapter-5.qmd",
+]
+source_text = "\n".join(path.read_text(encoding="utf-8") for path in source_paths if path.exists())
+source_at_keys = set(re.findall(r"(?<![\w-])@([A-Za-z0-9_:-]+)", source_text))
+missing_citation_keys = sorted(
+    key for key in source_at_keys
+    if key not in bib_keys and not key.startswith(("fig-", "tbl-", "sec-", "eq-"))
+)
 forbidden_terms = [
     "papers_master.csv",
     "extraction_matrix.csv",
@@ -156,6 +246,17 @@ checks = {
     "chapter 1 appears after front matter": plain.find("Chapter 1: Introduction") > plain.find("List of Appendices"),
     "no obvious repeated subsection numbering": not re.search(r"\\b(\\d+\\.\\d+)\\s+\\1\\b", plain),
     "Word fields update on open": "updateFields" in settings,
+    "Table of Contents is a navigatable Word TOC field": any("TOC" in instr and "\\h" in instr and '"1-3"' in instr for instr in toc_instrs),
+    "List of Tables uses generated internal hyperlinks": len(table_anchors) == table_caption_bookmarks and table_caption_bookmarks > 0 and all(anchor.startswith("_FYPTable") for anchor in table_anchors),
+    "List of Tables has PAGEREF fields": sum(1 for instr in section_instrs("List of Tables", "List of Figures") if "PAGEREF _FYPTable" in instr and "\\h" in instr) == table_caption_bookmarks,
+    "List of Tables is not a static table": not section_has_table("List of Tables", "List of Figures"),
+    "List of Figures uses generated internal hyperlinks": len(figure_anchors) == figure_caption_bookmarks and figure_caption_bookmarks > 0 and all(anchor.startswith("_FYPFigure") for anchor in figure_anchors),
+    "List of Figures has PAGEREF fields": sum(1 for instr in section_instrs("List of Figures", "List of Abbreviations/Symbols") if "PAGEREF _FYPFigure" in instr and "\\h" in instr) == figure_caption_bookmarks,
+    "List of Figures is not a static table": not section_has_table("List of Figures", "List of Abbreviations/Symbols"),
+    "List of Appendices uses internal hyperlinks": len(appendix_anchors) == appendix_heading_bookmarks and appendix_heading_bookmarks > 0 and all(anchor.startswith("_FYPAppendix") for anchor in appendix_anchors),
+    "List of Appendices has PAGEREF fields": sum(1 for instr in section_instrs("List of Appendices", "Chapter 1: Introduction") if "PAGEREF _FYPAppendix" in instr and "\\h" in instr) == appendix_heading_bookmarks,
+    "List of Appendices is not a static table": not section_has_table("List of Appendices", "Chapter 1: Introduction"),
+    "no missing citation keys": len(missing_citation_keys) == 0,
     "at least three section properties": document.count("<w:sectPr") >= 3,
     "Heading styles do not add their own numbering": heading_has_no_numpr("Heading1") and heading_has_no_numpr("Heading2") and heading_has_no_numpr("Heading3"),
     "header font size is 10 pt": visible_text_runs_have_size(header_root, "20"),

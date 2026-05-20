@@ -158,29 +158,29 @@ The methodology follows an application-based prototype development approach. The
 
 # List of Tables {.unnumbered}
 
-| Table | Description |
-|---|---|
-| Table 1 | Summary literature review matrix for key cardiopulmonary sound separation studies |
-| Table 2 | Main system modules and responsibilities |
-| Table 3 | Planned database and storage records |
-| Table 4 | Planned functional test cases |
-| Table 5 | Planned audio separation evaluation metrics |
-| Table 6 | Full literature review matrix for selected Chapter 2 papers |
-| Table 7 | PRISMA screening summary for the literature review |
-| Table 8 | System design diagram summary |
-| Table 9 | Appendix planned test cases and evaluation checks |
+```{=openxml}
+<w:p xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:r><w:fldChar w:fldCharType="begin"/></w:r>
+  <w:r><w:instrText xml:space="preserve"> TOC \h \z \c "Table" </w:instrText></w:r>
+  <w:r><w:fldChar w:fldCharType="separate"/></w:r>
+  <w:r><w:t>Right-click and update field to generate the list of tables.</w:t></w:r>
+  <w:r><w:fldChar w:fldCharType="end"/></w:r>
+</w:p>
+```
 
 {{< pagebreak >}}
 
 # List of Figures {.unnumbered}
 
-| Figure | Description |
-|---|---|
-| Figure 1 | PRISMA flow diagram for the literature search and screening process |
-| Figure 2 | Use case diagram for the cardiopulmonary sound separation system |
-| Figure 3 | Component diagram for the cardiopulmonary sound separation system |
-| Figure 4 | Audio processing workflow |
-| Figure 5 | Sequence diagram for audio upload and separation |
+```{=openxml}
+<w:p xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:r><w:fldChar w:fldCharType="begin"/></w:r>
+  <w:r><w:instrText xml:space="preserve"> TOC \h \z \c "Figure" </w:instrText></w:r>
+  <w:r><w:fldChar w:fldCharType="separate"/></w:r>
+  <w:r><w:t>Right-click and update field to generate the list of figures.</w:t></w:r>
+  <w:r><w:fldChar w:fldCharType="end"/></w:r>
+</w:p>
+```
 
 {{< pagebreak >}}
 
@@ -212,12 +212,7 @@ The methodology follows an application-based prototype development approach. The
 
 # List of Appendices {.unnumbered}
 
-| Appendix | Description |
-|---|---|
-| Appendix A | Full Literature Review Matrix |
-| Appendix B | PRISMA Screening Summary |
-| Appendix C | System Design Diagrams |
-| Appendix D | Planned Test Cases and Evaluation Metrics |
+The appendix navigation list is generated from the appendix headings in the DOCX output.
 
 {{< pagebreak >}}
 

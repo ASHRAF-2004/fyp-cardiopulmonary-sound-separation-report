@@ -43,7 +43,7 @@ Do not use pure LaTeX as the main workflow. Do not manually format the final rep
 - It does not currently provide a DOCX-first workflow.
 - Quarto is now available on PATH. DOCX rendering succeeded on 2026-05-16.
 - Quarto's automatic DOCX TOC is disabled because it inserts the TOC before the cover pages. A Word TOC field is placed manually in `paper.qmd` after the abstract.
-- A post-render DOCX script is used because Quarto/Pandoc alone does not reliably handle the required FYP cover/title, Roman front-matter numbering, Arabic Chapter 1 restart, and heading-style numbering cleanup in one pass.
+- A post-render DOCX script is used because Quarto/Pandoc alone does not reliably handle the required FYP cover/title, Roman front-matter numbering, Arabic Chapter 1 restart, heading-style numbering cleanup, and navigatable front-matter lists in one pass.
 
 ## Current Formatting Method: 2026-05-16
 
@@ -55,11 +55,14 @@ The chosen method is:
 4. Recreate the cover and title pages in `paper.qmd` using the structure of `templates/fyp-cover-title-reference.docx`, `resources/templates/Sample.pdf`, and the FYP handbook.
 5. Disable Quarto's automatic TOC in `_quarto.yml`.
 6. Insert a Word TOC field in `paper.qmd` after the abstract.
-7. Run `scripts/fix-docx-format.py` after Quarto render to:
+7. Insert Word field placeholders for the List of Tables and List of Figures in `paper.qmd`.
+8. Run `scripts/fix-docx-format.py` after Quarto render to:
    - remove Word-template heading numbering from Heading 1-3 styles;
    - keep cover/title pages unnumbered;
    - set front matter to lower-case Roman numerals starting at iii;
    - restart Chapter 1 with Arabic numbering from page 1;
+   - generate List of Tables and List of Figures entries from actual Pandoc caption paragraphs using internal bookmarks, hyperlinks, and `PAGEREF` fields;
+   - generate List of Appendices entries from appendix headings using internal bookmarks, hyperlinks, and `PAGEREF` fields;
    - update header/footer text to `Project ID: 985`, `Prepared by: AL-SALOUL, ASHRAF ALI HUSSEIN`, `CPT6314`, and `2610 Term`;
    - set generated header text to 10 pt and generated footer text to 8 pt;
    - enable Word field updates when the DOCX is opened.
@@ -353,7 +356,8 @@ How to include diagrams and PRISMA:
 How to generate List of Figures and List of Tables:
 
 - For PDF/Typst, reuse or update the old Typst outline logic.
-- For DOCX, use Word fields or a post-processing step if Quarto/Pandoc output does not generate complete lists automatically.
+- For DOCX, the active workflow uses `fix-docx-format.py` to generate navigatable front-matter entries from real caption paragraphs. Each entry links to a bookmark at the related caption and includes a `PAGEREF` field for updateable page numbers.
+- For appendices, the active workflow creates internal hyperlinks to appendix Heading 1 paragraphs because Word does not provide a standard automatic List of Appendices field.
 - Validate the generated DOCX in Word before submission.
 
 ## Quarto Installation Steps
