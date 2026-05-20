@@ -1,7 +1,5 @@
 # Chapter 1: Introduction
 
-Draft status: first academic FYP1 draft. This chapter is aligned with the approved proposal for `Machine Learning-Based System for Cardiopulmonary Sound Separation` and should be reviewed by the supervisor before final report formatting.
-
 ## Introduction / Background
 
 Cardiopulmonary sounds are acoustic signals produced by heart activity and respiratory airflow. In practical auscultation, these sounds are commonly recorded from the chest using a stethoscope or digital stethoscope. Because the heart and lungs are close to each other anatomically and their acoustic components can overlap in a recording, a single chest sound signal may contain both heart sounds and lung sounds at the same time. This creates a signal separation problem: the system must estimate useful heart-related and lung-related components from a mixed cardiopulmonary recording.
@@ -12,11 +10,13 @@ This project is proposed as an application-based Software Engineering FYP. The f
 
 ## Problem Statement
 
-Heart and lung sounds can overlap in both time and frequency when recorded together from the chest. This overlap can make it difficult to separate the two sound sources using simple filtering or manual inspection. Noise from recording conditions, stethoscope placement, breathing variation, and environmental interference can further reduce the quality of the recorded signal.
+The problem statements for this project are:
 
-Existing research provides several methods for cardiopulmonary sound separation, including traditional signal processing, hybrid methods, and deep learning models [@grooby2023noisyneonatal; @poh2024neossnet; @sun2024daenmfvmd]. However, many works focus mainly on algorithms, classification tasks, or medical analysis outcomes rather than on a complete, reusable software prototype for sound separation. Some datasets are also designed for diagnosis or classification rather than paired source separation, which creates a practical challenge when building and evaluating a student-level system.
+1. Noise and recording artefacts reduce the quality of cardiopulmonary sound recordings, making it difficult to process the signals accurately.
 
-Therefore, the problem addressed in this project is the need for a structured machine learning-based software system that can separate mixed cardiopulmonary audio into heart and lung sound outputs, while remaining feasible for an FYP prototype. The system should support audio preprocessing, model-based separation, output generation, and evaluation using suitable signal-level metrics, without making unsupported clinical or diagnostic claims.
+2. Heart and lung sounds overlap in time and frequency when recorded together, making it difficult to separate them using traditional signal processing methods.
+
+3. Many existing studies focus on diagnosis or isolated algorithms, while fewer works provide a reusable end-to-end software prototype that performs sound separation and evaluates the output using suitable datasets and metrics.
 
 ## Project Aim
 
@@ -26,11 +26,13 @@ The aim of this project is to design and develop a machine learning-based softwa
 
 The objectives of this project are:
 
-1. To study existing techniques and datasets related to cardiopulmonary, heart-lung, and chest sound separation.
-2. To design a software system architecture for processing mixed cardiopulmonary audio signals.
-3. To implement audio preprocessing and machine learning-based separation modules for separating heart and lung sounds.
-4. To test the system using suitable public or accessible audio datasets.
-5. To evaluate the separated outputs using appropriate signal-level or separation-related metrics.
+1. To study and apply suitable preprocessing techniques to reduce noise and improve the quality of cardiopulmonary sound recordings.
+
+2. To design and implement a machine learning-based approach for separating mixed cardiopulmonary recordings into heart and lung sound outputs.
+
+3. To develop a reusable software prototype and evaluate its separation performance using public datasets and suitable performance metrics.
+
+The three objectives directly address the identified problems by focusing on signal quality improvement, heart-lung sound separation, and the development of an evaluated software prototype.
 
 ## Project Scope
 

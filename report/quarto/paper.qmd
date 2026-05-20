@@ -136,7 +136,7 @@ Finally, I would like to thank my family, friends, and colleagues for their enco
 
 # Abstract {.unnumbered}
 
-This interim report presents the first phase of a Final Year Project titled `Machine Learning-Based System for Cardiopulmonary Sound Separation`. The project focuses on developing a software prototype that processes mixed cardiopulmonary audio and produces separated heart sound and lung sound outputs. The project is motivated by the overlap between heart and lung sounds in chest recordings and by the need for a structured, reusable software workflow for sound separation rather than disease diagnosis.
+This interim report presents the first phase of a Final Year Project titled Machine Learning-Based System for Cardiopulmonary Sound Separation. The project focuses on developing a software prototype that processes mixed cardiopulmonary audio and produces separated heart sound and lung sound outputs. The project is motivated by the overlap between heart and lung sounds in chest recordings and by the need for a structured, reusable software workflow for sound separation rather than disease diagnosis.
 
 The report introduces the project background, problem statement, objectives, scope, literature review, and proposed methodology. The planned system includes public dataset selection, audio preprocessing, feature or input representation, machine learning-based separation, output generation, and evaluation using suitable signal-level metrics. The expected outcome is a proof-of-concept software system that demonstrates cardiopulmonary sound separation while avoiding unsupported clinical claims.
 
@@ -158,13 +158,18 @@ The report introduces the project background, problem statement, objectives, sco
 
 # List of Tables {.unnumbered}
 
-No finalized tables have been added at this draft stage. This section should be updated after final tables are inserted.
+| Table | Description |
+|---|---|
+| Table 1 | Summary literature review matrix for key cardiopulmonary sound separation studies |
+| Table 2 | Full literature review matrix for selected Chapter 2 papers |
 
 {{< pagebreak >}}
 
 # List of Figures {.unnumbered}
 
-No finalized figures have been added at this draft stage. This section should be updated after final figures and diagrams are inserted.
+| Figure | Description |
+|---|---|
+| Figure 1 | PRISMA flow diagram for the literature search and screening process |
 
 {{< pagebreak >}}
 
@@ -176,6 +181,10 @@ No finalized figures have been added at this draft stage. This section should be
 | ML | Machine Learning |
 | PCG | Phonocardiogram |
 | HLS-CMDS | Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope |
+| NMF | Non-negative Matrix Factorization |
+| VMD | Variational Mode Decomposition |
+| PRISMA | Preferred Reporting Items for Systematic Reviews and Meta-Analyses |
+| SDR | Signal-to-Distortion Ratio |
 | DOCX | Microsoft Word Open XML Document |
 
 {{< pagebreak >}}
@@ -184,10 +193,11 @@ No finalized figures have been added at this draft stage. This section should be
 
 | Appendix | Description |
 |---|---|
-| Appendix A | Gantt Chart |
-| Appendix B | FYP I Meeting Logs |
-| Appendix C | Turnitin Similarity Index Page |
-| Appendix D | Technical Documentation |
+| Appendix A | Full Literature Review Matrix |
+| Appendix B | Gantt Chart |
+| Appendix C | FYP I Meeting Logs |
+| Appendix D | Turnitin Similarity Index Page |
+| Appendix E | Technical Documentation |
 
 {{< pagebreak >}}
 
@@ -280,24 +290,70 @@ Placeholder conclusion for FYP1 progress and next-phase work.
      APPENDICES
      ========================================================================= -->
 
-# Appendix A: Gantt Chart {.unnumbered}
+# Appendix A: Full Literature Review Matrix {.unnumbered}
+
+The complete literature review matrix below summarizes the selected papers used in the Chapter 2 synthesis. It supports the comparison of research focus, methods, datasets, findings, limitations, and relevance to the proposed cardiopulmonary sound separation system.
+
+| No. | Research Title | Author(s) & Year | Journal / Conference / Database | Research Problem / Objective | Algorithm / Framework Used | Dataset Used | Results / Findings | Research Gap | Limitation | How It Helps This Project |
+|---:|---|---|---|---|---|---|---|---|---|---|
+| 1 | An End-to-End Deep Learning Framework for Real-Time Denoising of Heart Sounds for Cardiac Disease Detection in Unseen Noise | Ali et al. (2023) [@ali2023lunet] | IEEE Access | Improve noisy heart sound recordings before later analysis. | LU-Net encoder-decoder denoiser. | PCG data mixed with breathing and hospital noise. | Reported SNR and real-time denoising improvements. | Denoising is related but does not separate heart and lung outputs. | Focuses on heart sound denoising and diagnosis support. | Supports preprocessing and noise-reduction choices. |
+| 2 | Noisy Neonatal Chest Sound Separation for High-Quality Heart and Lung Sounds | Grooby et al. (2023) [@grooby2023noisyneonatal] | IEEE Journal of Biomedical and Health Informatics | Separate noisy neonatal chest recordings into heart and lung sounds. | NMF and NMCF. | Neonatal artificial mixtures and noisy chest sounds. | Improved signal quality and vital-sign estimation support. | Robust separation remains difficult under noisy neonatal conditions. | Dataset is neonatal and not clearly public. | Provides a classical separation baseline. |
+| 3 | NeoSSNet: Real-Time Neonatal Chest Sound Separation Using Deep Learning | Poh et al. (2024) [@poh2024neossnet] | IEEE Open Journal of Engineering in Medicine and Biology | Perform real-time neonatal chest sound separation. | 1D encoder-decoder with transformer mask generation. | Neonatal chest recordings with heart and lung references. | Reported SDR and SI-SDR improvement with real-time relevance. | Reproducibility is limited by private clinical data. | Performance depends on noise and recording quality. | Main deep learning reference for the prototype. |
+| 4 | Recent Advances in PCG Signal Analysis using AI: A Review | Roy et al. (2024) [@roy2024pcgreview] | International Journal on Smart Sensing and Intelligent Systems | Review AI methods for PCG preprocessing and analysis. | Review of preprocessing, segmentation, features, and AI models. | PCG datasets from prior studies. | Summarizes common PCG processing stages and AI approaches. | Review is not focused on heart-lung source separation. | Mainly classification and PCG analysis oriented. | Supports background on PCG preprocessing. |
+| 5 | Research on Heart and Lung Sound Separation Method Based on DAE-NMF-VMD | Sun et al. (2024) [@sun2024daenmfvmd] | EURASIP Journal on Advances in Signal Processing | Improve heart-lung sound separation using a hybrid method. | Deep autoencoder, NMF, and VMD. | Heart-lung sound mixtures. | Reported SDR, PESQ, STOI, and separation metrics. | Reproducible public data access is limited. | Data and code access may require request. | Shows how ML and decomposition can be combined. |
+| 6 | Unsupervised Framework for Single Channel Heart and Lung Sounds Separation in Data Constrained Environments | Ullah and Zhang (2024) [@ullah2024unsupervised] | Applied Acoustics | Separate single-channel heart and lung sounds with limited data. | MCRA, OMLSA, and NMF-HMM. | Heart and lung sound mixtures. | Reported SDR, SAR, and separation performance. | Data-constrained separation needs methods with limited labels. | Dataset availability is unclear. | Supports feasible low-data separation options. |
+| 7 | A Multi-Channel UNet Framework Based on SNMF-DCNN for Robust Heart-Lung-Sound Separation | Wang et al. (2023) [@wang2023mcunet] | Computers in Biology and Medicine | Improve robust heart-lung sound separation. | SNMF-DCNN-MCUNet. | Heart-lung mixtures with different lung sound types. | Reported SNR, SDR, SIR, SAR, and correlation improvements. | Constructed mixtures affect generalizability. | Public dataset details are limited. | Guides U-Net-style model design and metrics. |
+| 8 | Heart-Lung Sound Separation by Nonnegative Matrix Factorization and Deep Learning | Wang et al. (2023) [@wang2023nmfdl] | Biomedical Signal Processing and Control | Combine NMF and deep learning for separation. | MCNMF, clustering, and ECNet. | Heart-lung sound mixtures. | Reported SNR, SDR, SIR, SAR, and correlation. | Separation depends on mixture assumptions. | Public dataset details are limited. | Supports hybrid baseline and evaluation planning. |
+| 9 | JASSNet: Heart and Lung Sound Separation Network Based on Joint Attention Mechanism and Semi-Supervised Learning | Zhang et al. (2025) [@zhang2025jassnet] | Biomedical Signal Processing and Control | Improve separation using attention and semi-supervision. | Joint attention and semi-supervised network. | Simulated and clinical cardiopulmonary recordings. | Reported SDR, SIR, SAR, and rate-estimation improvement. | Advanced models can be difficult to reproduce. | Clinical data and disease context reduce general reuse. | Defines a recent advanced comparison method. |
+| 10 | Deep Learning in Heart Sound Analysis: From Techniques to Clinical Applications | Zhao et al. (2024) [@zhao2024heartanalysis] | Health Data Science | Review deep learning for heart sound analysis. | Review of CNN, RNN, transformer, denoising, and segmentation methods. | Common heart sound datasets. | Summarizes heart sound AI methods and dataset issues. | Not focused on heart-lung source separation. | Clinical analysis focus may not match this project scope. | Supports ML background and dataset discussion. |
+| 11 | Separation of Cardiopulmonary Sound Signals for Classification of Respiratory Diseases | Zheng and Sanei (2024) [@zheng2024cardiopulmonary] | APSIPA ASC | Separate cardiopulmonary signals before respiratory analysis. | Singular spectrum analysis with kurtosis optimization. | Auscultated cardiopulmonary recordings. | Separation improved downstream respiratory classification. | Separation quality is secondary to classification. | Diagnostic objective differs from this FYP. | Shows separation value without shifting project scope to diagnosis. |
+| 12 | Reprogramming Automatic Speech Recognition Models for Neonatal Chest Sound Separation | Poh et al. (2026) [@poh2026reprogramming2] | IEEE Journal of Biomedical and Health Informatics | Adapt speech models for neonatal chest sound separation. | Whisper model reprogramming. | Neonatal chest mixtures and supporting PCG data. | Reported separation, segmentation, and rate-estimation results. | Foundation-model adaptation is complex. | Small neonatal source set and artificial mixtures limit generalization. | Identifies an advanced ML direction beyond the first prototype. |
+| 13 | A Phase-Enhanced Neural Network With Dual-Path Transformer for Single-Channel Chest Sound Separation | Wang et al. (2025) [@wang2025phase2] | IEEE Journal of Biomedical and Health Informatics | Improve single-channel chest sound reconstruction. | Phase-enhanced dual-path transformer. | Constructed heart and lung sound mixtures. | Reported SI-SDR-based and phase-aware improvements. | Phase reconstruction is often under-addressed. | Relies on constructed mixtures. | Supports time-frequency and reconstruction design choices. |
+| 14 | Large Language Model-based Nonnegative Matrix Factorization For Cardiorespiratory Sound Separation | Torabi et al. (2025) [@torabi2025large2] | arXiv | Use language-model feedback to tune NMF separation. | LingoNMF with LLaMA-based feedback. | Synthetic and manikin heart-lung recordings. | Reported SNR, SDR, SIR, and SAR improvements. | LLM-assisted separation adds system complexity. | Preprint and synthetic/manikin data limit claims. | Helps compare explainable NMF extensions. |
+| 15 | A New Non-Negative Matrix Factorization Approach for Blind Source Separation of Cardiovascular and Respiratory Sound Based on the Periodicity of Heart and Lung Function | Torabi et al. (2023) [@torabi2023negative2] | arXiv | Use periodicity to separate cardiovascular and respiratory sounds. | Periodicity-guided NMF. | Synthetic heart and lung sound mixtures. | Reported SDR, SIR, and SAR. | Real-world validation remains limited. | Mainly synthetic evaluation. | Supports physiological periodicity as a separation cue. |
+| 16 | Separation of Heart and Lung Sounds by A Deep Network-Based Model | Tsai et al. (2023) [@tsai2023separation2] | International Conference on Knowledge Innovation and Invention | Separate generated heart-lung mixtures using a deep model. | Deep network-based model. | Public heart and lung sounds used to generate mixtures. | Reported correlation-based separation results. | Evaluation needs stronger metrics and real recordings. | Synthetic mixtures and limited method detail. | Provides a feasible student-level ML reference. |
+| 17 | An efficient lung sound separation algorithm base on GIHO-VMD | Zhang et al. (2026) [@zhang2026efficient2] | Computer Methods and Programs in Biomedicine | Separate lung sounds from mixed heart-lung signals. | GIHO-VMD. | Pre-simulated mixed heart and lung sound signals. | Reported SNR, NCC, spectrogram, and runtime comparisons. | Decomposition methods remain sensitive to simulation assumptions. | Real-world application pipeline is not fully shown. | Provides a recent decomposition comparator. |
+| 18 | Identifying the Respiratory Sound Based on Single-Channel Separation and Hyperdimensional Computing | Zheng et al. (2025) [@zheng2025identifying2] | IEEE Sensors Journal | Use separation before respiratory sound identification. | Encoder-decoder separation, hyperdimensional computing, and LightGBM. | ICU respiratory recordings and benchmark data. | Reported respiratory identification improvements. | Separation is used mainly for classification. | Standalone separation quality is not the main objective. | Shows how separation can support later audio analysis. |
+| 19 | Descriptor: Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS) | Torabi et al. (2025) [@torabi2025hlscmds] | IEEE Data Descriptions | Provide paired recordings for separation research. | Dataset descriptor. | HLS-CMDS manikin heart, lung, mixed, and source recordings. | Provides mixed recordings with corresponding source signals. | Public paired source datasets remain limited. | Manikin data may not represent full patient variability. | Main public dataset candidate for training and evaluation. |
+| 20 | Automatic Wheeze Segmentation Using Harmonic-Percussive Source Separation and Empirical Mode Decomposition | Rocha et al. (2023) [@rocha2023automatic2] | IEEE Journal of Biomedical and Health Informatics | Segment wheezes from respiratory recordings. | HPSS and EMD. | Respiratory sound datasets. | Reported wheeze segmentation performance. | Respiratory preprocessing is not heart-lung separation. | Full real-world wheeze segmentation remains difficult. | Supports preprocessing and respiratory signal handling. |
+| 21 | A Blind Filtering Framework for Noisy Neonatal Chest Sounds | Fattahi et al. (2022) [@fattahi2022blind2] | IEEE Access | Filter noisy neonatal chest sounds. | Wavelet transform, PCA, periodic component analysis, and SOBI. | Neonatal chest sound recordings. | Improved quality assessment and rate estimation. | Traditional filtering needs careful component selection. | Severe artefacts may still reduce reliability. | Supports preprocessing and baseline separation design. |
+| 22 | A Dual Classifier-Regressor Architecture for Heart Sound Onset/Offset Detection | Somarathne et al. (2026) [@somarathne2026dual2] | IEEE Transactions on Biomedical Engineering | Detect heart sound onset and offset. | Classifier-regressor PCG architecture. | PhysioNet/CinC heart sound data. | Reported timing and segmentation metrics. | Segmentation is not source separation. | Requires PCG/ECG-style context. | Supports timing and evaluation considerations. |
+| 23 | BUET multi-disease heart sound dataset: A comprehensive auscultation dataset for developing computer-aided diagnostic systems | Ali et al. (2026) [@ali2026buet2] | Computer Methods and Programs in Biomedicine Update | Provide a public heart sound dataset. | Dataset descriptor. | BUET multi-disease heart sound recordings. | Provides labelled heart sound data for AI research. | Dataset is diagnosis-oriented, not paired separation data. | No lung source or mixed-source separation target. | Helps distinguish background datasets from separation datasets. |
+| 24 | Cardiorespiratory Sound Separation Using Singular Spectrum Analysis | Han and Quan (2025) [@han2025cardiorespiratory] | International Conference on Signal Processing Systems | Separate cardiac and respiratory components. | Multi-stage singular spectrum analysis. | Digital stethoscope cardiorespiratory recordings. | Presents a recent direct separation approach. | Detailed evaluation evidence remains limited at this draft stage. | Full implementation details need further confirmation. | Adds a recent non-deep-learning comparator. |
+| 25 | StethAid: A Digital Auscultation Platform for Pediatrics | Arjoune et al. (2023) [@arjoune2023stethaid] | Sensors | Support pediatric digital auscultation workflow. | Digital auscultation platform. | Pediatric auscultation use context. | Demonstrates platform-oriented auscultation support. | Platform design is not separation-specific. | Does not provide heart-lung separation output. | Supports software workflow and interface thinking. |
+| 26 | Sound-Dr: Reliable Sound Dataset and Baseline Artificial Intelligence System for Respiratory Illnesses | Hoang et al. (2023) [@hoang2023reliable] | PHM Society Asia-Pacific Conference | Provide respiratory audio dataset and baseline AI. | Dataset and baseline AI system. | Sound-Dr respiratory recordings. | Supports respiratory sound dataset context. | Respiratory illness focus differs from source separation. | No paired heart-lung source targets. | Provides supplementary dataset background. |
+| 27 | Compressed Sensing of Acoustic Cardiopulmonary Signals Using a CNN-based Reconstruction Method | Baeyens et al. (2025) [@baeyens2025compressed] | IEEE EMBC | Reconstruct acoustic cardiopulmonary signals. | Compressed sensing with CNN reconstruction. | Acoustic cardiopulmonary signals. | Shows reconstruction quality can affect later processing. | Reconstruction is not heart-lung source separation. | Dataset and deployment details need confirmation. | Supports acquisition and reconstruction context. |
+| 28 | Real-Time Multi-Level Neonatal Heart and Lung Sound Quality Assessment for Telehealth Applications | Grooby et al. (2022) [@grooby2022real] | IEEE Access | Assess neonatal heart and lung sound quality. | Real-time multi-level quality assessment. | Neonatal heart and lung sound recordings. | Supports input quality assessment before analysis. | Quality assessment is separate from source separation. | Does not generate separated outputs. | Supports input-quality checks for the prototype. |
+| 29 | Bridging Auscultation and Tiny Machine Learning: A Digital Stethoscope Leveraging Convolutional Neural Networks on an Embedded Device for Organ Sound Analysis | Mutlu et al. (2024) [@mutlu2024bridging] | Traitement du Signal | Process organ sounds on constrained devices. | CNN-based TinyML digital stethoscope system. | Organ sound recordings. | Demonstrates embedded auscultation processing. | Organ classification is not source separation. | Hardware direction is outside this software prototype. | Provides implementation context for practical systems. |
+| 30 | Heart murmur detection from phonocardiogram recordings: The George B. Moody PhysioNet Challenge 2022 | Reyna et al. (2023) [@reyna2023murmur] | PLOS Digital Health | Benchmark heart murmur detection from PCG. | Challenge dataset and scoring framework. | CirCor DigiScope pediatric PCG data. | Provides benchmark context for heart sound analysis. | Detection task is not source separation. | Does not include lung source separation targets. | Supports dataset and evaluation background. |
+| 31 | A robust deep learning based model for denoising phonocardiogram signals in clinical environments | Jakubec et al. (2025) [@jakubec2025robust] | Engineering Applications of Artificial Intelligence | Denoise PCG signals in noisy environments. | Deep learning denoising model. | PCG datasets. | Supports robust PCG noise reduction. | Denoising does not produce both heart and lung outputs. | Dataset and metric details require later confirmation. | Supports preprocessing design. |
+| 32 | A self-attention-driven deep denoiser model for real time lung sound denoising in noisy environments | Shuvo et al. (2026) [@shuvo2026self] | Biomedical Signal Processing and Control | Denoise lung sounds in real time. | Self-attention deep denoiser. | Noisy lung sound recordings. | Shows attention-based denoising potential. | Lung denoising is not heart-lung separation. | Does not output separated cardiac sound. | Supports respiratory preprocessing choices. |
+| 33 | Adaptive thresholding of DWT coefficients using UNet for denoising real-life respiratory sounds | Behera et al. (2026) [@behera2026adaptive] | Biomedical Signal Processing and Control | Denoise real-life respiratory recordings. | DWT coefficient thresholding with UNet. | Real-life respiratory sounds. | Supports multiscale denoising for noisy respiratory data. | Focuses on respiratory denoising rather than source separation. | No paired heart-lung outputs. | Supports wavelet and UNet preprocessing ideas. |
+| 34 | Lung sound signal denoising using discrete wavelet transform and artificial neural network | Pouyani et al. (2022) [@pouyani2022signal] | Biomedical Signal Processing and Control | Improve noisy lung sound quality. | DWT and artificial neural network. | Lung sound signals. | Supports classical and ML-based lung denoising. | Does not address cardiopulmonary source separation. | Dataset details need confirmation. | Supports preprocessing and denoising background. |
+| 35 | Automatic breathing phase identification based on the second derivative of the recorded lung sounds | Pal et al. (2024) [@pal2024automatic] | Biomedical Signal Processing and Control | Identify breathing phases from lung sounds. | Second-derivative based phase identification. | Heterogeneous lung sound recordings. | Reported breathing phase identification metrics. | Phase identification is not source separation. | Focuses only on respiratory signal structure. | Supports lung sound segmentation and evaluation context. |
+
+: Full literature review matrix for selected Chapter 2 papers {#tbl-full-literature-review-matrix}
+
+{{< pagebreak >}}
+
+# Appendix B: Gantt Chart {.unnumbered}
 
 Placeholder for Gantt chart.
 
 {{< pagebreak >}}
 
-# Appendix B: FYP I Meeting Logs {.unnumbered}
+# Appendix C: FYP I Meeting Logs {.unnumbered}
 
 Placeholder for at least six FYP I meeting logs.
 
 {{< pagebreak >}}
 
-# Appendix C: Turnitin Similarity Index Page {.unnumbered}
+# Appendix D: Turnitin Similarity Index Page {.unnumbered}
 
 Placeholder for Turnitin Similarity Index page. Overall Similarity Index must be <= 20%.
 
 {{< pagebreak >}}
 
-# Appendix D: Technical Documentation {.unnumbered}
+# Appendix E: Technical Documentation {.unnumbered}
 
 Placeholder for technical documentation, specification documents, design documents, and prototype code listings if needed.

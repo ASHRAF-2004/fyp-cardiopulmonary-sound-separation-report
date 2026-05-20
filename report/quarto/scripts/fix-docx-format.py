@@ -19,6 +19,7 @@ COURSE_CODE = "CPT6314"
 TERM = "2610 Term"
 HEADER_FONT_SIZE = "20"  # OpenXML uses half-points: 20 = 10 pt.
 FOOTER_FONT_SIZE = "16"  # OpenXML uses half-points: 16 = 8 pt.
+APPENDIX_MATRIX_FONT_SIZE = "16"  # 8 pt.
 
 
 def qn(namespace: str, tag: str) -> str:
@@ -78,6 +79,14 @@ def clone_or_default_pg_sz(template_sect_pr: etree._Element | None) -> etree._El
     return pg_sz
 
 
+def landscape_pg_sz() -> etree._Element:
+    pg_sz = etree.Element(w("pgSz"))
+    pg_sz.set(w("w"), "16838")
+    pg_sz.set(w("h"), "11906")
+    pg_sz.set(w("orient"), "landscape")
+    return pg_sz
+
+
 def pg_mar(left: str, right: str, top: str, bottom: str) -> etree._Element:
     elem = etree.Element(w("pgMar"))
     elem.set(w("top"), top)
@@ -107,6 +116,8 @@ def section_properties(
     footer_rel: str | None,
     cover_margins: bool,
     continuous: bool,
+    landscape: bool = False,
+    matrix_margins: bool = False,
 ) -> etree._Element:
     sect_pr = etree.Element(w("sectPr"))
     if include_header_footer and header_rel:
@@ -127,10 +138,13 @@ def section_properties(
             pg_num_type.set(w("start"), start)
         sect_pr.append(pg_num_type)
 
-    sect_pr.append(clone_or_default_pg_sz(template_sect_pr))
+    sect_pr.append(landscape_pg_sz() if landscape else clone_or_default_pg_sz(template_sect_pr))
     if cover_margins:
         # 25.4 mm = 1 inch = 1440 twips on all sides.
         sect_pr.append(pg_mar("1440", "1440", "1440", "1440"))
+    elif matrix_margins:
+        # Landscape appendix matrix needs compact margins so the table stays readable.
+        sect_pr.append(pg_mar("720", "720", "720", "720"))
     else:
         # Main report margins from the handbook: left 38 mm, right/top/bottom 28 mm.
         # Approximate twips: 38 mm ~= 2154; 28 mm ~= 1587.
@@ -177,8 +191,12 @@ def apply_section_numbering(document_root: etree._Element) -> None:
 
     copyright_idx = find_paragraph_index(paragraphs, "Copyright")
     chapter1_idx = find_paragraph_index(paragraphs, "Chapter 1: Introduction")
+    appendix_a_idx = find_paragraph_index(paragraphs, "Appendix A: Full Literature Review Matrix")
+    appendix_b_idx = find_paragraph_index(paragraphs, "Appendix B: Gantt Chart")
     if copyright_idx == 0 or chapter1_idx == 0:
         raise ValueError("Unable to insert section breaks at required positions")
+    if appendix_a_idx == 0 or appendix_b_idx == 0 or appendix_b_idx <= appendix_a_idx:
+        raise ValueError("Unable to insert Appendix A landscape section breaks")
 
     template_sect_pr = final_sect_pr
     cover_sect = section_properties(
@@ -211,13 +229,37 @@ def apply_section_numbering(document_root: etree._Element) -> None:
         cover_margins=False,
         continuous=False,
     )
+    appendix_landscape_sect = section_properties(
+        template_sect_pr,
+        page_fmt="decimal",
+        start=None,
+        include_header_footer=True,
+        header_rel=header_rel,
+        footer_rel=footer_rel,
+        cover_margins=False,
+        continuous=False,
+        landscape=True,
+        matrix_margins=True,
+    )
+    portrait_continue_sect = section_properties(
+        template_sect_pr,
+        page_fmt="decimal",
+        start=None,
+        include_header_footer=True,
+        header_rel=header_rel,
+        footer_rel=footer_rel,
+        cover_margins=False,
+        continuous=False,
+    )
 
     set_paragraph_section(paragraphs[copyright_idx - 1], cover_sect)
     set_paragraph_section(paragraphs[chapter1_idx - 1], front_sect)
+    set_paragraph_section(paragraphs[appendix_a_idx - 1], body_sect)
+    set_paragraph_section(paragraphs[appendix_b_idx - 1], appendix_landscape_sect)
 
     if final_sect_pr is not None:
         body.remove(final_sect_pr)
-    body.append(body_sect)
+    body.append(portrait_continue_sect)
 
 
 def apply_run_size(run: etree._Element, size: str | None) -> etree._Element:
@@ -233,6 +275,166 @@ def apply_run_size(run: etree._Element, size: str | None) -> etree._Element:
             elem = etree.SubElement(r_pr, w(tag))
         elem.set(w("val"), size)
     return run
+
+
+def apply_run_font(run: etree._Element, font: str = "Arial") -> None:
+    r_pr = run.find("w:rPr", namespaces=NS)
+    if r_pr is None:
+        r_pr = etree.Element(w("rPr"))
+        run.insert(0, r_pr)
+    fonts = r_pr.find("w:rFonts", namespaces=NS)
+    if fonts is None:
+        fonts = etree.SubElement(r_pr, w("rFonts"))
+    for attr in ("ascii", "hAnsi", "cs"):
+        fonts.set(w(attr), font)
+
+
+def ensure_bold(run: etree._Element) -> None:
+    r_pr = run.find("w:rPr", namespaces=NS)
+    if r_pr is None:
+        r_pr = etree.Element(w("rPr"))
+        run.insert(0, r_pr)
+    if r_pr.find("w:b", namespaces=NS) is None:
+        etree.SubElement(r_pr, w("b"))
+    if r_pr.find("w:bCs", namespaces=NS) is None:
+        etree.SubElement(r_pr, w("bCs"))
+
+
+def ensure_tbl_pr(tbl: etree._Element) -> etree._Element:
+    tbl_pr = tbl.find("w:tblPr", namespaces=NS)
+    if tbl_pr is None:
+        tbl_pr = etree.Element(w("tblPr"))
+        tbl.insert(0, tbl_pr)
+    return tbl_pr
+
+
+def set_table_borders(tbl_pr: etree._Element) -> None:
+    for existing in tbl_pr.xpath("./w:tblBorders", namespaces=NS):
+        tbl_pr.remove(existing)
+    borders = etree.SubElement(tbl_pr, w("tblBorders"))
+    for side in ("top", "left", "bottom", "right", "insideH", "insideV"):
+        edge = etree.SubElement(borders, w(side))
+        edge.set(w("val"), "single")
+        edge.set(w("sz"), "4")
+        edge.set(w("space"), "0")
+        edge.set(w("color"), "000000")
+
+
+def set_table_cell_margins(tbl_pr: etree._Element) -> None:
+    for existing in tbl_pr.xpath("./w:tblCellMar", namespaces=NS):
+        tbl_pr.remove(existing)
+    cell_mar = etree.SubElement(tbl_pr, w("tblCellMar"))
+    for side in ("top", "left", "bottom", "right"):
+        elem = etree.SubElement(cell_mar, w(side))
+        elem.set(w("w"), "60")
+        elem.set(w("type"), "dxa")
+
+
+def set_table_width_and_layout(tbl_pr: etree._Element) -> None:
+    tbl_w = tbl_pr.find("w:tblW", namespaces=NS)
+    if tbl_w is None:
+        tbl_w = etree.SubElement(tbl_pr, w("tblW"))
+    tbl_w.set(w("w"), "5000")
+    tbl_w.set(w("type"), "pct")
+
+    layout = tbl_pr.find("w:tblLayout", namespaces=NS)
+    if layout is None:
+        layout = etree.SubElement(tbl_pr, w("tblLayout"))
+    layout.set(w("type"), "autofit")
+
+
+def set_cell_top_alignment(tc: etree._Element) -> None:
+    tc_pr = tc.find("w:tcPr", namespaces=NS)
+    if tc_pr is None:
+        tc_pr = etree.Element(w("tcPr"))
+        tc.insert(0, tc_pr)
+    v_align = tc_pr.find("w:vAlign", namespaces=NS)
+    if v_align is None:
+        v_align = etree.SubElement(tc_pr, w("vAlign"))
+    v_align.set(w("val"), "top")
+
+
+def compact_table_paragraph(p: etree._Element) -> None:
+    p_pr = p.find("w:pPr", namespaces=NS)
+    if p_pr is None:
+        p_pr = etree.Element(w("pPr"))
+        p.insert(0, p_pr)
+    spacing = p_pr.find("w:spacing", namespaces=NS)
+    if spacing is None:
+        spacing = etree.SubElement(p_pr, w("spacing"))
+    spacing.set(w("before"), "0")
+    spacing.set(w("after"), "0")
+    spacing.set(w("line"), "180")
+    spacing.set(w("lineRule"), "auto")
+
+
+def mark_repeating_header_row(tr: etree._Element) -> None:
+    tr_pr = tr.find("w:trPr", namespaces=NS)
+    if tr_pr is None:
+        tr_pr = etree.Element(w("trPr"))
+        tr.insert(0, tr_pr)
+    if tr_pr.find("w:tblHeader", namespaces=NS) is None:
+        header = etree.SubElement(tr_pr, w("tblHeader"))
+        header.set(w("val"), "true")
+
+
+def shade_header_cells(tr: etree._Element) -> None:
+    for tc in tr.findall("w:tc", namespaces=NS):
+        tc_pr = tc.find("w:tcPr", namespaces=NS)
+        if tc_pr is None:
+            tc_pr = etree.Element(w("tcPr"))
+            tc.insert(0, tc_pr)
+        shd = tc_pr.find("w:shd", namespaces=NS)
+        if shd is None:
+            shd = etree.SubElement(tc_pr, w("shd"))
+        shd.set(w("fill"), "D9EAF7")
+
+
+def body_child_index(body: etree._Element, target: etree._Element) -> int:
+    for idx, child in enumerate(list(body)):
+        if child is target:
+            return idx
+    raise ValueError("Document child not found")
+
+
+def format_appendix_matrix_table(document_root: etree._Element) -> None:
+    body = document_root.find("w:body", namespaces=NS)
+    if body is None:
+        raise ValueError("DOCX document body not found")
+    paragraphs = body.findall("w:p", namespaces=NS)
+    appendix_a = paragraphs[find_paragraph_index(paragraphs, "Appendix A: Full Literature Review Matrix")]
+    appendix_b = paragraphs[find_paragraph_index(paragraphs, "Appendix B: Gantt Chart")]
+    start = body_child_index(body, appendix_a)
+    end = body_child_index(body, appendix_b)
+
+    matrix_table = None
+    for child in list(body)[start:end]:
+        if child.tag == w("tbl"):
+            matrix_table = child
+            break
+    if matrix_table is None:
+        raise ValueError("Appendix A full literature review matrix table not found")
+
+    tbl_pr = ensure_tbl_pr(matrix_table)
+    set_table_width_and_layout(tbl_pr)
+    set_table_borders(tbl_pr)
+    set_table_cell_margins(tbl_pr)
+
+    rows = matrix_table.findall("w:tr", namespaces=NS)
+    if rows:
+        mark_repeating_header_row(rows[0])
+        shade_header_cells(rows[0])
+
+    for row_index, tr in enumerate(rows):
+        for tc in tr.findall("w:tc", namespaces=NS):
+            set_cell_top_alignment(tc)
+            for p in tc.findall(".//w:p", namespaces=NS):
+                compact_table_paragraph(p)
+            for run in tc.findall(".//w:r", namespaces=NS):
+                apply_run_size(run, APPENDIX_MATRIX_FONT_SIZE)
+                apply_run_font(run)
+                if row_index == 0:
+                    ensure_bold(run)
 
 
 def field_run(instr: str, fallback: str = "", size: str | None = None) -> list[etree._Element]:
@@ -376,6 +578,7 @@ def patch_docx(input_path: Path, output_path: Path) -> None:
 
         document_root = parse_xml(document_path.read_bytes())
         apply_section_numbering(document_root)
+        format_appendix_matrix_table(document_root)
         document_path.write_bytes(xml_bytes(document_root))
 
         styles_root = parse_xml(styles_path.read_bytes())

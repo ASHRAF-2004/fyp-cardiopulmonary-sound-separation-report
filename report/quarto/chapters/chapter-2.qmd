@@ -1,7 +1,5 @@
 # Chapter 2: Literature Review
 
-Draft status: reviewed first academic draft for FYP1. This chapter uses only the recommended Chapter 2 writing set from `literature-review/notes/chapter_2_evidence_map.md`. The focus is `Machine Learning-Based System for Cardiopulmonary Sound Separation`, with emphasis on audio separation, preprocessing, datasets, evaluation, and prototype relevance rather than medical diagnosis.
-
 ## Introduction
 
 Cardiopulmonary auscultation produces acoustic recordings in which heart activity, respiratory airflow, sensor contact noise, and environmental interference may appear together in the same signal. In digital stethoscope recordings, these components are usually captured as a mixed audio waveform rather than as isolated heart and lung sources. This makes cardiopulmonary sound processing a source separation problem: the system must estimate heart-related and lung-related components from a combined recording before the separated outputs can be listened to, visualized, stored, or evaluated.
@@ -12,9 +10,32 @@ This chapter reviews the literature thematically. It first discusses cardiopulmo
 
 ## Literature Search and Screening Process
 
-The literature review records were maintained through the project tracking files in the literature-review workflow. The current PRISMA summary reflects the latest recorded screening state: 96 records were retained in `papers_master.csv`, 18 studies were marked as included for the literature review, 31 records were retained as maybe/background evidence, and 47 records were excluded for reasons such as weak scope alignment, duplicate status, year-range exclusion, or access limitations. The PRISMA flow diagram summarizes this identification, screening, and final selection process.
+The literature review process followed a structured screening approach to ensure that the selected studies were relevant to cardiopulmonary sound separation, audio preprocessing, public datasets, machine learning methods, evaluation metrics, and software prototype development. A total of 96 records were considered. After screening and access checking, 47 records were excluded because they were outside the project scope, duplicated earlier records, weakly related to sound separation, outside the target review period, or not sufficiently accessible for use as supporting evidence.
+
+After screening, 49 records remained eligible for the review pool. From the eligible records, 35 papers were selected and used in the Chapter 2 synthesis. These consisted of 18 core studies directly related to cardiopulmonary, heart-lung, or chest sound separation, and 17 background/supplementary studies related to datasets, preprocessing, machine learning methods, evaluation metrics, or supporting context. The remaining 14 eligible records were retained as backup evidence but were not cited in the current draft. Excluded records were not used as supporting evidence in the literature synthesis.
+
+The PRISMA flow diagram in @fig-prisma-flow summarizes the search and screening process in a reader-friendly form.
 
 ![PRISMA flow diagram for the literature search and screening process.](figures/prisma/prisma_flow_diagram.png){#fig-prisma-flow width=100%}
+
+## Literature Review Matrix
+
+The literature review matrix summarizes the main studies reviewed in this chapter. A concise version is presented below, while the complete matrix is provided in Appendix A.
+
+| No. | Author(s) & Year | Focus | Method / Model | Dataset | Key Finding | Relevance to This Project |
+|---:|---|---|---|---|---|---|
+| 1 | Grooby et al. (2023) [@grooby2023noisyneonatal] | Neonatal chest sound separation | NMF and NMCF | Neonatal mixtures and noisy chest sounds | Classical decomposition can improve heart and lung sound quality. | Provides a baseline for separating mixed cardiopulmonary recordings. |
+| 2 | Fattahi et al. (2022) [@fattahi2022blind2] | Noisy chest sound filtering | Wavelet transform, PCA, periodic component analysis, SOBI | Neonatal chest sound recordings | Blind filtering improves signal quality under noisy conditions. | Supports preprocessing and traditional baseline design. |
+| 3 | Poh et al. (2024) [@poh2024neossnet] | Real-time neonatal separation | 1D encoder-decoder with transformer mask generation | Neonatal chest recordings | Deep learning can support real-time heart-lung separation. | Main model reference for a machine learning-based prototype. |
+| 4 | Sun et al. (2024) [@sun2024daenmfvmd] | Hybrid heart-lung separation | DAE, NMF, and VMD | Heart-lung mixtures | Hybrid decomposition and learning methods improve separation quality. | Shows how preprocessing and ML can be combined. |
+| 5 | Ullah and Zhang (2024) [@ullah2024unsupervised] | Data-constrained single-channel separation | MCRA, OMLSA, and NMF-HMM | Heart and lung sound mixtures | Unsupervised methods can be useful when labelled data are limited. | Supports feasible low-data separation choices. |
+| 6 | Wang et al. (2023) [@wang2023mcunet] | Robust heart-lung separation | SNMF-DCNN-MCUNet | Heart-lung mixtures with different lung sound types | U-Net-style models can improve standard separation metrics. | Guides model architecture and evaluation planning. |
+| 7 | Zhang et al. (2025) [@zhang2025jassnet] | Attention-based separation | Joint attention and semi-supervised network | Simulated and clinical cardiopulmonary recordings | Attention and semi-supervised learning improve recent separation models. | Defines a recent advanced method for comparison. |
+| 8 | Wang et al. (2025) [@wang2025phase2] | Phase-aware chest sound separation | Dual-path transformer with phase enhancement | Constructed chest sound mixtures | Phase information can affect reconstructed sound quality. | Supports time-frequency and reconstruction design choices. |
+| 9 | Torabi et al. (2025) [@torabi2025hlscmds] | Public separation dataset | HLS-CMDS dataset descriptor | Manikin heart, lung, mixed, and source recordings | Provides paired mixed and source recordings for evaluation. | Main public dataset candidate for the prototype. |
+| 10 | Tsai et al. (2023) [@tsai2023separation2] | Feasible deep separation pipeline | Deep network-based model | Public heart/lung sounds used to generate mixtures | A simpler neural model can separate synthetic heart-lung mixtures. | Useful for realistic student-level implementation planning. |
+
+: Summary literature review matrix for key cardiopulmonary sound separation studies {#tbl-literature-review-matrix}
 
 ## Cardiopulmonary Sound Characteristics
 

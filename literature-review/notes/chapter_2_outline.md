@@ -147,3 +147,10 @@ Use the Phase 4 fields in `metadata/papers_master.csv`, `metadata/download_queue
 - Keep Low-priority Maybe records as backup only. Do not delete them; they remain useful for PRISMA traceability and optional background.
 - Do not use Exclude records as evidence except when explaining screening/access limitations.
 - Write Chapter 2 thematically, not as one paragraph per paper.
+
+## Meeting Log 3 Reader-Facing Revision Notes
+
+- Chapter 2 now treats the 35 recommended papers as the current cited synthesis set because all 35 are cited in the active chapter draft and none are excluded records.
+- Report-facing wording should explain the synthesis as 18 core separation studies plus 17 background/supplementary studies.
+- The PRISMA explanation should avoid internal workflow filenames in the report body and should use reader-facing terms such as selected studies, eligible records, excluded records, and background/supplementary studies.
+- The Chapter 2 matrix should remain concise in the report. The current Chapter 2 table summarizes the most important studies, while the full 35-paper matrix is placed in Appendix A and formatted as a landscape table in the DOCX workflow.

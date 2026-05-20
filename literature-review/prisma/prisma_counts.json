@@ -294,6 +294,17 @@
     "Exclude": 47,
     "useful_pool_include_plus_maybe": 49
   },
+  "chapter_2_synthesis_selection": {
+    "date": "2026-05-20",
+    "records_considered": 96,
+    "records_excluded": 47,
+    "eligible_records_after_screening": 49,
+    "studies_selected_and_cited_in_chapter_2": 35,
+    "core_separation_studies": 18,
+    "background_supplementary_studies": 17,
+    "eligible_backup_records_not_cited": 14,
+    "interpretation": "The report-facing Chapter 2 synthesis uses 35 cited papers selected from the 49 eligible records: 18 core separation studies and 17 background or supplementary studies. The remaining 14 eligible records are retained as backup evidence and are not cited in the current Chapter 2 draft."
+  },
   "download_priority_summary_after_phase_7": {
     "Priority 1": 8,
     "Priority 2": 18,

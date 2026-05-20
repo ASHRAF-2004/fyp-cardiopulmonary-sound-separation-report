@@ -19,7 +19,7 @@ Do not use pure LaTeX as the main workflow. Do not manually format the final rep
 | Placeholder figure asset | Created at `report/quarto/assets/figures/report-workflow-placeholder.png`. |
 | Render helper | Updated at `report/quarto/scripts/render-report.ps1`; it renders DOCX and then runs DOCX post-processing. |
 | Validation helper | Updated at `report/quarto/scripts/validate-report.ps1`; it checks source files, output DOCX, front-matter order, section count, heading numbering, header/footer font sizes, and Word field update settings. |
-| DOCX post-processing | Added at `report/quarto/scripts/fix-docx-format.py`. |
+| DOCX post-processing | Added at `report/quarto/scripts/fix-docx-format.py`; it also formats Appendix A's full literature review matrix as a landscape-only section. |
 | Chapter imports | Added under `report/quarto/chapters/chapter-1.qmd`, `chapter-2.qmd`, and `chapter-3.qmd`. |
 | DOCX render test | Successful; output generated at `report/generated/paper.docx`. |
 | PDF render test | Not performed; PDF remains optional. |
@@ -252,12 +252,13 @@ Diagram sources:
 
 ## Appendices
 
-Required FYP1 appendices:
+Current FYP1 appendices:
 
-- Appendix A: Gantt Chart
-- Appendix B: FYP I Meeting Logs
-- Appendix C: Turnitin Similarity Index Page
-- Appendix D: Technical documentation, if needed
+- Appendix A: Full Literature Review Matrix
+- Appendix B: Gantt Chart
+- Appendix C: FYP I Meeting Logs
+- Appendix D: Turnitin Similarity Index Page
+- Appendix E: Technical documentation, if needed
 
 Implementation notes:
 
@@ -294,6 +295,7 @@ DOCX validation must check:
 - Figure captions below figures.
 - Table captions above tables.
 - APA citations and reference list formatting.
+- Appendix A full literature review matrix uses landscape pages only, 8 pt table text, repeated header row, and bordered table cells.
 
 ## PDF Output Plan
 

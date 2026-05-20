@@ -69,6 +69,57 @@ def visible_text_runs_have_size(root, expected):
             return False
     return True
 
+body_root = etree.fromstring(document.encode("utf-8"))
+body = body_root.find("w:body", namespaces=ns)
+paragraphs = body.findall("w:p", namespaces=ns)
+
+def para_text(p):
+    return "".join(p.xpath(".//w:t/text()", namespaces=ns)).strip()
+
+def find_para(needle):
+    for i, p in enumerate(paragraphs):
+        if needle in para_text(p):
+            return i, p
+    return -1, None
+
+def section_orientations():
+    result = []
+    for sect in body_root.xpath(".//w:sectPr", namespaces=ns):
+        pg = sect.find("w:pgSz", namespaces=ns)
+        if pg is not None:
+            result.append(pg.get(f"{{{ns['w']}}}orient", "portrait"))
+    return result
+
+def body_child_index(target):
+    for i, child in enumerate(list(body)):
+        if child is target:
+            return i
+    return -1
+
+def appendix_matrix_table():
+    a_idx, a_para = find_para("Appendix A: Full Literature Review Matrix")
+    b_idx, b_para = find_para("Appendix B: Gantt Chart")
+    if a_para is None or b_para is None:
+        return None
+    start = body_child_index(a_para)
+    end = body_child_index(b_para)
+    if start < 0 or end <= start:
+        return None
+    for child in list(body)[start:end]:
+        if child.tag == f"{{{ns['w']}}}tbl":
+            return child
+    return None
+
+matrix_tbl = appendix_matrix_table()
+matrix_rows = matrix_tbl.findall("w:tr", namespaces=ns) if matrix_tbl is not None else []
+matrix_runs = matrix_tbl.xpath(".//w:r[w:t]", namespaces=ns) if matrix_tbl is not None else []
+matrix_run_sizes_ok = bool(matrix_runs) and all(
+    (run.find("w:rPr/w:sz", namespaces=ns) is not None and run.find("w:rPr/w:sz", namespaces=ns).get(f"{{{ns['w']}}}val") == "16")
+    for run in matrix_runs
+)
+matrix_header_repeats = bool(matrix_rows) and matrix_rows[0].find("w:trPr/w:tblHeader", namespaces=ns) is not None
+orientations = section_orientations()
+
 checks = {
     "cover appears before table of contents": plain.find("FINAL YEAR PROJECT INTERIM REPORT") != -1 and plain.find("Table of Contents") != -1 and plain.find("FINAL YEAR PROJECT INTERIM REPORT") < plain.find("Table of Contents"),
     "chapter 1 appears after front matter": plain.find("Chapter 1: Introduction") > plain.find("List of Appendices"),
@@ -78,6 +129,12 @@ checks = {
     "Heading styles do not add their own numbering": heading_has_no_numpr("Heading1") and heading_has_no_numpr("Heading2") and heading_has_no_numpr("Heading3"),
     "header font size is 10 pt": visible_text_runs_have_size(header_root, "20"),
     "footer font size is 8 pt": visible_text_runs_have_size(footer_root, "16"),
+    "Chapter 1 uses normal problem/objective numbering": "P1." not in plain and "P2." not in plain and "P3." not in plain and "O1." not in plain and "O2." not in plain and "O3." not in plain,
+    "no problem-objective alignment table remains": "Problem-objective alignment" not in plain,
+    "Appendix A matrix table exists": matrix_tbl is not None,
+    "Appendix A matrix section is landscape only": orientations.count("landscape") == 1,
+    "Appendix A matrix font size is 8 pt": matrix_run_sizes_ok,
+    "Appendix A matrix header repeats": matrix_header_repeats,
 }
 for name, ok in checks.items():
     print(("PASS" if ok else "FAIL") + ": " + name)
