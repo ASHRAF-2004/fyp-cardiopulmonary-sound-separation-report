@@ -217,7 +217,7 @@
   },
   "notes_after_manual_access_update": [
     "No records or PDFs were deleted.",
-    "No searches, downloads, logins, or credential handling were performed by Codex.",
+    "No searches, downloads, logins, or credential handling were performed during this update.",
     "Manual full-text access exclusions are retained for PRISMA tracking.",
     "The enhanced VMD paper remains Maybe because online full text is readable even though PDF download is unavailable."
   ],
@@ -303,7 +303,7 @@
     "core_separation_studies": 18,
     "background_supplementary_studies": 17,
     "eligible_backup_records_not_cited": 14,
-    "interpretation": "The report-facing Chapter 2 synthesis uses 35 cited papers selected from the 49 eligible records: 18 core separation studies and 17 background or supplementary studies. The remaining 14 eligible records are retained as backup evidence and are not cited in the current Chapter 2 draft."
+    "interpretation": "The report-facing Chapter 2 synthesis uses 35 cited papers selected from the 49 eligible records: 18 core separation studies and 17 background or supplementary studies. The remaining 14 eligible records are retained as backup evidence and are not cited in the current report."
   },
   "download_priority_summary_after_phase_7": {
     "Priority 1": 8,

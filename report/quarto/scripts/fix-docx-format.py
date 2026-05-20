@@ -192,7 +192,7 @@ def apply_section_numbering(document_root: etree._Element) -> None:
     copyright_idx = find_paragraph_index(paragraphs, "Copyright")
     chapter1_idx = find_paragraph_index(paragraphs, "Chapter 1: Introduction")
     appendix_a_idx = find_paragraph_index(paragraphs, "Appendix A: Full Literature Review Matrix")
-    appendix_b_idx = find_paragraph_index(paragraphs, "Appendix B: Gantt Chart")
+    appendix_b_idx = find_paragraph_index(paragraphs, "Appendix B: PRISMA Screening Summary")
     if copyright_idx == 0 or chapter1_idx == 0:
         raise ValueError("Unable to insert section breaks at required positions")
     if appendix_a_idx == 0 or appendix_b_idx == 0 or appendix_b_idx <= appendix_a_idx:
@@ -403,7 +403,7 @@ def format_appendix_matrix_table(document_root: etree._Element) -> None:
         raise ValueError("DOCX document body not found")
     paragraphs = body.findall("w:p", namespaces=NS)
     appendix_a = paragraphs[find_paragraph_index(paragraphs, "Appendix A: Full Literature Review Matrix")]
-    appendix_b = paragraphs[find_paragraph_index(paragraphs, "Appendix B: Gantt Chart")]
+    appendix_b = paragraphs[find_paragraph_index(paragraphs, "Appendix B: PRISMA Screening Summary")]
     start = body_child_index(body, appendix_a)
     end = body_child_index(body, appendix_b)
 

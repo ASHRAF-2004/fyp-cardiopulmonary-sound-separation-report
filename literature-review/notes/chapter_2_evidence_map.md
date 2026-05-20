@@ -2,7 +2,7 @@
 
 FYP title: Machine Learning-Based System for Cardiopulmonary Sound Separation
 
-Updated: 2026-05-16
+Updated: 2026-05-20
 
 Scope: final Chapter 2 selection from existing Include/Maybe records only. No new searches, downloads, logins, record deletion, or PDF deletion were performed.
 
@@ -18,11 +18,9 @@ Scope: final Chapter 2 selection from existing Include/Maybe records only. No ne
 
 | Chapter 2 role | Count |
 |---|---:|
-| Core Chapter 2 paper | 16 |
-| Dataset/evaluation paper | 5 |
-| Supporting paper | 18 |
-| Background-only paper | 6 |
-| Not needed unless space allows | 4 |
+| Core separation studies used in Chapter 2 | 18 |
+| Background/supplementary studies used in Chapter 2 | 17 |
+| Eligible backup records not cited in the current report | 14 |
 
 | Priority | Count |
 |---|---:|

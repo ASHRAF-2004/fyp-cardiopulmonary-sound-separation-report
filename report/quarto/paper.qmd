@@ -136,9 +136,9 @@ Finally, I would like to thank my family, friends, and colleagues for their enco
 
 # Abstract {.unnumbered}
 
-This interim report presents the first phase of a Final Year Project titled Machine Learning-Based System for Cardiopulmonary Sound Separation. The project focuses on developing a software prototype that processes mixed cardiopulmonary audio and produces separated heart sound and lung sound outputs. The project is motivated by the overlap between heart and lung sounds in chest recordings and by the need for a structured, reusable software workflow for sound separation rather than disease diagnosis.
+Cardiopulmonary sound recordings often contain heart sounds, lung sounds, sensor contact noise, and environmental artefacts in the same audio signal. This overlap makes it difficult to process the signals accurately using simple filtering or traditional signal processing alone. This report presents a Final Year Project titled Machine Learning-Based System for Cardiopulmonary Sound Separation. The project aims to design and develop a software prototype that accepts mixed cardiopulmonary audio, applies suitable preprocessing, separates the signal into heart sound and lung sound outputs, and evaluates the separation quality using appropriate datasets and metrics.
 
-The report introduces the project background, problem statement, objectives, scope, literature review, and proposed methodology. The planned system includes public dataset selection, audio preprocessing, feature or input representation, machine learning-based separation, output generation, and evaluation using suitable signal-level metrics. The expected outcome is a proof-of-concept software system that demonstrates cardiopulmonary sound separation while avoiding unsupported clinical claims.
+The methodology follows an application-based prototype development approach. The literature review examines cardiopulmonary sound characteristics, traditional signal processing methods, machine learning and deep learning methods, available datasets, evaluation metrics, and prototype-related gaps. The proposed system uses public datasets, with HLS-CMDS identified as a relevant candidate because it provides mixed heart-lung recordings and corresponding source signals. The expected output is a reusable proof-of-concept software system that demonstrates heart-lung sound separation through audio preprocessing, model-based separation, output management, and planned evaluation. The project does not focus on disease diagnosis or clinical decision-making; its contribution is a structured software workflow for cardiopulmonary sound separation research and experimentation.
 
 {{< pagebreak >}}
 
@@ -161,7 +161,14 @@ The report introduces the project background, problem statement, objectives, sco
 | Table | Description |
 |---|---|
 | Table 1 | Summary literature review matrix for key cardiopulmonary sound separation studies |
-| Table 2 | Full literature review matrix for selected Chapter 2 papers |
+| Table 2 | Main system modules and responsibilities |
+| Table 3 | Planned database and storage records |
+| Table 4 | Planned functional test cases |
+| Table 5 | Planned audio separation evaluation metrics |
+| Table 6 | Full literature review matrix for selected Chapter 2 papers |
+| Table 7 | PRISMA screening summary for the literature review |
+| Table 8 | System design diagram summary |
+| Table 9 | Appendix planned test cases and evaluation checks |
 
 {{< pagebreak >}}
 
@@ -170,6 +177,10 @@ The report introduces the project background, problem statement, objectives, sco
 | Figure | Description |
 |---|---|
 | Figure 1 | PRISMA flow diagram for the literature search and screening process |
+| Figure 2 | Use case diagram for the cardiopulmonary sound separation system |
+| Figure 3 | Component diagram for the cardiopulmonary sound separation system |
+| Figure 4 | Audio processing workflow |
+| Figure 5 | Sequence diagram for audio upload and separation |
 
 {{< pagebreak >}}
 
@@ -179,12 +190,22 @@ The report introduces the project background, problem statement, objectives, sco
 |---|---|
 | FYP | Final Year Project |
 | ML | Machine Learning |
+| DL | Deep Learning |
 | PCG | Phonocardiogram |
 | HLS-CMDS | Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope |
+| SNR | Signal-to-Noise Ratio |
+| SDR | Signal-to-Distortion Ratio |
+| SI-SDR | Scale-Invariant Signal-to-Distortion Ratio |
+| STFT | Short-Time Fourier Transform |
 | NMF | Non-negative Matrix Factorization |
 | VMD | Variational Mode Decomposition |
+| CNN | Convolutional Neural Network |
+| PESQ | Perceptual Evaluation of Speech Quality |
+| STOI | Short-Time Objective Intelligibility |
+| API | Application Programming Interface |
+| UI | User Interface |
+| UML | Unified Modeling Language |
 | PRISMA | Preferred Reporting Items for Systematic Reviews and Meta-Analyses |
-| SDR | Signal-to-Distortion Ratio |
 | DOCX | Microsoft Word Open XML Document |
 
 {{< pagebreak >}}
@@ -194,10 +215,9 @@ The report introduces the project background, problem statement, objectives, sco
 | Appendix | Description |
 |---|---|
 | Appendix A | Full Literature Review Matrix |
-| Appendix B | Gantt Chart |
-| Appendix C | FYP I Meeting Logs |
-| Appendix D | Turnitin Similarity Index Page |
-| Appendix E | Technical Documentation |
+| Appendix B | PRISMA Screening Summary |
+| Appendix C | System Design Diagrams |
+| Appendix D | Planned Test Cases and Evaluation Metrics |
 
 {{< pagebreak >}}
 
@@ -217,61 +237,11 @@ The report introduces the project background, problem statement, objectives, sco
 
 {{< pagebreak >}}
 
-# Chapter 4: System Design
-
-## Overview
-
-Placeholder content for system design.
-
-## Context Diagram
-
-Placeholder context diagram notes.
-
-## Use Case Diagram
-
-Placeholder use case diagram notes.
-
-## Activity Diagram
-
-Placeholder activity diagram notes.
-
-## Class Diagram
-
-Placeholder class diagram notes.
-
-## Sequence Diagram
-
-Placeholder sequence diagram notes.
-
-## Interface Design
-
-Placeholder interface design notes.
-
-## Summary
-
-Placeholder system design summary.
+{{< include chapters/chapter-4.qmd >}}
 
 {{< pagebreak >}}
 
-# Chapter 5: Implementation Plan
-
-## Development Phase
-
-Placeholder development phase.
-
-## Testing Phase
-
-Placeholder testing phase.
-
-## Deployment Phase
-
-Placeholder deployment phase, if applicable.
-
-{{< pagebreak >}}
-
-# Chapter 6: Conclusion
-
-Placeholder conclusion for FYP1 progress and next-phase work.
+{{< include chapters/chapter-5.qmd >}}
 
 {{< pagebreak >}}
 
@@ -319,7 +289,7 @@ The complete literature review matrix below summarizes the selected papers used 
 | 21 | A Blind Filtering Framework for Noisy Neonatal Chest Sounds | Fattahi et al. (2022) [@fattahi2022blind2] | IEEE Access | Filter noisy neonatal chest sounds. | Wavelet transform, PCA, periodic component analysis, and SOBI. | Neonatal chest sound recordings. | Improved quality assessment and rate estimation. | Traditional filtering needs careful component selection. | Severe artefacts may still reduce reliability. | Supports preprocessing and baseline separation design. |
 | 22 | A Dual Classifier-Regressor Architecture for Heart Sound Onset/Offset Detection | Somarathne et al. (2026) [@somarathne2026dual2] | IEEE Transactions on Biomedical Engineering | Detect heart sound onset and offset. | Classifier-regressor PCG architecture. | PhysioNet/CinC heart sound data. | Reported timing and segmentation metrics. | Segmentation is not source separation. | Requires PCG/ECG-style context. | Supports timing and evaluation considerations. |
 | 23 | BUET multi-disease heart sound dataset: A comprehensive auscultation dataset for developing computer-aided diagnostic systems | Ali et al. (2026) [@ali2026buet2] | Computer Methods and Programs in Biomedicine Update | Provide a public heart sound dataset. | Dataset descriptor. | BUET multi-disease heart sound recordings. | Provides labelled heart sound data for AI research. | Dataset is diagnosis-oriented, not paired separation data. | No lung source or mixed-source separation target. | Helps distinguish background datasets from separation datasets. |
-| 24 | Cardiorespiratory Sound Separation Using Singular Spectrum Analysis | Han and Quan (2025) [@han2025cardiorespiratory] | International Conference on Signal Processing Systems | Separate cardiac and respiratory components. | Multi-stage singular spectrum analysis. | Digital stethoscope cardiorespiratory recordings. | Presents a recent direct separation approach. | Detailed evaluation evidence remains limited at this draft stage. | Full implementation details need further confirmation. | Adds a recent non-deep-learning comparator. |
+| 24 | Cardiorespiratory Sound Separation Using Singular Spectrum Analysis | Han and Quan (2025) [@han2025cardiorespiratory] | International Conference on Signal Processing Systems | Separate cardiac and respiratory components. | Multi-stage singular spectrum analysis. | Digital stethoscope cardiorespiratory recordings. | Presents a recent direct separation approach. | Detailed evaluation evidence remains limited at this reporting stage. | Full implementation details need further confirmation. | Adds a recent non-deep-learning comparator. |
 | 25 | StethAid: A Digital Auscultation Platform for Pediatrics | Arjoune et al. (2023) [@arjoune2023stethaid] | Sensors | Support pediatric digital auscultation workflow. | Digital auscultation platform. | Pediatric auscultation use context. | Demonstrates platform-oriented auscultation support. | Platform design is not separation-specific. | Does not provide heart-lung separation output. | Supports software workflow and interface thinking. |
 | 26 | Sound-Dr: Reliable Sound Dataset and Baseline Artificial Intelligence System for Respiratory Illnesses | Hoang et al. (2023) [@hoang2023reliable] | PHM Society Asia-Pacific Conference | Provide respiratory audio dataset and baseline AI. | Dataset and baseline AI system. | Sound-Dr respiratory recordings. | Supports respiratory sound dataset context. | Respiratory illness focus differs from source separation. | No paired heart-lung source targets. | Provides supplementary dataset background. |
 | 27 | Compressed Sensing of Acoustic Cardiopulmonary Signals Using a CNN-based Reconstruction Method | Baeyens et al. (2025) [@baeyens2025compressed] | IEEE EMBC | Reconstruct acoustic cardiopulmonary signals. | Compressed sensing with CNN reconstruction. | Acoustic cardiopulmonary signals. | Shows reconstruction quality can affect later processing. | Reconstruction is not heart-lung source separation. | Dataset and deployment details need confirmation. | Supports acquisition and reconstruction context. |
@@ -336,24 +306,51 @@ The complete literature review matrix below summarizes the selected papers used 
 
 {{< pagebreak >}}
 
-# Appendix B: Gantt Chart {.unnumbered}
+# Appendix B: PRISMA Screening Summary {.unnumbered}
 
-Placeholder for Gantt chart.
+The PRISMA screening process used in Chapter 2 is summarized below. The summary separates eligible papers used in the literature synthesis from eligible backup records that were not cited in the current report.
+
+| Screening item | Count | Report interpretation |
+|---|---:|---|
+| Records considered | 96 | Records reviewed for relevance to cardiopulmonary sound separation and supporting topics. |
+| Records excluded | 47 | Records removed because they were outside scope, inaccessible for supporting use, duplicated, or weakly related to the project. |
+| Eligible records after screening | 49 | Records remaining after screening and access checking. |
+| Studies selected for Chapter 2 synthesis | 35 | Papers used in the Chapter 2 narrative, summary matrix, or full matrix. |
+| Core separation studies | 18 | Studies directly related to cardiopulmonary, heart-lung, or chest sound separation. |
+| Background/supplementary studies | 17 | Studies related to datasets, preprocessing, machine learning methods, evaluation metrics, or supporting context. |
+| Eligible backup records not cited | 14 | Eligible records retained for future reference but not used as evidence in this report. |
+
+: PRISMA screening summary for the literature review {#tbl-prisma-screening-summary}
 
 {{< pagebreak >}}
 
-# Appendix C: FYP I Meeting Logs {.unnumbered}
+# Appendix C: System Design Diagrams {.unnumbered}
 
-Placeholder for at least six FYP I meeting logs.
+The main system design diagrams are presented in Chapter 4. They summarize the prototype use cases, component structure, audio processing sequence, and workflow. The diagrams are included to support the design explanation without adding unsupported implementation details.
+
+| Diagram | Purpose |
+|---|---|
+| Use case diagram | Shows the user-facing functions of the cardiopulmonary sound separation system. |
+| Component diagram | Shows the main software modules and how they interact. |
+| Sequence diagram | Shows the expected processing flow when a user uploads an audio file. |
+| Audio processing workflow | Summarizes validation, preprocessing, separation, output generation, and evaluation. |
+
+: System design diagram summary {#tbl-system-design-diagrams}
 
 {{< pagebreak >}}
 
-# Appendix D: Turnitin Similarity Index Page {.unnumbered}
+# Appendix D: Planned Test Cases and Evaluation Metrics {.unnumbered}
 
-Placeholder for Turnitin Similarity Index page. Overall Similarity Index must be <= 20%.
+The following planned tests will guide the FYP2 implementation and evaluation phase. Actual results should be recorded only after the prototype has been implemented and tested.
 
-{{< pagebreak >}}
+| Test area | Planned check | Expected evidence |
+|---|---|---|
+| Audio upload | Accept a valid cardiopulmonary audio file. | Successful upload status and saved input metadata. |
+| File validation | Reject unsupported file type, missing file, or oversized file. | Clear validation message without processing failure. |
+| Preprocessing | Convert audio to the required sampling rate, channel format, and segment length. | Stored preprocessing metadata and consistent model input. |
+| Model inference | Run the selected separation method on a valid mixed input. | Generated heart and lung output files. |
+| Output review | Allow separated outputs to be played, inspected, or downloaded. | Accessible result view and downloadable audio files. |
+| Metric calculation | Compute relevant metrics when reference source signals are available. | Evaluation table containing valid metric values. |
+| Error handling | Handle corrupted or invalid audio input safely. | User-facing error message and no corrupted output record. |
 
-# Appendix E: Technical Documentation {.unnumbered}
-
-Placeholder for technical documentation, specification documents, design documents, and prototype code listings if needed.
+: Appendix planned test cases and evaluation checks {#tbl-appendix-planned-tests}

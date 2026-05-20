@@ -1,0 +1,113 @@
+# Chapter 5: Testing and Evaluation
+
+## Introduction
+
+This chapter presents the testing and evaluation plan for the machine learning-based cardiopulmonary sound separation system. The purpose of testing is to verify that the software prototype can accept mixed cardiopulmonary audio, preprocess the signal, run the selected separation method, generate heart and lung sound outputs, and present the results in a usable form.
+
+At the FYP1 stage, this chapter defines the planned testing strategy and evaluation procedure. Final test results and separation scores should only be reported after the prototype has been fully implemented and evaluated using the selected dataset.
+
+## Testing Strategy
+
+The testing strategy combines functional testing, dataset-based testing, separation metric evaluation, and prototype usability testing. Functional testing checks whether each module behaves correctly. Dataset-based testing checks whether the system can process relevant public cardiopulmonary sound data. Separation evaluation checks the quality of the output signals when reference heart and lung sources are available. Usability testing checks whether the prototype workflow is understandable to a user.
+
+The planned testing will be carried out in stages:
+
+1. Test audio upload and validation with valid and invalid files.
+2. Test preprocessing with different file lengths, amplitudes, and sampling rates.
+3. Test the separation module using selected mixed recordings.
+4. Test output generation for separated heart and lung sound files.
+5. Test metric calculation where reference source signals are available.
+6. Test result viewing, downloading, and history display if included.
+7. Record limitations, failure cases, and improvement actions.
+
+## Functional Testing
+
+Functional testing will verify the main system functions from input to output. The planned functional test cases are shown in @tbl-functional-test-cases.
+
+| Test ID | Function | Test condition | Expected outcome | Status |
+|---|---|---|---|---|
+| FT-01 | Audio upload | User submits a supported audio file. | File is accepted and a processing record is created. | Planned |
+| FT-02 | File validation | User submits an unsupported file type. | System rejects the file and displays a clear validation message. | Planned |
+| FT-03 | File validation | User submits a corrupted or unreadable audio file. | System rejects the file without generating output files. | Planned |
+| FT-04 | Preprocessing | Valid audio has a different sampling rate or channel format. | Audio is converted to the required processing format. | Planned |
+| FT-05 | Separation processing | Valid mixed audio is submitted for separation. | System generates heart and lung sound output files. | Planned |
+| FT-06 | Result display | A completed job is opened by the user. | Heart and lung outputs and available metrics are displayed. | Planned |
+| FT-07 | Download output | User downloads separated output files. | Downloaded files match the generated heart and lung outputs. | Planned |
+| FT-08 | Error handling | Model inference fails or cannot process the input. | System records the failure and shows a meaningful status message. | Planned |
+
+: Planned functional test cases {#tbl-functional-test-cases}
+
+## Dataset-Based Testing
+
+Dataset-based testing will use public data that is suitable for cardiopulmonary sound separation. HLS-CMDS is a relevant candidate because it provides heart sounds, lung sounds, mixed recordings, and source signals for mixed recordings [@torabi2025hlscmds]. This makes it suitable for testing both output generation and metric-based evaluation.
+
+The dataset-based testing procedure will include:
+
+1. Select a subset of mixed cardiopulmonary recordings.
+2. Confirm that corresponding heart and lung reference signals are available where needed.
+3. Run preprocessing on each selected input.
+4. Generate separated heart and lung outputs.
+5. Compare separated outputs with reference signals using suitable metrics.
+6. Record qualitative observations such as audible artefacts, weak separation, or failure cases.
+
+Other public heart sound or lung sound datasets may be used only as supporting data if they fit the test objective. Datasets that do not provide paired mixed and source recordings should not be treated as direct supervised separation evaluation sets.
+
+## Audio Separation Evaluation Metrics
+
+The evaluation metrics should match the separation objective. When reference heart and lung source signals are available, objective signal-level metrics can be computed. When reference signals are not available, evaluation should be limited to qualitative review, waveform or spectrogram inspection, and system behavior observations.
+
+The planned metric categories are summarized in @tbl-evaluation-metrics.
+
+| Metric | Purpose | Use condition |
+|---|---|---|
+| SNR | Measures the relationship between useful signal and noise. | Useful when a reference or noise estimate is available. |
+| SDR | Measures distortion in the separated output compared with a reference source. | Suitable for source separation evaluation when references exist. |
+| SI-SDR | Scale-invariant version of SDR that is commonly used in audio separation. | Suitable when output scale differences should not dominate the score. |
+| MSE | Measures mean squared error between separated output and reference. | Useful for reconstruction error analysis. |
+| MAE | Measures average absolute error between separated output and reference. | Useful as a simple reconstruction error measure. |
+| PESQ | Estimates perceptual quality of an audio signal. | May be used cautiously if suitable for the audio type and sampling rate. |
+| STOI | Estimates intelligibility-related quality. | May be supplementary only, because the task is not speech intelligibility. |
+| Processing time | Measures time required for preprocessing and separation. | Useful for prototype performance and usability. |
+
+: Planned audio separation evaluation metrics {#tbl-evaluation-metrics}
+
+The final evaluation should not rely on a single metric. A combination of reconstruction error, source-separation metrics, waveform or spectrogram inspection, and processing behavior will provide a more balanced view of prototype performance.
+
+## Evaluation Procedure
+
+The planned evaluation procedure is:
+
+1. Prepare the selected dataset subset and confirm input-reference pairs.
+2. Run each mixed recording through the same preprocessing configuration.
+3. Apply the selected machine learning-based separation method.
+4. Save the separated heart and lung outputs.
+5. Align output and reference signals where necessary.
+6. Compute supported metrics for each output.
+7. Summarize results using tables and visual comparisons.
+8. Identify failure cases and explain likely causes.
+
+If the final dataset subset does not provide reference source signals for every input, those samples will be evaluated separately using qualitative inspection and system-level behavior rather than source-separation scores.
+
+## Prototype / Usability Testing
+
+Prototype usability testing will focus on whether the system workflow is clear and usable. This testing is not intended to replace technical evaluation, but it is important because the project is an application-based prototype. The user should be able to upload an audio file, understand whether it was accepted, monitor the processing status, access separated outputs, and identify whether metric values are available.
+
+The planned usability checks are:
+
+1. The upload area is easy to locate and use.
+2. Validation messages are clear and specific.
+3. Processing status is visible during the workflow.
+4. Heart and lung outputs are clearly labelled.
+5. Download links or output access options are easy to use.
+6. Metric results are presented without implying diagnosis.
+7. Error states explain what the user should correct.
+
+## Limitations of Testing
+
+Several limitations are expected. First, the evaluation depends heavily on dataset availability. If a dataset does not provide reference heart and lung source signals, objective separation metrics cannot be computed reliably. Second, manikin-based data may not represent the full variability of real patient recordings, so conclusions should be limited to the data used. Third, the first prototype may prioritize a feasible and explainable model over the most advanced recent architectures. Fourth, usability testing will be limited to prototype workflow review rather than clinical deployment testing.
+
+These limitations do not invalidate the project because the FYP objective is to build and evaluate a software prototype for sound separation. They do, however, define the boundary of what the final results can claim.
+
+## Summary
+
+This chapter presented the planned testing and evaluation approach for the cardiopulmonary sound separation prototype. The testing plan includes functional testing, dataset-based testing, objective audio separation metrics, evaluation procedure, prototype usability checks, and testing limitations. Actual metric scores and final test outcomes will be reported only after implementation and dataset-based evaluation have been completed in the next project phase.

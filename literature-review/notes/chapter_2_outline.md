@@ -72,7 +72,7 @@
 
 ## 2.10 Comparative Summary of Reviewed Studies
 
-- Present a comparison table using fields from `screening/extraction_matrix.csv`.
+- Present a concise comparison table that summarizes the reviewed studies for the reader.
 - Suggested columns: paper, dataset, signal type, method, preprocessing, metrics, key result, limitation, relevance to FYP.
 - Compare studies across methods, datasets, and evaluation choices.
 
@@ -150,7 +150,7 @@ Use the Phase 4 fields in `metadata/papers_master.csv`, `metadata/download_queue
 
 ## Meeting Log 3 Reader-Facing Revision Notes
 
-- Chapter 2 now treats the 35 recommended papers as the current cited synthesis set because all 35 are cited in the active chapter draft and none are excluded records.
+- Chapter 2 now treats the 35 recommended papers as the current cited synthesis set because all 35 are cited or used in the active report and none are excluded records.
 - Report-facing wording should explain the synthesis as 18 core separation studies plus 17 background/supplementary studies.
 - The PRISMA explanation should avoid internal workflow filenames in the report body and should use reader-facing terms such as selected studies, eligible records, excluded records, and background/supplementary studies.
 - The Chapter 2 matrix should remain concise in the report. The current Chapter 2 table summarizes the most important studies, while the full 35-paper matrix is placed in Appendix A and formatted as a landscape table in the DOCX workflow.

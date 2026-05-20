@@ -1,0 +1,129 @@
+# Chapter 4: Design and Implementation
+
+## Introduction
+
+This chapter presents the design and implementation direction for the machine learning-based cardiopulmonary sound separation system. The chapter translates the methodology from Chapter 3 into a software design that can be implemented as a prototype in the next project phase. The design focuses on audio upload, validation, preprocessing, model-based separation, output generation, result management, and user interaction.
+
+The system is designed as an application-based proof of concept. It is not intended to diagnose heart or lung disease, and it does not make clinical decisions. Its purpose is to demonstrate a structured workflow for separating mixed cardiopulmonary recordings into heart sound and lung sound outputs.
+
+## System Overview
+
+The proposed system accepts a mixed cardiopulmonary audio file and processes it through a sequence of software modules. The user uploads or selects an audio recording, the system validates the file, preprocessing standardizes the audio, and the separation module estimates heart and lung sound components. The separated outputs are saved and made available for review or download. Where reference source signals are available, the system can compute separation-related metrics.
+
+The main user-facing functions are summarized in @fig-use-case-diagram. The diagram keeps the scope at system level because the final endpoint names, class names, and implementation details will be confirmed during the implementation phase.
+
+![Use case diagram for the cardiopulmonary sound separation system.](figures/plantuml/use_case_diagram.png){#fig-use-case-diagram width=100%}
+
+## System Architecture
+
+The architecture is modular so that each part of the prototype can be implemented, tested, and improved separately. The web interface handles user interaction. The backend API coordinates validation, preprocessing, model inference, result handling, and retrieval of output information. Audio files are stored as files, while the database stores metadata such as job status, file paths, timestamps, and available metric values. This avoids storing large audio content directly inside the database.
+
+The proposed architecture is shown in @fig-component-diagram.
+
+![Component diagram for the cardiopulmonary sound separation system.](figures/plantuml/component_diagram.png){#fig-component-diagram width=100%}
+
+## Main System Modules
+
+The prototype is organized around the modules shown in @tbl-chapter4-modules.
+
+| Module | Main responsibility | Expected output |
+|---|---|---|
+| Web interface | Provides upload, status, result review, and download functions. | User-facing interaction screens. |
+| Backend API | Coordinates validation, preprocessing, model inference, storage, and result retrieval. | Processing responses and result metadata. |
+| Audio preprocessing module | Standardizes sampling rate, channel format, amplitude, and segment length. | Model-ready audio input. |
+| Machine learning separation module | Estimates heart and lung sound components from the mixed recording. | Separated heart and lung estimates. |
+| Result management module | Saves outputs, links metadata, and prepares result summaries. | Organized result records. |
+| Storage module | Stores uploaded and separated audio files. | File paths and stored audio artefacts. |
+| Database module | Stores job metadata, status, output references, and metric values. | Searchable processing history. |
+| Evaluation module | Calculates metrics where reference signals are available. | Metric table or evaluation summary. |
+
+: Main system modules and responsibilities {#tbl-chapter4-modules}
+
+## Database and Storage Design
+
+The storage design separates audio files from metadata. Uploaded files and separated heart/lung outputs are stored in structured folders, while the database stores references to these files and information needed to track processing. This approach is more practical for audio processing because `.wav` files may be large and are easier to manage as files than as database blobs.
+
+The planned database/storage records are summarized in @tbl-storage-design.
+
+| Planned record | Purpose | Example stored information |
+|---|---|---|
+| Audio input record | Tracks each uploaded or selected mixed recording. | Input filename, file path, duration, sampling rate, upload time. |
+| Processing job record | Tracks the status of each separation request. | Job ID, status, preprocessing settings, model used, processing time. |
+| Separation result record | Links the job to generated heart and lung outputs. | Heart output path, lung output path, result timestamp. |
+| Evaluation metric record | Stores metric values when reference signals are available. | SNR, SDR, SI-SDR, MSE, MAE, PESQ, STOI, notes. |
+| System log record | Records important system events and processing errors. | Event type, message, timestamp, related job ID. |
+
+: Planned database and storage records {#tbl-storage-design}
+
+At the FYP1 stage, these records describe the intended design. The final database schema may be refined during implementation, but it should preserve the same separation between audio artefacts and metadata.
+
+## Audio Upload and Preprocessing Flow
+
+The audio upload and preprocessing flow begins when the user submits a mixed cardiopulmonary recording. The system checks that the file type, size, and required metadata are valid. A valid file is saved and passed to the preprocessing module. Depending on the selected model, preprocessing may include conversion to mono, resampling, normalization, trimming, padding, segmentation, and time-frequency conversion.
+
+The overall workflow is summarized in @fig-audio-processing-workflow.
+
+![Audio processing workflow for the proposed system.](figures/mermaid/audio_processing_workflow.png){#fig-audio-processing-workflow width=100%}
+
+## Machine Learning Model Integration
+
+The machine learning model is integrated as a separate module so that the system can support experimentation with different separation approaches. The model input may be a waveform segment, a spectrogram, or another representation depending on the final implementation. The output should be convertible into two audio signals: one representing the heart sound component and one representing the lung sound component.
+
+The first implementation should prioritize a feasible model that can be trained or adapted using available public data. A baseline or hybrid approach may be used before attempting a more complex model. This design allows the prototype to remain explainable while still supporting improvement in the next phase.
+
+## Heart and Lung Sound Output Generation
+
+After separation, the system reconstructs or saves the estimated heart and lung components as audio outputs. If a time-frequency representation is used, the reconstruction step must convert estimated source representations back into waveform audio. The output generation step should preserve useful metadata such as sampling rate, duration, model version or method name, and the original input reference.
+
+The expected outputs are:
+
+1. A separated heart sound audio file.
+2. A separated lung sound audio file.
+3. Processing metadata that links the outputs to the input recording.
+4. Evaluation values where reference source signals are available.
+
+## Result Management
+
+Result management handles the storage, retrieval, and presentation of separation outputs. Each processing job should have a clear status such as uploaded, preprocessing, separating, completed, or failed. Completed jobs should provide links to the separated heart and lung sound files and any available evaluation metrics. Failed jobs should provide a clear error message so that the user understands whether the issue came from the file, preprocessing, model inference, or storage.
+
+The expected processing sequence is shown in @fig-sequence-diagram.
+
+![Sequence diagram for audio upload and cardiopulmonary sound separation.](figures/plantuml/sequence_diagram.png){#fig-sequence-diagram width=100%}
+
+## User Interface Design
+
+The user interface should be simple and focused on the main workflow. The first view should allow the user to select or upload a mixed cardiopulmonary audio file. After submission, the interface should show processing status and then display the separated heart and lung outputs when the job is completed. The user should be able to listen to or download the outputs and review any available evaluation metrics.
+
+The planned interface areas are:
+
+1. Audio upload area for selecting a mixed recording.
+2. Processing status area for showing validation, preprocessing, and separation progress.
+3. Result area for heart sound and lung sound outputs.
+4. Metric summary area for available evaluation results.
+5. Processing history area for reviewing previous separation jobs if included in the prototype.
+
+The interface should avoid medical wording that implies diagnosis. Labels should describe the outputs as separated heart sound and separated lung sound rather than disease-related results.
+
+## Security, Validation, and Error Handling
+
+The prototype should include basic security and validation controls appropriate for a student software project. File validation should restrict accepted file types and reject corrupted or unsupported audio files. Size limits should prevent very large files from exhausting local storage or memory. Output paths should be generated by the system rather than accepted directly from user input.
+
+Error handling should be clear and traceable. If preprocessing fails, the user should receive a message that the file could not be prepared for processing. If model inference fails, the system should identify the failure as a processing issue rather than producing incomplete outputs. If evaluation cannot be performed because reference signals are unavailable, the system should state that metric calculation is not available for that input instead of reporting unsupported values.
+
+## Implementation Status
+
+This FYP1 report defines the software design, literature foundation, methodology, and planned evaluation approach for the prototype. Full model implementation, training or adaptation, software integration, and dataset-based evaluation will be completed in the next project phase. This status is appropriate because separation performance should only be reported after the model and evaluation pipeline have been implemented and tested.
+
+The current implementation direction is therefore:
+
+1. Finalize the selected public dataset and prepare the audio files.
+2. Implement preprocessing and input representation.
+3. Implement or adapt the selected separation method.
+4. Integrate the model into the prototype workflow.
+5. Generate separated heart and lung sound outputs.
+6. Evaluate the outputs using suitable metrics where reference signals are available.
+7. Refine the interface and result management based on testing.
+
+## Chapter Summary
+
+This chapter presented the design and implementation direction for the cardiopulmonary sound separation system. The proposed design uses a modular architecture with a web interface, backend API, preprocessing module, machine learning separation module, storage module, database module, result management module, and evaluation module. The chapter also described the planned upload flow, model integration, output generation, user interface, validation, error handling, and implementation status. The next chapter explains how the prototype will be tested and evaluated.

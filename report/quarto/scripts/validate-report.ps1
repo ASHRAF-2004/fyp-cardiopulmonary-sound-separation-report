@@ -9,16 +9,36 @@ $pdf = Join-Path $repoRoot "report\generated\paper.pdf"
 $chapter1 = Join-Path $repoRoot "report\quarto\chapters\chapter-1.qmd"
 $chapter2 = Join-Path $repoRoot "report\quarto\chapters\chapter-2.qmd"
 $chapter3 = Join-Path $repoRoot "report\quarto\chapters\chapter-3.qmd"
+$chapter4 = Join-Path $repoRoot "report\quarto\chapters\chapter-4.qmd"
+$chapter5 = Join-Path $repoRoot "report\quarto\chapters\chapter-5.qmd"
 $postProcess = Join-Path $repoRoot "report\quarto\scripts\fix-docx-format.py"
+$plantumlUseCase = Join-Path $repoRoot "diagrams\plantuml\use_case_diagram.puml"
+$plantumlComponent = Join-Path $repoRoot "diagrams\plantuml\component_diagram.puml"
+$plantumlSequence = Join-Path $repoRoot "diagrams\plantuml\sequence_diagram.puml"
+$plantumlUseCasePng = Join-Path $repoRoot "report\quarto\figures\plantuml\use_case_diagram.png"
+$plantumlComponentPng = Join-Path $repoRoot "report\quarto\figures\plantuml\component_diagram.png"
+$plantumlSequencePng = Join-Path $repoRoot "report\quarto\figures\plantuml\sequence_diagram.png"
+$mermaidWorkflow = Join-Path $repoRoot "diagrams\mermaid\audio_processing_workflow.mmd"
+$mermaidWorkflowPng = Join-Path $repoRoot "report\quarto\figures\mermaid\audio_processing_workflow.png"
 
 $checks = @(
   @{ Name = "paper.qmd exists"; Pass = Test-Path $paper },
   @{ Name = "chapter-1.qmd exists"; Pass = Test-Path $chapter1 },
   @{ Name = "chapter-2.qmd exists"; Pass = Test-Path $chapter2 },
   @{ Name = "chapter-3.qmd exists"; Pass = Test-Path $chapter3 },
+  @{ Name = "chapter-4.qmd exists"; Pass = Test-Path $chapter4 },
+  @{ Name = "chapter-5.qmd exists"; Pass = Test-Path $chapter5 },
   @{ Name = "literature-review references.bib exists"; Pass = Test-Path $bib },
   @{ Name = "DOCX post-processing script exists"; Pass = Test-Path $postProcess },
   @{ Name = "Quarto available on PATH"; Pass = [bool](Get-Command quarto -ErrorAction SilentlyContinue) },
+  @{ Name = "PlantUML use case source exists"; Pass = Test-Path $plantumlUseCase },
+  @{ Name = "PlantUML component source exists"; Pass = Test-Path $plantumlComponent },
+  @{ Name = "PlantUML sequence source exists"; Pass = Test-Path $plantumlSequence },
+  @{ Name = "Rendered PlantUML use case image exists"; Pass = Test-Path $plantumlUseCasePng },
+  @{ Name = "Rendered PlantUML component image exists"; Pass = Test-Path $plantumlComponentPng },
+  @{ Name = "Rendered PlantUML sequence image exists"; Pass = Test-Path $plantumlSequencePng },
+  @{ Name = "Mermaid workflow source exists"; Pass = Test-Path $mermaidWorkflow },
+  @{ Name = "Rendered Mermaid workflow image exists"; Pass = Test-Path $mermaidWorkflowPng },
   @{ Name = "DOCX output exists"; Pass = Test-Path $docx }
 )
 
@@ -98,7 +118,7 @@ def body_child_index(target):
 
 def appendix_matrix_table():
     a_idx, a_para = find_para("Appendix A: Full Literature Review Matrix")
-    b_idx, b_para = find_para("Appendix B: Gantt Chart")
+    b_idx, b_para = find_para("Appendix B: PRISMA Screening Summary")
     if a_para is None or b_para is None:
         return None
     start = body_child_index(a_para)
@@ -119,6 +139,17 @@ matrix_run_sizes_ok = bool(matrix_runs) and all(
 )
 matrix_header_repeats = bool(matrix_rows) and matrix_rows[0].find("w:trPr/w:tblHeader", namespaces=ns) is not None
 orientations = section_orientations()
+forbidden_terms = [
+    "papers_master.csv",
+    "extraction_matrix.csv",
+    "download_queue.csv",
+    "chapter_2_evidence_map.md",
+    "evidence map",
+    "Codex",
+    "GitHub",
+    "Quarto scripts",
+    "validation scripts",
+]
 
 checks = {
     "cover appears before table of contents": plain.find("FINAL YEAR PROJECT INTERIM REPORT") != -1 and plain.find("Table of Contents") != -1 and plain.find("FINAL YEAR PROJECT INTERIM REPORT") < plain.find("Table of Contents"),
@@ -131,6 +162,13 @@ checks = {
     "footer font size is 8 pt": visible_text_runs_have_size(footer_root, "16"),
     "Chapter 1 uses normal problem/objective numbering": "P1." not in plain and "P2." not in plain and "P3." not in plain and "O1." not in plain and "O2." not in plain and "O3." not in plain,
     "no problem-objective alignment table remains": "Problem-objective alignment" not in plain,
+    "Chapter 4 is included": "Chapter 4: Design and Implementation" in plain,
+    "Chapter 5 is included": "Chapter 5: Testing and Evaluation" in plain,
+    "no placeholder report text remains": "Placeholder" not in plain,
+    "no draft wording remains in report text": "draft" not in plain.lower(),
+    "no obsolete Chapter 6 remains": "Chapter 6:" not in plain,
+    "report text avoids internal workflow names": not any(term in plain for term in forbidden_terms),
+    "references section appears": "References" in plain,
     "Appendix A matrix table exists": matrix_tbl is not None,
     "Appendix A matrix section is landscape only": orientations.count("landscape") == 1,
     "Appendix A matrix font size is 8 pt": matrix_run_sizes_ok,

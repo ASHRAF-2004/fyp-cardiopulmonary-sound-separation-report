@@ -1,0 +1,33 @@
+@startuml
+!theme plain
+title Cardiopulmonary Sound Separation System - Component Diagram
+
+actor "User" as User
+
+rectangle "Prototype Application" {
+  component "Web Interface" as Web
+  component "Backend API" as API
+  component "Audio Preprocessing\nModule" as Preprocess
+  component "Machine Learning\nSeparation Module" as Model
+  component "Result Management\nModule" as Result
+  component "Evaluation Module" as Eval
+  component "Storage Module" as Storage
+  database "Database Module" as DB
+}
+
+folder "Input Audio\nFiles" as InputFiles
+folder "Separated Output\nFiles" as OutputFiles
+
+User --> Web : upload and review
+Web --> API : request processing
+API --> Preprocess : validated audio
+Preprocess --> Model : model-ready input
+Model --> Result : heart/lung estimates
+Result --> Eval : outputs and references\nwhere available
+Result --> Storage : save audio outputs
+Storage --> OutputFiles
+API --> DB : job metadata,\nstatus, metrics
+Storage --> InputFiles : store uploaded audio
+Web <-- API : status, links,\nmetrics
+
+@enduml

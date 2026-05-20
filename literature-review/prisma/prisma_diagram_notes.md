@@ -22,9 +22,9 @@ Project title: **Machine Learning-Based System for Cardiopulmonary Sound Separat
 - Studies selected and cited in the current Chapter 2 synthesis: `35`.
 - Core separation studies in the current Chapter 2 synthesis: `18`.
 - Background/supplementary studies in the current Chapter 2 synthesis: `17`.
-- Eligible backup records not cited in the current Chapter 2 draft: `14`.
+- Eligible backup records not cited in the current report: `14`.
 - Final decision count marked Include in the screening data: `18`.
-- Final decision count marked Maybe/background in the screening data: `31`.
+- Final decision count marked background/supplementary in the screening data: `31`.
 - Full-text/access screening rows documented: `71`.
 - Reports assessed for eligibility from accessible full text or online full text: `38`.
 - Full text unavailable / not retrieved in the full-text screening table: `33`.
@@ -33,9 +33,9 @@ Project title: **Machine Learning-Based System for Cardiopulmonary Sound Separat
 ## Interpretation Notes
 
 - The report-facing PRISMA diagram now distinguishes screening decisions from the Chapter 2 synthesis selection.
-- The current Chapter 2 draft cites `35` selected papers from the `49` eligible records.
+- The current report cites `35` selected papers from the `49` eligible records.
 - The `35` cited papers consist of `18` core separation studies and `17` background/supplementary studies.
-- The remaining `14` eligible records are retained as backup/background evidence but are not cited in the current Chapter 2 draft.
+- The remaining `14` eligible records are retained as backup/background evidence but are not cited in the current report.
 - Excluded records are not used as supporting evidence in the report.
 - The review tracking combines local PDF auditing, public metadata screening, year-range checks, duplicate handling, and manual access updates. Therefore, the diagram is a project-specific PRISMA-style mapping rather than a claim that every retained metadata record has a retrieved full text.
 - No paper decisions were changed when generating this diagram.

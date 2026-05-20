@@ -1,0 +1,36 @@
+@startuml
+!theme plain
+title Audio Upload and Separation Flow - Sequence Diagram
+
+actor "User" as User
+participant "Web Interface" as Web
+participant "Backend API" as API
+participant "Audio Preprocessing\nModule" as Preprocess
+participant "Machine Learning\nSeparation Module" as Model
+participant "Result Management\nModule" as Result
+database "Database / Metadata\nStore" as DB
+collections "Audio Storage" as Store
+
+User -> Web : Select mixed cardiopulmonary audio
+Web -> API : Submit audio for processing
+API -> API : Validate file type, size,\nand required metadata
+
+alt Valid audio file
+  API -> Store : Save uploaded audio
+  API -> DB : Create processing record
+  API -> Preprocess : Send audio for preprocessing
+  Preprocess -> Preprocess : Resample, normalize,\nsegment or transform
+  Preprocess --> API : Return model-ready input
+  API -> Model : Run separation
+  Model --> API : Heart and lung estimates
+  API -> Result : Generate output files
+  Result -> Store : Save heart and lung outputs
+  Result -> DB : Save status, output paths,\nand available metrics
+  API --> Web : Return result summary
+  Web --> User : Display separated outputs\nand download links
+else Invalid audio file
+  API --> Web : Return validation message
+  Web --> User : Show correction needed
+end
+
+@enduml

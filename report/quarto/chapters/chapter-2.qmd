@@ -12,13 +12,15 @@ This chapter reviews the literature thematically. It first discusses cardiopulmo
 
 The literature review process followed a structured screening approach to ensure that the selected studies were relevant to cardiopulmonary sound separation, audio preprocessing, public datasets, machine learning methods, evaluation metrics, and software prototype development. A total of 96 records were considered. After screening and access checking, 47 records were excluded because they were outside the project scope, duplicated earlier records, weakly related to sound separation, outside the target review period, or not sufficiently accessible for use as supporting evidence.
 
-After screening, 49 records remained eligible for the review pool. From the eligible records, 35 papers were selected and used in the Chapter 2 synthesis. These consisted of 18 core studies directly related to cardiopulmonary, heart-lung, or chest sound separation, and 17 background/supplementary studies related to datasets, preprocessing, machine learning methods, evaluation metrics, or supporting context. The remaining 14 eligible records were retained as backup evidence but were not cited in the current draft. Excluded records were not used as supporting evidence in the literature synthesis.
+After screening, 49 records remained eligible for the review pool. From the eligible records, 35 papers were selected and used in the Chapter 2 synthesis. These consisted of 18 core studies directly related to cardiopulmonary, heart-lung, or chest sound separation, and 17 background/supplementary studies related to datasets, preprocessing, machine learning methods, evaluation metrics, or supporting context. The remaining 14 eligible records were retained as backup evidence but were not cited in the current report. Excluded records were not used as supporting evidence in the literature synthesis.
 
 The PRISMA flow diagram in @fig-prisma-flow summarizes the search and screening process in a reader-friendly form.
 
+## PRISMA Flow Diagram
+
 ![PRISMA flow diagram for the literature search and screening process.](figures/prisma/prisma_flow_diagram.png){#fig-prisma-flow width=100%}
 
-## Literature Review Matrix
+## Literature Review Matrix Summary
 
 The literature review matrix summarizes the main studies reviewed in this chapter. A concise version is presented below, while the complete matrix is provided in Appendix A.
 
