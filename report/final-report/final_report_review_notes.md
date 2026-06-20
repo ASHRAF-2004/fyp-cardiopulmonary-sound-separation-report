@@ -4,101 +4,105 @@ Report title: Machine Learning-Based System for Cardiopulmonary Sound Separation
 
 Main output: `report/generated/paper.docx`
 
-## Completed Sections
+## Refactor Status
 
-- Front matter updated with cover/title information, copyright, declaration, acknowledgements, abstract, table of contents placeholder, list of tables, list of figures, abbreviations, and appendices.
-- Chapter 1 completed as the official Introduction chapter with 3 numbered problem statements and 3 numbered objectives.
-- Chapter 2 completed as the official Literature Review chapter with PRISMA explanation, PRISMA diagram, summary literature review matrix, and full Appendix A matrix.
-- Chapter 3 completed as the official Methodology chapter.
-- Chapter 4 completed and included as Design and Implementation.
-- Chapter 5 completed and included as Testing and Evaluation.
-- Appendix A retained as the full literature review matrix.
-- Appendix B added as the PRISMA screening summary.
-- Appendix C added as the system design diagram summary.
-- Appendix D added as planned test cases and evaluation checks.
-- References compile through the active bibliography.
+- Report refactored to the FYP Handbook T2610 Application-Based Project structure.
+- Chapter 1 is Introduction with expanded cited problem statements and exactly 3 project objectives.
+- Chapter 2 is Literature Review with PRISMA, concise matrix, verified synthesis, and references.
+- Chapter 3 is Requirements Analysis, not Methodology.
+- Chapter 4 is System Design.
+- Chapter 5 is Implementation Plan.
+- Chapter 6 Conclusion is added.
+- Appendices are ordered as:
+  - Appendix A: Gantt Chart
+  - Appendix B: FYP1 Meeting Logs
+  - Appendix C: Turnitin Similarity Index Page
+  - Appendix D: Full Literature Review Matrix
+  - Appendix E: PRISMA Screening Summary
+  - Appendix F: System Design Diagrams
+  - Appendix G: Planned Test Cases and Evaluation Metrics
 
 ## Literature Review Verification
 
 | Item | Count |
 |---|---:|
-| Selected papers | 35 |
-| Actually cited or used in Chapter 2 or Appendix A | 35 |
-| Selected but not cited or used | 0 |
+| Records considered | 96 |
+| Records excluded | 47 |
+| Eligible records after screening | 49 |
+| Studies selected and used in the current review or Appendix D | 35 |
+| Core separation studies | 18 |
+| Background/supplementary studies | 17 |
+| Eligible backup records not cited | 14 |
 | Excluded papers cited | 0 |
 | Missing citation keys | 0 |
 
-The 35 selected papers are treated as final for the current Chapter 2 synthesis: 18 core separation studies and 17 background/supplementary studies.
+The 35 selected papers remain unchanged. No new papers were collected and no literature review decisions were changed.
 
-## Formatting Checks Completed
+## Formatting and Generation Checks
 
 - DOCX render succeeded.
 - Output regenerated at `report/generated/paper.docx`.
+- PRISMA was converted from `literature-review/prisma/prisma_flow_diagram_filled.docx` to PDF, then PNG.
+- Report PRISMA figure uses `report/quarto/figures/prisma/prisma_flow_diagram.png`.
+- Mermaid is not used for the PRISMA figure.
+- Table captions use continuous numbering: Table 1, Table 2, Table 3, and so on.
+- Figure captions use continuous numbering: Figure 1, Figure 2, Figure 3, and so on.
+- List of Tables, List of Figures, and List of Appendices use internal hyperlinks and PAGEREF fields.
 - Header font size remains 10 pt.
 - Footer font size remains 8 pt.
-- Appendix A is landscape only.
-- Other sections remain portrait.
-- Appendix A matrix uses 8 pt text, borders, and repeated header row.
-- Chapter headings do not show repeated numbering.
-- Chapter 4 and Chapter 5 are included in the generated DOCX.
-- Report-facing text does not contain internal workflow file names or tool names.
-- References section appears in the generated DOCX.
-- DOCX package is readable and contains embedded figure media.
+- Appendix D is landscape and uses compact matrix formatting.
+- Report-facing body text avoids internal workflow file names and tool names.
 
 ## PlantUML Rendering Status
 
-PlantUML source files were created:
+Editable PlantUML sources:
 
+- `diagrams/plantuml/context_diagram.puml`
 - `diagrams/plantuml/use_case_diagram.puml`
-- `diagrams/plantuml/component_diagram.puml`
+- `diagrams/plantuml/activity_diagram.puml`
+- `diagrams/plantuml/class_diagram.puml`
 - `diagrams/plantuml/sequence_diagram.puml`
 
-Rendered images were created and inserted into the report:
+Rendered report images:
 
+- `report/quarto/figures/plantuml/context_diagram.png`
 - `report/quarto/figures/plantuml/use_case_diagram.png`
-- `report/quarto/figures/plantuml/component_diagram.png`
+- `report/quarto/figures/plantuml/activity_diagram.png`
+- `report/quarto/figures/plantuml/class_diagram.png`
 - `report/quarto/figures/plantuml/sequence_diagram.png`
 
-The diagrams were rendered through the Kroki PlantUML endpoint because a local `plantuml` command was not available. Render command pattern:
+The diagrams were rendered through the local PlantUML wrapper at `tools/plantuml.cmd`.
 
-```powershell
-curl.exe -s -S -X POST https://kroki.io/plantuml/png -H "Content-Type: text/plain" --data-binary "@diagrams\plantuml\use_case_diagram.puml" -o report\quarto\figures\plantuml\use_case_diagram.png
-```
+## Completed Chapters
 
-The Mermaid workflow source and rendered image were also created:
-
-- `diagrams/mermaid/audio_processing_workflow.mmd`
-- `report/quarto/figures/mermaid/audio_processing_workflow.png`
-
-The local Mermaid CLI timed out during rendering, so the workflow image was rendered through Kroki.
+- Chapter 1: Introduction
+- Chapter 2: Literature Review
+- Chapter 3: Requirements Analysis
+- Chapter 4: System Design
+- Chapter 5: Implementation Plan
+- Chapter 6: Conclusion
 
 ## Known Limitations
 
-- The report presents FYP1 design, methodology, and planned testing. It does not report final separation scores because the full prototype evaluation has not been completed.
-- Chapter 4 describes the designed implementation honestly at module level. Endpoint names, final database schema, and exact class names should be confirmed during implementation.
-- Chapter 5 contains planned test cases and metrics. Actual results should be added only after the prototype has been tested.
-- HLS-CMDS is treated as the main public dataset candidate, but final dataset download, preparation, and experiment subset selection still need to be completed.
+- The report is still an FYP1 report, so it does not claim completed prototype implementation results.
+- No final model scores, API endpoints, database tables, screenshots, implementation results, or testing results are reported.
+- Chapter 3 includes questionnaire design only. Actual Google Form or survey response analysis is pending until real responses are collected.
+- Public dataset selection and experiment subset preparation still need supervisor confirmation before FYP2 implementation.
+- The PRISMA counts and selected literature set were preserved from the existing review records.
 
-## Items Needing Supervisor Confirmation
+## Remaining Manual Items
 
-- Confirm that the 5-chapter FYP1 structure is acceptable for the submission format.
-- Confirm that HLS-CMDS is acceptable as the primary public dataset candidate.
-- Confirm the final model direction before implementation begins.
-- Confirm whether the optional appendices for meeting logs, Turnitin page, or Gantt chart must be inserted into the same DOCX or submitted separately.
+- Collect Google Form or survey responses if the supervisor requires actual response analysis.
+- Update Chapter 3 after collecting real responses, if required.
+- Check cover page spacing in Microsoft Word.
+- Insert or check FYP1 meeting logs.
+- Insert the Turnitin similarity index page.
+- Insert the Gantt chart.
+- Get supervisor confirmation on final scope, dataset direction, and implementation plan.
+- Open the DOCX in Word and update all fields before final submission.
 
-## Remaining Manual Corrections Before Submission
+## Latest Validation
 
-- Open the DOCX in Microsoft Word and update the Table of Contents field.
-- Review the cover/title page against the latest faculty template and adjust spacing if required.
-- Review the List of Tables and List of Figures after updating Word fields.
-- Insert meeting logs if the supervisor or faculty requires them inside the report package.
-- Insert the Turnitin similarity page if required by the submission checklist.
-- Perform a final manual proofread for page breaks, figure placement, table readability, and reference formatting.
-
-## Next Actions
-
-1. Open `report/generated/paper.docx` in Word.
-2. Update all fields in Word.
-3. Check cover page, page numbering, table and figure lists, and appendix placement.
-4. Add any required faculty attachments such as meeting logs or Turnitin page.
-5. Get supervisor confirmation on dataset, model direction, and FYP2 implementation plan.
+- Validation script passed after regeneration.
+- Render script passed after regeneration.
+- Manual Word review is still required for final displayed page numbers, field refresh, page breaks, and submission attachments.

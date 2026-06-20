@@ -1,0 +1,26 @@
+@startuml
+title Context Diagram - Cardiopulmonary Sound Separation Prototype
+
+left to right direction
+skinparam rectangle {
+  BorderColor #2F4858
+  BackgroundColor #F8FBFC
+}
+skinparam actorStyle awesome
+
+actor "Student / Researcher User" as User
+database "Public Audio Datasets\n(for development and evaluation)" as Dataset
+rectangle "Cardiopulmonary Sound\nSeparation Prototype" as System
+
+User --> System : Upload mixed\ncardiopulmonary audio
+System --> User : Validation feedback\nand processing status
+System --> User : Separated heart\nsound output
+System --> User : Separated lung\nsound output
+Dataset --> System : Training or evaluation\nrecordings
+
+note bottom of System
+Prototype scope: sound separation only.
+No disease diagnosis or treatment decision is provided.
+end note
+
+@enduml

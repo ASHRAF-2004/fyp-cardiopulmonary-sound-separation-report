@@ -1,0 +1,58 @@
+@startuml
+title Class Diagram - Planned Prototype Modules
+
+skinparam classAttributeIconSize 0
+
+class AudioUploadController {
+  +receiveUpload()
+  +showStatus()
+  +provideDownload()
+}
+
+class AudioValidator {
+  +validateType()
+  +validateSize()
+  +readMetadata()
+}
+
+class PreprocessingService {
+  +resample()
+  +normalize()
+  +prepareInput()
+}
+
+class SeparationModelService {
+  +loadModel()
+  +separate()
+  +postprocessOutput()
+}
+
+class ResultManager {
+  +saveOutput()
+  +getResultStatus()
+  +getDownloadPath()
+}
+
+class ProcessingRecord {
+  +recordId
+  +inputFileName
+  +status
+  +heartOutputPath
+  +lungOutputPath
+}
+
+class StorageService {
+  +saveUploadedFile()
+  +saveTemporaryFile()
+  +deleteTemporaryFile()
+}
+
+AudioUploadController --> AudioValidator : validates upload
+AudioUploadController --> PreprocessingService : starts preprocessing
+PreprocessingService --> SeparationModelService : sends prepared audio
+SeparationModelService --> ResultManager : returns output files
+ResultManager --> ProcessingRecord : creates or updates
+ResultManager --> StorageService : stores outputs
+AudioUploadController --> ResultManager : retrieves results
+
+@enduml

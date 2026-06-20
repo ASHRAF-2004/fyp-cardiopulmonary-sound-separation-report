@@ -10,15 +10,22 @@ $paper = Join-Path $repoRoot "report\quarto\paper.qmd"
 $outputDir = Join-Path $repoRoot "report\generated"
 $docx = Join-Path $outputDir "paper.docx"
 $postProcess = Join-Path $scriptDir "fix-docx-format.py"
+$quartoCmd = Get-Command quarto -ErrorAction SilentlyContinue
+if (-not $quartoCmd) {
+  $fallbackQuarto = "C:\Program Files\Quarto\bin\quarto.exe"
+  if (Test-Path $fallbackQuarto) {
+    $quartoCmd = $fallbackQuarto
+  }
+}
 
-if (-not (Get-Command quarto -ErrorAction SilentlyContinue)) {
+if (-not $quartoCmd) {
   Write-Error "Quarto is not installed or not available on PATH. Install Quarto, reopen PowerShell, then run: quarto --version"
 }
 
 New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 
 Write-Host "Rendering DOCX..."
-& quarto render $paper --to docx --output-dir $outputDir
+& $quartoCmd render $paper --to docx --output-dir $outputDir
 if ($LASTEXITCODE -ne 0) {
   throw "DOCX render failed with exit code $LASTEXITCODE"
 }
@@ -35,7 +42,7 @@ if ($LASTEXITCODE -ne 0) {
 
 if ($Pdf) {
   Write-Host "Rendering optional PDF via Typst..."
-  & quarto render $paper --to typst --output-dir $outputDir
+  & $quartoCmd render $paper --to typst --output-dir $outputDir
   if ($LASTEXITCODE -ne 0) {
     throw "PDF render failed with exit code $LASTEXITCODE"
   }

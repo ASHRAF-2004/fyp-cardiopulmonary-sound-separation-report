@@ -138,7 +138,7 @@ Finally, I would like to thank my family, friends, and colleagues for their enco
 
 Cardiopulmonary sound recordings often contain heart sounds, lung sounds, sensor contact noise, and environmental artefacts in the same audio signal. This overlap makes it difficult to process the signals accurately using simple filtering or traditional signal processing alone. This report presents a Final Year Project titled Machine Learning-Based System for Cardiopulmonary Sound Separation. The project aims to design and develop a software prototype that accepts mixed cardiopulmonary audio, applies suitable preprocessing, separates the signal into heart sound and lung sound outputs, and evaluates the separation quality using appropriate datasets and metrics.
 
-The methodology follows an application-based prototype development approach. The literature review examines cardiopulmonary sound characteristics, traditional signal processing methods, machine learning and deep learning methods, available datasets, evaluation metrics, and prototype-related gaps. The proposed system uses public datasets, with HLS-CMDS identified as a relevant candidate because it provides mixed heart-lung recordings and corresponding source signals. The expected output is a reusable proof-of-concept software system that demonstrates heart-lung sound separation through audio preprocessing, model-based separation, output management, and planned evaluation. The project does not focus on disease diagnosis or clinical decision-making; its contribution is a structured software workflow for cardiopulmonary sound separation research and experimentation.
+The report follows an application-based prototype development approach. The literature review examines cardiopulmonary sound characteristics, traditional signal processing methods, machine learning and deep learning methods, available datasets, evaluation metrics, and prototype-related gaps. The report then defines requirements analysis, system design, and an implementation plan for a reusable proof-of-concept software system that demonstrates heart-lung sound separation through audio preprocessing, model-based separation, output management, and planned evaluation. The project does not focus on disease diagnosis or clinical decision-making; its contribution is a structured software workflow for cardiopulmonary sound separation research and experimentation.
 
 {{< pagebreak >}}
 
@@ -206,13 +206,12 @@ The methodology follows an application-based prototype development approach. The
 | UI | User Interface |
 | UML | Unified Modeling Language |
 | PRISMA | Preferred Reporting Items for Systematic Reviews and Meta-Analyses |
-| DOCX | Microsoft Word Open XML Document |
 
 {{< pagebreak >}}
 
 # List of Appendices {.unnumbered}
 
-The appendix navigation list is generated from the appendix headings in the DOCX output.
+The appendix navigation list is generated from the appendix headings in the final document.
 
 {{< pagebreak >}}
 
@@ -240,6 +239,10 @@ The appendix navigation list is generated from the appendix headings in the DOCX
 
 {{< pagebreak >}}
 
+{{< include chapters/chapter-6.qmd >}}
+
+{{< pagebreak >}}
+
 <!-- =========================================================================
      REFERENCES
      ========================================================================= -->
@@ -255,7 +258,25 @@ The appendix navigation list is generated from the appendix headings in the DOCX
      APPENDICES
      ========================================================================= -->
 
-# Appendix A: Full Literature Review Matrix {.unnumbered}
+# Appendix A: Gantt Chart {.unnumbered}
+
+The Gantt chart will be inserted after the final project schedule is confirmed. This placeholder is retained so the appendix order follows the application-based FYP1 report structure.
+
+{{< pagebreak >}}
+
+# Appendix B: FYP1 Meeting Logs {.unnumbered}
+
+The FYP1 meeting logs will be inserted or checked in the final document package. The local meeting log files are retained separately in the repository and should not be modified unless the supervisor requires changes.
+
+{{< pagebreak >}}
+
+# Appendix C: Turnitin Similarity Index Page {.unnumbered}
+
+The Turnitin similarity index page will be inserted after the similarity report is generated and accepted for submission.
+
+{{< pagebreak >}}
+
+# Appendix D: Full Literature Review Matrix {.unnumbered}
 
 The complete literature review matrix below summarizes the selected papers used in the Chapter 2 synthesis. It supports the comparison of research focus, methods, datasets, findings, limitations, and relevance to the proposed cardiopulmonary sound separation system.
 
@@ -301,7 +322,7 @@ The complete literature review matrix below summarizes the selected papers used 
 
 {{< pagebreak >}}
 
-# Appendix B: PRISMA Screening Summary {.unnumbered}
+# Appendix E: PRISMA Screening Summary {.unnumbered}
 
 The PRISMA screening process used in Chapter 2 is summarized below. The summary separates eligible papers used in the literature synthesis from eligible backup records that were not cited in the current report.
 
@@ -319,22 +340,23 @@ The PRISMA screening process used in Chapter 2 is summarized below. The summary 
 
 {{< pagebreak >}}
 
-# Appendix C: System Design Diagrams {.unnumbered}
+# Appendix F: System Design Diagrams {.unnumbered}
 
-The main system design diagrams are presented in Chapter 4. They summarize the prototype use cases, component structure, audio processing sequence, and workflow. The diagrams are included to support the design explanation without adding unsupported implementation details.
+The main system design diagrams are presented in Chapter 4. They summarize the prototype context, use cases, activity flow, planned class structure, and audio processing sequence. The diagrams are included to support the design explanation without adding unsupported implementation details.
 
 | Diagram | Purpose |
 |---|---|
+| Context diagram | Shows the external relationship between the user, public datasets, and the proposed prototype. |
 | Use case diagram | Shows the user-facing functions of the cardiopulmonary sound separation system. |
-| Component diagram | Shows the main software modules and how they interact. |
+| Activity diagram | Shows the planned workflow from upload to output download. |
+| Class diagram | Shows the planned module responsibilities for implementation. |
 | Sequence diagram | Shows the expected processing flow when a user uploads an audio file. |
-| Audio processing workflow | Summarizes validation, preprocessing, separation, output generation, and evaluation. |
 
 : System design diagram summary {#tbl-system-design-diagrams}
 
 {{< pagebreak >}}
 
-# Appendix D: Planned Test Cases and Evaluation Metrics {.unnumbered}
+# Appendix G: Planned Test Cases and Evaluation Metrics {.unnumbered}
 
 The following planned tests will guide the FYP2 implementation and evaluation phase. Actual results should be recorded only after the prototype has been implemented and tested.
 
@@ -348,4 +370,16 @@ The following planned tests will guide the FYP2 implementation and evaluation ph
 | Metric calculation | Compute relevant metrics when reference source signals are available. | Evaluation table containing valid metric values. |
 | Error handling | Handle corrupted or invalid audio input safely. | User-facing error message and no corrupted output record. |
 
-: Appendix planned test cases and evaluation checks {#tbl-appendix-planned-tests}
+: Planned test cases and evaluation checks {#tbl-appendix-planned-tests}
+
+Table @tbl-planned-evaluation-metrics summarizes the evaluation metrics that may be used when suitable reference signals are available.
+
+| Evaluation area | Planned metric or evidence | Purpose |
+|---|---|---|
+| Source separation quality | SDR, SI-SDR, SIR, or SAR where reference sources are available. | Measure how well the separated output matches the target source. |
+| Noise reduction | SNR or related signal quality indicator. | Check whether preprocessing and separation improve output quality. |
+| Audio reconstruction | Correlation, waveform inspection, or spectrogram comparison. | Compare separated output structure with reference or expected patterns. |
+| System usability | Task completion feedback and user comments if user testing is approved. | Check whether users can upload, process, and download outputs clearly. |
+| Processing reliability | Success and failure records from test cases. | Verify that the prototype handles valid and invalid inputs consistently. |
+
+: Planned evaluation metrics for FYP2 prototype testing {#tbl-planned-evaluation-metrics}

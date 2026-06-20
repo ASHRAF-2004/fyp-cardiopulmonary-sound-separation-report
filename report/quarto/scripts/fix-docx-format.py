@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import shutil
+import re
 import sys
 import tempfile
 import zipfile
@@ -49,6 +50,31 @@ def xml_bytes(root: etree._Element) -> bytes:
 
 def paragraph_text(p: etree._Element) -> str:
     return "".join(p.xpath(".//w:t/text()", namespaces=NS)).strip()
+
+
+def replace_paragraph_text(p: etree._Element, text: str) -> None:
+    p_prs = p.findall("w:pPr", namespaces=NS)
+    p_pr = next(
+        (candidate for candidate in p_prs if candidate.find("w:pStyle", namespaces=NS) is not None),
+        p_prs[-1] if p_prs else None,
+    )
+    saved_p_pr = etree.fromstring(etree.tostring(p_pr)) if p_pr is not None else None
+    for child in list(p):
+        p.remove(child)
+    if saved_p_pr is not None:
+        p.append(saved_p_pr)
+    run = etree.SubElement(p, w("r"))
+    t = etree.SubElement(run, w("t"))
+    t.text = text
+
+
+def renumber_captions(document_root: etree._Element, prefix: str) -> None:
+    for idx, (text, para) in enumerate(caption_entries(document_root, prefix), start=1):
+        normalized = text.replace("\xa0", " ")
+        caption = re.sub(rf"^{re.escape(prefix)}\s+[\d.]+:?\s*", "", normalized).strip()
+        while re.match(rf"^{re.escape(prefix)}\s+[\d.]+:?\s*", caption):
+            caption = re.sub(rf"^{re.escape(prefix)}\s+[\d.]+:?\s*", "", caption).strip()
+        replace_paragraph_text(para, f"{prefix} {idx}: {caption}")
 
 
 def remove_heading_style_numbering(styles_root: etree._Element) -> None:
@@ -209,20 +235,27 @@ def apply_section_numbering(document_root: etree._Element) -> None:
     )
     appendix_a_idx = find_paragraph_index_with_style(
         paragraphs,
-        "Appendix A: Full Literature Review Matrix",
+        "Appendix A: Gantt Chart",
         "Heading1",
     )
-    appendix_b_idx = find_paragraph_index_with_style(
+    appendix_d_idx = find_paragraph_index_with_style(
         paragraphs,
-        "Appendix B: PRISMA Screening Summary",
+        "Appendix D: Full Literature Review Matrix",
+        "Heading1",
+    )
+    appendix_e_idx = find_paragraph_index_with_style(
+        paragraphs,
+        "Appendix E: PRISMA Screening Summary",
         "Heading1",
     )
     if copyright_idx == 0 or chapter1_idx == 0 or references_idx == 0:
         raise ValueError("Unable to insert section breaks at required positions")
     if references_idx <= chapter1_idx:
         raise ValueError("Unable to insert References Roman-numbering section break")
-    if appendix_a_idx == 0 or appendix_b_idx == 0 or appendix_b_idx <= appendix_a_idx:
-        raise ValueError("Unable to insert Appendix A landscape section breaks")
+    if appendix_a_idx == 0 or appendix_d_idx == 0 or appendix_e_idx == 0:
+        raise ValueError("Unable to insert appendix section breaks")
+    if not (appendix_a_idx < appendix_d_idx < appendix_e_idx):
+        raise ValueError("Unable to order appendix section breaks")
 
     template_sect_pr = final_sect_pr
     cover_sect = section_properties(
@@ -292,7 +325,8 @@ def apply_section_numbering(document_root: etree._Element) -> None:
     set_paragraph_section(paragraphs[chapter1_idx - 1], front_sect)
     set_paragraph_section(paragraphs[references_idx - 1], body_sect)
     set_paragraph_section(paragraphs[appendix_a_idx - 1], references_roman_sect)
-    set_paragraph_section(paragraphs[appendix_b_idx - 1], appendix_landscape_sect)
+    set_paragraph_section(paragraphs[appendix_d_idx - 1], portrait_continue_sect)
+    set_paragraph_section(paragraphs[appendix_e_idx - 1], appendix_landscape_sect)
 
     if final_sect_pr is not None:
         body.remove(final_sect_pr)
@@ -595,22 +629,22 @@ def format_appendix_matrix_table(document_root: etree._Element) -> None:
     if body is None:
         raise ValueError("DOCX document body not found")
     paragraphs = body.findall("w:p", namespaces=NS)
-    appendix_a = paragraphs[
+    appendix_d = paragraphs[
         find_paragraph_index_with_style(
             paragraphs,
-            "Appendix A: Full Literature Review Matrix",
+            "Appendix D: Full Literature Review Matrix",
             "Heading1",
         )
     ]
-    appendix_b = paragraphs[
+    appendix_e = paragraphs[
         find_paragraph_index_with_style(
             paragraphs,
-            "Appendix B: PRISMA Screening Summary",
+            "Appendix E: PRISMA Screening Summary",
             "Heading1",
         )
     ]
-    start = body_child_index(body, appendix_a)
-    end = body_child_index(body, appendix_b)
+    start = body_child_index(body, appendix_d)
+    end = body_child_index(body, appendix_e)
 
     matrix_table = None
     for child in list(body)[start:end]:
@@ -618,7 +652,7 @@ def format_appendix_matrix_table(document_root: etree._Element) -> None:
             matrix_table = child
             break
     if matrix_table is None:
-        raise ValueError("Appendix A full literature review matrix table not found")
+        raise ValueError("Appendix D full literature review matrix table not found")
 
     tbl_pr = ensure_tbl_pr(matrix_table)
     set_table_width_and_layout(tbl_pr)
@@ -782,6 +816,8 @@ def patch_docx(input_path: Path, output_path: Path) -> None:
         footer_path = tmp / "word" / "footer1.xml"
 
         document_root = parse_xml(document_path.read_bytes())
+        renumber_captions(document_root, "Table")
+        renumber_captions(document_root, "Figure")
         apply_navigation_lists(document_root)
         apply_section_numbering(document_root)
         format_appendix_matrix_table(document_root)

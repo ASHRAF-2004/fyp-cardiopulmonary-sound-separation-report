@@ -1,113 +1,65 @@
-# Chapter 5: Testing and Evaluation
+# Chapter 5: Implementation Plan
 
-## Introduction
+## Development Phase
 
-This chapter presents the testing and evaluation plan for the machine learning-based cardiopulmonary sound separation system. The purpose of testing is to verify that the software prototype can accept mixed cardiopulmonary audio, preprocess the signal, run the selected separation method, generate heart and lung sound outputs, and present the results in a usable form.
+The development phase will convert the requirements and system design into a working prototype. The planned implementation will be divided into front-end development, back-end development, machine learning model integration, and database or storage integration. This chapter describes planned work only; it does not present completed implementation results.
 
-At the FYP1 stage, this chapter defines the planned testing strategy and evaluation procedure. Final test results and separation scores should only be reported after the prototype has been fully implemented and evaluated using the selected dataset.
+### Front-End Development
 
-## Testing Strategy
+The front-end will provide the user interface for uploading cardiopulmonary audio, viewing validation messages, monitoring processing status, reviewing separated outputs, and downloading results. The interface should remain simple because the target users are students and researchers who need a clear workflow rather than a complex clinical system.
 
-The testing strategy combines functional testing, dataset-based testing, separation metric evaluation, and prototype usability testing. Functional testing checks whether each module behaves correctly. Dataset-based testing checks whether the system can process relevant public cardiopulmonary sound data. Separation evaluation checks the quality of the output signals when reference heart and lung sources are available. Usability testing checks whether the prototype workflow is understandable to a user.
+The planned front-end pages or views include an upload view, a processing status view, a result view, and an optional history view. The front-end should also display limitations clearly so users understand that the prototype is for sound separation research and not for diagnosis.
 
-The planned testing will be carried out in stages:
+### Back-End Development
 
-1. Test audio upload and validation with valid and invalid files.
-2. Test preprocessing with different file lengths, amplitudes, and sampling rates.
-3. Test the separation module using selected mixed recordings.
-4. Test output generation for separated heart and lung sound files.
-5. Test metric calculation where reference source signals are available.
-6. Test result viewing, downloading, and history display if included.
-7. Record limitations, failure cases, and improvement actions.
+The back-end will handle uploaded files, validate audio input, call preprocessing functions, run the separation workflow, manage output files, and return status information to the front-end. The back-end should be modular so that preprocessing and model components can be updated without rewriting the whole application.
 
-## Functional Testing
+The planned back-end responsibilities include file handling, audio metadata checking, error handling, processing control, result packaging, and optional history storage. Error messages should be structured so that invalid files, failed preprocessing, and failed separation can be identified during testing.
 
-Functional testing will verify the main system functions from input to output. The planned functional test cases are shown in @tbl-functional-test-cases.
+### Machine Learning Model Integration
 
-| Test ID | Function | Test condition | Expected outcome | Status |
-|---|---|---|---|---|
-| FT-01 | Audio upload | User submits a supported audio file. | File is accepted and a processing record is created. | Planned |
-| FT-02 | File validation | User submits an unsupported file type. | System rejects the file and displays a clear validation message. | Planned |
-| FT-03 | File validation | User submits a corrupted or unreadable audio file. | System rejects the file without generating output files. | Planned |
-| FT-04 | Preprocessing | Valid audio has a different sampling rate or channel format. | Audio is converted to the required processing format. | Planned |
-| FT-05 | Separation processing | Valid mixed audio is submitted for separation. | System generates heart and lung sound output files. | Planned |
-| FT-06 | Result display | A completed job is opened by the user. | Heart and lung outputs and available metrics are displayed. | Planned |
-| FT-07 | Download output | User downloads separated output files. | Downloaded files match the generated heart and lung outputs. | Planned |
-| FT-08 | Error handling | Model inference fails or cannot process the input. | System records the failure and shows a meaningful status message. | Planned |
+The machine learning component will be integrated as a separation module that receives preprocessed audio input and produces heart and lung sound outputs. The selected model or separation pipeline should match the available dataset, evaluation plan, and project time constraints.
 
-: Planned functional test cases {#tbl-functional-test-cases}
+The integration plan includes input preparation, model loading, inference execution, output post-processing, and metric calculation where suitable. Final model scores are not presented in this report because implementation and testing have not yet been completed.
 
-## Dataset-Based Testing
+### Database and Storage Integration
 
-Dataset-based testing will use public data that is suitable for cardiopulmonary sound separation. HLS-CMDS is a relevant candidate because it provides heart sounds, lung sounds, mixed recordings, and source signals for mixed recordings [@torabi2025hlscmds]. This makes it suitable for testing both output generation and metric-based evaluation.
+The prototype may use local or lightweight storage to manage uploaded files, output files, temporary processing files, and optional processing history. If a database is included, it should store only the information needed for prototype operation, such as file references, timestamps, processing status, and output paths.
 
-The dataset-based testing procedure will include:
+Storage design must consider privacy and cleanup. Uploaded recordings should not be exposed unnecessarily, and temporary files should be removed when they are no longer needed.
 
-1. Select a subset of mixed cardiopulmonary recordings.
-2. Confirm that corresponding heart and lung reference signals are available where needed.
-3. Run preprocessing on each selected input.
-4. Generate separated heart and lung outputs.
-5. Compare separated outputs with reference signals using suitable metrics.
-6. Record qualitative observations such as audible artefacts, weak separation, or failure cases.
+## Testing Phase
 
-Other public heart sound or lung sound datasets may be used only as supporting data if they fit the test objective. Datasets that do not provide paired mixed and source recordings should not be treated as direct supervised separation evaluation sets.
+The testing phase will verify that the prototype functions correctly and that the separation workflow produces valid outputs for supported input files. Testing is presented as planned work because completed test execution belongs to the later implementation stage.
 
-## Audio Separation Evaluation Metrics
+### Unit Testing
 
-The evaluation metrics should match the separation objective. When reference heart and lung source signals are available, objective signal-level metrics can be computed. When reference signals are not available, evaluation should be limited to qualitative review, waveform or spectrogram inspection, and system behavior observations.
+Unit testing will focus on individual functions and modules. Planned unit tests include audio file validation, preprocessing functions, file path handling, model wrapper input checks, output file generation, and error handling.
 
-The planned metric categories are summarized in @tbl-evaluation-metrics.
+### Integration Testing
 
-| Metric | Purpose | Use condition |
-|---|---|---|
-| SNR | Measures the relationship between useful signal and noise. | Useful when a reference or noise estimate is available. |
-| SDR | Measures distortion in the separated output compared with a reference source. | Suitable for source separation evaluation when references exist. |
-| SI-SDR | Scale-invariant version of SDR that is commonly used in audio separation. | Suitable when output scale differences should not dominate the score. |
-| MSE | Measures mean squared error between separated output and reference. | Useful for reconstruction error analysis. |
-| MAE | Measures average absolute error between separated output and reference. | Useful as a simple reconstruction error measure. |
-| PESQ | Estimates perceptual quality of an audio signal. | May be used cautiously if suitable for the audio type and sampling rate. |
-| STOI | Estimates intelligibility-related quality. | May be supplementary only, because the task is not speech intelligibility. |
-| Processing time | Measures time required for preprocessing and separation. | Useful for prototype performance and usability. |
+Integration testing will verify that the front-end, back-end, preprocessing module, separation module, and storage component work together correctly. Planned integration tests include uploading a valid audio file, running the full processing pipeline, generating both output files, and returning the correct processing status to the interface.
 
-: Planned audio separation evaluation metrics {#tbl-evaluation-metrics}
+### System Testing
 
-The final evaluation should not rely on a single metric. A combination of reconstruction error, source-separation metrics, waveform or spectrogram inspection, and processing behavior will provide a more balanced view of prototype performance.
+System testing will evaluate the complete prototype workflow from the user perspective. Planned system tests include valid upload, unsupported file upload, oversized file handling if a size limit is used, separation workflow completion, output download, and recovery from processing failure.
 
-## Evaluation Procedure
+### User Acceptance Testing
 
-The planned evaluation procedure is:
+User acceptance testing may be conducted with students, researchers, or project evaluators after the prototype is implemented. The purpose will be to check whether the workflow is understandable and whether the separated outputs can be accessed easily. No user acceptance results are included in this FYP1 report because the prototype has not yet reached that stage.
 
-1. Prepare the selected dataset subset and confirm input-reference pairs.
-2. Run each mixed recording through the same preprocessing configuration.
-3. Apply the selected machine learning-based separation method.
-4. Save the separated heart and lung outputs.
-5. Align output and reference signals where necessary.
-6. Compute supported metrics for each output.
-7. Summarize results using tables and visual comparisons.
-8. Identify failure cases and explain likely causes.
+## Deployment Phase
 
-If the final dataset subset does not provide reference source signals for every input, those samples will be evaluated separately using qualitative inspection and system-level behavior rather than source-separation scores.
+The deployment phase will prepare the prototype for demonstration and evaluation. The planned deployment may use a local development environment or a controlled hosting environment depending on project constraints. The deployment package should include setup instructions, required dependencies, model files if permitted, sample input guidance, and output folder handling.
 
-## Prototype / Usability Testing
+The deployment plan should also include steps for environment setup, data path configuration, model loading verification, and basic smoke testing before demonstration.
 
-Prototype usability testing will focus on whether the system workflow is clear and usable. This testing is not intended to replace technical evaluation, but it is important because the project is an application-based prototype. The user should be able to upload an audio file, understand whether it was accepted, monitor the processing status, access separated outputs, and identify whether metric values are available.
+## Documentation and Maintenance Plan
 
-The planned usability checks are:
+Documentation will include setup instructions, dependency notes, usage instructions, system limitations, testing notes, and evaluation guidance. The code should be organized so that future maintenance can update the preprocessing module, separation model, or interface without major restructuring.
 
-1. The upload area is easy to locate and use.
-2. Validation messages are clear and specific.
-3. Processing status is visible during the workflow.
-4. Heart and lung outputs are clearly labelled.
-5. Download links or output access options are easy to use.
-6. Metric results are presented without implying diagnosis.
-7. Error states explain what the user should correct.
-
-## Limitations of Testing
-
-Several limitations are expected. First, the evaluation depends heavily on dataset availability. If a dataset does not provide reference heart and lung source signals, objective separation metrics cannot be computed reliably. Second, manikin-based data may not represent the full variability of real patient recordings, so conclusions should be limited to the data used. Third, the first prototype may prioritize a feasible and explainable model over the most advanced recent architectures. Fourth, usability testing will be limited to prototype workflow review rather than clinical deployment testing.
-
-These limitations do not invalidate the project because the FYP objective is to build and evaluate a software prototype for sound separation. They do, however, define the boundary of what the final results can claim.
+Maintenance activities may include updating dependencies, improving error handling, replacing the model with a better one, adding support for more audio formats, and improving output visualization. These activities should be performed without changing the project scope from sound separation to diagnosis.
 
 ## Summary
 
-This chapter presented the planned testing and evaluation approach for the cardiopulmonary sound separation prototype. The testing plan includes functional testing, dataset-based testing, objective audio separation metrics, evaluation procedure, prototype usability checks, and testing limitations. Actual metric scores and final test outcomes will be reported only after implementation and dataset-based evaluation have been completed in the next project phase.
+This chapter presented the implementation plan for the proposed prototype. The plan covers development, testing, deployment, documentation, and maintenance. The chapter avoids unsupported implementation or testing claims and prepares the project for FYP2 development.

@@ -1,0 +1,29 @@
+@startuml
+title Activity Diagram - Sound Separation Workflow
+
+start
+:Open prototype interface;
+:Select mixed cardiopulmonary audio file;
+:Upload audio file;
+
+if (File valid?) then (yes)
+  :Preprocess audio;
+  if (Preprocessing successful?) then (yes)
+    :Run sound separation workflow;
+    if (Outputs generated?) then (yes)
+      :Prepare heart sound output;
+      :Prepare lung sound output;
+      :Display processing result;
+      :Download separated outputs;
+    else (no)
+      :Show separation failure message;
+    endif
+  else (no)
+    :Show preprocessing failure message;
+  endif
+else (no)
+  :Show validation error message;
+endif
+
+stop
+@enduml

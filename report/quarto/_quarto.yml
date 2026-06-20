@@ -15,7 +15,7 @@ number-sections: true
 crossref:
   fig-prefix: Figure
   tbl-prefix: Table
-  chapters: true
+  chapters: false
 
 format:
   docx:
