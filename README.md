@@ -6,60 +6,39 @@
 
 ## Repository Purpose
 
-This repository documents and tracks the progress of my Final Year Project (FYP1) report.
+This repository documents and tracks the progress of my Final Year Project 1 report.
 
-The repository focuses on the complete report workflow, including:
+The project is an **Application-Based FYP1 report** for a Software Engineering prototype / proof of concept. The repository contains the report sources, literature review records, PRISMA files, diagrams, generated Word report, supervisor update files, and validation/rendering scripts.
 
-- FYP proposal documentation
-- Literature review collection and screening
-- PRISMA-based search and screening documentation
-- Literature review matrix preparation
-- Reference and citation management
-- Chapter-by-chapter report writing
-- Methodology and system design documentation
-- System diagrams
-- Quarto-based DOCX report generation
-- Supervisor meeting logs and progress tracking
-- Final FYP1 report preparation
+The current report follows the FYP Handbook T2610 application-based structure:
 
-This repository is intended to show clear academic progress and provide an organized record of the FYP1 report development process.
+1. Introduction
+2. Literature Review
+3. Requirements Analysis
+4. System Design
+5. Implementation Plan
+6. Conclusion
+
+The project focus is **cardiopulmonary sound separation only**. It does not claim disease diagnosis, clinical decision-making, completed model scores, completed implementation results, or completed user survey findings.
 
 ---
 
 ## Project Overview
 
-Cardiopulmonary sounds include heart and lung sounds that are commonly recorded together using a stethoscope. These sounds may overlap in time and frequency, making separation difficult using traditional signal processing methods.
+Cardiopulmonary recordings may contain heart sounds, lung sounds, breathing artefacts, body movement, sensor noise, and environmental noise in the same audio signal. Heart and lung components may also overlap in time and frequency, making clean separation difficult using simple filtering alone.
 
-This project focuses on a **machine learning-based software system** for separating mixed cardiopulmonary audio signals into two outputs:
+This project proposes a **machine learning-based software prototype** that separates a mixed cardiopulmonary audio recording into:
 
-1. Heart sound signal
-2. Lung sound signal
+1. Heart sound output
+2. Lung sound output
 
-The project is developed as a **Software Engineering application-based prototype/proof of concept**. The focus is sound separation only, not disease detection or medical diagnosis.
-
----
-
-## Project Scope
-
-The project focuses on:
-
-- Cardiopulmonary sound separation
-- Heart and lung sound separation
-- Machine learning-based audio separation
-- Audio preprocessing
-- Feature extraction / input representation
-- Public datasets
-- System design and implementation planning
-- Evaluation metrics for audio separation
-- FYP1 report documentation and formatting
-
-The project does **not** focus on disease detection, clinical diagnosis, or medical decision-making.
+The intended contribution is a reusable software workflow for upload, validation, preprocessing, separation, output generation, result viewing, download, and planned evaluation using public datasets and suitable separation metrics.
 
 ---
 
 ## FYP Objectives
 
-The objectives of this project are:
+The current report uses these three project objectives:
 
 1. To study and apply suitable preprocessing techniques to reduce noise and improve the quality of cardiopulmonary sound recordings.
 2. To design and implement a machine learning-based approach for separating mixed cardiopulmonary recordings into heart and lung sound outputs.
@@ -69,51 +48,49 @@ The objectives of this project are:
 
 ## Current Report Status
 
-The repository has progressed beyond the initial literature review setup. The current status is:
+Latest local state: the report has been refactored to the application-based FYP1 structure, regenerated as DOCX, and validated through the repository scripts.
 
-| Area | Status |
-|---|---|
-| Repository structure | Completed |
-| Literature review tracking files | Completed |
-| Paper screening | Completed |
-| PRISMA tracking | Completed |
-| PRISMA diagram | Professional PRISMA 2020 version prepared |
-| Literature review matrix | Completed |
-| Chapter 1: Introduction | Completed |
-| Chapter 2: Literature Review | Completed |
-| Chapter 3: Methodology | Completed |
-| Chapter 4: Design and Implementation | Completed for FYP1 report |
-| Chapter 5: Testing and Evaluation | Completed for FYP1 report |
-| Quarto DOCX workflow | Working |
-| Generated Word report | Available in `report/generated/paper.docx` |
-| Final formatting | Ongoing manual checking and refinement |
+| Area | Current status | Notes |
+|---|---|---|
+| Repository structure | Available | Main report workflow is under `report/quarto/`. |
+| Chapter 1: Introduction | Completed for FYP1 | Contains exactly 3 expanded cited problem statements and exactly 3 objectives. |
+| Chapter 2: Literature Review | Completed for FYP1 | Uses verified PRISMA counts, selected studies, concise matrix, and citations. |
+| Chapter 3: Requirements Analysis | Completed for FYP1 | Replaces the old Methodology chapter. Survey response analysis is still pending because no real responses are in the repo. |
+| Chapter 4: System Design | Completed for FYP1 | Includes context, use case, activity, class, sequence, and interface design sections. |
+| Chapter 5: Implementation Plan | Completed for FYP1 | Replaces the old Testing and Evaluation chapter. Testing is presented as planned work only. |
+| Chapter 6: Conclusion | Added | Summarizes FYP1 work, contributions, limitations, and future work. |
+| PRISMA figure | Generated | Uses the filled DOCX source converted to PDF then PNG. Mermaid is not used for PRISMA. |
+| Literature review matrix | Completed | Concise matrix in Chapter 2 and full matrix in Appendix D. |
+| PlantUML diagrams | Generated | Editable `.puml` sources and rendered PNG/SVG files are available. |
+| Table/Figure numbering | Updated | Captions are continuous: Table 1, Table 2, Figure 1, Figure 2, etc. |
+| Generated Word report | Available | `report/generated/paper.docx` |
+| Validation | Passed | `report/quarto/scripts/validate-report.ps1` passed after regeneration. |
+| Render workflow | Passed | `report/quarto/scripts/render-report.ps1` regenerated the DOCX successfully. |
+| Manual submission checks | Still required | Word field refresh, cover spacing, Gantt chart, meeting logs, Turnitin page, and supervisor confirmation. |
 
 ---
 
 ## Literature Review Progress
 
-The literature review process includes systematic search, screening, classification, and synthesis.
-
-Current literature review summary:
+The literature review process includes systematic search, screening, classification, synthesis, and matrix preparation.
 
 | Item | Count |
 |---|---:|
 | Records considered | 96 |
 | Records excluded | 47 |
 | Eligible records after screening | 49 |
-| Papers selected and used in Chapter 2 / Appendix A | 35 |
+| Studies selected and used in Chapter 2 / Appendix D | 35 |
 | Core cardiopulmonary / heart-lung / chest sound separation studies | 18 |
 | Background / supplementary studies | 17 |
 | Eligible backup records not cited in the current report | 14 |
 | Excluded papers cited | 0 |
+| Missing citation keys | 0 |
 
-The 35 selected papers are used in Chapter 2 or Appendix A. The selected papers include core sound separation studies and supporting studies related to datasets, preprocessing, machine learning methods, evaluation metrics, and background context.
+The 35 selected papers are used in the Chapter 2 narrative, Chapter 2 summary matrix, or Appendix D full matrix. No new papers were added during the application-based refactor.
 
 ---
 
 ## PRISMA Tracking
-
-The PRISMA workflow documents the paper search and screening process.
 
 PRISMA files are stored in:
 
@@ -121,77 +98,121 @@ PRISMA files are stored in:
 literature-review/prisma/
 ```
 
-The professional PRISMA figure used in the report is stored in:
+Current PRISMA outputs:
 
 ```text
-report/quarto/figures/prisma/
+literature-review/prisma/prisma_flow_diagram_filled.docx
+literature-review/prisma/prisma_flow_diagram_filled.pdf
+literature-review/prisma/prisma_flow_diagram_filled.png
+report/quarto/figures/prisma/prisma_flow_diagram.png
 ```
 
-The report uses a professional PRISMA 2020-style diagram instead of a Mermaid-based diagram.
+The report uses the professional DOCX-based PRISMA figure, not a Mermaid-generated PRISMA diagram.
 
 ---
 
-## Literature Review Matrix
+## Report Sources and Output
 
-The report contains:
-
-1. A concise literature review matrix in Chapter 2.
-2. A full literature review matrix in Appendix A.
-
-Appendix A is formatted in landscape orientation for readability. The full matrix summarizes selected studies using details such as research title, authors, source, objective, method, dataset, findings, research gap, limitation, and relevance to this project.
-
----
-
-## Report Generation Workflow
-
-The report is written using a Quarto-based workflow.
-
-The main report source is located in:
+The report source is located in:
 
 ```text
 report/quarto/
 ```
 
-The generated Word report is located in:
+Main wrapper file:
+
+```text
+report/quarto/paper.qmd
+```
+
+Chapter sources:
+
+```text
+report/quarto/chapters/
+```
+
+Generated Word report:
 
 ```text
 report/generated/paper.docx
 ```
 
-The workflow is designed to generate a Microsoft Word `.docx` report as the main university-compatible output. Quarto is used only as the authoring and automation tool; the submitted file is the generated Word document.
+The generated DOCX is the main university-compatible output. The Quarto sources and post-processing scripts are the source of truth; the generated DOCX should not be manually edited as the primary source.
 
 ---
 
-## Report Chapters
+## Report Chapters and Appendices
 
-| Chapter | Title | Status |
+| Section | Title | Current status |
 |---|---|---|
-| Chapter 1 | Introduction | Completed |
-| Chapter 2 | Literature Review | Completed |
-| Chapter 3 | Methodology | Completed |
-| Chapter 4 | Design and Implementation | Completed for FYP1 report |
-| Chapter 5 | Testing and Evaluation | Completed for FYP1 report |
+| Chapter 1 | Introduction | Completed for FYP1 |
+| Chapter 2 | Literature Review | Completed for FYP1 |
+| Chapter 3 | Requirements Analysis | Completed for FYP1; survey response analysis pending if required |
+| Chapter 4 | System Design | Completed for FYP1 |
+| Chapter 5 | Implementation Plan | Completed for FYP1 |
+| Chapter 6 | Conclusion | Completed for FYP1 |
 | References | Cited sources used in the report | Completed |
-| Appendix A | Full Literature Review Matrix | Completed |
-| Appendix B | PRISMA Screening Summary | Completed |
-| Appendix C | System Design Diagrams | Completed |
-| Appendix D | Planned Test Cases and Evaluation Metrics | Completed |
+| Appendix A | Gantt Chart | Placeholder; insert final chart manually when ready |
+| Appendix B | FYP1 Meeting Logs | Placeholder/check item; insert if required |
+| Appendix C | Turnitin Similarity Index Page | Placeholder; insert after Turnitin report is available |
+| Appendix D | Full Literature Review Matrix | Completed; landscape formatting |
+| Appendix E | PRISMA Screening Summary | Completed |
+| Appendix F | System Design Diagrams | Completed |
+| Appendix G | Planned Test Cases and Evaluation Metrics | Completed as planned FYP2 checks |
 
 ---
 
 ## Diagrams
 
-The report includes diagrams for literature review and system design.
+Editable PlantUML sources are stored in:
 
-Diagram types used:
+```text
+diagrams/plantuml/
+```
 
-- PRISMA 2020 flow diagram
-- PlantUML use case diagram
-- PlantUML component diagram
-- PlantUML sequence diagram
-- Mermaid workflow diagram for simple process flow
+Rendered report figures are stored in:
 
-PlantUML is preferred for UML-style diagrams, especially use case, component, and sequence diagrams.
+```text
+report/quarto/figures/plantuml/
+```
+
+Current PlantUML diagram set:
+
+- Context diagram
+- Use case diagram
+- Activity diagram
+- Class diagram
+- Sequence diagram
+
+The local PlantUML wrapper is:
+
+```text
+tools/plantuml.cmd
+```
+
+---
+
+## Validation and Rendering
+
+Validate the report:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File report\quarto\scripts\validate-report.ps1
+```
+
+Regenerate the Word report:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File report\quarto\scripts\render-report.ps1
+```
+
+The render script uses Quarto and then applies the DOCX post-processing script:
+
+```text
+report/quarto/scripts/fix-docx-format.py
+```
+
+The post-processing script handles Word-specific formatting such as navigation lists, header/footer sizing, appendix landscape formatting, and continuous table/figure caption numbering.
 
 ---
 
@@ -202,14 +223,12 @@ proposal/
   FYP proposal form and related documents
 
 report/
-  chapter-1-introduction/
-  chapter-2-literature-review/
-  chapter-3-methodology/
-  chapter-4-design-and-implementation/
-  chapter-5-testing-and-evaluation/
   final-report/
+    Final report review notes
   generated/
+    Generated DOCX and generated figure copies
   quarto/
+    Quarto source, chapters, figures, scripts, styles, and templates
 
 literature-review/
   metadata/
@@ -220,12 +239,12 @@ literature-review/
   papers/
 
 diagrams/
-  erd/
+  plantuml/
+  mermaid/
   prisma/
   system-architecture/
   uml/
   workflow/
-  plantuml/
 
 supervisor-updates/
   Meeting logs and supervisor-related documents
@@ -234,25 +253,22 @@ resources/
   guidelines/
   templates/
   tools/
+
+tools/
+  Local helper tools such as the PlantUML wrapper/JAR
 ```
 
 ---
 
 ## Reference Management
 
-References are managed using:
-
-- Zotero
-- BibTeX
-- APA-style reference output where needed
-
-Reference files are stored in:
+The active bibliography is:
 
 ```text
-literature-review/references/
+literature-review/references/references.bib
 ```
 
-The Quarto report uses the bibliography from the literature review reference files to avoid reference duplication and maintain consistency.
+The Quarto report uses this BibTeX file for citations and references. Zotero is not required for the current local rendering workflow.
 
 ---
 
@@ -262,45 +278,32 @@ The Quarto report uses the bibliography from the literature review reference fil
 |---|---|
 | Report authoring | Quarto / Markdown |
 | Final report output | Microsoft Word DOCX |
-| Citation management | Zotero, BibTeX |
-| Literature tracking | CSV files |
-| PRISMA diagram | PRISMA 2020 Word/PDF/PNG workflow |
+| DOCX post-processing | Python |
+| Citation source | BibTeX |
+| PRISMA figure | Filled Word document converted to PDF/PNG |
 | UML diagrams | PlantUML |
-| Simple workflow diagrams | Mermaid |
-| Version control | Git and GitHub |
-| Planned backend / prototype direction | Python / FastAPI |
-| Planned database | SQLite |
+| Graph rendering support | Graphviz |
+| Version control | Git |
+| Planned prototype backend direction | Python / FastAPI |
+| Planned storage direction | SQLite or lightweight local storage |
 | Planned ML implementation | Python-based machine learning workflow |
-
----
-
-## Progress Updates
-
-Supervisor-related progress files are stored in:
-
-```text
-supervisor-updates/
-```
-
-This may include meeting logs, supervisor comments, progress notes, and other FYP administration files.
 
 ---
 
 ## Manual Items Before Submission
 
-The generated report is available, but final manual checking is still required before submission.
+The generated report exists, but final manual checking is still required before submission:
 
-Remaining checks include:
-
-- Open the generated Word file and update all fields.
-- Check the cover page and title page spacing.
-- Confirm table of contents, list of tables, list of figures, and list of appendices are clickable.
-- Check page numbering and section formatting.
-- Confirm Appendix A landscape formatting.
-- Add or attach meeting logs if required.
-- Add Turnitin page if required.
-- Review final formatting against the FYP handbook and faculty template.
-- Get supervisor feedback and make corrections if needed.
+- Open `report/generated/paper.docx` in Microsoft Word and update all fields.
+- Check cover page and title page spacing.
+- Confirm Table of Contents, List of Tables, List of Figures, and List of Appendices after Word field update.
+- Check page numbering and page breaks.
+- Confirm Appendix D landscape formatting and matrix readability.
+- Insert the Gantt chart when ready.
+- Insert or attach FYP1 meeting logs if required.
+- Insert the Turnitin similarity index page after it is available.
+- Get supervisor confirmation on final scope, dataset direction, and implementation plan.
+- Update Chapter 3 only after real survey responses are collected, if the supervisor requires response analysis.
 
 ---
 
@@ -308,13 +311,14 @@ Remaining checks include:
 
 This project is developed for academic purposes as part of a Final Year Project.
 
-The proposed system is a prototype/proof of concept and is not intended for clinical diagnosis or medical decision-making.
+The proposed system is a prototype / proof of concept for cardiopulmonary sound separation. It is not intended for clinical diagnosis, treatment recommendation, or medical decision-making.
 
 ---
 
 ## Author
 
 **AL-SALOUL, ASHRAF ALI HUSSEIN**  
+Student ID: 1221303805  
 Bachelor of Computer Science (Hons.)  
 Software Engineering Specialization  
 Multimedia University, Malaysia
