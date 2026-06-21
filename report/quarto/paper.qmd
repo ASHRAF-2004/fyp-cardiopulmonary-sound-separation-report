@@ -383,3 +383,163 @@ Table @tbl-planned-evaluation-metrics summarizes the evaluation metrics that may
 | Processing reliability | Success and failure records from test cases. | Verify that the prototype handles valid and invalid inputs consistently. |
 
 : Planned evaluation metrics for FYP2 prototype testing {#tbl-planned-evaluation-metrics}
+
+{{< pagebreak >}}
+
+# Appendix H: Full User Requirements Questionnaire {.unnumbered}
+
+The full questionnaire below supports traceability between the Google Form questions and the requirements analysis in Chapter 3. Chapter 3 analyzes 10 main requirement-focused items, while this appendix preserves the full 24-question instrument for reference.
+
+## Section A: Respondent Background
+
+**Q1. What is your age group?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Under 18; 18-25; 26-35; 36 and above
+
+**Q2. What best describes you?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Software Engineering / Computer Science student; AI / Machine Learning student; Biomedical Engineering / Health-related student; Researcher; Lecturer / Supervisor; Other
+
+**Q3. How familiar are you with audio processing or signal processing?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Not familiar; Basic; Intermediate; Advanced
+
+**Q4. Have you worked with biomedical audio before?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Yes; No; Not sure
+
+**Q5. Which type of audio-related task are you most familiar with?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Audio recording; Audio editing; Audio classification; Audio separation; Machine learning model testing; I have not worked with audio tasks before
+
+## Section B: Current Challenges in Cardiopulmonary Audio Processing
+
+**Q6. How difficult do you think it is to separate heart and lung sounds from a mixed cardiopulmonary recording?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Very easy; Easy; Neutral; Difficult; Very difficult
+
+**Q7. What problems do you think affect cardiopulmonary sound processing the most?**
+
+- Type: Checkboxes
+- Required: Yes
+- Options: Background noise; Overlap between heart and lung sounds; Low recording quality; Difficulty identifying useful sound components; Lack of simple software tools; Lack of clear output visualization; Other
+
+**Q8. Do you think noisy audio recordings can reduce the quality of machine learning-based sound processing?**
+
+- Type: Linear scale or Likert multiple choice
+- Required: Yes
+- Options: Strongly disagree; Disagree; Neutral; Agree; Strongly agree
+
+**Q9. Do you think a simple software prototype for heart-lung sound separation would be useful for students or researchers?**
+
+- Type: Linear scale or Likert multiple choice
+- Required: Yes
+- Options: Strongly disagree; Disagree; Neutral; Agree; Strongly agree
+
+## Section C: System Feature Preferences
+
+**Q10. Which feature would be most important in the proposed system?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Upload mixed cardiopulmonary audio; Preprocess noisy audio; Separate heart and lung sounds; Preview separated audio; Download separated outputs; View processing history; View evaluation results
+
+**Q11. Which output would you prefer after sound separation?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Heart and lung audio files only; Audio files with waveform visualization; Audio files with spectrogram visualization; Audio files with evaluation metrics; All of the above
+
+**Q12. How important is it for the system to provide a preview of the separated heart and lung sounds?**
+
+- Type: Linear scale or Likert multiple choice
+- Required: Yes
+- Options: Not important; Slightly important; Moderately important; Important; Very important
+
+**Q13. How important is it for the system to allow users to download separated audio outputs?**
+
+- Type: Linear scale or Likert multiple choice
+- Required: Yes
+- Options: Not important; Slightly important; Moderately important; Important; Very important
+
+**Q14. How important is it for the system to show basic processing information, such as file name, processing status, and completion time?**
+
+- Type: Linear scale or Likert multiple choice
+- Required: Yes
+- Options: Not important; Slightly important; Moderately important; Important; Very important
+
+**Q15. Should the system include a history page showing previously uploaded files and separation results?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Yes; No; Not sure
+
+## Section D: Interface and Output Preferences
+
+**Q16. How would you prefer the separated results to be displayed?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Simple audio player only; Audio player with waveform; Audio player with spectrogram; Audio player with waveform, spectrogram, and metrics; Not sure
+
+**Q17. Which interface style would you prefer?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Simple interface with only main features; Detailed interface with many technical options; Balanced interface with simple view and optional advanced details
+
+**Q18. How important is it for the system interface to be easy for non-expert users?**
+
+- Type: Linear scale or Likert multiple choice
+- Required: Yes
+- Options: Not important; Slightly important; Moderately important; Important; Very important
+
+**Q19. What information should appear first after separation is completed?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Download buttons for heart and lung sounds; Audio preview players; Waveform or spectrogram visualization; Evaluation metrics; Processing status summary
+
+**Q20. What type of error message would be most helpful if the uploaded file is invalid?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Short message only; Message explaining the problem; Message explaining the problem and suggested fix; Not sure
+
+## Section E: Evaluation and Improvement
+
+**Q21. How important is it for the system to show evaluation metrics for the separated output?**
+
+- Type: Linear scale or Likert multiple choice
+- Required: Yes
+- Options: Not important; Slightly important; Moderately important; Important; Very important
+
+**Q22. Which evaluation information would be most useful?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Signal quality score; Separation accuracy score; Noise reduction information; Processing time; All of the above
+
+**Q23. Would you use a prototype that separates mixed cardiopulmonary audio into heart and lung sound outputs?**
+
+- Type: Multiple choice
+- Required: Yes
+- Options: Yes; No; Maybe
+
+**Q24. What improvement or feature would you like to see in a cardiopulmonary sound separation system?**
+
+- Type: Paragraph answer
+- Required: No unless supervisor requires complete written feedback
+- Options: Open-ended written response

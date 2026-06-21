@@ -77,6 +77,43 @@ def renumber_captions(document_root: etree._Element, prefix: str) -> None:
         replace_paragraph_text(para, f"{prefix} {idx}: {caption}")
 
 
+def set_paragraph_alignment(p: etree._Element, alignment: str) -> None:
+    p_prs = p.findall("w:pPr", namespaces=NS)
+    p_pr = next(
+        (candidate for candidate in p_prs if candidate.find("w:pStyle", namespaces=NS) is not None),
+        p_prs[-1] if p_prs else None,
+    )
+    if p_pr is None:
+        p_pr = etree.Element(w("pPr"))
+        p.insert(0, p_pr)
+    jc = p_pr.find("w:jc", namespaces=NS)
+    if jc is None:
+        jc = etree.SubElement(p_pr, w("jc"))
+    jc.set(w("val"), alignment)
+
+
+def normalize_chapter_headings(document_root: etree._Element) -> None:
+    expected = {
+        "1": "INTRODUCTION",
+        "2": "LITERATURE REVIEW",
+        "3": "REQUIREMENTS ANALYSIS",
+        "4": "SYSTEM DESIGN",
+        "5": "IMPLEMENTATION PLAN",
+        "6": "CONCLUSION",
+    }
+    pattern = re.compile(r"^(?:\d+\.?\s+)?chapter\s+([1-6])\s*:\s*(.+)$", re.IGNORECASE)
+    for p in document_root.xpath(".//w:p", namespaces=NS):
+        if paragraph_style_id(p) != "Heading1":
+            continue
+        text = paragraph_text(p).replace("\xa0", " ").strip()
+        match = pattern.match(text)
+        if not match:
+            continue
+        chapter_no = match.group(1)
+        replace_paragraph_text(p, f"CHAPTER {chapter_no}: {expected[chapter_no]}")
+        set_paragraph_alignment(p, "center")
+
+
 def remove_heading_style_numbering(styles_root: etree._Element) -> None:
     for style_id in ("Heading1", "Heading2", "Heading3"):
         styles = styles_root.xpath(f".//w:style[@w:styleId='{style_id}']", namespaces=NS)
@@ -227,7 +264,7 @@ def apply_section_numbering(document_root: etree._Element) -> None:
     paragraphs = body.findall("w:p", namespaces=NS)
 
     copyright_idx = find_paragraph_index(paragraphs, "Copyright")
-    chapter1_idx = find_paragraph_index(paragraphs, "Chapter 1: Introduction")
+    chapter1_idx = find_paragraph_index(paragraphs, "CHAPTER 1: INTRODUCTION")
     references_idx = find_paragraph_index_with_style(
         paragraphs,
         "References",
@@ -469,8 +506,11 @@ def body_child_index(body: etree._Element, target: etree._Element) -> int:
 
 
 def paragraph_style_id(p: etree._Element) -> str:
-    style = p.find("w:pPr/w:pStyle", namespaces=NS)
-    return style.get(w("val")) if style is not None else ""
+    for p_pr in p.findall("w:pPr", namespaces=NS):
+        style = p_pr.find("w:pStyle", namespaces=NS)
+        if style is not None:
+            return style.get(w("val"))
+    return ""
 
 
 def next_bookmark_id(document_root: etree._Element) -> int:
@@ -573,7 +613,7 @@ def apply_navigation_lists(document_root: etree._Element) -> None:
     lof_heading = paragraphs[find_paragraph_index(paragraphs, "List of Figures")]
     loa_heading = paragraphs[find_paragraph_index(paragraphs, "List of Appendices")]
     abbreviations_heading = paragraphs[find_paragraph_index(paragraphs, "List of Abbreviations/Symbols")]
-    chapter1_heading = paragraphs[find_paragraph_index(paragraphs, "Chapter 1: Introduction")]
+    chapter1_heading = paragraphs[find_paragraph_index(paragraphs, "CHAPTER 1: INTRODUCTION")]
 
     bookmark_id = next_bookmark_id(document_root)
     tables: list[tuple[str, str]] = []
@@ -816,6 +856,7 @@ def patch_docx(input_path: Path, output_path: Path) -> None:
         footer_path = tmp / "word" / "footer1.xml"
 
         document_root = parse_xml(document_path.read_bytes())
+        normalize_chapter_headings(document_root)
         renumber_captions(document_root, "Table")
         renumber_captions(document_root, "Figure")
         apply_navigation_lists(document_root)

@@ -10,6 +10,8 @@ Main output: `report/generated/paper.docx`
 - Chapter 1 is Introduction with expanded cited problem statements and exactly 3 project objectives.
 - Chapter 2 is Literature Review with PRISMA, concise matrix, verified synthesis, and references.
 - Chapter 3 is Requirements Analysis, not Methodology.
+- Chapter 3 now uses a questionnaire-based requirements analysis template.
+- The questionnaire is required, not optional.
 - Chapter 4 is System Design.
 - Chapter 5 is Implementation Plan.
 - Chapter 6 Conclusion is added.
@@ -21,6 +23,7 @@ Main output: `report/generated/paper.docx`
   - Appendix E: PRISMA Screening Summary
   - Appendix F: System Design Diagrams
   - Appendix G: Planned Test Cases and Evaluation Metrics
+  - Appendix H: Full User Requirements Questionnaire
 
 ## Literature Review Verification
 
@@ -42,6 +45,7 @@ The 35 selected papers remain unchanged. No new papers were collected and no lit
 
 - DOCX render succeeded.
 - Output regenerated at `report/generated/paper.docx`.
+- Chapter titles are post-processed as centered uppercase headings in the format `CHAPTER X: TITLE`.
 - PRISMA was converted from `literature-review/prisma/prisma_flow_diagram_filled.docx` to PDF, then PNG.
 - Report PRISMA figure uses `report/quarto/figures/prisma/prisma_flow_diagram.png`.
 - Mermaid is not used for the PRISMA figure.
@@ -52,6 +56,21 @@ The 35 selected papers remain unchanged. No new papers were collected and no lit
 - Footer font size remains 8 pt.
 - Appendix D is landscape and uses compact matrix formatting.
 - Report-facing body text avoids internal workflow file names and tool names.
+
+## Questionnaire Guide and Template Status
+
+- Google Form creation PDF guide has been created at `report/requirements/questionnaire_google_form_step_by_step.pdf`.
+- Google Form guide source has been created at `report/requirements/questionnaire_design_google_form.md`.
+- Editable DOCX guide copy has been created at `report/requirements/questionnaire_google_form_step_by_step.docx`.
+- Chapter 3 now presents the questionnaire as a required fact-finding method for Requirements Analysis.
+- Chapter 3 uses a text-only respondent background summary for Section A.
+- Chapter 3 uses one main chart per questionnaire analysis item.
+- Only 10 main requirement-focused charts are used in Chapter 3.
+- The full 24-question questionnaire is intended for Appendix H.
+- Placeholder figures were inserted for the 10 main questionnaire analysis items.
+- Google Form response collection is still pending.
+- Response collection and real analysis are pending.
+- After collecting Google Form responses, replace the placeholder figures with real charts and update the pending findings.
 
 ## PlantUML Rendering Status
 
@@ -86,14 +105,17 @@ The diagrams were rendered through the local PlantUML wrapper at `tools/plantuml
 
 - The report is still an FYP1 report, so it does not claim completed prototype implementation results.
 - No final model scores, API endpoints, database tables, screenshots, implementation results, or testing results are reported.
-- Chapter 3 includes questionnaire design only. Actual Google Form or survey response analysis is pending until real responses are collected.
+- Chapter 3 includes the required questionnaire design and analysis template. Actual Google Form response analysis is pending until real responses are collected.
 - Public dataset selection and experiment subset preparation still need supervisor confirmation before FYP2 implementation.
 - The PRISMA counts and selected literature set were preserved from the existing review records.
 
 ## Remaining Manual Items
 
-- Collect Google Form or survey responses if the supervisor requires actual response analysis.
-- Update Chapter 3 after collecting real responses, if required.
+- Manually create the Google Form using `report/requirements/questionnaire_google_form_step_by_step.pdf`.
+- Distribute the Google Form to target respondents after supervisor approval.
+- Collect Google Form responses.
+- Replace Q1-Q10 placeholder figures with real charts generated from actual responses.
+- Update Chapter 3 pending findings after collecting real responses.
 - Check cover page spacing in Microsoft Word.
 - Insert or check FYP1 meeting logs.
 - Insert the Turnitin similarity index page.

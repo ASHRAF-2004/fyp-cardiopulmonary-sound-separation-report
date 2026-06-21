@@ -2,91 +2,212 @@
 
 ## Overview
 
-This chapter defines the requirements for the proposed machine learning-based cardiopulmonary sound separation prototype. The requirements are derived from the literature review, existing system observation or benchmarking, supervisor consultation, and a planned questionnaire design. The chapter does not present completed questionnaire results because survey responses have not yet been collected.
+This chapter presents the requirements analysis for the **Machine Learning-Based System for Cardiopulmonary Sound Separation**. Requirements are gathered through literature and document review, existing system observation or benchmarking, supervisor consultation, and a structured questionnaire. The questionnaire is a required fact-finding method for collecting practical feedback on current challenges, preferred prototype features, interface design, result presentation, and evaluation needs.
 
-The aim of the requirements analysis is to define what the prototype should do, how it should behave, and what constraints should guide implementation in FYP2. The requirements remain appropriate for an application-based FYP1 report because they support system design and implementation planning without claiming completed implementation outcomes.
+The Google Form responses have not yet been collected. Therefore, this chapter presents the questionnaire design and analysis template only. The response findings and chart placeholders will be replaced after real Google Form responses are exported and analyzed. The chapter then defines preliminary functional, non-functional, and user requirements based on the project scope, literature review, supervisor consultation, and planned questionnaire analysis.
 
-## Fact-Finding Techniques
+## Questionnaire
 
-### Justification
+The questionnaire is used as a required fact-finding technique to validate user needs for the proposed prototype. It focuses on practical requirements rather than theoretical opinions. The questions are designed to identify the target users, understand their experience with audio or biomedical signal processing, identify problems in cardiopulmonary audio separation, and collect preferences for system features, interface design, output presentation, and evaluation metrics.
 
-Fact-finding is required because the project involves both research knowledge and software design decisions. The literature review identifies technical challenges such as noisy recordings, overlapping heart and lung sound components, dataset limitations, and evaluation needs. Existing system observation helps translate those challenges into prototype functions. Supervisor consultation helps ensure that the proposed scope remains feasible for FYP1 and FYP2. A questionnaire can be used later if the supervisor requires additional user feedback, but it is treated as a planned instrument until real responses are collected.
-
-### Literature and Document Review
-
-The literature and document review was used to identify the technical foundation of the project. It covered cardiopulmonary sound characteristics, denoising, preprocessing, heart and lung sound separation, datasets, and evaluation metrics. Studies on noisy chest sounds, blind denoising, and machine learning-based separation support the need for audio validation, preprocessing, model execution, and structured output handling [@grooby2023noisyneonatal; @fattahi2022blind2; @poh2024neossnet].
-
-The FYP handbook and project guidelines were also reviewed to align the report with the application-based structure. This ensures that Chapter 3 focuses on requirements analysis, Chapter 4 focuses on system design, and Chapter 5 focuses on the implementation plan.
-
-### Existing System Observation / Benchmarking
-
-Existing system observation was used to identify common workflow expectations for an audio processing prototype. A user should be able to upload an audio file, receive validation feedback, start processing, view the separated outputs, and download the resulting audio files. Existing research prototypes and separation studies also indicate that preprocessing and evaluation should be treated as explicit stages rather than hidden model steps.
-
-At this FYP1 stage, this observation is used only to guide requirements and design. It does not claim completed benchmark testing, final performance comparison, or completed user evaluation.
-
-### Supervisor Consultation
-
-Supervisor consultation was used to keep the project scope suitable for a Software Engineering FYP. The consultation direction supports an application-based prototype rather than a diagnosis system. The project should focus on sound separation, reusable workflow design, public dataset-based evaluation planning, and clear reporting of limitations.
-
-Consultation outcomes are reflected in the requirements by limiting the system to prototype-level separation and by avoiding unsupported clinical claims. Any future scope changes should be confirmed with the supervisor before implementation.
+The full questionnaire contains 24 questions and is intended for inclusion in Appendix H. Chapter 3 analyzes only 10 main requirement-focused items to avoid repeating every questionnaire item in the report body. The full questionnaire supports traceability between the Google Form questions and the resulting system requirements.
 
 ### Questionnaire Design
 
-A questionnaire can be prepared as an optional fact-finding instrument to collect feedback from potential users such as students or researchers. The questionnaire may ask about expected upload workflow, preferred output format, usability expectations, processing feedback, and willingness to use separated outputs for learning or research.
+The purpose of the questionnaire is to support Chapter 3 Requirements Analysis by collecting practical user requirements for the proposed cardiopulmonary sound separation prototype. The target respondents include Software Engineering or Computer Science students, AI or Machine Learning students, Biomedical Engineering or health-related students, researchers or students interested in biomedical audio or signal processing, and supervisors or evaluators where appropriate.
 
-Actual questionnaire response analysis is pending because Google Form or survey responses have not yet been collected. Therefore, this report does not include response charts, respondent counts, statistical findings, or claims based on completed survey data. If responses are collected later, Chapter 3 should be updated with the real findings.
+The questionnaire will be distributed using Google Forms. The estimated completion time is 3-5 minutes. The questionnaire introduction will state that the responses are collected for academic purposes, that there are no right or wrong answers, and that responses will remain confidential. The question types include multiple choice, checkbox, Likert-style scale, and paragraph response items. Response analysis is pending and will be completed only after real Google Form responses are collected.
 
-## Requirement Analysis
+Table @tbl-questionnaire-structure summarizes the questionnaire structure.
 
-### Functional Requirements
+| Section | Purpose | Example question focus | Question type |
+|---|---|---|---|
+| Section A: Respondent Background | Identify respondent profile and relevant experience. | Age group, study area, signal processing familiarity, biomedical audio experience. | Multiple choice |
+| Section B: Current Challenges in Cardiopulmonary Audio Processing | Identify problems users associate with cardiopulmonary audio processing. | Separation difficulty, noise, source overlap, recording quality, lack of tools. | Multiple choice, checkboxes, Likert-style scale |
+| Section C: System Feature Preferences | Prioritize prototype features. | Upload, preprocessing, separation, preview, download, history, evaluation results. | Multiple choice, Likert-style scale |
+| Section D: Interface and Output Preferences | Guide interface design and result presentation. | Audio player, waveform, spectrogram, metrics, interface simplicity, error messages. | Multiple choice, Likert-style scale |
+| Section E: Evaluation and Improvement | Identify evaluation needs and improvement ideas. | Metrics, processing information, willingness to use the prototype, improvement suggestions. | Multiple choice, Likert-style scale, paragraph response |
 
-Table @tbl-functional-requirements lists the functional requirements for the proposed prototype.
+: Questionnaire structure for user requirements analysis {#tbl-questionnaire-structure}
 
-| ID | Functional requirement | Description |
+Table @tbl-questionnaire-analysis-mapping maps the questionnaire sections to the 10 main analysis items used in this chapter.
+
+| Report item | Main chart used | Related questions used only for discussion | Requirement area supported |
+|---|---|---|---|
+| Respondent Background and Experience | Section A, Q2-Q5 | Section A, Q1 when needed | Respondent profile |
+| Difficulty of Separating Heart and Lung Sounds | Section B, Q1 | None | Separation requirement |
+| Problems Affecting Cardiopulmonary Sound Processing | Section B, Q2 | Section B, Q3 | Preprocessing and separation requirements |
+| Usefulness of Prototype | Section B, Q4 | None | System relevance |
+| Preferred System Features | Section C, Q1 | Section C, Q6 | Functional requirements |
+| Preferred Output After Separation | Section C, Q2 | Section D, Q1 | Output design |
+| Importance of Audio Preview Function | Section C, Q3 | Section C, Q4 | Preview and download requirements |
+| Preferred Interface Style | Section D, Q2 | Section D, Q3 and Q5 | Usability requirements |
+| First Information Shown After Separation | Section D, Q4 | Section C, Q5 and Q6 | Result page design |
+| Importance of Evaluation Metrics | Section E, Q1 | Section E, Q2 | Evaluation requirements |
+| Willingness to Use Prototype | Section E, Q3 | Section E, Q4 | User acceptance and improvements |
+
+: Questionnaire analysis mapping {#tbl-questionnaire-analysis-mapping}
+
+### Respondent Background and Experience
+
+Section A collected respondent background information, including respondent category, familiarity with audio or signal processing, biomedical audio experience, and audio-related task experience. These responses are used to confirm whether the questionnaire reached users who are relevant to the proposed cardiopulmonary sound separation system. Since this section is used mainly to describe the respondent profile, it is summarized in text instead of being presented as separate figures.
+
+After Google Form responses are collected, this section will summarize the number of respondents, their academic or professional background, and their level of familiarity with audio processing, signal processing, biomedical audio, or machine learning. This respondent profile will help support the validity of the requirements analysis.
+
+### Question 1: Difficulty of Separating Heart and Lung Sounds
+
+This question measures how difficult respondents perceive the task of separating heart and lung sounds from a mixed cardiopulmonary recording. The purpose is to determine whether the project addresses a problem that users recognize as technically challenging.
+
+![Perceived difficulty of separating heart and lung sounds](figures/questionnaire/placeholders/q1_separation_difficulty_placeholder.png){#fig-q1-separation-difficulty}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will report whether respondents consider the task easy, neutral, difficult, or very difficult.
+
+**Requirement implication:** The result will support the need for a machine learning-based separation function that processes mixed cardiopulmonary audio and generates separate heart and lung sound outputs.
+
+### Question 2: Problems Affecting Cardiopulmonary Sound Processing
+
+This question identifies the main problems that users believe affect cardiopulmonary sound processing. It focuses on practical issues such as background noise, overlap between heart and lung sounds, low recording quality, and lack of simple software tools.
+
+![Problems affecting cardiopulmonary sound processing](figures/questionnaire/placeholders/q2_processing_challenges_placeholder.png){#fig-q2-processing-challenges}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will identify the most selected processing challenges and discuss the related noisy-audio quality item from Section B.
+
+**Requirement implication:** The result will support preprocessing, validation, noise handling, and separation requirements for the proposed prototype.
+
+### Question 3: Usefulness of a Heart-Lung Sound Separation Prototype
+
+This question evaluates whether respondents believe a simple prototype for heart-lung sound separation would be useful for students, researchers, or users working with biomedical audio. It helps determine whether the proposed application has practical relevance.
+
+![Usefulness of the proposed heart-lung sound separation prototype](figures/questionnaire/placeholders/q3_prototype_usefulness_placeholder.png){#fig-q3-prototype-usefulness}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will explain whether respondent feedback supports the development of the proposed prototype.
+
+**Requirement implication:** The result will support the overall system relevance and justify the application-based prototype scope.
+
+### Question 4: Preferred System Features
+
+This question collects user preferences on the most important system features, such as uploading mixed cardiopulmonary audio, preprocessing noisy audio, separating heart and lung sounds, previewing separated audio, downloading outputs, viewing history, and viewing evaluation results.
+
+![Preferred system features](figures/questionnaire/placeholders/q4_preferred_features_placeholder.png){#fig-q4-preferred-features}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will summarize the most preferred features and may mention processing history preferences from Section C.
+
+**Requirement implication:** The result will help prioritize the functional requirements of the prototype.
+
+### Question 5: Preferred Output After Separation
+
+This question identifies the preferred output after sound separation, such as audio files only, waveform visualization, spectrogram visualization, evaluation metrics, or a combination of these outputs. The related result-display question from Section D will be discussed in text only.
+
+![Preferred output after sound separation](figures/questionnaire/placeholders/q5_output_after_separation_placeholder.png){#fig-q5-output-after-separation}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will describe the preferred result format and explain how it affects output presentation.
+
+**Requirement implication:** The result will support output design requirements, including whether the prototype should show audio files, waveform displays, spectrogram displays, or evaluation information.
+
+### Question 6: Importance of Audio Preview Function
+
+This question measures how important respondents consider previewing separated heart and lung sounds before downloading them. The related download-importance question from Section C will be mentioned in the discussion only.
+
+![Importance of previewing separated heart and lung sounds](figures/questionnaire/placeholders/q6_preview_importance_placeholder.png){#fig-q6-preview-importance}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will explain whether respondents consider previewing separated outputs to be a core feature.
+
+**Requirement implication:** The result will support preview and download requirements for separated heart and lung sound outputs.
+
+### Question 7: Preferred Interface Style
+
+This question identifies whether respondents prefer a simple interface, a detailed technical interface, or a balanced interface with a simple view and optional advanced details. Related ease-of-use and error-message questions from Section D will be discussed in text only.
+
+![Preferred interface style](figures/questionnaire/placeholders/q7_interface_style_placeholder.png){#fig-q7-interface-style}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will summarize the preferred interface style and discuss whether users need simple feedback and helpful error messages.
+
+**Requirement implication:** The result will support usability requirements for an interface that is understandable to users with different technical backgrounds.
+
+### Question 8: First Information Shown After Separation
+
+This question asks what information respondents prefer to see first after separation is completed. Possible priorities include download buttons, audio preview players, waveform or spectrogram visualization, evaluation metrics, and processing status summary.
+
+![Preferred first information after separation is completed](figures/questionnaire/placeholders/q8_first_information_placeholder.png){#fig-q8-first-information}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will discuss the preferred first result information and may mention processing information and history preferences from Section C.
+
+**Requirement implication:** The result will guide the result page design, including which output or status information should be emphasized first.
+
+### Question 9: Importance of Evaluation Metrics
+
+This question measures how important respondents consider evaluation metrics for the separated output. The related question about useful evaluation information from Section E will be discussed in text only.
+
+![Importance of evaluation metrics for separated output](figures/questionnaire/placeholders/q9_evaluation_metrics_placeholder.png){#fig-q9-evaluation-metrics}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will explain whether respondents expect the prototype to show evaluation information.
+
+**Requirement implication:** The result will support evaluation requirements, such as displaying signal quality, separation quality, noise reduction information, or processing time when valid data is available.
+
+### Question 10: Willingness to Use the Prototype
+
+This question assesses whether respondents would use a prototype that separates mixed cardiopulmonary audio into heart and lung sound outputs. The open-ended improvement question from Section E will be discussed in text only after responses are collected.
+
+![Willingness to use the cardiopulmonary sound separation prototype](figures/questionnaire/placeholders/q10_willingness_to_use_placeholder.png){#fig-q10-willingness-to-use}
+
+**Finding:** Pending. This finding will be completed after Google Form responses are collected. The analysis will summarize user acceptance and identify improvement suggestions from written feedback.
+
+**Requirement implication:** The result will support user acceptance, prototype refinement, and future improvement planning.
+
+## Functional Requirements
+
+Table @tbl-functional-requirements lists the preliminary functional requirements for the proposed prototype.
+
+| Req ID | Requirement | Description |
 |---|---|---|
-| FR1 | Upload cardiopulmonary audio | The user shall be able to upload a mixed cardiopulmonary audio file. |
-| FR2 | Validate audio file | The system shall check the file type, file size, and basic audio readability before processing. |
-| FR3 | Preprocess audio | The system shall apply preprocessing such as resampling, normalization, segmentation, or noise reduction as required by the selected model workflow. |
-| FR4 | Run sound separation | The system shall run the selected separation model or separation pipeline on the validated recording. |
-| FR5 | Generate heart sound output | The system shall generate a separated heart sound output file. |
-| FR6 | Generate lung sound output | The system shall generate a separated lung sound output file. |
-| FR7 | View result | The user shall be able to view processing status and basic result information after separation. |
-| FR8 | Download outputs | The user shall be able to download the separated heart and lung sound outputs. |
-| FR9 | View processing history | The system may provide a processing history if storage and privacy constraints allow it. |
+| F1 | Upload Audio File | The system shall allow the user to upload a mixed cardiopulmonary audio file for processing. |
+| F2 | Validate Audio Format | The system shall validate the uploaded file type, file size, and basic audio readability before processing starts. |
+| F3 | Preprocess Audio | The system shall apply suitable preprocessing steps such as resampling, normalization, segmentation, or noise reduction according to the selected workflow. |
+| F4 | Run Cardiopulmonary Sound Separation | The system shall execute the selected machine learning-based separation pipeline on the validated and preprocessed recording. |
+| F5 | Generate Heart Sound Output | The system shall produce a separated heart sound output from the mixed cardiopulmonary input. |
+| F6 | Generate Lung Sound Output | The system shall produce a separated lung sound output from the mixed cardiopulmonary input. |
+| F7 | Preview Separated Outputs | The system shall allow users to preview the separated heart and lung outputs before downloading them. |
+| F8 | Download Separated Outputs | The system shall allow users to download the separated heart and lung sound files. |
+| F9 | Display Processing Status | The system shall show processing status information such as validation result, processing progress, completion state, or failure message. |
+| F10 | Display Evaluation Metrics | The system shall display suitable evaluation metrics when reference signals or valid evaluation data are available. |
+| F11 | View Processing History | The system shall provide a processing history showing previous uploads and separation results when storage support is enabled. |
 
 : Functional requirements for the cardiopulmonary sound separation prototype {#tbl-functional-requirements}
 
-### Non-Functional Requirements
+## Non-Functional Requirements
 
-Table @tbl-nonfunctional-requirements lists the non-functional requirements that guide the planned prototype.
+Table @tbl-nonfunctional-requirements lists the preliminary non-functional requirements for the proposed prototype.
 
-| ID | Non-functional requirement | Description |
+| Req ID | Category | Requirement |
 |---|---|---|
-| NFR1 | Usability | The interface should be simple enough for a student or researcher to upload audio and obtain outputs without unnecessary steps. |
-| NFR2 | Reliability | The system should handle invalid files, failed processing, and missing outputs with clear error messages. |
-| NFR3 | Maintainability | The codebase should separate interface, preprocessing, model, storage, and evaluation logic to support future changes. |
-| NFR4 | Performance | The prototype should process reasonable audio file sizes within an acceptable time for FYP demonstration. |
-| NFR5 | Security and privacy | Uploaded files should be handled carefully, and temporary files should not be exposed unnecessarily. |
-| NFR6 | Compatibility | The system should support common audio formats where feasible, such as WAV, and document any limitations. |
+| NF1 | Usability | The interface shall be understandable for users with different levels of technical experience. |
+| NF2 | Performance | The system shall process reasonable audio file sizes within an acceptable time for prototype demonstration and evaluation. |
+| NF3 | Reliability | The system shall handle invalid files, failed preprocessing, failed separation, and missing outputs with clear feedback. |
+| NF4 | Maintainability | The system shall separate interface, validation, preprocessing, model, storage, and result management logic to support future updates. |
+| NF5 | Security and Privacy | The system shall handle uploaded audio files carefully and avoid exposing or retaining files unnecessarily. |
+| NF6 | Compatibility | The system shall support common audio formats where feasible and document any input limitations. |
+| NF7 | Data Integrity | The system shall avoid overwriting outputs incorrectly and shall preserve the association between uploaded files, processing status, and generated outputs. |
+| NF8 | Scalability | The system design shall allow future expansion, such as additional models, output visualizations, or evaluation metrics, without major restructuring. |
 
 : Non-functional requirements for the cardiopulmonary sound separation prototype {#tbl-nonfunctional-requirements}
 
-### User Requirements
+## User Requirements
 
-The primary user is a student or researcher who wants to separate a mixed cardiopulmonary recording into heart and lung sound outputs. The user expects a clear upload interface, validation feedback, processing progress, understandable result information, and downloadable output files.
+Table @tbl-user-requirements summarizes the preliminary user requirements for the proposed prototype.
 
-Table @tbl-user-requirements summarizes the user requirements.
-
-| ID | User requirement | Description |
+| User Requirement ID | User Need | Description |
 |---|---|---|
-| UR1 | Clear upload process | The user needs a simple way to select and upload a cardiopulmonary audio file. |
-| UR2 | Processing feedback | The user needs to know whether the file is accepted, processing is running, or an error has occurred. |
-| UR3 | Separated outputs | The user needs access to separate heart and lung sound outputs after processing. |
-| UR4 | Downloadable results | The user needs to download output files for review, reporting, or further analysis. |
-| UR5 | Transparent limitations | The user needs to understand that the prototype is for separation research and not for clinical diagnosis. |
+| UR1 | Easy audio upload | The user needs to upload mixed cardiopulmonary audio easily through a clear interface. |
+| UR2 | File validity feedback | The user needs to understand whether the uploaded file is valid before processing begins. |
+| UR3 | Separated heart and lung outputs | The user needs separated heart and lung sound outputs after the separation process is completed. |
+| UR4 | Output preview | The user needs to preview separated outputs before downloading them. |
+| UR5 | Simple visual feedback | The user needs simple visual feedback such as waveform or spectrogram displays when these are supported by the prototype. |
+| UR6 | Clear status and errors | The user needs clear processing status and error messages when validation or separation fails. |
+| UR7 | Downloadable results | The user needs to download separated output files for review, reporting, or further analysis. |
+| UR8 | Basic metrics or processing information | The user needs basic metrics or processing information when evaluation support is included. |
 
 : User requirements for the proposed prototype {#tbl-user-requirements}
 
 ## Summary
 
-This chapter presented the requirements analysis for the proposed prototype. The requirements were derived from literature and document review, existing system observation, supervisor consultation, and a planned questionnaire design. Actual questionnaire response analysis remains pending until real responses are collected. The next chapter converts these requirements into system design artefacts.
+This chapter presented the requirements analysis for the proposed system. The questionnaire is a required fact-finding method and has been designed to collect practical user feedback through Google Forms. Section A is summarized as respondent profile information, while Sections B to E are represented through 10 main requirement-focused analysis items. Since responses have not yet been collected, the findings and chart figures are left as placeholders to be completed after data collection. Preliminary functional, non-functional, and user requirements were defined based on the project scope, literature review, supervisor consultation, and planned questionnaire analysis.
