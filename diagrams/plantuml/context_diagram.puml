@@ -1,25 +1,28 @@
 @startuml
+!theme plain
 title Context Diagram - Cardiopulmonary Sound Separation Prototype
 
 left to right direction
+skinparam shadowing false
 skinparam rectangle {
   BorderColor #2F4858
   BackgroundColor #F8FBFC
 }
-skinparam actorStyle awesome
 
-actor "Student / Researcher User" as User
+actor "Student / Researcher\nUser" as User
 database "Public Audio Datasets\n(for development and evaluation)" as Dataset
-rectangle "Cardiopulmonary Sound\nSeparation Prototype" as System
+folder "Local Model Files\nand Runtime Storage" as Storage
+rectangle "Machine Learning-Based\nCardiopulmonary Sound\nSeparation Prototype" as System
 
-User --> System : Upload mixed\ncardiopulmonary audio
+User --> System : Upload mixed WAV\nand select model
 System --> User : Validation feedback\nand processing status
-System --> User : Separated heart\nsound output
-System --> User : Separated lung\nsound output
-Dataset --> System : Training or evaluation\nrecordings
+System --> User : Separated heart\nand lung outputs
+Dataset --> System : Training, baseline,\nand evaluation data
+System --> Storage : Read model files\nand save outputs
+Storage --> System : Model metadata,\nuploads, results
 
 note bottom of System
-Prototype scope: sound separation only.
+Prototype scope: heart-lung sound separation only.
 No disease diagnosis or treatment decision is provided.
 end note
 

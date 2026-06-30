@@ -45,6 +45,7 @@ $plantumlSources = @(
   "diagrams\plantuml\use_case_diagram.puml",
   "diagrams\plantuml\activity_diagram.puml",
   "diagrams\plantuml\class_diagram.puml",
+  "diagrams\plantuml\component_diagram.puml",
   "diagrams\plantuml\sequence_diagram.puml"
 )
 
@@ -53,6 +54,7 @@ $plantumlImages = @(
   "report\quarto\figures\plantuml\use_case_diagram.png",
   "report\quarto\figures\plantuml\activity_diagram.png",
   "report\quarto\figures\plantuml\class_diagram.png",
+  "report\quarto\figures\plantuml\component_diagram.png",
   "report\quarto\figures\plantuml\sequence_diagram.png"
 )
 
@@ -126,6 +128,9 @@ questionnaire_guide_md = repo / "report/requirements/questionnaire_design_google
 questionnaire_guide_pdf = repo / "report/requirements/questionnaire_google_form_step_by_step.pdf"
 questionnaire_guide_docx = repo / "report/requirements/questionnaire_google_form_step_by_step.docx"
 questionnaire_placeholder_dir = repo / "report/quarto/figures/questionnaire/placeholders"
+use_case_puml = repo / "diagrams/plantuml/use_case_diagram.puml"
+class_puml = repo / "diagrams/plantuml/class_diagram.puml"
+sequence_puml = repo / "diagrams/plantuml/sequence_diagram.puml"
 questionnaire_placeholders = [
     "q1_separation_difficulty_placeholder.png",
     "q2_processing_challenges_placeholder.png",
@@ -208,6 +213,9 @@ ch4 = chapter_texts.get("chapter-4.qmd", "")
 ch5 = chapter_texts.get("chapter-5.qmd", "")
 ch6 = chapter_texts.get("chapter-6.qmd", "")
 guide_text = read(questionnaire_guide_md)
+use_case_puml_text = read(use_case_puml)
+class_puml_text = read(class_puml)
+sequence_puml_text = read(sequence_puml)
 
 problem_items = re.findall(r"(?ms)^\d+\.\s+(.*?)(?=^\d+\.\s+|^##\s+Project Objectives|\Z)", section(ch1, "Problem Statement"))
 objective_items = re.findall(r"(?m)^\d+\.\s+", section(ch1, "Project Objectives"))
@@ -321,11 +329,18 @@ check("PlantUML diagrams are referenced in Chapter 4", all(name in ch4 for name 
     "use_case_diagram.png",
     "activity_diagram.png",
     "class_diagram.png",
+    "component_diagram.png",
     "sequence_diagram.png",
 ]))
+check("Chapter 4 includes model selection design", "Select separation model" in ch4 and "model registry" in ch4.lower() and "Algorithm and Model Selection Design" in ch4)
+check("Use case diagram uses plain associations without arrowheads", "-->" not in use_case_puml_text and "..>" not in use_case_puml_text)
+check("Class diagram hides PlantUML class icons", "hide circle" in class_puml_text)
+check("Class diagram includes concrete non-NeoSSNet strategies", all(name in class_puml_text for name in ["FixedFilterStrategy", "NmfSeparationStrategy", "VmdSeparationStrategy", "NeoSSNetStrategy"]))
+check("Sequence diagram uses actual planned classes only", "Backend API" not in sequence_puml_text and "SQLite Database" not in sequence_puml_text and "Filesystem Storage" not in sequence_puml_text)
 check("Chapter 5 is Implementation Plan", "# Chapter 5: Implementation Plan" in ch5)
 check("Chapter 5 is not Testing and Evaluation", "# Chapter 5: Testing and Evaluation" not in ch5)
 check("Chapter 5 uses planned testing language", "testing is presented as planned work" in ch5.lower() and "no user acceptance results are included" in ch5.lower())
+check("Chapter 5 includes planned algorithm mathematics", all(token in ch5 for token in ["x[n] = h[n] + l[n] + r[n]", "V \\approx WH", "SI\\mbox{-}SDR", "Factory}(\\text{model.architecture}"]))
 check("Chapter 6 Conclusion exists", "# Chapter 6: Conclusion" in ch6)
 
 appendix_order = [

@@ -342,7 +342,7 @@ The PRISMA screening process used in Chapter 2 is summarized below. The summary 
 
 # Appendix F: System Design Diagrams {.unnumbered}
 
-The main system design diagrams are presented in Chapter 4. They summarize the prototype context, use cases, activity flow, planned class structure, and audio processing sequence. The diagrams are included to support the design explanation without adding unsupported implementation details.
+The main system design diagrams are presented in Chapter 4. They summarize the prototype context, use cases, activity flow, planned class structure, component-level architecture, and audio processing sequence. The diagrams are included to support the design explanation without adding unsupported implementation details.
 
 | Diagram | Purpose |
 |---|---|
@@ -350,6 +350,7 @@ The main system design diagrams are presented in Chapter 4. They summarize the p
 | Use case diagram | Shows the user-facing functions of the cardiopulmonary sound separation system. |
 | Activity diagram | Shows the planned workflow from upload to output download. |
 | Class diagram | Shows the planned module responsibilities for implementation. |
+| Component diagram | Shows the browser interface, backend API, service layer, model registry, separation strategies, database, and storage components. |
 | Sequence diagram | Shows the expected processing flow when a user uploads an audio file. |
 
 : System design diagram summary {#tbl-system-design-diagrams}

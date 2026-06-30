@@ -13,7 +13,10 @@ Main output: `report/generated/paper.docx`
 - Chapter 3 now uses a questionnaire-based requirements analysis template.
 - The questionnaire is required, not optional.
 - Chapter 4 is System Design.
+- Chapter 4 now includes model selection, model registry, service-layer architecture, algorithm strategy design, database/storage design, and component-level architecture.
+- Chapter 4 diagram corrections were applied: the use case diagram uses plain associations without arrowheads, the sequence diagram uses planned system classes/modules rather than generic infrastructure boxes, and the class diagram hides PlantUML class icons.
 - Chapter 5 is Implementation Plan.
+- Chapter 5 now explains the planned separation algorithms, mathematical formulations, model-selection implementation strategy, and testing plan with literature citations for preprocessing, decomposition, NeoSSNet, and evaluation-related discussion.
 - Chapter 6 Conclusion is added.
 - Appendices are ordered as:
   - Appendix A: Gantt Chart
@@ -80,6 +83,7 @@ Editable PlantUML sources:
 - `diagrams/plantuml/use_case_diagram.puml`
 - `diagrams/plantuml/activity_diagram.puml`
 - `diagrams/plantuml/class_diagram.puml`
+- `diagrams/plantuml/component_diagram.puml`
 - `diagrams/plantuml/sequence_diagram.puml`
 
 Rendered report images:
@@ -88,6 +92,7 @@ Rendered report images:
 - `report/quarto/figures/plantuml/use_case_diagram.png`
 - `report/quarto/figures/plantuml/activity_diagram.png`
 - `report/quarto/figures/plantuml/class_diagram.png`
+- `report/quarto/figures/plantuml/component_diagram.png`
 - `report/quarto/figures/plantuml/sequence_diagram.png`
 
 The diagrams were rendered through the local PlantUML wrapper at `tools/plantuml.cmd`.
@@ -106,6 +111,8 @@ The diagrams were rendered through the local PlantUML wrapper at `tools/plantuml
 - The report is still an FYP1 report, so it does not claim completed prototype implementation results.
 - No final model scores, API endpoints, database tables, screenshots, implementation results, or testing results are reported.
 - Chapter 3 includes the required questionnaire design and analysis template. Actual Google Form response analysis is pending until real responses are collected.
+- Chapter 4 and Chapter 5 are ready for supervisor review as FYP1 design and implementation-plan chapters. They do not claim that the final separation algorithm is already working.
+- The concrete planned strategy classes are FixedFilterStrategy, NmfSeparationStrategy, VmdSeparationStrategy, and NeoSSNetStrategy.
 - Public dataset selection and experiment subset preparation still need supervisor confirmation before FYP2 implementation.
 - The PRISMA counts and selected literature set were preserved from the existing review records.
 

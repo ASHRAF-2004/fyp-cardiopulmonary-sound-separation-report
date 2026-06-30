@@ -1,58 +1,227 @@
 @startuml
-title Class Diagram - Planned Prototype Modules
+!theme plain
+title Class Diagram - Prototype Design Patterns and Core Classes
 
+left to right direction
+hide circle
 skinparam classAttributeIconSize 0
-
-class AudioUploadController {
-  +receiveUpload()
-  +showStatus()
-  +provideDownload()
+skinparam linetype ortho
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam nodesep 34
+skinparam ranksep 38
+skinparam ArrowFontSize 10
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  ArrowColor #333333
+}
+skinparam package {
+  BorderColor #2F3A4A
+  FontStyle bold
 }
 
-class AudioValidator {
-  +validateType()
-  +validateSize()
-  +readMetadata()
+package "Facade Pattern" as FacadePkg #DCEBFF {
+  class SeparationRouter <<FacadeClient>> {
+    +separate_audio(audio_id, model_id)
+  }
+
+  class SeparationService <<Facade>> {
+    +separate_uploaded_audio(db, audio_id, model_id)
+    +create_running_job(db, uploaded_audio_id, model_id)
+    +mark_job_failed(db, job, error, processing_time_ms)
+  }
+
+  class ModelService <<Subsystem>> {
+    +list_models(db)
+    +get_model_for_separation(db, model_id)
+    +get_active_model(db)
+    +get_model_by_id(db, model_id)
+  }
+
+  class StorageService <<Subsystem>> {
+    +save_uploaded_wav(file)
+    +resolve_project_path(path)
+    +build_separation_output_paths(job_id)
+    +read_wav_metadata(path)
+  }
+
+  class ResultService <<Subsystem>> {
+    +create_separation_result(db, job_id, inference_result)
+    +get_result_details(db, job_id)
+    +get_download_file(db, job_id, output_type)
+    +get_history(db, limit)
+  }
 }
 
-class PreprocessingService {
-  +resample()
-  +normalize()
-  +prepareInput()
+package "Strategy and Model Selection" as StrategyPkg #FFF1CC {
+  class SeparationAlgorithmFactory <<Factory>> {
+    +create_algorithm(model) : SeparationAlgorithm
+  }
+
+  class SeparationEngine <<Context>> {
+    -algorithm : SeparationAlgorithm
+    +separate(input_wav_path, model_path, config_path)
+  }
+
+  interface SeparationAlgorithm <<Strategy>> {
+    +separate(input_wav_path, model_path, config_path)
+  }
+
+  class FixedFilterStrategy <<ConcreteStrategy>> {
+    +separate(...)
+  }
+
+  class NmfSeparationStrategy <<ConcreteStrategy>> {
+    +separate(...)
+  }
+
+  class VmdSeparationStrategy <<ConcreteStrategy>> {
+    +separate(...)
+  }
+
+  class NeoSSNetStrategy <<ConcreteStrategy>> {
+    +separate(...)
+  }
 }
 
-class SeparationModelService {
-  +loadModel()
-  +separate()
-  +postprocessOutput()
+package "Upload Validation Factory" as FactoryPkg #E4F7E7 {
+  class UploadRouter <<Client>> {
+    +upload_audio(file, db)
+  }
+
+  abstract class AudioValidatorFactory <<Creator>> {
+    +create_validator(filename) : AudioValidator
+  }
+
+  class WavAudioValidatorFactory <<ConcreteCreator>> {
+    +create_validator(filename) : AudioValidator
+  }
+
+  interface AudioValidator <<Product>> {
+    +validate(upload_file)
+  }
+
+  class WavAudioValidator <<ConcreteProduct>> {
+    +validate(upload_file)
+  }
 }
 
-class ResultManager {
-  +saveOutput()
-  +getResultStatus()
-  +getDownloadPath()
+package "Supporting Components" as SupportPkg #F4F6F8 {
+  class ModelsRouter <<RouterModule>> {
+    +available_models()
+  }
+
+  class ResultsRouter <<RouterModule>> {
+    +result_details(job_id)
+    +download_heart(job_id)
+    +download_lung(job_id)
+    +history(limit)
+  }
+
+  class DatabaseSession <<SQLAlchemySession>>
 }
 
-class ProcessingRecord {
-  +recordId
-  +inputFileName
-  +status
-  +heartOutputPath
-  +lungOutputPath
+package "SQLite Data Models" as DataPkg #EAF7EA {
+  class UploadedAudio <<Entity>> {
+    +uploaded_audio_id
+    +original_filename
+    +stored_path
+    +sample_rate_hz
+    +uploaded_at
+  }
+
+  class Model <<Entity>> {
+    +model_id
+    +model_name
+    +version
+    +architecture
+    +checkpoint_path
+    +config_path
+    +is_active
+  }
+
+  class SeparationJob <<Entity>> {
+    +job_id
+    +uploaded_audio_id
+    +model_id
+    +status
+    +requested_at
+    +completed_at
+  }
+
+  class SeparationResult <<Entity>> {
+    +result_id
+    +job_id
+    +heart_file_path
+    +lung_file_path
+    +created_at
+  }
+
+  class EvaluationMetric <<Entity>> {
+    +metric_id
+    +result_id
+    +metric_name
+    +metric_value
+  }
+
+  class SystemLog <<Entity>> {
+    +log_id
+    +job_id
+    +log_level
+    +source_component
+    +message
+  }
 }
 
-class StorageService {
-  +saveUploadedFile()
-  +saveTemporaryFile()
-  +deleteTemporaryFile()
-}
+UploadRouter --> AudioValidatorFactory : create_validator()
+WavAudioValidatorFactory --|> AudioValidatorFactory
+AudioValidatorFactory ..> AudioValidator : returns
+WavAudioValidatorFactory ..> WavAudioValidator : creates
+WavAudioValidator ..|> AudioValidator
+UploadRouter --> AudioValidator : validate()
+UploadRouter --> StorageService
+UploadRouter ..> UploadedAudio
 
-AudioUploadController --> AudioValidator : validates upload
-AudioUploadController --> PreprocessingService : starts preprocessing
-PreprocessingService --> SeparationModelService : sends prepared audio
-SeparationModelService --> ResultManager : returns output files
-ResultManager --> ProcessingRecord : creates or updates
-ResultManager --> StorageService : stores outputs
-AudioUploadController --> ResultManager : retrieves results
+SeparationRouter --> SeparationService
+SeparationService --> ModelService
+SeparationService --> StorageService
+SeparationService --> ResultService
+SeparationService --> SeparationAlgorithmFactory
+SeparationService --> SeparationEngine
+SeparationService ..> UploadedAudio
+SeparationService ..> SeparationJob
+SeparationService ..> SeparationResult
+
+SeparationAlgorithmFactory ..> Model : reads architecture
+SeparationAlgorithmFactory --> SeparationAlgorithm : creates
+SeparationEngine --> SeparationAlgorithm : delegates
+FixedFilterStrategy ..|> SeparationAlgorithm
+NmfSeparationStrategy ..|> SeparationAlgorithm
+VmdSeparationStrategy ..|> SeparationAlgorithm
+NeoSSNetStrategy ..|> SeparationAlgorithm
+
+ModelsRouter --> ModelService
+ResultsRouter --> ResultService
+ModelService ..> Model
+ResultService ..> SeparationResult
+ResultService ..> SeparationJob
+
+DatabaseSession ..> UploadedAudio
+DatabaseSession ..> Model
+DatabaseSession ..> SeparationJob
+DatabaseSession ..> SeparationResult
+
+SeparationJob "0..*" --> "1" UploadedAudio
+SeparationJob "0..*" --> "1" Model
+SeparationResult "1" --> "1" SeparationJob
+EvaluationMetric "0..*" --> "1" SeparationResult
+SystemLog "0..*" --> "0..1" SeparationJob
+
+legend right
+  Facade: SeparationRouter calls SeparationService.
+  Strategy: SeparationEngine delegates to selected algorithm.
+  Factory: model architecture creates the strategy.
+endlegend
 
 @enduml

@@ -1,33 +1,46 @@
 @startuml
 !theme plain
-title Cardiopulmonary Sound Separation System - Component Diagram
+title Component Diagram - Cardiopulmonary Sound Separation Prototype
 
-actor "User" as User
+left to right direction
+skinparam shadowing false
+
+actor "Student / Researcher\nUser" as User
 
 rectangle "Prototype Application" {
-  component "Web Interface" as Web
-  component "Backend API" as API
+  component "Browser Interface" as Web
+  component "Backend API\nRoutes" as API
+  component "Service Layer" as Services
+  component "Model Registry\nand Selection" as Registry
   component "Audio Preprocessing\nModule" as Preprocess
-  component "Machine Learning\nSeparation Module" as Model
-  component "Result Management\nModule" as Result
+  component "Separation Strategy\nInterface" as Strategy
   component "Evaluation Module" as Eval
-  component "Storage Module" as Storage
-  database "Database Module" as DB
+  component "Result and History\nModule" as Result
+  database "SQLite Metadata\nDatabase" as DB
+  folder "Filesystem Storage\nUploads / Outputs / Models" as FS
 }
 
-folder "Input Audio\nFiles" as InputFiles
-folder "Separated Output\nFiles" as OutputFiles
+component "Fixed Filter\nBaseline" as Filter
+component "NMF\nStrategy" as NMF
+component "VMD\nStrategy" as VMD
+component "NeoSSNet Deep\nStrategy" as Neo
 
-User --> Web : upload and review
-Web --> API : request processing
-API --> Preprocess : validated audio
-Preprocess --> Model : model-ready input
-Model --> Result : heart/lung estimates
-Result --> Eval : outputs and references\nwhere available
-Result --> Storage : save audio outputs
-Storage --> OutputFiles
-API --> DB : job metadata,\nstatus, metrics
-Storage --> InputFiles : store uploaded audio
-Web <-- API : status, links,\nmetrics
+User --> Web : upload, select model,\npreview, download
+Web --> API : HTTP requests
+API --> Services : route calls
+Services --> Registry : list or load model
+Services --> Preprocess : prepare waveform
+Services --> Strategy : run selected strategy
+Strategy --> Filter
+Strategy --> NMF
+Strategy --> VMD
+Strategy --> Neo
+Services --> Result : save and read results
+Services --> DB : metadata, jobs,\nmetrics, logs
+Services --> FS : WAV and model files
+Result --> DB
+Result --> FS
+Eval --> DB : planned metrics
+Web <-- API : status, outputs,\nhistory, metrics
 
 @enduml

@@ -1,40 +1,32 @@
 @startuml
+!theme plain
 title Use Case Diagram - Cardiopulmonary Sound Separation Prototype
 
 left to right direction
-skinparam actorStyle awesome
+skinparam shadowing false
 
-actor "Student / Researcher User" as User
+actor "Student / Researcher\nUser" as User
 
 rectangle "Cardiopulmonary Sound Separation Prototype" {
-  usecase "Upload cardiopulmonary\naudio" as UC1
-  usecase "Validate audio file" as UC2
-  usecase "Preprocess audio" as UC3
-  usecase "Run sound separation" as UC4
-  usecase "Generate heart sound\noutput" as UC5
-  usecase "Generate lung sound\noutput" as UC6
-  usecase "View result" as UC7
-  usecase "Download outputs" as UC8
-  usecase "View processing history" as UC9
+  usecase "Upload mixed\ncardiopulmonary audio" as UCUpload
+  usecase "Select separation\nmodel" as UCSelectModel
+  usecase "Run sound\nseparation" as UCRun
+  usecase "View processing\nstatus" as UCStatus
+  usecase "View separated\nresult" as UCView
+  usecase "Preview heart and\nlung audio" as UCPreview
+  usecase "Download separated\noutputs" as UCDownload
+  usecase "View processing\nhistory" as UCHistory
+  usecase "View evaluation\nmetrics" as UCMetrics
 }
 
-User --> UC1
-User --> UC7
-User --> UC8
-User --> UC9
-
-UC1 .> UC2 : <<include>>
-UC2 .> UC3 : <<include>>
-UC3 .> UC4 : <<include>>
-UC4 .> UC5 : <<include>>
-UC4 .> UC6 : <<include>>
-UC5 .> UC7 : <<include>>
-UC6 .> UC7 : <<include>>
-UC9 ..> UC7 : <<extend>>
-
-note bottom of UC4
-The prototype separates sounds only;
-it does not provide diagnosis.
-end note
+User -- UCUpload
+User -- UCSelectModel
+User -- UCRun
+User -- UCStatus
+User -- UCView
+User -- UCPreview
+User -- UCDownload
+User -- UCHistory
+User -- UCMetrics
 
 @enduml
