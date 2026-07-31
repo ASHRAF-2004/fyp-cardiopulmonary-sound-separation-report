@@ -1,0 +1,133 @@
+@startuml
+!theme plain
+title Class Diagram - Core Prototype Classes
+
+top to bottom direction
+hide circle
+skinparam dpi 160
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+package "Interface and Controllers" #EEF5FF {
+  class PrototypeInterface {
+    +showAudioForm()
+    +showAudioList()
+    +showJobStatus()
+    +showResult()
+  }
+
+  class AudioController {
+    +upload(file, attributes)
+    +listAudioRecords(filters)
+  }
+
+  class AnalysisController {
+    +listModels()
+    +startSeparation(audioId, modelId)
+    +getJobStatus(jobId)
+  }
+}
+
+package "Application Services" #F8FAFC {
+  class AudioService {
+    +createAudioRecord(file, attributes)
+    +getAudioRecords(filters)
+  }
+
+  class AudioValidator {
+    +validate(file, attributes)
+  }
+
+  class ModelRegistry {
+    +listActiveModels()
+    +getModel(modelId)
+  }
+
+  class SeparationService {
+    +createJob(audioId, modelId)
+    +run(jobId)
+  }
+
+  class StrategyFactory {
+    +create(model) : SeparationStrategy
+  }
+
+  class ResultService {
+    +saveResult(jobId, outputs)
+    +getResult(jobId)
+    +getHistory(filters)
+  }
+}
+
+package "Separation Strategies" #FFF7E6 {
+  interface SeparationStrategy {
+    +separate(inputPath, config) : SeparationOutput
+  }
+
+  class FixedFilterStrategy
+  class NMFStrategy
+  class VMDStrategy
+  class NeoSSNetStrategy
+}
+
+package "Persistent Records" #ECFDF3 {
+  class AudioRecord {
+    +audioId
+    +originalFilename
+    +bodyLocation
+    +recordingDevice
+    +sampleRateHz
+    +durationSeconds
+    +notes
+    +uploadedAt
+  }
+
+  class ModelDefinition {
+    +modelId
+    +modelName
+    +strategyType
+    +version
+    +isActive
+  }
+
+  class SeparationJob {
+    +jobId
+    +status
+    +requestedAt
+    +completedAt
+    +errorMessage
+  }
+
+  class SeparationResult {
+    +resultId
+    +heartFilePath
+    +lungFilePath
+    +processingTimeMs
+  }
+}
+
+PrototypeInterface --> AudioController
+PrototypeInterface --> AnalysisController
+AudioController --> AudioService
+AudioService --> AudioValidator
+AudioService --> AudioRecord
+AnalysisController --> ModelRegistry
+AnalysisController --> SeparationService
+AnalysisController --> ResultService
+SeparationService --> StrategyFactory
+SeparationService --> ResultService
+StrategyFactory --> ModelDefinition
+StrategyFactory ..> SeparationStrategy : creates
+FixedFilterStrategy ..|> SeparationStrategy
+NMFStrategy ..|> SeparationStrategy
+VMDStrategy ..|> SeparationStrategy
+NeoSSNetStrategy ..|> SeparationStrategy
+AudioRecord "1" -- "0..*" SeparationJob
+ModelDefinition "1" -- "0..*" SeparationJob
+SeparationJob "1" -- "0..1" SeparationResult
+
+@enduml

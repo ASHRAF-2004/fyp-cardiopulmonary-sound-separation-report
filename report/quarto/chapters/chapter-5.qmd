@@ -1,0 +1,280 @@
+# Chapter 5: Implementation Plan
+
+## Development Phase
+
+The development phase will convert the requirements and system design into a working prototype during FYP2. The planned prototype will be developed as a web-based application with a simple browser interface, a backend API, service-layer processing modules, a lightweight database, local file storage, and a model-selection mechanism. This chapter describes planned work only. It does not report completed separation accuracy, completed user testing, or final implementation results.
+
+The implementation will follow one practical principle: the software workflow should work even while the separation algorithm is still being improved. In other words, the upload, validation, model selection, job tracking, output storage, preview, download, and history functions should be built as reusable application features. The separation algorithms can then be added or improved through the shared strategy interface.
+
+### Front-End Development
+
+The front-end will provide the user interface for uploading cardiopulmonary audio, selecting the separation model, viewing validation messages, monitoring processing status, reviewing separated outputs, and downloading results. The interface should remain simple because the target users are students and researchers who need a clear workflow rather than a complex clinical system.
+
+The planned front-end views are:
+
+1. Upload workspace, where the user selects a WAV file and starts processing.
+2. Model selection control, where the user selects the active separation model or keeps the default model.
+3. Processing status area, where the system reports upload, validation, model execution, completion, or failure.
+4. Result view, where the user previews heart and lung outputs and downloads the generated files.
+5. History view, where recent processing jobs can be reopened.
+
+The front-end should make the prototype scope clear. It should describe the output as separated audio, not medical diagnosis. It should also show clear errors for unsupported file type, missing model configuration, failed preprocessing, failed separation, or missing output files.
+
+### Back-End Development
+
+The back-end will handle uploaded files, validate audio input, retrieve the selected model, call preprocessing functions, run the selected separation strategy, manage output files, and return status information to the front-end. The planned structure follows a thin-controller and service-layer approach. Route modules should receive requests and return responses, while services should contain file handling, model lookup, job coordination, and result retrieval logic.
+
+The planned API responsibilities are shown in Table @tbl-planned-api-responsibilities.
+
+| Endpoint or function | Planned purpose |
+|---|---|
+| `GET /health` | Check whether the API and local database are available. |
+| `GET /models` | Return available separation models and identify the active default model. |
+| `POST /upload` | Accept and validate a mixed WAV file, then store upload metadata. |
+| `POST /separate/{audio_id}` | Run separation using the selected model or active default model. |
+| `GET /result/{job_id}` | Return job status, uploaded audio metadata, output paths, timing, and optional metrics. |
+| `GET /download/{job_id}/heart` | Download the separated heart sound output. |
+| `GET /download/{job_id}/lung` | Download the separated lung sound output. |
+| `GET /history` | Return recent separation jobs for the history view. |
+
+: Planned backend API responsibilities {#tbl-planned-api-responsibilities}
+
+The back-end should keep model execution separate from routing. This allows FYP2 development to replace a baseline strategy with a stronger model without changing the upload and result workflow.
+
+### Machine Learning Model Integration
+
+The machine learning component will be integrated through a strategy interface. Each separation strategy will receive a mixed input waveform and will return separated heart and lung outputs using the same contract. This allows the prototype to support baseline filtering, traditional decomposition methods, and a machine learning method under the same workflow. These planned strategies are derived from the reviewed separation, denoising, and model-based cardiopulmonary sound studies [@fattahi2022blind2; @sun2024daenmfvmd; @ullah2024unsupervised; @poh2024neossnet].
+
+The mixed cardiopulmonary signal can be represented as:
+
+$$
+x[n] = h[n] + l[n] + r[n],
+$$
+
+where \(x[n]\) is the recorded mixed signal, \(h[n]\) is the heart sound component, \(l[n]\) is the lung sound component, and \(r[n]\) represents noise, recording artefacts, or residual interference. The objective of the prototype is to estimate \(\hat{h}[n]\) and \(\hat{l}[n]\) from \(x[n]\).
+
+#### Input Preparation
+
+Before separation, the audio will be converted into a consistent format because noisy recordings, recording artefacts, and inconsistent signal preparation can affect separation quality [@grooby2023noisyneonatal; @fattahi2022blind2]. A typical preparation flow is:
+
+1. Read the uploaded WAV file.
+2. Convert stereo input to mono if needed.
+3. Resample to the model sample rate.
+4. Normalize the amplitude.
+5. Segment or transform the signal if required by the selected model.
+
+Amplitude normalization can be written as:
+
+$$
+\tilde{x}[n] = \frac{x[n]}{\max_n |x[n]| + \epsilon},
+$$
+
+where \(\epsilon\) is a small value used to avoid division by zero. For methods that use a time-frequency representation, the short-time Fourier transform (STFT) can be computed as:
+
+$$
+X(k,m) = \sum_{n=0}^{N-1} \tilde{x}[n]w[n-mH]e^{-j2\pi kn/N},
+$$
+
+where \(w[\cdot]\) is the analysis window, \(H\) is the hop size, \(N\) is the FFT size, \(k\) is the frequency bin, and \(m\) is the frame index.
+
+#### Algorithm 1: Fixed Filter Baseline
+
+The fixed filter baseline will be used as a simple comparison method and as an early pipeline test. Filtering is not expected to solve all overlap problems, but it gives the prototype a transparent baseline before stronger decomposition or neural methods are evaluated [@roy2024pcgreview; @zhao2024heartanalysis]. It applies frequency-domain masks or filters to produce rough heart and lung estimates:
+
+$$
+\hat{H}(k,m) = M_h(k)X(k,m),
+$$
+
+$$
+\hat{L}(k,m) = M_l(k)X(k,m),
+$$
+
+where \(M_h(k)\) and \(M_l(k)\) are fixed masks or filters for heart-dominant and lung-dominant frequency regions. The time-domain estimates are obtained using inverse STFT:
+
+$$
+\hat{h}[n] = \operatorname{iSTFT}(\hat{H}(k,m)), \quad
+\hat{l}[n] = \operatorname{iSTFT}(\hat{L}(k,m)).
+$$
+
+This method is not expected to solve strong overlap between heart and lung sounds. Its value is that it provides a transparent baseline and helps verify that upload, preprocessing, output writing, preview, and download functions work correctly.
+
+#### Algorithm 2: NMF and VMD-Based Decomposition
+
+Non-negative matrix factorization (NMF) and variational mode decomposition (VMD) will be considered as two concrete traditional strategies because decomposition-based work remains relevant for explainable heart-lung separation and baseline comparison [@sun2024daenmfvmd; @ullah2024unsupervised]. In the implementation design, these can be represented as `NmfSeparationStrategy` and `VmdSeparationStrategy` classes that implement the same separation interface.
+
+For the NMF strategy, if \(V = |X|\) is the non-negative magnitude spectrogram, NMF approximates it as:
+
+$$
+V \approx WH,
+$$
+
+where \(W\) contains spectral basis patterns and \(H\) contains their time activations. A common optimization objective is:
+
+$$
+\min_{W,H \geq 0} D(V || WH) + \lambda R(W,H),
+$$
+
+where \(D(\cdot)\) measures reconstruction difference and \(R(\cdot)\) is an optional regularization term. If separate heart and lung estimates are represented as \(V_h\) and \(V_l\), soft masks can be formed as:
+
+$$
+M_h = \frac{V_h}{V_h + V_l + \epsilon}, \quad
+M_l = \frac{V_l}{V_h + V_l + \epsilon}.
+$$
+
+The separated spectrograms are then:
+
+$$
+\hat{H} = M_h \odot X, \quad
+\hat{L} = M_l \odot X,
+$$
+
+where \(\odot\) represents element-wise multiplication.
+
+For the VMD strategy, the signal is decomposed into modes \(u_k(t)\) with center frequencies \(\omega_k\):
+
+$$
+\min_{\{u_k\},\{\omega_k\}}
+\sum_k \left\|
+\partial_t \left[
+\left(\delta(t) + \frac{j}{\pi t}\right) * u_k(t)
+\right] e^{-j\omega_k t}
+\right\|_2^2
+$$
+
+subject to:
+
+$$
+\sum_k u_k(t) = x(t).
+$$
+
+The implementation can then group modes that are more likely to represent heart-dominant or lung-dominant components. This approach is useful for comparison because it is more explainable than a deep model, but it still may struggle with noisy and strongly overlapping recordings.
+
+#### Algorithm 3: NeoSSNet Deep Separation Strategy
+
+The main machine learning strategy will be a NeoSSNet-style deep separation model because NeoSSNet is directly related to heart and lung sound separation and supports the machine learning direction of this project [@poh2024neossnet]. The model receives a prepared mixed waveform or representation and estimates two output channels:
+
+$$
+[\hat{h}, \hat{l}] = f_{\theta}(\tilde{x}),
+$$
+
+where \(f_{\theta}\) is the neural model with parameters \(\theta\). If the model uses time-frequency masks, the separation can be represented as:
+
+$$
+[M_h, M_l] = g_{\theta}(X),
+$$
+
+$$
+\hat{H} = M_h \odot X, \quad
+\hat{L} = M_l \odot X.
+$$
+
+If paired reference signals are available during training or evaluation, a simple reconstruction loss can be written as:
+
+$$
+\mathcal{L}_{rec} =
+\|h - \hat{h}\|_1 + \|l - \hat{l}\|_1.
+$$
+
+For evaluation, a scale-invariant signal-to-distortion ratio (SI-SDR) direction may be used when suitable reference signals exist, alongside other metrics selected according to the available dataset and evaluation design [@torabi2025hlscmds; @zhao2024heartanalysis]. For one estimated source \(\hat{s}\) and reference source \(s\):
+
+$$
+s_{target} = \frac{\langle \hat{s}, s \rangle}{\|s\|^2}s,
+$$
+
+$$
+e_{noise} = \hat{s} - s_{target},
+$$
+
+$$
+\operatorname{SI\mbox{-}SDR} =
+10\log_{10}\frac{\|s_{target}\|^2}{\|e_{noise}\|^2}.
+$$
+
+The first FYP2 implementation target should be a working end-to-end inference path. After that, training, fine-tuning, or model replacement can be attempted depending on dataset availability, hardware limits, and supervisor approval.
+
+#### Model Selection Strategy
+
+The model-selection feature will allow the user to select from configured model records. The backend will use the selected model ID if provided; otherwise, it will use the active default model. The factory method will map the model architecture to the correct strategy:
+
+$$
+\text{strategy} = \operatorname{Factory}(\text{model.architecture}).
+$$
+
+For example, a model record with architecture `NeoSSNet` should create a NeoSSNet strategy, while `FixedFilter`, `NMF`, and `VMD` architecture names can create their corresponding concrete strategies. This design makes the prototype easier to extend because adding a new algorithm should require a new strategy class and a model registry entry, not a rewrite of the whole application.
+
+### Database and Storage Integration
+
+The prototype will use lightweight database storage for metadata and filesystem storage for audio files. The database should store upload metadata, model metadata, selected model ID, job status, output paths, processing time, optional evaluation metrics, and system logs. Audio files, model files, and generated outputs should remain on the filesystem.
+
+The planned storage folders are:
+
+```text
+storage/uploads/raw/
+storage/uploads/temp/
+storage/outputs/heart/
+storage/outputs/lung/
+storage/ml_models/
+storage/logs/
+```
+
+This design is practical for a local academic prototype because it keeps the database small while maintaining traceability between uploaded files, selected model records, processing jobs, and generated outputs.
+
+## Testing Phase
+
+The testing phase will verify that the prototype functions correctly and that each algorithm strategy behaves safely inside the application workflow. Testing is presented as planned work because completed test execution belongs to FYP2.
+
+### Unit Testing
+
+Unit testing will focus on individual modules. Planned unit tests include WAV validation, metadata extraction, path handling, model lookup, active model fallback, strategy factory resolution, preprocessing output shape, output file writing, result retrieval, and error handling.
+
+For algorithm modules, unit tests should not pretend that separation quality is final. Instead, early tests should verify that each strategy accepts valid input, rejects missing configuration, returns heart and lung output paths, and does not mark a failed job as completed.
+
+### Integration Testing
+
+Integration testing will verify that the front-end, API, database, storage, preprocessing, model selection, strategy factory, separation engine, and result service work together. Planned integration tests include:
+
+1. Upload a valid WAV file and confirm metadata is stored.
+2. Load available models and confirm the active model is selected by default.
+3. Submit a separation request with a selected model ID.
+4. Confirm that the job records the selected model.
+5. Confirm that successful processing creates both heart and lung output paths.
+6. Confirm that result and download endpoints return the expected job information.
+7. Confirm that missing model files or unsupported model architecture produce controlled failure messages.
+
+### System Testing
+
+System testing will evaluate the complete prototype from the user perspective. Planned system tests include valid upload, unsupported file upload, invalid WAV header, model list loading, selected model execution, default model fallback, successful output preview, output download, history retrieval, and failure recovery.
+
+System testing should also check usability details such as whether progress messages are understandable, whether failed jobs are clearly shown, whether download buttons are disabled until outputs exist, and whether the prototype avoids diagnosis-oriented wording.
+
+### User Acceptance Testing
+
+User acceptance testing may be conducted with students, researchers, or project evaluators after the prototype is implemented. The purpose will be to check whether the workflow is understandable, whether model selection is clear, whether the separated outputs can be accessed easily, and whether the result page provides enough information for academic use. No user acceptance results are included in this FYP1 report because the prototype has not yet reached that stage.
+
+## Deployment Phase
+
+The deployment phase will prepare the prototype for demonstration and evaluation. The first deployment target should be a local development environment because the system handles uploaded audio files, model files, and generated outputs. The deployment package should include setup instructions, dependency notes, database initialization, model file placement, sample input guidance, and output folder handling.
+
+The planned deployment steps are:
+
+1. Create and activate the Python environment.
+2. Install backend and machine learning dependencies.
+3. Initialize the database schema.
+4. Confirm required storage folders exist.
+5. Place model checkpoint and configuration files in the expected folder.
+6. Start the backend server.
+7. Open the browser interface.
+8. Run a smoke test using a short WAV file.
+9. Confirm that heart and lung output files are created or that failures are reported clearly.
+
+If the prototype is later deployed outside the local laptop, additional work will be needed for authentication, storage cleanup, secure file handling, background processing, and deployment monitoring. These are outside the minimum FYP1 plan but can be listed as future improvement.
+
+## Documentation and Maintenance Plan
+
+Documentation will include setup instructions, dependency notes, usage steps, system limitations, model configuration notes, testing notes, and evaluation guidance. The report and repository should make clear which parts are implemented, which are planned, and which results are still pending.
+
+Maintenance activities may include updating dependencies, improving error handling, adding new separation strategies, replacing the model checkpoint, improving preprocessing, adding waveform or spectrogram visualization, adding evaluation metrics, and improving cleanup of temporary files. These activities should preserve the project scope as sound separation only.
+
+## Summary
+
+This chapter presented the implementation plan for the proposed prototype. The plan covers front-end development, back-end development, model selection, algorithm strategy integration, database and storage integration, testing, deployment, documentation, and maintenance. The planned algorithms include a fixed filter baseline, an NMF separation strategy, a VMD separation strategy, and a NeoSSNet-style deep learning strategy. The chapter remains FYP1-appropriate because it explains what will be implemented in FYP2 without inventing final separation results, testing results, model scores, or user evaluation findings.

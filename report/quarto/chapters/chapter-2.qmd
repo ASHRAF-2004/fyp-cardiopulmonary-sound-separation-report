@@ -1,0 +1,84 @@
+# Chapter 2: Literature Review
+
+## Overview
+
+This chapter reviews the literature supporting the proposed machine learning-based system for cardiopulmonary sound separation. The review focuses on cardiopulmonary sound characteristics, heart and lung sound separation techniques, datasets, evaluation metrics, existing systems, and the software prototype relevance of prior work. The purpose of the chapter is to justify the technical direction of the project and to identify the research and implementation gaps that the proposed prototype should address.
+
+The reviewed studies show that cardiopulmonary recordings are difficult to process because heart sounds, lung sounds, and recording noise may coexist in the same signal. They also show that traditional signal processing remains useful for preprocessing and decomposition, while machine learning and deep learning methods are increasingly used to improve separation quality and robustness.
+
+## Literature Search and Screening Process
+
+The literature search focused on cardiopulmonary sound separation, heart sound removal, lung sound separation, denoising, public auscultation datasets, evaluation metrics, and prototype-oriented cardiopulmonary sound systems. The screening process considered 96 records. After removing unsuitable records and excluding papers that did not directly support the scope of this project, 49 records remained eligible. From these eligible records, 35 studies were selected for use in the Chapter 2 synthesis and the full literature review matrix. These selected studies consist of 18 core separation studies and 17 background or supplementary studies. Fourteen eligible backup records were retained but are not cited in the current report.
+
+The review follows a PRISMA-style reporting approach to make the search and screening process transparent. The counts used in the PRISMA summary are: 96 records considered, 47 records excluded, 49 eligible records after screening, and 35 studies selected and used in the current literature review. Excluded papers are not used as evidence in this report.
+
+![PRISMA flow diagram for the literature search and screening process](figures/prisma/prisma_flow_diagram.png){#fig-prisma-flow}
+
+## Cardiopulmonary Sound Characteristics
+
+Cardiopulmonary sound recordings contain acoustic components produced by cardiac activity, respiratory airflow, chest wall transmission, and the recording environment. Heart sounds are typically represented by short and repeated events such as S1 and S2, while lung sounds are shaped by breathing airflow and may vary across inspiration and expiration. When both sources are recorded from the chest surface, their components may occur at the same time and may partially overlap in frequency.
+
+This overlap is important for sound separation because it limits the effectiveness of simple fixed-band filtering. Studies on respiratory sound analysis and cardiopulmonary signal characteristics show that a useful system must account for noisy recordings, source overlap, and recording variability [@roy2024pcgreview; @zhao2024heartanalysis; @grooby2023noisyneonatal]. Therefore, preprocessing and model input preparation are central to the proposed prototype.
+
+## Heart and Lung Sound Separation Techniques
+
+Heart and lung sound separation has been investigated using both traditional signal processing methods and machine learning-based methods. The literature indicates that no single method is universally suitable across all recording conditions. Instead, the choice of approach depends on the recording source, noise level, availability of training data, and intended evaluation metric.
+
+### Traditional Signal Processing Methods
+
+Traditional approaches include filtering, adaptive filtering, blind source separation, non-negative matrix factorization, empirical mode decomposition, variational mode decomposition, and other decomposition-based techniques. These methods are useful because they are interpretable and can be applied even when large training datasets are not available. For example, blind denoising and decomposition-based separation studies demonstrate how signal structure can be exploited to reduce interference between heart and lung components [@fattahi2022blind2; @sun2024daenmfvmd; @ullah2024unsupervised].
+
+However, traditional methods may struggle when the heart and lung components overlap strongly or when the recording environment introduces non-stationary noise. Fixed rules may not generalize well across different subjects, devices, body positions, and recording conditions. For this reason, traditional methods are most useful in this project as preprocessing, comparison, or supporting components rather than as the only separation strategy.
+
+### Machine Learning and Deep Learning Methods
+
+Machine learning and deep learning approaches attempt to learn mappings from mixed cardiopulmonary input representations to separated output components. Recent studies use neural networks, source separation models, compact architectures, and data-driven enhancement approaches to improve separation or related cardiopulmonary sound analysis tasks [@poh2024neossnet; @wang2023mcunet; @zhang2025jassnet; @ali2023lunet]. These approaches are relevant to this FYP because the proposed prototype requires a repeatable workflow that can accept a mixed recording, apply preprocessing, run a separation model, and return heart and lung outputs.
+
+The main advantage of machine learning is its ability to learn complex source patterns from data. The main limitation is that model performance depends on training data quality, preprocessing consistency, evaluation design, and computational resources. The proposed system therefore treats the model as one component within a complete prototype workflow rather than as a standalone experiment.
+
+## Datasets for Cardiopulmonary Sound Separation
+
+Public datasets are important because they allow separation systems to be tested consistently and compared against prior work. The reviewed literature includes datasets and dataset-oriented studies related to heart sounds, lung sounds, and combined cardiopulmonary recordings. These resources support tasks such as preprocessing, model training, benchmarking, and output evaluation [@torabi2025hlscmds; @grooby2022real; @ali2026buet2; @rocha2023automatic2].
+
+For this project, dataset selection must match the prototype objective. The preferred datasets should support heart and lung sound separation or provide recordings and labels that can be used to construct or evaluate mixed inputs. The project should avoid restricted or unavailable sources and should rely on datasets that can be used within the scope and time constraints of FYP2.
+
+## Evaluation Metrics
+
+A sound separation prototype must be evaluated using metrics that reflect the quality of the separated outputs. Common evaluation directions include signal distortion, signal interference, similarity to reference sources, noise reduction, and usability of the output for later analysis. In addition, time and resource requirements may be relevant because the prototype should remain practical for student and research use.
+
+The literature shows that evaluation should not depend on visual inspection alone. Model-level metrics, source separation measures, and audio quality indicators are needed to compare outputs consistently [@torabi2025hlscmds; @roy2024pcgreview; @zhao2024heartanalysis]. For this FYP, the planned evaluation will focus on suitable public datasets and metrics that can be applied honestly once implementation and testing are completed.
+
+## Existing Systems and Prototype Relevance
+
+Many existing works demonstrate algorithms for cardiopulmonary sound analysis, denoising, classification, or separation. These studies are useful because they identify promising preprocessing and modelling strategies. However, they do not always provide a complete software workflow that connects audio upload, validation, preprocessing, model execution, output generation, download, and processing history in a single reusable prototype.
+
+This gap is especially relevant to a Software Engineering FYP. The project contribution should be more than a literature discussion or model selection. It should include requirements analysis, system design, interface planning, implementation planning, and evaluation planning. Review and dataset studies support this direction by showing the need for reproducible data handling and structured evaluation [@roy2024pcgreview; @torabi2025hlscmds; @zhao2024heartanalysis].
+
+## Literature Review Matrix
+
+Table @tbl-lit-matrix-summary summarizes representative studies used to support the project direction. The concise matrix highlights the role of each study in the report, while the full literature review matrix is provided in Appendix D.
+
+| Study | Focus | Method or contribution | Relevance to this project |
+|---|---|---|---|
+| @grooby2023noisyneonatal | Noisy neonatal chest sounds | Examines noisy chest sound recordings and processing needs | Supports the need for preprocessing and noise-aware input handling |
+| @fattahi2022blind2 | Blind denoising | Denoising approach for respiratory or cardiopulmonary recordings | Supports preprocessing and separation preparation |
+| @poh2024neossnet | Neonatal separation | Machine learning-based heart and lung sound separation | Supports the core separation direction |
+| @sun2024daenmfvmd | Decomposition-based separation | NMF and VMD-oriented separation strategy | Provides a traditional method baseline direction |
+| @ullah2024unsupervised | Unsupervised separation | Unsupervised separation of heart and lung sounds | Supports alternatives when labels are limited |
+| @wang2023mcunet | Compact learning model | Efficient model for cardiopulmonary sound processing | Supports prototype-oriented model integration |
+| @zhang2025jassnet | Joint separation approach | Deep learning sound separation architecture | Supports machine learning separation design |
+| @torabi2025hlscmds | Dataset and benchmarking | Heart and lung sound dataset or benchmark support | Supports dataset and evaluation planning |
+| @roy2024pcgreview | Review study | Reviews processing and analysis of cardiopulmonary sounds | Supports problem framing and research gaps |
+| @zhao2024heartanalysis | Heart sound analysis | Reviews or analyses heart sound processing methods | Supports evaluation and system relevance |
+
+: Summary literature review matrix for key cardiopulmonary sound separation studies {#tbl-lit-matrix-summary}
+
+## Research Gaps
+
+The literature review identifies three main gaps. First, noise and recording artefacts remain a major challenge because mixed cardiopulmonary recordings are affected by background sound, sensor limitations, movement, and breathing-related interference. Second, heart and lung sound components may overlap in time and frequency, making separation difficult when the system receives only one mixed recording. Third, many studies focus on diagnosis, classification, or isolated model experiments, while fewer studies provide a reusable software prototype that connects preprocessing, separation, output generation, and planned evaluation in an end-to-end workflow.
+
+These gaps justify the proposed application-based project. The prototype should not claim to diagnose disease or replace clinical assessment. Instead, it should provide a structured separation workflow that can be implemented and evaluated using public datasets and suitable metrics.
+
+## Summary
+
+This chapter reviewed cardiopulmonary sound characteristics, separation techniques, datasets, evaluation metrics, existing systems, and research gaps. The review supports the need for a machine learning-based software prototype that separates mixed cardiopulmonary recordings into heart and lung sound outputs. The next chapter converts this literature foundation into project requirements.

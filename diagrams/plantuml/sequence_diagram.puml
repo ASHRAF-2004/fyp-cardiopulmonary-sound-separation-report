@@ -1,0 +1,40 @@
+@startuml
+!theme plain
+title Sequence Diagram - Model Selection and Sound Separation
+
+skinparam dpi 160
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam maxMessageSize 70
+skinparam actorStyle stickman
+autonumber
+
+actor "Audio Analyst" as Analyst
+boundary "PrototypeInterface" as UI
+control "AnalysisController" as Controller
+entity "ModelRegistry" as Registry
+control "SeparationService" as Service
+control "StrategyFactory" as Factory
+participant "SeparationStrategy" as Strategy
+control "ResultService" as Results
+
+Analyst -> UI : select record and model
+Analyst -> UI : start separation
+UI -> Controller : startSeparation(audioId, modelId)
+Controller -> Registry : getModel(modelId)
+Registry --> Controller : ModelDefinition
+Controller -> Service : createJob(audioId, modelId)
+Service --> Controller : SeparationJob
+Controller -> Service : run(jobId)
+Service -> Factory : create(model)
+Factory --> Service : SeparationStrategy
+Service -> Strategy : separate(inputPath, config)
+Strategy --> Service : heart and lung outputs
+Service -> Results : saveResult(jobId, outputs)
+Results --> Service : SeparationResult
+Service --> Controller : completed job
+Controller --> UI : showResult(completedJob)
+UI --> Analyst : preview, download or review history
+
+@enduml

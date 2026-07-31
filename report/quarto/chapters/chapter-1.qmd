@@ -1,0 +1,49 @@
+# Chapter 1: Introduction
+
+## Overview
+
+Cardiopulmonary auscultation records acoustic information produced by the heart, lungs, airways, chest wall, and surrounding recording environment. In practice, a single chest recording may contain heart sound components, lung sound components, background noise, breathing artefacts, body movement, and device-related disturbances. These overlapping components make the recording difficult to process when the required output is a clean heart sound stream, a clean lung sound stream, or both. This project therefore focuses on the software engineering problem of building a reusable prototype that separates mixed cardiopulmonary sound recordings into heart and lung sound outputs.
+
+The project is titled **Machine Learning-Based System for Cardiopulmonary Sound Separation**. It is an application-based FYP1 project with the contribution positioned as a prototype or proof of concept. The report establishes the problem background, literature foundation, requirements analysis, system design, and implementation plan needed to continue into FYP2 implementation and evaluation.
+
+## Problem Statement
+
+1. Noise and recording artefacts reduce the quality of cardiopulmonary sound recordings, making it difficult to process the signals accurately. Cardiopulmonary sounds are often captured in practical environments where background sound, sensor noise, breathing artefacts, body movement, and limitations of the recording device can affect the signal before it reaches the preprocessing or separation stage. This matters because a machine learning model depends on the quality and consistency of its input representation; if noisy patterns dominate the recording, the model may learn artefacts that do not correspond to the underlying heart or lung sound components. Studies on noisy neonatal chest sounds, blind denoising, and lung sound enhancement show that noise handling and preprocessing remain important challenges before downstream analysis can be performed reliably [@grooby2023noisyneonatal; @fattahi2022blind2; @ali2023lunet]. For this FYP, the issue motivates a prototype workflow that includes audio validation and preprocessing before sound separation is attempted.
+
+2. Heart and lung sounds overlap in time and frequency when recorded together, making it difficult to separate them using only traditional signal processing methods. A mixed cardiopulmonary recording may contain low-frequency heart sound events and respiratory sound patterns at the same time, while the spectral ranges of these components may partially overlap. Simple filtering can therefore remove useful information or leave residual interference, especially when the system receives only one mixed recording and has limited information about the original sources. Recent work on neonatal heart and lung sound separation, decomposition-based approaches, and compact learning models shows that separation is more complex than selecting a fixed frequency band [@poh2024neossnet; @sun2024daenmfvmd; @wang2023mcunet]. This FYP addresses that challenge by designing a machine learning-based separation prototype rather than relying only on a fixed signal processing pipeline.
+
+3. Many existing studies focus on diagnosis, classification, or isolated algorithm experiments, while fewer works provide a reusable end-to-end software prototype that performs sound separation and evaluates the output using suitable datasets and metrics. Review and analysis studies show that cardiopulmonary sound research often emphasizes clinical interpretation, automated classification, or model-level performance, which is valuable academically but does not always translate into a complete workflow that a student or researcher can use to upload a mixed recording, run preprocessing and separation, and obtain separated heart and lung outputs [@roy2024pcgreview; @zhao2024heartanalysis; @torabi2025hlscmds]. For a Software Engineering FYP, this creates a practical gap: the project should not only discuss an algorithm, but also design a prototype with clear requirements, system modules, interface flow, and evaluation planning. Public datasets and suitable performance metrics are therefore needed so the prototype can be tested consistently in FYP2.
+
+## Project Objectives
+
+1. To study and apply suitable preprocessing techniques to reduce noise and improve the quality of cardiopulmonary sound recordings.
+
+2. To design and implement a machine learning-based approach for separating mixed cardiopulmonary recordings into heart and lung sound outputs.
+
+3. To develop a reusable software prototype and evaluate its separation performance using public datasets and suitable performance metrics.
+
+## Project Scope
+
+The scope of this project is limited to the design and planned implementation of a software prototype for cardiopulmonary sound separation. The prototype is intended to accept a mixed cardiopulmonary audio file, validate the input, apply preprocessing, run a sound separation workflow, and provide separate heart and lung sound outputs for review and download.
+
+The project focuses on public or otherwise permissible datasets, reproducible preprocessing, separation model integration, and evaluation planning using suitable signal-level metrics. The scope does not include clinical diagnosis, treatment recommendation, real-time bedside deployment, or replacement of professional medical assessment. The system is designed as a research and learning prototype for separation-oriented experimentation.
+
+## Project Limitations
+
+This project is constrained by the FYP1 stage, which focuses on study, requirements analysis, system design, and implementation planning. Full model training, completed implementation results, user acceptance outcomes, and final performance scores are expected to be handled during later implementation work.
+
+The prototype also depends on the availability and quality of public cardiopulmonary sound datasets. Recordings collected using different devices, body positions, sampling rates, or noise conditions may not behave identically. In addition, questionnaire response analysis is not included at this stage because actual survey responses have not yet been collected.
+
+## Methodology
+
+The project follows an application-based workflow. First, literature and document review are used to understand cardiopulmonary sound characteristics, separation techniques, public datasets, and evaluation metrics. Second, requirements are derived from the literature review, existing system observation or benchmarking, supervisor consultation, and a planned questionnaire design. Third, system design artefacts are prepared, including context, use case, activity, class, and sequence diagrams. Finally, an implementation plan is defined for front-end development, back-end development, machine learning model integration, storage, testing, deployment, documentation, and maintenance.
+
+This methodology keeps the FYP1 report aligned with the expected application-based structure while avoiding unsupported claims about completed implementation, completed user studies, or final test results.
+
+## Target Audience
+
+The target users of the proposed prototype are students, researchers, and project evaluators who need a reusable workflow for separating mixed cardiopulmonary sound recordings into heart and lung sound outputs. The system is also intended to support the student developer by providing a structured software prototype that can be implemented, tested, and improved during FYP2.
+
+## Summary
+
+This chapter introduced the project background, problem statements, objectives, scope, limitations, methodology, and target audience. The key problem is that cardiopulmonary recordings can contain noisy and overlapping heart and lung components, while many existing studies do not provide a complete reusable software workflow for sound separation. The next chapter reviews the literature used to support the proposed system.

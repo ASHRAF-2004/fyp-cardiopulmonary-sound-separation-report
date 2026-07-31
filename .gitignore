@@ -1,0 +1,36 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+~$*
+*.tmp
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node and Quarto generated output
+node_modules/
+.quarto/
+_freeze/
+report/generated/
+
+# Local tool downloads
+tools/
+resources/tools/
+resources/guidelines/fyp_handbook_requirements.md
+
+# Revision scratch files and visual QA renders
+report/revisions/_apa_work/
+report/revisions/_qa*/
+
+# Submission duplicates and private review artifacts
+report/Submission/*.zip
+report/Submission/*Turnitin*
+report/Submission/Screenshot*.png
+report/Submission/1221303805_Arshad_Jamal_FYP1_Report.docx
+
+# Superseded local drafts
+report/1221305865_Arshad_Jamal_FYP1_Report.pdf
+report/FYP Report 8th July.pdf

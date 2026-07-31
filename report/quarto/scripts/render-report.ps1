@@ -1,0 +1,51 @@
+param(
+  [switch]$Pdf
+)
+
+$ErrorActionPreference = "Stop"
+
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$repoRoot = Resolve-Path (Join-Path $scriptDir "..\..\..")
+$paper = Join-Path $repoRoot "report\quarto\paper.qmd"
+$outputDir = Join-Path $repoRoot "report\generated"
+$docx = Join-Path $outputDir "paper.docx"
+$postProcess = Join-Path $scriptDir "fix-docx-format.py"
+$quartoCmd = Get-Command quarto -ErrorAction SilentlyContinue
+if (-not $quartoCmd) {
+  $fallbackQuarto = "C:\Program Files\Quarto\bin\quarto.exe"
+  if (Test-Path $fallbackQuarto) {
+    $quartoCmd = $fallbackQuarto
+  }
+}
+
+if (-not $quartoCmd) {
+  Write-Error "Quarto is not installed or not available on PATH. Install Quarto, reopen PowerShell, then run: quarto --version"
+}
+
+New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
+
+Write-Host "Rendering DOCX..."
+& $quartoCmd render $paper --to docx --output-dir $outputDir
+if ($LASTEXITCODE -ne 0) {
+  throw "DOCX render failed with exit code $LASTEXITCODE"
+}
+
+if (-not (Test-Path $postProcess)) {
+  throw "DOCX post-processing script not found: $postProcess"
+}
+
+Write-Host "Applying FYP DOCX formatting post-process..."
+& python $postProcess $docx $docx
+if ($LASTEXITCODE -ne 0) {
+  throw "DOCX post-processing failed with exit code $LASTEXITCODE"
+}
+
+if ($Pdf) {
+  Write-Host "Rendering optional PDF via Typst..."
+  & $quartoCmd render $paper --to typst --output-dir $outputDir
+  if ($LASTEXITCODE -ne 0) {
+    throw "PDF render failed with exit code $LASTEXITCODE"
+  }
+}
+
+Write-Host "Render complete. Output directory: $outputDir"

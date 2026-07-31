@@ -1,0 +1,35 @@
+@startuml
+!theme plain
+title Context Diagram - Cardiopulmonary Sound Separation Prototype
+
+left to right direction
+skinparam dpi 160
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam actorStyle stickman
+skinparam rectangle {
+  BorderColor #334155
+  BackgroundColor #F8FAFC
+  FontColor #111827
+}
+
+actor "Healthcare Staff" as Staff
+actor "Audio Analyst" as Analyst
+database "Approved Public\nCardiopulmonary Datasets" as Dataset
+rectangle "Machine Learning-Based System for\nCardiopulmonary Sound Separation" as System
+
+Staff --> System : Enter non-identifying audio attributes\nand upload a mixed recording
+System --> Staff : Validation feedback, processing status,\npreview and download links
+
+Analyst --> System : Review audio records, select a model,\nrun separation and inspect results
+System --> Analyst : File list, job history, separated outputs\nand valid evaluation information
+
+Dataset --> System : Development and evaluation audio
+
+note bottom of System
+Prototype scope: separation of heart and lung sounds only.
+The system does not provide disease diagnosis or treatment advice.
+end note
+
+@enduml

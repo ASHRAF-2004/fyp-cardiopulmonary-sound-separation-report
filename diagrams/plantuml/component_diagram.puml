@@ -1,0 +1,53 @@
+@startuml
+!theme plain
+title Component Diagram - Application-Oriented Prototype
+
+left to right direction
+skinparam dpi 160
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam actorStyle stickman
+skinparam componentStyle rectangle
+
+actor "Healthcare Staff" as Staff
+actor "Audio Analyst" as Analyst
+
+rectangle "Cardiopulmonary Sound Separation Application" {
+  component "Browser Interface" as UI
+  component "Backend API" as API
+  component "Audio Record\nManagement" as AudioRecords
+  component "Processing\nOrchestrator" as Orchestrator
+  component "Audio\nPreprocessing" as Preprocess
+  component "Model Registry" as Registry
+  component "Separation Strategy\nInterface" as Strategy
+  component "Result, History and\nEvaluation Service" as Results
+  database "Metadata Database" as DB
+  folder "Audio and Model\nFile Storage" as FS
+
+  component "Fixed Filter" as Fixed
+  component "NMF" as NMF
+  component "VMD" as VMD
+  component "NeoSSNet" as Neo
+}
+
+Staff --> UI : attributes, upload,\nstatus, outputs
+Analyst --> UI : file list, model choice,\nprocessing, review
+UI --> API
+API --> AudioRecords
+API --> Orchestrator
+API --> Results
+AudioRecords --> DB
+AudioRecords --> FS
+Orchestrator --> Preprocess
+Orchestrator --> Registry
+Orchestrator --> Strategy
+Strategy --> Fixed
+Strategy --> NMF
+Strategy --> VMD
+Strategy --> Neo
+Orchestrator --> Results
+Results --> DB
+Results --> FS
+
+@enduml

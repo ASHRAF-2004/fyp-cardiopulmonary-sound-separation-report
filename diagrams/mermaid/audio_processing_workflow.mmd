@@ -1,0 +1,11 @@
+flowchart LR
+    A[Mixed cardiopulmonary audio] --> B{Input validation}
+    B -->|Valid| C[Preprocessing]
+    B -->|Invalid| X[Reject file and show message]
+    C --> D[Feature or input representation]
+    D --> E[Machine learning separation]
+    E --> F[Heart sound output]
+    E --> G[Lung sound output]
+    F --> H[Result storage and review]
+    G --> H
+    H --> I[Evaluation metrics where reference signals are available]

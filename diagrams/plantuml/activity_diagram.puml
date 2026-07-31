@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+title Activity Diagram - Role-Based Separation Workflow
+
+skinparam dpi 160
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #334155
+}
+
+|#E8F4FD|Healthcare Staff|
+start
+:Enter audio attributes and upload\nthe mixed cardiopulmonary recording;
+
+|#F3F4F6|Prototype System|
+:Validate the file and attributes;
+if (Input valid?) then (yes)
+  :Store the record and add it\nto the audio file list;
+else (no)
+  :Show the validation error\nand a suggested correction;
+  stop
+endif
+
+|#FFF4D6|Audio Analyst|
+:Open the file list, review attributes,\nselect a model and start the job;
+
+|#F3F4F6|Prototype System|
+:Preprocess the recording;
+if (Preprocessing successful?) then (yes)
+  |#EDE9FE|Separation Strategy|
+  :Generate estimated heart\nand lung sound outputs;
+else (no)
+  |#F3F4F6|Prototype System|
+  :Record the failure and\nshow a processing error;
+  stop
+endif
+
+|#F3F4F6|Prototype System|
+if (Both outputs created?) then (yes)
+  :Store the outputs, available metrics\nand completed job status;
+else (no)
+  :Record the failure and\nshow a separation error;
+  stop
+endif
+
+|#E8F4FD|Healthcare Staff|
+:Preview or download the\nseparated heart and lung sounds;
+stop
+
+@enduml

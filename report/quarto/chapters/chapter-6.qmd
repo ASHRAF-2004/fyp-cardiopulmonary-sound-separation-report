@@ -1,0 +1,33 @@
+# Chapter 6: Conclusion
+
+## Overview
+
+This chapter concludes the FYP1 report for the proposed machine learning-based system for cardiopulmonary sound separation. The report establishes the background study, literature foundation, requirements analysis, system design, and implementation plan needed to continue the project into FYP2.
+
+## Project Summary
+
+The project addresses the problem of separating mixed cardiopulmonary recordings into heart and lung sound outputs. The literature review shows that cardiopulmonary recordings may contain noise, artefacts, and overlapping source components, which makes separation difficult using simple filtering alone. The review also shows that machine learning-based methods are relevant because they can learn more complex source patterns when suitable data and evaluation procedures are available.
+
+The FYP1 work defines a prototype workflow that includes audio upload, validation, preprocessing, sound separation, result viewing, and output download. Requirements analysis and system design were prepared to support later implementation.
+
+## Expected Contributions
+
+The expected contribution of the project is a reusable software prototype for cardiopulmonary sound separation. The prototype is intended to help a student or researcher process mixed cardiopulmonary audio and obtain separated heart and lung sound outputs.
+
+The expected FYP contribution includes a structured review of relevant literature, an application-based requirements analysis, system design artefacts, and an implementation plan that can guide prototype development and evaluation in FYP2.
+
+## Limitations
+
+The current report is limited to the FYP1 stage. It does not include completed implementation results, completed testing results, final model scores, completed user acceptance testing, or completed questionnaire response analysis. The project is also limited by dataset availability, recording quality, model selection, and the time available for FYP2 implementation.
+
+The proposed system is not intended for clinical diagnosis or treatment recommendation. It is a sound separation prototype and should be evaluated only within that scope.
+
+## Future Work
+
+Future work will focus on implementing the planned prototype, selecting or preparing suitable public datasets, integrating the separation model, generating separated outputs, and evaluating the results using appropriate metrics. If the supervisor requires user feedback, Google Form or survey responses should be collected and Chapter 3 should be updated with the actual response analysis.
+
+Additional future improvements may include interface refinement, expanded audio format support, improved preprocessing, better model selection, output visualization, and more detailed comparison with baseline methods.
+
+## Summary
+
+This chapter summarized the project, expected contributions, limitations, and future work. The FYP1 report provides the foundation for developing and evaluating the proposed cardiopulmonary sound separation prototype in the next project stage.

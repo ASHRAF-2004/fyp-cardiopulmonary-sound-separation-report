@@ -1,0 +1,69 @@
+@startuml
+!theme plain
+title Use Case Diagram - Cardiopulmonary Sound Separation Prototype
+
+skinparam dpi 160
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam actorStyle stickman
+skinparam linetype ortho
+skinparam nodesep 32
+skinparam ranksep 34
+
+actor "Healthcare Staff" as Staff
+actor "Audio Analyst" as Analyst
+
+rectangle "Cardiopulmonary Sound Separation Prototype" {
+  usecase "UC01\nEnter audio attributes" as UC01 #E8F4FD
+  usecase "UC02\nUpload mixed audio" as UC02 #E8F4FD
+  usecase "UC03\nView audio file list" as UC03 #E8F4FD
+  usecase "UC04\nSelect separation model" as UC04 #FFF4D6
+  usecase "UC05\nRun sound separation" as UC05 #FFF4D6
+  usecase "UC06\nView processing status" as UC06 #FFF4D6
+  usecase "UC07\nPreview separated outputs" as UC07 #E9F7EF
+  usecase "UC08\nDownload separated outputs" as UC08 #E9F7EF
+  usecase "UC09\nView processing history" as UC09 #E9F7EF
+  usecase "UC10\nView evaluation metrics" as UC10 #E9F7EF
+
+  UC01 -[hidden]down- UC02
+  UC02 -[hidden]down- UC03
+  UC03 -[hidden]down- UC07
+  UC07 -[hidden]down- UC08
+
+  UC04 -[hidden]down- UC05
+  UC05 -[hidden]down- UC06
+  UC06 -[hidden]down- UC09
+  UC09 -[hidden]down- UC10
+
+  UC01 -[hidden]right- UC04
+  UC02 -[hidden]right- UC05
+  UC03 -[hidden]right- UC06
+  UC07 -[hidden]right- UC09
+  UC08 -[hidden]right- UC10
+}
+
+Staff -- UC01
+Staff -- UC02
+Staff -- UC03
+Staff -- UC06
+Staff -- UC07
+Staff -- UC08
+
+UC03 -- Analyst
+UC04 -- Analyst
+UC05 -- Analyst
+UC06 -- Analyst
+UC07 -- Analyst
+UC08 -- Analyst
+UC09 -- Analyst
+UC10 -- Analyst
+
+legend bottom
+|= Colour |= Use-case group |
+|<#E8F4FD> | Audio record management |
+|<#FFF4D6> | Separation processing |
+|<#E9F7EF> | Results and traceability |
+endlegend
+
+@enduml

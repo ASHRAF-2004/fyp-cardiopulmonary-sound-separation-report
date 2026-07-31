@@ -1,0 +1,180 @@
+# Chapter 4: System Design
+
+## Overview
+
+This chapter presents the system design for the proposed **Machine Learning-Based System for Cardiopulmonary Sound Separation**. The design is based on an application-based prototype, not a finished clinical product. It describes how the future FYP2 prototype should allow a user to upload a mixed cardiopulmonary WAV file, select a separation model when more than one model is configured, run the selected separation strategy, preview the separated heart and lung outputs, download the output files, and review recent processing history.
+
+The design takes inspiration from the existing local Software Design prototype. That prototype uses a simple web interface, a backend API, service-layer modules, SQLite metadata storage, filesystem audio storage, and a model-selection mechanism. In this FYP report, those ideas are presented as the intended system design and implementation direction. The report does not claim that final FYP2 separation performance has already been achieved.
+
+## Context Diagram
+
+Figure @fig-context-diagram shows the system context. The main external actor is the student or researcher user. The user provides a mixed cardiopulmonary audio recording and receives separated heart and lung sound outputs. Public datasets are outside the user-facing workflow but support model development, baseline comparison, and planned evaluation during FYP2.
+
+![Context diagram for the proposed cardiopulmonary sound separation prototype](figures/plantuml/context_diagram.png){#fig-context-diagram}
+
+At the system boundary, the prototype is responsible for audio validation, model selection, preprocessing, separation execution, result storage, output preview, and download. The design remains limited to sound separation. It does not provide disease diagnosis, clinical interpretation, or treatment recommendation.
+
+Preprocessing and noise-aware input handling are included because mixed cardiopulmonary recordings can be affected by recording artefacts, source overlap, and signal quality variation [@grooby2023noisyneonatal; @fattahi2022blind2; @roy2024pcgreview].
+
+## Use Case Diagram
+
+Figure @fig-use-case-diagram shows the main user interactions supported by the proposed prototype. Compared with a simple upload-and-run workflow, the design now includes a **Select separation model** use case. This is important because the prototype is expected to support an active model initially and allow additional strategies or model versions to be registered later.
+
+![Use case diagram for the proposed cardiopulmonary sound separation prototype](figures/plantuml/use_case_diagram.png){#fig-use-case-diagram}
+
+### Use Case Description
+
+Table @tbl-use-case-description describes the main use case for separating a mixed cardiopulmonary recording.
+
+| Item | Description |
+|---|---|
+| Use case name | Separate cardiopulmonary sound recording |
+| Primary actor | Student or researcher user |
+| Goal | Obtain separated heart and lung sound outputs from one mixed cardiopulmonary recording |
+| Trigger | The user uploads a supported audio file, selects a model where available, and starts processing |
+| Main output | Heart sound output file, lung sound output file, processing status, and optional metric summary |
+
+: Main use case description for the proposed prototype {#tbl-use-case-description}
+
+#### Actors
+
+The primary actor is the student or researcher user. The user interacts with the prototype through the interface by uploading an audio file, selecting a separation model where more than one model is available, starting processing, viewing outputs, and downloading results.
+
+The internal system elements include the user interface, upload controller, model service, audio validation module, preprocessing module, separation service, algorithm strategy module, result service, database, and filesystem storage. These elements are shown in the design diagrams to explain the prototype architecture, but they are not treated as separate human actors.
+
+#### Preconditions
+
+The user must have a cardiopulmonary audio file in a supported format, preferably WAV for the first prototype version. The prototype must be available, the database or metadata store must be initialized, and at least one separation model or baseline strategy must be configured. If model selection is enabled, the interface should be able to load the available model list before separation starts. If no model is selected by the user, the backend should use the active default model.
+
+#### Normal Flow
+
+1. The user opens the prototype interface.
+2. The system loads the available separation model list.
+3. The user selects a mixed cardiopulmonary WAV file.
+4. The user selects a separation model or keeps the active default model.
+5. The user starts the separation process.
+6. The system validates the file extension, audio header, size, and basic metadata.
+7. The system stores the uploaded audio file and records its metadata.
+8. The system preprocesses the audio by converting it to a model-ready waveform.
+9. The system creates a processing job and records the selected model.
+10. The separation algorithm factory resolves the selected model into the correct strategy.
+11. The separation engine runs the selected strategy and generates heart and lung outputs.
+12. The result service stores output paths, timing information, and status.
+13. The interface displays the result summary, audio preview controls, and download links.
+14. The user previews or downloads the separated heart and lung audio files.
+
+#### Postconditions
+
+After successful processing, the user receives separated heart and lung sound output files. The system stores the upload metadata, selected model, job status, output paths, processing time, and optional evaluation metrics where reference signals are available. If processing history is enabled, the user can reopen recent results without re-uploading the same file.
+
+#### Alternative Flows and Exceptions
+
+If the uploaded file is unsupported or unreadable, the system rejects it before creating a separation job and displays a clear message. If the model list cannot be loaded, the system may continue with the active default model if it is configured. If the selected model is missing a checkpoint, configuration file, or supported strategy, the system marks the job as failed and explains the model configuration problem. If preprocessing fails, the system stops before inference. If the algorithm fails to generate both outputs, the system must not present incomplete files as successful results.
+
+#### Non-Functional Requirements
+
+The use case must support usability, reliability, maintainability, performance, privacy, compatibility, and traceability. The interface should use clear status messages because users may not understand backend or machine learning errors. The backend should keep file handling, model selection, strategy execution, result storage, and evaluation as separate responsibilities so that FYP2 development can improve one part without rewriting the whole prototype.
+
+## Activity Diagram
+
+Figure @fig-activity-diagram shows the planned activity flow. The flow includes model loading and model selection before the separation job runs. This makes the workflow suitable for a prototype where the first working model may be NeoSSNet, while later versions may include baseline or alternative strategies for comparison.
+
+![Activity diagram for the sound separation workflow](figures/plantuml/activity_diagram.png){#fig-activity-diagram}
+
+The activity diagram also shows where the system should stop safely. Invalid audio, missing model configuration, preprocessing failure, and separation failure should all be reported as controlled errors instead of being hidden from the user.
+
+## Class Diagram
+
+Figure @fig-class-diagram shows the planned class-level design. The design follows a service-oriented structure inspired by the existing prototype. The user interface communicates with route/controller classes, while the main processing logic is handled by services. The separation algorithm is accessed through a common strategy interface so that multiple algorithms can be added without changing the whole workflow.
+
+![Class diagram for the planned prototype modules](figures/plantuml/class_diagram.png){#fig-class-diagram}
+
+### Component-Level Architecture
+
+Figure @fig-component-diagram shows the component-level architecture. The design separates the browser interface, backend API, service layer, model registry, separation strategies, database, and filesystem storage. This structure is suitable for a prototype because it is understandable, testable, and extendable.
+
+![Component-level architecture for the proposed prototype](figures/plantuml/component_diagram.png){#fig-component-diagram}
+
+Table @tbl-system-modules summarizes the main system modules and responsibilities.
+
+| Module | Responsibility |
+|---|---|
+| User interface | Provides upload controls, model selection, processing status, result display, preview controls, downloads, and history view. |
+| Upload and validation module | Checks supported WAV input, validates the audio header, extracts metadata, and prevents invalid files from entering the pipeline. |
+| Model service | Lists configured models, identifies the active default model, and validates model checkpoint and configuration paths. |
+| Preprocessing module | Converts uploaded audio into a model-ready signal through mono conversion, resampling, normalization, segmentation, and optional time-frequency transformation. |
+| Separation service | Coordinates the full workflow from uploaded audio to completed or failed separation job. |
+| Algorithm factory | Converts the selected model architecture into the correct separation strategy. |
+| Separation strategies | Provide interchangeable algorithm implementations such as baseline filtering, NMF/VMD decomposition, and NeoSSNet-style deep separation. |
+| Result service | Stores output metadata, exposes download paths, retrieves result details, and returns recent processing history. |
+| Database module | Stores upload records, model records, job state, result metadata, evaluation metrics, and system logs. |
+| Filesystem storage | Stores uploaded WAV files, generated heart and lung WAV files, model files, temporary files, and local logs. |
+
+: Main system modules and responsibilities {#tbl-system-modules}
+
+### Algorithm and Model Selection Design
+
+The prototype should treat each separation method as a strategy with the same input-output contract. A mixed waveform enters the strategy, and the strategy returns two output files or two output waveforms: one for heart sound and one for lung sound. This design is practical because the project can start with one working model and later add baselines without changing the upload, result, and history workflow.
+
+The planned strategy set is based on the reviewed literature on noisy cardiopulmonary recordings, decomposition-based separation, unsupervised separation, and NeoSSNet-style deep separation [@grooby2023noisyneonatal; @fattahi2022blind2; @sun2024daenmfvmd; @ullah2024unsupervised; @poh2024neossnet]. Table @tbl-model-strategy-design lists the planned algorithm strategies for FYP2. The table describes the intended role of each strategy rather than reporting completed performance.
+
+| Strategy | Planned role in prototype | Reason for inclusion |
+|---|---|---|
+| Fixed filter baseline | Simple baseline for checking whether the pipeline can process, save, and return separated outputs. | Easy to implement and useful for comparison, but limited when heart and lung components overlap. |
+| NMF separation strategy | Traditional matrix-factorization baseline or fallback strategy. | Supports explainable decomposition and comparison with deep learning. |
+| VMD separation strategy | Traditional mode-decomposition baseline or fallback strategy. | Provides another interpretable decomposition route for separating mixed signal components. |
+| NeoSSNet deep separation strategy | Main machine learning-based strategy for heart-lung sound separation. | Matches the project title and supports the selected machine learning direction. |
+| Future model versions | Optional FYP2 extension through the same model registry. | Allows new checkpoints or architectures to be added without redesigning the whole system. |
+
+: Planned separation strategy options for model selection {#tbl-model-strategy-design}
+
+The model selection feature should therefore be implemented as a model registry. Each model record should store a model name, version, architecture, framework, checkpoint path, configuration path, description, and active status. When the user selects a model, the backend records the selected model in the separation job. If the user does not select a model, the active default model is used.
+
+### Database and Storage Design
+
+The planned database design follows the same principle as the Software Design prototype: keep structured metadata in SQLite and keep large WAV files on the filesystem. This avoids storing binary audio inside the database and keeps the prototype easier to inspect during demonstration.
+
+Table @tbl-database-entities summarizes the main planned entities.
+
+| Entity | Purpose |
+|---|---|
+| `uploaded_audio` | Stores metadata for each uploaded mixed WAV file, including filename, stored path, sample rate, channels, duration, and upload time. |
+| `model` | Stores available model or algorithm configuration, including model name, architecture, checkpoint path, config path, and active status. |
+| `separation_job` | Tracks each processing request, selected model, status, timestamps, processing time, parameters, and error message. |
+| `separation_result` | Stores output metadata and paths for generated heart and lung sound files. |
+| `evaluation_metric` | Stores optional metric values when reference signals are available. |
+| `system_log` | Stores structured log records for upload, processing, completion, or failure events. |
+
+: Planned database entities for prototype traceability {#tbl-database-entities}
+
+The filesystem should use separate folders for uploaded audio, temporary files, generated heart outputs, generated lung outputs, model files, and logs. This separation makes cleanup easier and prevents runtime demo files from being mixed with public dataset files.
+
+## Sequence Diagram
+
+Figure @fig-sequence-diagram shows the planned interaction sequence between the user interface and the major system modules. The sequence includes model retrieval before upload, model selection during the separation request, strategy creation through the factory, and result retrieval after the job completes.
+
+![Sequence diagram for uploading and separating a cardiopulmonary recording](figures/plantuml/sequence_diagram.png){#fig-sequence-diagram}
+
+The sequence is intentionally designed around a small prototype workflow. It can run synchronously for FYP demonstration, but the class and component design leaves room for a future background job queue if longer recordings make synchronous processing too slow.
+
+## Interface Design
+
+The interface design should support the main workflow without making the user think about internal implementation details. The first screen should let the user select a WAV file, select a model if multiple models are configured, and start processing. The processing area should show upload, validation, model selection, separation, and result status messages. The result view should provide separate heart and lung output sections with audio players and download controls.
+
+Table @tbl-interface-areas summarizes the planned interface areas.
+
+| Interface area | Planned content |
+|---|---|
+| Upload area | WAV file selector, accepted format note, selected filename, and start processing control. |
+| Model selection area | Dropdown list of available separation models, default active model indicator, and short model description. |
+| Status area | API status, validation status, preprocessing status, model execution status, completion time, and clear error messages. |
+| Result area | Heart sound preview, lung sound preview, output download controls, and optional metric summary. |
+| History area | List of recent processing jobs with filename, status, processing time, and links to reopen or download results. |
+
+: Planned interface areas for the prototype {#tbl-interface-areas}
+
+No final interface screenshots are presented in this FYP1 report because final implementation and testing belong to FYP2. The interface design will be refined after the questionnaire responses are collected and after the prototype workflow is implemented.
+
+## Summary
+
+This chapter presented the system design for the proposed prototype. The design now includes model selection, a model registry, service-layer separation of responsibilities, algorithm strategy selection, database traceability, filesystem storage, and a user-facing workflow for upload, processing, preview, download, and history. The next chapter explains how this design will be implemented and tested during FYP2 without claiming final results at the FYP1 stage.
