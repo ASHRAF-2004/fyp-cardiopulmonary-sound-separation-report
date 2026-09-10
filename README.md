@@ -184,6 +184,13 @@ PRISMA tracking records 96 considered records, 49 eligible records, and 35
 studies used in the report. The questionnaire evidence contains the original
 CSV export and charts used for the 53-response Chapter 3 analysis.
 
+The literature library also includes the subsequently collected 2024 DAE-NMF-VMD
+study and 2025 adaptive-line-enhancer study under
+`literature-review/papers/pdfs/`. The baseline report PDF and questionnaire
+Google Form guide were synchronized from the maintained working copy on
+10 September 2026; the revised DOCX and PDF in `report/Submission/` remain the
+authoritative submission artifacts.
+
 ## Submission Naming
 
 The required submission naming convention is:
