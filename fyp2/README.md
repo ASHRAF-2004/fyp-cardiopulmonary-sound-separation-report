@@ -1,0 +1,15 @@
+# FYP2 preparation workspace
+
+This directory is separate from the submitted FYP1 report and its restored historical build sources. It contains planning and provenance, not completed FYP2 findings.
+
+Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](../FYP1_TO_FYP2_CHANGE_MAP.md), then read:
+
+- [Requirements design code and evidence register](TRACEABILITY.md)
+- [Source register and missing guidance](provenance/SOURCE_REGISTER.md)
+- [Candidate method attribution](provenance/METHOD_ATTRIBUTION.md)
+- [Baseline preservation record](provenance/BASELINE.md)
+- [Separate build plan](BUILD_PLAN.md)
+
+`paper.qmd` is a minimal editable seven-chapter preparation starter. It does not include the unsynchronized historical chapters. Its HTML build is isolated to `_build/` and was rendered successfully with project-local Quarto 1.10.18, then visually checked at desktop and 360px widths. See [exact commands and provenance](provenance/QUARTO_SETUP.md). It is not a university-ready Word/PDF template.
+
+Keep the registered academic title, genuine questionnaire data and historical submitted artifacts unchanged. Record new evidence with dates, source/code hashes, commands and limitations. Never promote synthetic audio, fictional persona tests or screenshots into live integration or separation-performance claims.

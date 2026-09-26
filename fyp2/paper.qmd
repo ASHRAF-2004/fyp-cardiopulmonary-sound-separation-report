@@ -1,0 +1,41 @@
+---
+title: "Machine Learning-Based System for Cardiopulmonary Sound Separation"
+subtitle: "FYP2 preparation outline"
+author: "AL-SALOUL, ASHRAF ALI HUSSEIN"
+date: "2026-09-26"
+output-file: fyp2-preparation.html
+---
+
+This editable preparation starter follows the application-based seven-chapter structure in the local FYP Handbook T2610, subject to current-term confirmation. It is not a completed FYP2 report or final submission template. The existing FYP1 submission remains unchanged. StethoFuse is the product brand, not a replacement academic title.
+
+# Introduction
+
+Develop the problem, objectives, scope, limitations, methodology and intended stakeholders using the submitted revision and the approved change record. Preserve the no-diagnosis boundary. Explain persistent multi-user recording management and the question of whether ensemble fusion helps; do not promise improvement.
+
+# Literature Review
+
+Retain original review provenance and separately log any new search. Reconcile exact candidate papers, code, licenses, checkpoints and domain suitability before claiming named reproductions. Distinguish baseline NMF/VMD from literature-faithful NMF/NMCF and the complete DAE-NMF-VMD pipeline. No performance values are supplied in this starter.
+
+# Requirements Analysis
+
+Preserve the original 53-response questionnaire and limitations. Version original F/NF/UR/UC identifiers. Add identity, backend ownership/roles, persistent audio, explicit review, administration and one ensemble request through the traceability register. Any new target-user findings require genuine evidence.
+
+# System Design
+
+Document context, roles/trust boundaries, use cases, activities, components, domain model, protected storage, job lifecycle and authorized sequences. The separation design must resolve output compatibility, alignment, scale, residual handling, fusion and expert failure policy. Produce new diagrams without overwriting historical sources.
+
+# Implementation
+
+The current frontend is a working fictional local demonstration with unavailable live adapters, synthetic audio and simulated jobs. A separate legacy FastAPI/SQLite individual-strategy workflow exists; its inspected routes are not account-scoped. These are reusable foundations, not completed Firebase authorization, persistent multi-user audio or ensemble inference. Describe future integrations only as implemented when code and execution evidence support that status.
+
+# Testing
+
+Keep prior demo browser evidence dated and scoped. Add actual unit/API/system/persistence/access tests and controlled held-out individual-versus-ensemble evaluation when authorized and run. Record heart/lung measurements separately, dataset splits, reference mapping, runtime and negative findings. Physical device tests, target-user acceptance and deployment recovery remain evidence gates.
+
+# Conclusion
+
+Complete after implementation and test evidence is available. State achieved objectives, measured findings, limitations and remaining work without converting planned benefits into results.
+
+# Preparation references {.unnumbered}
+
+See `../FYP2_OUTLINE.md`, `../FYP1_TO_FYP2_CHANGE_MAP.md`, `TRACEABILITY.md`, `BUILD_PLAN.md`, and `provenance/SOURCE_REGISTER.md`. These preparation records are not substitutes for final academic references or current university instructions.

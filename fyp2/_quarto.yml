@@ -1,0 +1,15 @@
+project:
+  type: default
+  output-dir: _build
+  render:
+    - paper.qmd
+
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    embed-resources: true
+
+execute:
+  eval: false
