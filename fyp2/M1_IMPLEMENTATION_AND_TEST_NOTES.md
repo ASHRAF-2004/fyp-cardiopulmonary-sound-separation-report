@@ -230,6 +230,36 @@ Do not mark all cases passed because a subset passed. Record a 503/unavailable r
 
 Provider acceptance is the real-live gate, not a reason to stop local code, mock/API tests or documentation. CLI consent, basic Web App/provider setup, restricted IAM, read-tested keyless ADC and the approved primary bootstrap have progressed as recorded above. The next evidence boundary is **post-promotion real browser/API validation**, followed by the wider genuine-provider acceptance matrix. These outcomes are not inferred from IAM grants, a provider lookup or an administrator row alone. Routing inspection remains separate from local M1.
 
+## Isolated production-like runtime preparation — 27 September 2026
+
+The current `fyp2/application` implementation adds `deploy/compose.yaml`, a Firebase ADC
+overlay, a hash-pinned backend runtime image, and a multi-stage Vite/Caddy web image. The
+two services use an isolated Compose network; Caddy provides same-origin SPA and `/api`
+routing, FastAPI is not host-published, and the API alone mounts external SQLite/private
+storage. Containers run non-root with read-only roots, dropped capabilities, health checks,
+resource limits and bounded logs. ADC is an external read-only runtime mount; the developer
+ADC used during local validation is not a production credential. Local build/client Firebase
+values are public Web SDK configuration supplied with BuildKit secret mounts and are never
+Admin credentials.
+
+Status: runtime files are `implemented` and the package is `tested` locally. On 27 September,
+both images built; `/` and `/app/admin/users` returned 200; API health reported storage and
+Firebase provider configured while `ensemble_available` remained false; tokenless `/api/auth/me`,
+`/api/admin/users`, and `/api/media/{id}` returned 401. Guessed `/private/...` was not served as
+media. A synthetic-only M1 SQLite account and private marker survived container restart. A
+synthetic offline archive/restore copy passed SQLite `PRAGMA integrity_check` and byte equality.
+These are `LOCAL BACKEND` package checks, not real-user authorization, production, or a full
+off-host backup/recovery drill. No real ID token or private audio was used in this package test.
+
+The current app does not contain a durable job worker, connected ensemble executor, GPU
+service, or production model assets. Ensemble job creation remains unavailable; no separation
+quality or performance claim follows from this runtime. Production deployment and routing are
+still `planned`, with no DNS/tunnel/Caddy/Firebase-domain/service write. See
+[`PRODUCTION_RUNTIME_PROPOSAL.md`](../../planning/PRODUCTION_RUNTIME_PROPOSAL.md) for the
+shared-Axora versus isolated-tunnel comparison, chosen proposal, backup/rollback plan, and
+remaining deployment gate; see [`implementation/deploy/README.md`](../../implementation/deploy/README.md)
+for reproducible local commands.
+
 ## Remaining factual gaps
 
 Current FYP2 rubric/teaching plan/template and supervisor decisions; remaining final-hostname authorization, reset/verification action routing and wider provider-flow validation; post-promotion real browser/API and issued-token acceptance evidence; wider real-account sharing/review and recovery workflows beyond the named mocked/local checks; production routing, recovery, quotas, rate limits and retention/deletion; legacy ownership migration; owner review-feedback display/admin reassignment; physical capture device; candidate expert fidelity/checkpoints and controlled evaluation; genuine post-deployment feedback. See [source audit](provenance/M1_SOURCE_AUDIT.md). No new studies, participants or model scores are supplied here.
