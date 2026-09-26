@@ -25,6 +25,12 @@ The latest R-ROLE/R-ADM clarification requires backend enforcement, audit, exist
 
 Application human actors are **Healthcare Staff**, **Audio Analyst** and **Administrator**. Staff manage their own authorized workspace; analysts additionally review exact active assignments; admins manage permitted account/operational metadata without automatic private-audio or analyst-review access. Firebase is a supporting external identity actor; the trusted developer/operator is an operational setup/bootstrap actor, not a public fourth role. A signed-out visitor is an authentication state. See [the role/use-case mapping](M1_IMPLEMENTATION_AND_TEST_NOTES.md#confirmed-signup-sign-in-and-actor-policy). Preserve the submitted FYP1 staff/analyst actors and original use-case identifiers; these explicit administration/provider/operator boundaries are a dated FYP2 refinement, not a rewrite of FYP1.
 
+Self-management policy is now explicit: the current admin is read-only in User
+Management (`403` for self role/status changes), while another verified account may be
+promoted/demoted under audit and last-active-admin protection. The UI compares each row
+with the backend-authoritative Firebase UID and refreshes `/me` and the user list after
+changes. See the editable [role/use-case diagram source](design/role-use-cases.mmd).
+
 ## Preserved pre-M1 baseline
 
 | ID and source | Requirement and design location | Baseline code or artifact | Pre-M1 evidence and continuing acceptance gate |

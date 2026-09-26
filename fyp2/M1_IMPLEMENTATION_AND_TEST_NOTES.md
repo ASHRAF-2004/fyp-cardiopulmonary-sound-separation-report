@@ -28,6 +28,16 @@ The latest clarification requires promotion/demotion to be backend-enforced, aud
 
 Firebase Authentication is a supporting external identity actor. The trusted developer/operator is an operational actor for setup/bootstrap, not a fourth public application role or a new Super Admin role. A signed-out visitor is a pre-authentication state, not a stored role. Submitted FYP1 already had staff/analyst actors; Administrator and these explicit external boundaries are FYP2 additions. Original FYP1 actors/artifacts are not rewritten. Administrator status still gives no automatic access to another account's private audio or analyst review authority.
 
+The focused self-management correction is now **implemented** in FastAPI and the live
+admin UI: an administrator's own row is identified by the backend Firebase UID, shows
+the authoritative role/status with a `You` marker, and has no editable controls. Self
+role/status mutations return `403`; another verified account remains promotable or
+demotable subject to the existing audit and last-active-admin rules. The UI refreshes
+the authoritative `/me` account and re-fetches the user list after mutations; this is
+not an email-based or browser-state role decision. The editable role/use-case source is
+[`role-use-cases.mmd`](design/role-use-cases.mmd); Graphify was not configured, so the
+existing Mermaid workflow is retained.
+
 ## Provider configuration progress — 26 September 2026
 
 This entry records the coordinator's subsequent official CLI/API observations and completed configuration actions. It supersedes the earlier **current-state** description of no Web App, uninitialized Authentication and pending CLI consent; it does not change the historical missing-configuration screenshots or mocked/local test results below.

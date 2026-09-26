@@ -1,0 +1,32 @@
+%% StethoFuse FYP2 role/use-case view. Ensemble Learning is an internal subsystem, not an actor.
+flowchart LR
+  Visitor([Visitor]) --> Register[Register healthcare staff account]
+  Visitor --> SignIn[Sign in]
+  Visitor --> Google[Google sign-in]
+  Visitor --> Recovery[Forgot / reset password]
+
+  Staff([Healthcare Staff]) --> Own[Own recordings, results and history]
+  Staff --> Capture[Upload WAV / capture from device]
+  Staff --> Request[Request ensemble separation]
+  Staff --> Share[Share or assign permitted recording]
+
+  Analyst([Audio Analyst]) --> Review[Review explicitly assigned content]
+  Admin([Administrator]) --> Bootstrap[Trusted first-admin bootstrap]
+  Admin --> Manage[Manage other verified users, roles and status]
+  Admin --> Audit[Review safe operational audit metadata]
+
+  Firebase[(Firebase Authentication)] --> SignIn
+  Firebase --> Google
+  Device[[Digital stethoscope / audio device]] --> Capture
+
+  subgraph Internal[StethoFuse internal boundary]
+    API[FastAPI authorization and ownership checks]
+    Ensemble[Ensemble Learning subsystem]
+  end
+  Request --> Ensemble
+  Manage -.-> API
+  Share -.-> API
+  Review -.-> API
+
+  classDef actor fill:#eef6ff,stroke:#245a9c,color:#102a54;
+  class Visitor,Staff,Analyst,Admin actor;
