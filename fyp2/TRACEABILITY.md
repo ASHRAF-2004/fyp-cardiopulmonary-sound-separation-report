@@ -39,8 +39,10 @@ the primary Administrator and ordinary Healthcare Staff resolved through Firebas
 FastAPI to their authoritative backend roles. Admin Users returned `200` to Administrator
 and `403` to Staff. A synthetic silent WAV was owner-readable; direct recording metadata,
 media and download returned `403` to Staff without a grant, `200` after a single-resource
-read grant, and `403` again after revocation. This was **REAL FIREBASE + LOCAL BACKEND**,
-not production. The Staff session also received `403` for a forged role-change request and
+read grant, and `403` again after revocation. In the reverse direction, Admin received
+`403` for Staff-owned synthetic recording metadata/media/download, and the item was absent
+from Admin's recording list. This was **REAL FIREBASE + LOCAL BACKEND**, not production.
+The Staff session also received `403` for a forged role-change request and
 `401` after logout when calling `/api/auth/me` without a token. Email/password, recovery,
 live analyst review, results/derived-artifact media, and production access remain untested.
 
