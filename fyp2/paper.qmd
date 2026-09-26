@@ -6,7 +6,7 @@ date: "2026-09-26"
 output-file: fyp2-preparation.html
 ---
 
-This editable preparation starter follows the application-based seven-chapter structure in the local FYP Handbook T2610, subject to current-term confirmation. It is not a completed FYP2 report or final submission template. The existing FYP1 submission remains unchanged. StethoFuse is the product brand, not a replacement academic title.
+This editable working starter follows the confirmed application-based seven-chapter structure in the local FYP Handbook T2610 and the M1 continuation pack. Current FYP2 rubric, template and submission instructions still need reconciliation. It is not a completed FYP2 report or final submission template. The existing FYP1 submission remains unchanged. StethoFuse is the product brand, not a replacement academic title. The confirmed production target is stethofuse.ashraf-alsaloul.com, not a claim of live deployment.
 
 # Introduction
 
@@ -18,7 +18,7 @@ Retain original review provenance and separately log any new search. Reconcile e
 
 # Requirements Analysis
 
-Preserve the original 53-response questionnaire and limitations. Version original F/NF/UR/UC identifiers. Add identity, backend ownership/roles, persistent audio, explicit review, administration and one ensemble request through the traceability register. Any new target-user findings require genuine evidence.
+Preserve the original 53-response questionnaire and limitations. Version original F/NF/UR/UC identifiers and link the 52 continuation requirements without erasing the initial R01-R18 summaries. Separate original elicitation, implementation-driven revision and planned post-deployment feedback. Add identity, backend ownership/roles, persistent audio, explicit review, administration and one ensemble request through the traceability register. Any new target-user findings require genuine evidence.
 
 # System Design
 
@@ -26,7 +26,7 @@ Document context, roles/trust boundaries, use cases, activities, components, dom
 
 # Implementation
 
-The current frontend is a working fictional local demonstration with unavailable live adapters, synthetic audio and simulated jobs. A separate legacy FastAPI/SQLite individual-strategy workflow exists; its inspected routes are not account-scoped. These are reusable foundations, not completed Firebase authorization, persistent multi-user audio or ensemble inference. Describe future integrations only as implemented when code and execution evidence support that status.
+The pre-M1 foundations comprise a fictional frontend, a legacy FastAPI/SQLite individual-strategy workflow and a standalone access-control harness. M1 is integrating real authentication and protected application paths; its precise code/test status is maintained in the separate M1 implementation and test notes. Use implemented, integrated, tested, verified live, planned, simulated and blocked distinctly. Mocked identities do not prove real Firebase operation, and intended administrator email is not a UID or privilege rule. Synthetic audio, simulated jobs and candidate expert names do not establish real ensemble inference.
 
 # Testing
 
@@ -38,4 +38,4 @@ Complete after implementation and test evidence is available. State achieved obj
 
 # Preparation references {.unnumbered}
 
-See `../FYP2_OUTLINE.md`, `../FYP1_TO_FYP2_CHANGE_MAP.md`, `TRACEABILITY.md`, `BUILD_PLAN.md`, and `provenance/SOURCE_REGISTER.md`. These preparation records are not substitutes for final academic references or current university instructions.
+See `../FYP2_OUTLINE.md`, `../FYP1_TO_FYP2_CHANGE_MAP.md`, `TRACEABILITY.md`, `REQUIREMENTS_HISTORY.md`, `M1_IMPLEMENTATION_AND_TEST_NOTES.md`, `BUILD_PLAN.md`, and `provenance/SOURCE_REGISTER.md`. These working records are not substitutes for final academic references or current university instructions.

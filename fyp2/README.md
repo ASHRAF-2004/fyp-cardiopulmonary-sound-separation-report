@@ -1,10 +1,14 @@
 # FYP2 preparation workspace
 
-This directory is separate from the submitted FYP1 report and its restored historical build sources. It contains planning and provenance, not completed FYP2 findings.
+This directory is separate from the submitted FYP1 report and its restored historical build sources. It contains the evolving FYP2 working outline, implementation/evidence records and provenance, not a finished report or invented findings.
 
 Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](../FYP1_TO_FYP2_CHANGE_MAP.md), then read:
 
 - [Requirements design code and evidence register](TRACEABILITY.md)
+- [Requirement history and continuation identifiers](REQUIREMENTS_HISTORY.md)
+- [Status and evidence conventions](STATUS_AND_EVIDENCE.md)
+- [M1 implementation and test notes](M1_IMPLEMENTATION_AND_TEST_NOTES.md)
+- [M1 local guidance and source audit](provenance/M1_SOURCE_AUDIT.md)
 - [Source register and missing guidance](provenance/SOURCE_REGISTER.md)
 - [Candidate method attribution](provenance/METHOD_ATTRIBUTION.md)
 - [Baseline preservation record](provenance/BASELINE.md)

@@ -1,6 +1,6 @@
 # Project-local Quarto setup and starter-build provenance
 
-Date: 26 September 2026. Scope: the new FYP2 preparation HTML only. This is not a rebuild of the submitted report or proof of final university formatting.
+Initial preparation record: 26 September 2026, before the M1 documentation revision. Scope: the new FYP2 preparation HTML only. This is not a rebuild of the submitted report or proof of final university formatting. The original render hashes/screenshots below remain historical; the later M1 render and fresh evidence are recorded in [the build plan](../BUILD_PLAN.md).
 
 ## Source and integrity
 

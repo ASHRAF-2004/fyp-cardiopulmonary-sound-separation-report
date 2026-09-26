@@ -4,7 +4,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { chromium } from '../../implementation/frontend/node_modules/playwright-core/index.mjs';
 
-const output = new URL('./output/playwright/', import.meta.url);
+const runLabel = process.argv[2] ?? '';
+assert(!runLabel || /^[a-z0-9-]+$/.test(runLabel), 'Run label must contain only lower-case letters, digits or hyphens');
+const output = new URL(`./output/playwright/${runLabel ? `${runLabel}/` : ''}`, import.meta.url);
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true });
 const report = { purpose: 'Preparation HTML only; not academic-layout or application certification', browser: browser.version(), cases: [] };

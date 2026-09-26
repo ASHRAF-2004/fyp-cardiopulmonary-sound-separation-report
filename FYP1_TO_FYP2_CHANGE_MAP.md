@@ -1,6 +1,6 @@
 # FYP1 to FYP2 change map
 
-Prepared 26 September 2026. This is a preparation record, not a replacement for the submitted FYP1 report or a claim that the target system is complete. The revised DOCX and PDF in `report/Submission/` are the historical authority. Existing tracked files are preserved; their baseline hashes are in `fyp2/provenance/tracked-files-2026-09-26.sha256`.
+M1 synchronization, 26 September 2026. This is a controlled FYP2 change record, not a replacement for the submitted FYP1 report or a claim that the target system is complete. The revised DOCX and PDF in `report/Submission/` are the historical authority. The 217 original tracked files are preserved; their baseline hashes are in `fyp2/provenance/tracked-files-2026-09-26.sha256`. The separate FYP2 files may evolve after coordinator checkpoint `47c10af`.
 
 ## Basis and corrections to earlier mappings
 
@@ -12,18 +12,18 @@ Important section corrections:
 - `4.5.3.5` is **Model Selection Strategy**, not `5.1.3.5`.
 - `4.5.4` is **Database and Storage Design**, not `4.5.3`.
 - Submitted NF5 is **Security and Privacy**: minimize identifying information and restrict access to the local application workflow. Do not attribute the older phrase about avoiding server storage to the revised submission.
-- Submitted Chapter 5 is **Implementation Plan** and Chapter 6 is **Conclusion**. The local *FYP Handbook T2610*, section 3.5.1, page 14, recommends application-based FYP2 chapters 5 **Implementation**, 6 **Testing**, and 7 **Conclusion**. The new outline follows that guidance provisionally; it does not pretend FYP1 Chapter 6 was already a testing/evaluation chapter.
+- Submitted Chapter 5 is **Implementation Plan** and Chapter 6 is **Conclusion**. The local *FYP Handbook T2610*, section 3.5.1, page 14, gives application-based FYP2 chapters 5 **Implementation**, 6 **Testing**, and 7 **Conclusion**. The continuation pack confirms this seven-chapter structure; it does not pretend FYP1 Chapter 6 was already a testing/evaluation chapter. The separate teaching plan and rubric in the known directory are FYP1-specific.
 - `report/quarto/chapters/` is an explicitly unsynchronized earlier source tree, including pre-response questionnaire placeholders. It is not a safe source for a verbatim FYP2 carry-forward.
 
 ## Current decisions and their scope
 
-The application brand is **StethoFuse**. Preserve the registered academic title; branding does not amend it. The report cover says *Machine Learning-Based System for Cardiopulmonary Sound Separation*; the proposal form includes the prefix *Development of a*. Keep that discrepancy visible for formal title confirmation rather than choosing a new title.
+The application brand is **StethoFuse**. The continuation pack confirms the unchanged official academic title **Machine Learning-Based System for Cardiopulmonary Sound Separation**. The proposal's *Development of a* prefix is retained as historical source wording, not a reason to amend either original or reopen the confirmed title.
 
 The latest user direction is a full application with Firebase identity, backend-managed roles and object permissions, accounts and audio persistent on the user's own server, and **Ensemble Learning, not Federated Learning**. Ordinary users request one ensemble run; experts remain internal implementation/evaluation choices. Firebase does not replace backend authorization or become the audio store by implication.
 
-The user explicitly approved the owl with “Animation is Done. Now resume the front-end work”; `../implementation/frontend/PAUSE_NOTES.md` records this. The old owl-first hold in the architecture pack is historical. The working frontend is a fictional local demonstration, not live identity, protected server storage, physical device capture or real ensemble inference.
+The user explicitly approved the owl with “Animation is Done. Now resume the front-end work”; `../implementation/frontend/PAUSE_NOTES.md` records this. The old owl-first hold in the architecture pack is historical. The pre-M1 frontend is a fictional local demonstration. M1 now adds implemented/integrated adapter and protected API paths tested locally with mocked identities, without making synthetic audio, simulated jobs, physical capture or ensemble inference real. Current code/test claims and pending live gates are recorded in [M1 notes](fyp2/M1_IMPLEMENTATION_AND_TEST_NOTES.md), using the [seven-state vocabulary](fyp2/STATUS_AND_EVIDENCE.md).
 
-The current conversation uses `stethofuse.ashraf-alsaloul.com`, whereas the 25 September pack records `hearme.ashraf-alsaloul.com` as last confirmed and the rename as pending. Record the newer stated target and the discrepancy. This preparation changes no DNS, certificates, Firebase authorized domains, origin settings or deployment.
+The final hostname is confirmed as `stethofuse.ashraf-alsaloul.com`; the earlier `hearme.ashraf-alsaloul.com` target is superseded for current planning. Confirmation is not deployment. This documentation work changes no DNS, certificates, provider configuration or services. The intended primary-admin email in the continuation pack is neither a Firebase UID nor a privilege rule; real sign-in, backend verification and explicit trusted-bootstrap approval remain separate gates.
 
 ## Section mapping from the actual submitted report
 
@@ -53,7 +53,7 @@ Page numbers below are printed report pages, not PDF file indices. For the main 
 | 4.5.4 Database and Storage; pp. 46-47 | 4.8 | Migrate legacy metadata/files into explicit ownership, protected media, separate historical runs, grants, retention and recovery. Do not treat path naming as authorization. |
 | 4.6 Sequence Diagram; pp. 47-48 | 4.9 | Include identity verification and object authorization for upload, processing, result/media retrieval, sharing, revocation and review. |
 | 4.7 Interface Design; pp. 48-49 | 4.10 | Link working route/state inventory, approved owl and responsive screenshots to dated builds. Show the demo/live boundary on relevant figures. |
-| 5.1.1-5.1.4 Development; pp. 50-52 | 5.1-5.7 | Write implementation facts with code paths and revision/configuration evidence. Separate the legacy backend, completed demo UI and future real adapters. |
+| 5.1.1-5.1.4 Development; pp. 50-52 | 5.1-5.7 | Write implementation facts with code paths and revision/configuration evidence. Separate the legacy backend, completed demo UI, M1 local adapter/API implementation and pending genuine-provider acceptance. |
 | 5.2.1-5.2.4 Testing; pp. 53-54 | Chapter 6 | Expand planned tests into actual reproducible unit/integration/system/UAT results when run. Keep frontend fixture tests distinct from backend identity, server persistence and genuine separation tests. |
 | 5.3 Deployment; pp. 54-55 | 5.8 and 6.7 | Own-server deployment and configurable target origin are plans. Document rollout, protected storage, provider configuration and restore proof only when authorized and tested. |
 | 5.4 Documentation and Maintenance; p. 55 | 5.9 | Reproduction instructions, versioned evidence, migrations, provenance, backup/restore and maintenance boundaries. |
@@ -76,4 +76,4 @@ Page numbers below are printed report pages, not PDF file indices. For the main 
 | NF1, NF4, NF6, NF8 | Retain usable workflow/modularity/WAV support/extensibility; add measurable checks instead of retrospective success claims. |
 | NF5 | Extend the submitted privacy requirement to enforced backend ownership, grants, revocation, protected storage and documented retention. No zero-knowledge claim. |
 
-New requirement IDs and evidence gates are in [the traceability register](fyp2/TRACEABILITY.md). Formal scope/objective changes and current university submission requirements remain confirmation items in [the source register](fyp2/provenance/SOURCE_REGISTER.md).
+The [requirements history](fyp2/REQUIREMENTS_HISTORY.md) maps all 52 continuation IDs to original F/NF/UR/UC identifiers and the retained R01-R18 summary register. Requirements elicitation, implementation-driven revision and future post-deployment feedback are separate phases; no later feature is attributed to the original 53 respondents. Evidence gates are in [traceability](fyp2/TRACEABILITY.md). Formal scope/objective changes and the current FYP2 rubric/template remain confirmation items in [the source register](fyp2/provenance/SOURCE_REGISTER.md).

@@ -25,7 +25,7 @@ Workspace dependency loader resolved Python to:
 
 No bundled LibreOffice path was returned by that loader invocation; no installed desktop LibreOffice was used. A later DOCX build must resolve the managed renderer/runtime before attempting a render. Do not assume a local `soffice` is the approved renderer.
 
-## Checks performed now
+## Initial preparation checks
 
 - `git status --short`, branch and HEAD checks before preparation.
 - SHA256 of all 217 originally tracked files.
@@ -38,6 +38,23 @@ No bundled LibreOffice path was returned by that loader invocation; no installed
 - Read historical scripts and selected bibliographic/diagram/code/test evidence without executing revision, application, training or evaluation workflows.
 
 These are source/preparation and HTML-starter checks, not a finished academic report build, Word/PDF layout certification or fresh application test results.
+
+## M1 documentation build check
+
+The existing Quarto 1.10.18 installation was reused without installs. From the documentation repository:
+
+```sh
+/home/ashraf/Documents/StethoFuse/.local/tools/quarto/bin/quarto render fyp2/paper.qmd --to html
+/home/ashraf/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node fyp2/verify-html.mjs m1-2026-09-26
+sha256sum --check fyp2/provenance/tracked-files-2026-09-26.sha256 --quiet
+git diff --exit-code -- . ':!fyp2' ':!FYP1_TO_FYP2_CHANGE_MAP.md' ':!FYP2_OUTLINE.md'
+```
+
+The first 360px check failed: a long filename in `#implementation > p` produced a 391px document width. Replacing that body filename with readable prose corrected it; the explicit reference remains in the references section. The [first failure record](output/playwright/m1-2026-09-26/first-check-failure.json) and [before screenshot](output/playwright/m1-2026-09-26/before-wrap-mobile.png) are retained.
+
+The rerender and repeated smoke check exited 0. [Final JSON](output/playwright/m1-2026-09-26/fyp2-html-check.json) records correct eight-section order, no horizontal overflow, zero console/page errors and zero external HTTP(S) requests at 1440×1000 and 360×800. Both [desktop](output/playwright/m1-2026-09-26/fyp2-desktop.png) and [mobile](output/playwright/m1-2026-09-26/fyp2-mobile.png) screenshots were visually inspected: no obvious overlap/clipping, all seven numbered chapters and unnumbered references readable. This check does not certify university Word/PDF formatting or application authentication. The script's optional run label preserves the initial screenshots instead of overwriting them. Its isolated Chrome process closes in `finally`; no server was started.
+
+M1 rendered-source SHA256 `paper.qmd`: `87c38a7897e96692041e6f0ebec19343cd29eca0db2c13ce7f39fddea7506c88`; unchanged `_quarto.yml`: `895cacf9f12f1ebe0b6f5cfbe21bad7dfc1c042ec30ef4aa635b3696f4ea5bc7`; generated HTML: `f59b8ba87cab5bb13c7843eca59a07de4144454f63893d023fe0d170fb593d86`. These identify this render, not a future report. Source-guidance inspection is in [M1 source audit](provenance/M1_SOURCE_AUDIT.md); implementation evidence is maintained separately in [M1 notes](M1_IMPLEMENTATION_AND_TEST_NOTES.md).
 
 ## Safe commands for later work
 

@@ -1,8 +1,8 @@
 # FYP2 report outline
 
-Preparation version, 26 September 2026. This outline follows the application-based final-report structure in the local *FYP Handbook T2610*, section 3.5.1, page 14. Confirm its applicability to the student's FYP2 term, current rubric and supervisor instructions before freezing the report format. It is not a completed report.
+M1 working version, 26 September 2026. This outline follows the confirmed application-based seven-chapter structure in the local *FYP Handbook T2610*, section 3.5.1, page 14, and the continuation pack. The current FYP2 rubric, final template and term/submission instructions still need reconciliation; the local teaching plan/rubric are FYP1-specific. It is not a completed report.
 
-Academic title carried forward from the submitted report: **Machine Learning-Based System for Cardiopulmonary Sound Separation**. The proposal's additional *Development of a* wording is recorded, not silently reconciled. **StethoFuse** is the application brand.
+Confirmed unchanged academic title: **Machine Learning-Based System for Cardiopulmonary Sound Separation**. The proposal's additional *Development of a* wording remains historical provenance. **StethoFuse** is the application brand; `stethofuse.ashraf-alsaloul.com` is the confirmed production target, not a claimed live deployment.
 
 ## Preliminary material
 
@@ -40,14 +40,15 @@ Carry forward the submitted literature provenance, not all available PDFs indisc
 
 3.1 Sources and versioning of requirements  
 3.2 Original questionnaire and the 53-response limitations  
-3.3 New target-user consultation, only if genuinely conducted  
+3.3 Implementation-driven FYP2 requirement revisions  
 3.4 Functional requirements and acceptance criteria  
 3.5 Non-functional requirements and measurable thresholds  
 3.6 Role-specific user requirements and access matrix  
 3.7 Requirement-to-design-to-test traceability  
-3.8 Summary
+3.8 Post-deployment feedback plan and later revisions  
+3.9 Summary
 
-Retain F1-F15, NF1-NF8, UR1-UR8 and UC01-UC10 as historical identifiers. Link additions/supersessions to new IDs instead of silently renumbering history. Separate owner-only processing jobs from explicitly shared recording/result content. Administrator status alone grants neither private audio nor analyst review authority.
+Retain F1-F15, NF1-NF8, UR1-UR8 and UC01-UC10 as historical identifiers. Use [requirements history](fyp2/REQUIREMENTS_HISTORY.md) to connect the 52 continuation IDs and initial R01-R18 summaries. Separate initial elicitation from FYP2 revisions and future post-deployment feedback. No new consultation, deployment or feedback results are claimed. Separate owner-only processing jobs from explicitly shared recording/result content. Administrator status alone grants neither private audio nor analyst review authority.
 
 ## Chapter 4 System Design
 
@@ -64,11 +65,12 @@ Retain F1-F15, NF1-NF8, UR1-UR8 and UC01-UC10 as historical identifiers. Link ad
 4.7.4 Versioned orchestration, fixed fusion and optional adaptive research  
 4.7.5 Failure, partial-output and retry policy  
 4.8 Database migrations and private file storage  
-4.9 Authorized interaction sequences  
+4.9 Authentication, authorization and permitted interaction sequences  
 4.10 Role-aware interface and state design  
-4.11 Summary
+4.11 Deployment and infrastructure design  
+4.12 Summary
 
-Produce new versioned diagrams under the FYP2 tree; preserve existing PlantUML/Mermaid sources. Design records must specify owner/grant checks, stable provider identity, immutable run configuration, revocation and protected media. Reusable existing strategy adapters are not discarded because the normal-user selector is removed.
+Produce new versioned diagrams under the FYP2 tree; preserve existing PlantUML/Mermaid sources. Design records must specify owner/grant checks, stable provider identity, immutable run configuration, revocation and protected media. The [M1 Mermaid sequence](fyp2/design/m1-auth-sequence.mmd) is illustrative design only. Explain trusted UID bootstrap outside public registration; intended administrator email is not a privilege rule. Reusable existing strategy adapters are not discarded because the normal-user selector is removed.
 
 ## Chapter 5 Implementation
 
@@ -83,7 +85,7 @@ Produce new versioned diagrams under the FYP2 tree; preserve existing PlantUML/M
 5.9 Maintenance, backup and reproducibility  
 5.10 Implementation status and limitations
 
-For each module, identify source revision, inputs/outputs, reused code, additions, configuration and remaining gaps. At this preparation checkpoint the frontend is a working local demo and the legacy backend is a separate single-system research application. Live adapters currently report unavailable. New access-foundation preparation, if present, is not evidence of integrated protected routes. Avoid past-tense completion for future sections 5.3-5.8.
+For each module, identify source revision, inputs/outputs, reused code, additions, configuration and remaining gaps. Use `implemented`, `integrated`, `tested`, `verified live`, `planned`, `simulated` and `blocked` as defined in [status conventions](fyp2/STATUS_AND_EVIDENCE.md). The pre-M1 frontend/demo, legacy backend and standalone access scaffold are distinct foundations. Current M1 changes and accepted evidence belong in [M1 implementation notes](fyp2/M1_IMPLEMENTATION_AND_TEST_NOTES.md); do not treat concurrent work or mocked token tests as genuine provider integration. Sections 5.5-5.6 and deployment remain evidence-dependent.
 
 ## Chapter 6 Testing
 
@@ -98,10 +100,10 @@ For each module, identify source revision, inputs/outputs, reused code, addition
 6.6.3 Heart/lung metrics, runtime and failure reporting  
 6.6.4 Ablation, uncertainty, domain limitations and interpretation  
 6.7 Deployment, recovery, storage and reliability checks  
-6.8 Target-user acceptance, if conducted with appropriate approval  
+6.8 User acceptance and post-deployment feedback, only when genuinely conducted  
 6.9 Findings against requirements and remaining defects
 
-A screenshot or build success is not backend security evidence. Existing fixture browser runs may support the demo UI only and must keep their original dates/environment. Do not restate old individual-method scores as ensemble results, mix test-set tuning with evaluation, or present lack of references as zero error. Record negative findings and failed cases as well as passes.
+A screenshot or build success is not backend security evidence. Explicitly separate offline mocks, local API with injected identities, Firebase emulator, real-provider/local API and production. Existing fixture browser runs may support the demo UI only and must keep their original dates/environment. Post-deployment feedback remains planned until real deployment/evaluation occurs. Do not restate old individual-method scores as ensemble results, mix test-set tuning with evaluation, or present lack of references as zero error. Record negative findings and failed cases as well as passes.
 
 ## Chapter 7 Conclusion
 
@@ -120,7 +122,7 @@ Use verified citations and the required university style. Proposed appendix subj
 
 ## Preparation gates
 
-1. Confirm current FYP2 handbook/rubric, registered title and supervisor scope decisions.
+1. Reconcile current FYP2 rubric/template/term instructions and supervisor scope decisions; the seven-chapter structure, academic title and target hostname are already confirmed.
 2. Reconcile bibliography, methodology and actual implementation evidence.
 3. Establish versioned tests, dataset splits and output provenance before collecting final results.
 4. Synchronize any reused text from the submitted revision, never the stale Quarto baseline by default.
