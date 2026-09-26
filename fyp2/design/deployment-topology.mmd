@@ -1,0 +1,24 @@
+%% Observed production edge and proposed StethoFuse route. StethoFuse ingress is not configured.
+flowchart LR
+  Internet[Browser] --> Cloudflare[Cloudflare zone ashraf-alsaloul.com]
+  Cloudflare --> Tunnel[Healthy remote-config tunnel axora-production]
+  Tunnel -->|Observed ingress: axora.management only| Caddy[Existing Axora Caddy :8080]
+  Caddy -->|Observed| Axora[Axora app :3000]
+
+  subgraph Host[Existing Linux server / Docker]
+    Tunnel
+    Caddy
+    Axora
+    DevUI[StethoFuse Vite dev :127.0.0.1:4180]
+    DevAPI[StethoFuse FastAPI dev :127.0.0.1:8000]
+  end
+
+  Cloudflare -.->|Proposed only: stethofuse.ashraf-alsaloul.com has no DNS/ingress| Future[Isolated StethoFuse HTTPS host]
+  Future -.->|Proposed static SPA| FutureUI[Frontend production build]
+  Future -.->|Proposed /api proxy| FutureAPI[FastAPI service]
+  FutureAPI -.-> Private[(Private database and media)]
+
+  classDef observed fill:#e8f4ec,stroke:#347450,color:#123d29;
+  classDef proposed fill:#fff7e6,stroke:#ba8314,color:#694700;
+  class Tunnel,Caddy,Axora,DevUI,DevAPI observed;
+  class Future,FutureUI,FutureAPI,Private proposed;

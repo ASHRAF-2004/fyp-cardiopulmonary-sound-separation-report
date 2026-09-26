@@ -20,13 +20,21 @@ The user explicitly confirmed that **an existing administrator may also promote 
 
 The latest clarification requires promotion/demotion to be backend-enforced, audited, restricted to **existing verified accounts**, and protected by the last-active-admin invariant. That narrow hardening is now **implemented, integrated and tested locally**: every role-bearing admin PATCH rechecks the target's exact server-owned UID against the current provider record and requires an existing, enabled, verified identity. The store also requires the local target to remain verified inside the role/status/audit transaction. Target rejection returns 403, not an acting-admin session-expiry 401; provider unavailability returns 503 without mutation. The independently inspected latest JUnit records 99 cases plus 26 subtests passed, including 13 added provisioning cases. The provider outcomes in those tests are simulated; they do not establish a genuine web-admin promotion workflow. See the [roles and account-provisioning guide](../../implementation/docs/ROLES_AND_ACCOUNT_PROVISIONING.md).
 
-| Human application actor | Role and main use cases | Provisioning boundary |
+| Actor | Main use cases / authority | Provisioning boundary |
 | --- | --- | --- |
-| Healthcare Staff | `healthcare_staff`: own workspace, authorized intake/history and explicit sharing | Default verified public onboarding; a workflow label, not proof of professional qualifications |
-| Audio Analyst | `audio_analyst`: own workspace plus non-diagnostic review within active exact-resource assignments | Authorized admin promotion; neither signup nor the role alone grants another user's files |
-| Administrator | `admin`: own workspace, safe account metadata, permitted role/status changes and audit access | First admin by trusted operator bootstrap; existing admins may promote, with confirmation/audit and last-active-admin protection |
+| Visitor | Register, sign in, Google sign-in, forgot/reset password | Public signup creates Healthcare Staff only; no privileged role selector |
+| Healthcare Staff | `healthcare_staff`: own recordings/results/history, WAV/device intake, ensemble request, sharing/assignment | Default public account; a workflow label, not proof of professional qualifications |
+| Audio Analyst | `audio_analyst`: review explicitly assigned content | Existing verified account promoted by Admin; role alone grants no other user's files |
+| Administrator | `admin`: manage other verified accounts/roles/status, safe operational metadata and audit access | First Admin by trusted server bootstrap; future Admin by another Admin; cannot change own role/status; last-active-admin protection |
+| Firebase Authentication | External identity, account verification and recovery support | Does not assign StethoFuse application roles |
+| Google Identity Provider | External identity provider used by Firebase sign-in | Supporting system, not an application role |
+| Digital Stethoscope / Audio Input Device | Supplies audio for device capture | Compatible hardware integration remains planned |
+| Developer/operator | Infrastructure and trusted first-admin bootstrap | Operational actor only, not a normal application role |
 
-Firebase Authentication is a supporting external identity actor. The trusted developer/operator is an operational actor for setup/bootstrap, not a fourth public application role or a new Super Admin role. A signed-out visitor is a pre-authentication state, not a stored role. Submitted FYP1 already had staff/analyst actors; Administrator and these explicit external boundaries are FYP2 additions. Original FYP1 actors/artifacts are not rewritten. Administrator status still gives no automatic access to another account's private audio or analyst review authority.
+Ensemble Learning is an internal subsystem, not a UML actor. FastAPI and the application
+database are also internal components. Submitted FYP1 actors/artifacts remain unchanged;
+these FYP2 boundaries refine the later design. Administrator status gives no automatic
+access to another account's private audio or analyst review authority.
 
 The focused self-management correction is now **implemented** in FastAPI and the live
 admin UI: an administrator's own row is identified by the backend Firebase UID, shows
@@ -37,6 +45,78 @@ the authoritative `/me` account and re-fetches the user list after mutations; th
 not an email-based or browser-state role decision. The editable role/use-case source is
 [`role-use-cases.mmd`](design/role-use-cases.mmd); Graphify was not configured, so the
 existing Mermaid workflow is retained.
+
+The current Mermaid set also records the M1 system boundary and the observed versus
+proposed deployment route: [`m1-system-architecture.mmd`](design/m1-system-architecture.mmd)
+and [`deployment-topology.mmd`](design/deployment-topology.mmd). The architecture marks
+ensemble execution and physical capture as planned. The topology shows the healthy
+Axora-only Cloudflare tunnel/Caddy route as observed and StethoFuse ingress as proposed;
+there is no StethoFuse DNS record, public hostname mapping, production service, or
+verified `/api` proxy yet.
+
+## Repository preservation and tooling
+
+The implementation and documentation repositories remain separate Git repositories.
+Their normal development branches are now locally prepared as `fyp2/application` and
+`fyp2/documentation`, using the established human-authored identity `ASHRAF-2004
+<adoashraf103@gmail.com>` recovered from prior project commits and matched to the
+authenticated GitHub account. Existing remote assistant-named branches/draft PRs remain
+preserved (implementation PR #8; documentation PR #1); no history was rewritten. Remote
+publication of the normal branches and corresponding draft PR updates is being handled
+as a separate checkpoint. No merge, force-push or main-branch write occurred. GitHub and
+Cloudflare read-only access are verified; no Cloudflare write occurred. Graphify is
+unavailable, so diagrams remain editable Mermaid source. These tooling facts establish
+provenance and environment state, not application functionality.
+
+## Local API smoke check — 26 September 2026
+
+After the stopped local services were restarted on their existing loopback ports, health
+returned `200` and the frontend root returned `200`. Without a Firebase token, the local
+backend returned `401` for `/api/admin/users`, `/api/recordings`, `/api/jobs`, and a direct
+`/api/media/{id}` request. A request carrying a deliberately invalid bearer string and a
+forged `{ "role": "admin" }` body also returned `401`. This is **LOCAL BACKEND** unauthenticated
+denial evidence; it does not prove the signed-in admin `200`, ordinary-user `403`, a valid
+Firebase token path, ownership/grant behavior, or any production route.
+
+The normal external Google Chrome flow has now completed for both existing verified
+accounts; the previous embedded/automation-browser rejection is not treated as evidence of
+a provider defect. A separate Chrome profile was used without reading or changing the user's
+existing Brave profile. Browser automation attached only to Chrome's loopback-bound debugging
+port. No credentials, ID tokens, cookies or UIDs were written to these notes.
+
+## Real-provider M1 acceptance — 27 September 2026
+
+**REAL FIREBASE + LOCAL BACKEND:** The primary account `thalththanwyd@gmail.com` had a
+verified Firebase session; `/api/auth/me` returned 200 with the matching backend identity,
+`admin` role and active status. The Firebase UID matched the backend account UID without
+recording either value. The protected `GET /api/admin/users` returned 200. The existing
+ordinary account `adoashraf103@gmail.com` likewise had a verified Firebase session mapped
+to the active `healthcare_staff` account; the same protected Admin Users API returned 403.
+No email-string or browser-role shortcut was used.
+
+**LOCAL BACKEND with REAL FIREBASE identities:** Staff direct navigation to the admin-users
+route resolved to the private-access page. A request attempting to submit a forged `admin`
+role returned 403. Firebase sign-out cleared the Staff session, after which `/api/auth/me`
+without a bearer token returned 401. Session restoration after refresh was observed for the
+real Google account. This establishes local frontend/API behavior, not production hosting.
+
+A 0.01-second silent PCM WAV was generated in-browser and uploaded as a development-only
+fixture owned by the Administrator. The owner read its metadata and media successfully (200).
+Before a grant, Healthcare Staff received 403 for recording metadata, direct media and the
+download URL. The owner then issued a read grant scoped to the single original-audio resource;
+Staff could read metadata listing exactly one resource, and that media and its download
+returned 200. Following revocation (204), those same metadata, media and download requests
+returned 403 again. This is **REAL FIREBASE + LOCAL BACKEND** authorization evidence against
+synthetic data, not patient audio, production media, an ensemble result, or a real analyst
+assignment. The synthetic recording is intentionally retained in the isolated development
+database; it contains silence only.
+
+**NOT TESTED:** Email/password registration and login, email verification delivery/action,
+forgot/reset-password delivery and action-code expiry. No email was sent. There is no
+separate verified Audio Analyst session, so analyst review was not tested live. There are no
+processing results/jobs in this acceptance fixture; result, heart/lung, waveform and
+spectrogram artifact authorization is supported by focused mock/local policy tests only.
+No production test was performed.
 
 ## Provider configuration progress — 26 September 2026
 
@@ -52,7 +132,10 @@ This entry records the coordinator's subsequent official CLI/API observations an
 - Source-user browser ADC consent was pending at the earlier checkpoint. It has now completed, and **keyless impersonated backend ADC has been read-tested** by the coordinator. Developer credentials and provider reads remain distinct from the application's user ID token and application-admin role.
 - A fresh frontend build with genuine public Web App configuration passed. The coordinator visually and accessibility-tree inspected the actual local login screen at `localhost:4180` and confirmed enabled login controls. This is configured frontend/rendering evidence only: no successful login, provider email delivery or backend token acceptance is inferred. The earlier missing-configuration test captures remain valid historical evidence.
 
-Provider setup has therefore progressed, but the M1 real-provider acceptance gate remains open. No local/mock evidence is relabeled as verified live.
+At the 26 September provider-configuration checkpoint, the real-provider acceptance gate
+was still open. The 27 September acceptance section above supersedes that checkpoint for
+the specific Google-session, role, owner/grant/revocation, media and logout cases it tested;
+all remaining gaps below stay open. No local/mock evidence is relabeled as verified live.
 
 ### Primary-admin operation and bounded live evidence — 26 September 2026
 
@@ -68,12 +151,12 @@ The [illustrative authorization sequence](design/m1-auth-sequence.mmd) is a targ
 
 | Area | Requirement IDs | Report sections | Current accepted evidence | Next evidence needed |
 | --- | --- | --- | --- | --- |
-| Firebase browser flows and state restoration | R-AUTH-01-05,07 | 4.6, 4.9, 5.3, 6.3-6.4 | `implemented`, `integrated` in the live-mode frontend path; final build passed; 14 actual missing-configuration/mocked-SDK-and-API browser checks and seven actual client/mock-transport checks passed. Subsequent Web App/provider configuration is recorded separately above, not retested by those historical runs | Genuine provider runs and supported-flow limits separately; final-hostname authorization and action-handler/delivery verification remain pending. Session persistence is SDK-managed, not an HttpOnly session |
-| Verified token and account mapping | R-AUTH-06, R-ROLE-01 | 4.6, 4.8-4.9, 5.3, 6.3 | `implemented`, `integrated`, `tested` with injected identities and mocked official SDK. Keyless backend ADC/provider reads now checked live; reported genuine Google onboarding is corroborated by provider identity and matching persisted default-staff account | Post-promotion browser/API behavior and real issued-token signature/project/revocation/provider-state acceptance matrix. No application-user token was extracted; provider lookup is not a token-verification test |
-| Ownership and direct media | R-OWN-01-05, R-RES-01-03 | 4.8-4.9, 5.4, 6.3-6.4 | `implemented`, `integrated`, `tested` local HTTP with actual temporary SQLite/files, fictional users and derived-file fixtures. Direct GET/HEAD/Range and legacy retirement covered | Real account integration and production proxy/storage checks; retained legacy routers must never be mounted as an alternate application |
-| Grants and review | R-SHARE-01-04, R-ROLE-02,05 | 4.3, 4.8-4.9, 5.7, 6.3 | `implemented`, `integrated`, `tested` with fictional users: exact original-audio or result assignment, transactional notes, expiry/demotion, additive grants, revoke-one and atomic revoke-all | Owner feedback display and administrative reassignment are not implemented; real-provider browser workflow evidence still needed |
-| Administration and bootstrap | R-ROLE-03-05, R-ADM-01-03,05 | 4.6, 5.7, 6.3 | Admin routes and current-provider/local verified-target role-change checks `implemented`, `integrated`, `tested` locally; latest full backend run is 99 cases plus 26 subtests, including last-admin/idempotency, rejection and audit-rollback coverage. Authorized real primary bootstrap, independent provider/store admin verification, unchanged retry and single audit event now verified | Post-promotion real admin/normal-user browser/API checks; subsequent web-admin promotion still requires its own real workflow evidence. Provider-side last-admin loss remains an operator-recovery concern |
-| Persistent intake/history | R-REC-01-02,04-05, R-OWN-02 | 4.8, 5.4, 6.4 | `implemented`, `integrated`, `tested`: bounded PCM WAV files, server-derived owner, scoped list/metadata/preferences and reopening an application instance on the same temporary DB/files. Actual Chrome upload/refresh/media and second-account denial also passed against local FastAPI with fictional identities | Cross-browser real-account and actual server-restart/recovery evidence; full attribute form/history/retention scope and backup/restore remain bounded gaps |
+| Firebase browser flows and state restoration | R-AUTH-01-05,07 | 4.6, 4.9, 5.3, 6.3-6.4 | Google sign-in and SDK session restoration after refresh are **verified live** against the selected Firebase project; logout cleared the current user and tokenless API call returned 401. Earlier mocked/missing-configuration checks remain separate | Email/password signup/login, verification delivery/action and password recovery/action-code expiry are not tested. Final-hostname authorization and action-handler/delivery verification remain pending. Session persistence is SDK-managed, not an HttpOnly session |
+| Verified token and account mapping | R-AUTH-06, R-ROLE-01 | 4.6, 4.8-4.9, 5.3, 6.3 | Real signed Google ID tokens were verified by local FastAPI for the existing primary Admin and Staff accounts; each Firebase UID matched its backend UID without retaining/displaying either UID. `/api/auth/me` returned the expected active role | Invalid/expired/wrong-project issued-token matrix and production verifier path remain untested. Mock provider outcomes are not live evidence |
+| Ownership and direct media | R-OWN-01-05, R-RES-01-03 | 4.8-4.9, 5.4, 6.3-6.4 | A real Staff token could not read Admin-owned synthetic WAV metadata/media/download without a grant (`403`); the owner could (`200`). Local real-account direct access checked the protected API media route | Production proxy/storage checks; derived result, heart/lung, waveform and spectrogram artifact URLs lack a real-result fixture. Retained legacy routers must never be mounted as an alternate application |
+| Grants and review | R-SHARE-01-04, R-ROLE-02,05 | 4.3, 4.8-4.9, 5.7, 6.3 | Exact-resource read grant allowed Staff to see exactly one original resource (`200`); owner revocation returned `204` and future metadata/media/download returned `403`. Broader policy/mock tests cover expiry and analyst gates | No verified Audio Analyst session; live review workflow, result-scoped grants, owner feedback display and administrative reassignment remain untested/not implemented |
+| Administration and bootstrap | R-ROLE-03-05, R-ADM-01-03,05 | 4.6, 5.7, 6.3 | Admin Users returned `200` to the bootstrapped Admin and `403` to real Staff. Forged Staff role PATCH returned `403`; direct route navigation resolved to the private page. Self-change/last-admin protection has prior focused mock/integration evidence. Latest full backend run remains 99 cases +26 subtests | Real web-admin promotion/demotion of another account and production/provider-side last-admin recovery remain untested |
+| Persistent intake/history | R-REC-01-02,04-05, R-OWN-02 | 4.8, 5.4, 6.4 | Real Admin token uploaded a bounded synthetic silent WAV; owner metadata/media read returned `200`. Earlier scoped local persistence tests cover temporary DB reopen | Cross-browser real-account persistence and actual server-restart/recovery evidence; full attribute form/history/retention scope and backup/restore remain bounded gaps |
 | Jobs and ensemble | R-PROC-01-05, R-ENS-01-06 | 4.7, 5.5-5.6, 6.6 | Availability/owner checks `implemented`, `integrated`, `tested`: processing returns 503 without inserting a job; benchmark route also unavailable. Actual ensemble remains `planned`; demo jobs/audio `simulated` | Real executor, provenance, verified experts/fusion and controlled evaluation. Tests of fixture-derived media do not prove separation output |
 | Deployment and feedback | R-DEP-01-05 | 4.11, 5.8-5.9, 6.7-6.8 | Target hostname confirmed; deployment and post-deployment feedback `planned` | Config review, separate deployment approval, real HTTPS/auth/media/restart checks and genuine authorized feedback |
 
@@ -85,6 +168,7 @@ The [illustrative authorization sequence](design/m1-auth-sequence.mmd) is a targ
 | M0-UI | `tested`, `simulated`: existing preparation build and 56 focused browser outcomes recorded by coordinator | `../planning/FRONTEND_FOUNDATION_STATUS.md` and `../.local/workspace-preparation/frontend/`. Historical to this M1 pass; not rerun by documentation worker and not added to overlapping earlier totals. |
 | M1-API | Historical pre-provisioning-hardening run: `tested`, `simulated` identities/SDK boundary, **86 passed plus 26 subtests passed** = 49 M1 API cases + 36 foundation cases + one operator-safety case | Coordinator's then-final `../.local/m1-tests/backend-final-junit.xml`, timestamp 2026-09-26T19:04:06.564929+08:00: 86 testcase elements, aggregate `tests=112`, zero failures/errors/skips. Actual code/tests inspected. Real temporary SQLite, files and HTTP/TestClient routes; no genuine issued token. Earlier 85+26 independent run retained as `backend-junit.xml`, not added to the total. One non-failing Starlette httpx-to-httpx2 deprecation warning. |
 | M1-ADMIN-PROVISIONING | Latest full backend run: `tested`, `simulated` identities/provider outcomes, **99 passed plus 26 subtests passed** = 62 M1 API cases + 36 foundation cases + one operator-safety case | Independently inspected `../.local/m1-tests/admin-provisioning-junit.xml`, timestamp 2026-09-26T20:26:56.298642+08:00: 99 testcase elements, aggregate `tests=125`, zero failures/errors/skips. Includes 13 added provisioning cases and expanded last-active-admin assertions. Real local HTTP/SQLite transactions; no genuine provider promotion/demotion or issued-token test. Coordinator reports the existing non-failing Starlette warning. Separate from, not added to, prior runs; this newer artifact is not part of the earlier eight-file milestone manifest. |
+| M1-REAL-PROVIDER-LOCAL | `verified live` narrowly for Google sign-in/session restoration/logout and Firebase ID-token verification by the local API; Admin Users Admin `200`, Staff `403`; synthetic silent-WAV owner/grant/revoke/media checks as detailed above | 27 September 2026, user-operated normal Google Chrome sessions plus same-origin browser requests through the live local Vite/FastAPI services. No tokens, UIDs or credentials recorded. This is not production; no email/password, reset/verification email, analyst session, results/derived artifacts, or production route tested. |
 | M1-BACKEND-ENV | `tested`: backend implementer reports `pip check` and compileall passed | Minimal `.local/venvs/backend-smoke`; pinned `requirements-m1.txt`, including Firebase Admin 7.7.0/FastAPI 0.136.0/Starlette 1.7.0/Pydantic 2.13.5. No ML weights/Torch installed for this milestone. Not an application deployment test. |
 | M1-CLIENT | `implemented`, `integrated`; final `npm run build` passed per coordinator/frontend implementer; **seven client checks passed** | `../implementation/frontend/output/playwright/m1/client-final/results.json`, 2026-09-26T11:05:51.446Z; actual TypeScript client with mocked token source/transport, no backend/provider requests. Earlier identical seven-case result retained in `client/`, not added. Official client SDK is Firebase 12.19.0. |
 | M1-AUTH-BROWSER | `tested`, `simulated`: **14 checks passed**, Chrome 151.0.7922.137; zero recorded runtime errors | `../implementation/frontend/output/playwright/m1/browser-final/results.json`, 2026-09-26T11:06:23.000Z. Actual fail-closed missing-config UI plus network-substituted official-SDK modules and mocked API; not an emulator or real provider/local API. Covers login/Google/register/verification/reset/logout, restoration, scoped presentation, awaited upload/grant/review, preferences and mobile containment. Supersedes the earlier 14-pass `browser-run3` after the bounded protected-media MIME correction. |

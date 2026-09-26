@@ -2,7 +2,6 @@
 flowchart LR
   Visitor([Visitor]) --> Register[Register healthcare staff account]
   Visitor --> SignIn[Sign in]
-  Visitor --> Google[Google sign-in]
   Visitor --> Recovery[Forgot / reset password]
 
   Staff([Healthcare Staff]) --> Own[Own recordings, results and history]
@@ -16,7 +15,8 @@ flowchart LR
   Admin --> Audit[Review safe operational audit metadata]
 
   Firebase[(Firebase Authentication)] --> SignIn
-  Firebase --> Google
+  Google[(Google Identity Provider)] --> Firebase
+  Register --> Firebase
   Device[[Digital stethoscope / audio device]] --> Capture
 
   subgraph Internal[StethoFuse internal boundary]

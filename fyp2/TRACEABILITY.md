@@ -30,6 +30,19 @@ Management (`403` for self role/status changes), while another verified account 
 promoted/demoted under audit and last-active-admin protection. The UI compares each row
 with the backend-authoritative Firebase UID and refreshes `/me` and the user list after
 changes. See the editable [role/use-case diagram source](design/role-use-cases.mmd).
+The FYP2 design set also includes the current M1 [system architecture](design/m1-system-architecture.mmd)
+and [deployment topology](design/deployment-topology.mmd), which labels observed Axora routing
+separately from the unconfigured StethoFuse production route.
+
+Latest real-provider acceptance (27 September 2026): existing verified Google sessions for
+the primary Administrator and ordinary Healthcare Staff resolved through Firebase and
+FastAPI to their authoritative backend roles. Admin Users returned `200` to Administrator
+and `403` to Staff. A synthetic silent WAV was owner-readable; direct recording metadata,
+media and download returned `403` to Staff without a grant, `200` after a single-resource
+read grant, and `403` again after revocation. This was **REAL FIREBASE + LOCAL BACKEND**,
+not production. The Staff session also received `403` for a forged role-change request and
+`401` after logout when calling `/api/auth/me` without a token. Email/password, recovery,
+live analyst review, results/derived-artifact media, and production access remain untested.
 
 ## Preserved pre-M1 baseline
 
