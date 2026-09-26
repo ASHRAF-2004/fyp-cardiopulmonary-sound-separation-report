@@ -57,16 +57,16 @@ verified `/api` proxy yet.
 ## Repository preservation and tooling
 
 The implementation and documentation repositories remain separate Git repositories.
-Their normal development branches are now locally prepared as `fyp2/application` and
-`fyp2/documentation`, using the established human-authored identity `ASHRAF-2004
-<adoashraf103@gmail.com>` recovered from prior project commits and matched to the
-authenticated GitHub account. Existing remote assistant-named branches/draft PRs remain
-preserved (implementation PR #8; documentation PR #1); no history was rewritten. Remote
-publication of the normal branches and corresponding draft PR updates is being handled
-as a separate checkpoint. No merge, force-push or main-branch write occurred. GitHub and
-Cloudflare read-only access are verified; no Cloudflare write occurred. Graphify is
-unavailable, so diagrams remain editable Mermaid source. These tooling facts establish
-provenance and environment state, not application functionality.
+Their owner-maintained branches are `fyp2/application` and `fyp2/documentation`, using the
+established human-authored identity
+`ASHRAF-2004 <adoashraf103@gmail.com>` recovered from prior project commits and matched to
+the authenticated GitHub account. Both branches were pushed without force; remote SHAs
+match local HEAD. Draft PR #9 and #2 are open. Earlier duplicate draft PR #8 and #1 were
+closed as superseded; their codex-named branches and history remain preserved. No merge or
+main-branch write occurred. GitHub and Cloudflare read-only access are verified; no
+Cloudflare write occurred. Graphify is unavailable, so diagrams remain editable Mermaid
+source. These tooling facts establish provenance and environment state, not application
+functionality.
 
 ## Local API smoke check — 26 September 2026
 
