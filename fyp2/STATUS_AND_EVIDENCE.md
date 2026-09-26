@@ -1,5 +1,78 @@
 # Implementation status and evidence conventions
 
+## Security sprint checkpoint — 27 September 2026
+
+The local split identity boundary is **implemented, integrated and tested**:
+`google-auth` verifies Firebase RS256 signatures and required project/issuer/time/UID
+claims without ADC; the Cloud Run component uses Firebase Admin revocation/current-user
+checks; local SQLite remains the authority for roles and private resources. The proposed
+native service identity has only `firebaseauth.users.get` in a custom role. Production
+emulator configuration is rejected; transport failure, untrusted responses and identity
+mismatches fail closed. Email/verification fields are returned only for local identity
+sync. Account-promotion target verification uses stored provider provenance; every target
+request must still pass a current live identity check. No arbitrary target-UID API exists.
+
+Validation: **42 focused tests passed** (verifier, JWT boundary, manifest), followed by
+**91 access/M1/operator tests plus 26 subtests passed**. The first regression attempt
+had 22 failures: the temporary environment lacked the already-locked upload parser,
+and the bootstrap dry-run test patched the pre-split function name. After installing
+the lockfile dependency and correcting that test reference, the rerun passed. A known
+Starlette TestClient deprecation warning remains. Two new test functions were added in
+this sprint (four executions); 18 pre-existing uncommitted test functions were retained.
+Existing error-path checks now also assert that token/header/SDK diagnostic markers are
+absent from application logs/output. These are **MOCK / LOCAL BACKEND / local cryptographic**
+results; no new REAL FIREBASE or PRODUCTION evidence is claimed.
+
+The verifier image builds. A credential-free API image with networking disabled passed
+health 200, protected-route 401 and malformed-token 401 checks. The previously ambiguous
+container-smoke output is superseded by this successful recorded check.
+
+B2/Restic preparation includes systemd-loaded separate key/password credentials,
+7/4/6 retention grouped by host/tags, and an executable synthetic remote restore drill
+checking SQLite integrity, SHA-256 and byte equality. S3 key scope includes one bucket's
+file operations and read-only bucket metadata; no bucket/account mutation authority.
+Scripts pass shell syntax checks; remote execution remains **blocked** by owner account,
+bucket/key setup and encrypted-repository initialization. Restic is not yet installed on
+the host. Cloud Run/IAM/Artifact Registry and B2 resources are not created; no production
+DNS, tunnel, Caddy, Firebase-domain, service or Axora changes were made.
+
+Next: owner B2 setup and credential placement, then execute the prepared synthetic drill;
+obtain approval for the exact Cloud Run/IAM and final isolated deployment changes before
+any such write. Submitted FYP1 remains unchanged. No further broad test campaign is
+required unless subsequent implementation or configuration changes warrant one.
+
+## Current production identity and backup status — 27 September 2026
+
+This addendum supersedes the prior production prerequisite snapshot below without
+changing submitted FYP1 or historical M1 results. The owner approved a split
+identity design: local, ADC-free Firebase RS256/claim validation in FastAPI; a
+minimal, unprovisioned Cloud Run service with a dedicated native identity performs
+Firebase revocation/current-user checks; StethoFuse's backend/database remains
+the authority for roles, status, ownership, grants, assignments and audit. The
+Cloud Run runtime permission required by the inspected SDK calls is
+`firebaseauth.users.get`; a proposed project custom role with only that supported
+permission is not yet created. No GCP IAM/service resource or production write exists.
+
+Verifier changes and injected-boundary tests are `implemented` and `tested` locally
+with simulated provider behavior only. The real Firebase/local backend acceptance
+reported earlier predates this path and is not Cloud Run acceptance evidence. The
+remote verifier is not `integrated live` or `verified live`; production remains
+`planned` and must fail closed until deployed and checked with valid, revoked,
+disabled and unverified identities.
+
+The owner approved Backblaze B2 with Restic's S3-compatible backend. EU Central is
+the prepared region recommendation because B2 offers no Asia region. Client-side
+encryption, private bucket, bucket-scoped file list/read/write/delete application
+key, separately escrowed Restic password and root-only systemd delivery are
+required. Retention is 7 daily / 4 weekly / 6 monthly, but pruning is gated on a
+successful remote restore drill. Script/template work is local only: no B2 account,
+bucket, key, remote repository, encrypted backup or restore evidence exists. Do not
+call the same-host archive test an off-host recovery test. No production deployment
+or public routing change occurred.
+
+See the [current M1 note](M1_IMPLEMENTATION_AND_TEST_NOTES.md#current-production-identity-and-backup-design--27-september-2026),
+[traceability](TRACEABILITY.md), and implementation [verifier runbook](../../implementation/deploy/auth-verifier/README.md).
+
 ## Superseding production prerequisite evidence — 27 September 2026
 
 This addendum supplements earlier M1/runtime snapshots without revising submitted

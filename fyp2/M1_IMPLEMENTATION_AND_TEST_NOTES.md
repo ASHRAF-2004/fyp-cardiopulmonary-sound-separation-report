@@ -1,5 +1,55 @@
 # M1 identity and authorization implementation and test notes
 
+## Current production identity and backup design — 27 September 2026
+
+This dated addendum supersedes earlier production ADC/WIF options and does not
+revise submitted FYP1 or relabel historical tests. The owner chose to keep FastAPI,
+the application authorization database, private audio, processing and future GPU
+work on the self-hosted server, with a tiny Cloud Run service only for Firebase
+revocation/current-account checks.
+
+The current source path is:
+
+```text
+FastAPI request → local Firebase RS256/public-certificate + claim validation
+  → Cloud Run HTTPS current-user/revocation check → UID-linked local account
+  → local status/role/owner/grant/assignment authorization
+```
+
+Local signature/claim checking uses public Firebase signing certificates and needs
+no privileged ADC. The Cloud Run Admin SDK's `verify_id_token(check_revoked=True)`
+and `get_user(uid)` need `firebaseauth.users.get`; a proposed project custom role
+contains only that supported permission. No Firebase user write/list/email-send or
+custom-claim operation is used. A dedicated native Cloud Run service identity is
+proposed; it has not been created. No credential JSON or ADC is mounted in the
+self-hosted API. The public verifier requires a valid token, uses only its signed
+UID, returns minimal identity status and has no enumeration, role or mutation
+route. Residual abuse/rate-limit limits are recorded in the implementation deploy
+runbook. StethoFuse remains the sole authority for application authorization.
+
+The verifier code and local tests are `implemented` and `tested` only against
+controlled/mock provider boundaries; they are not `verified live`. Earlier real
+Firebase/local FastAPI acceptance remains valid evidence for that earlier local
+provider revision, but does not verify this new Cloud Run path. No Cloud Run/IAM,
+production route, Firebase domain or application deployment write occurred.
+
+The owner approved Backblaze B2 using Restic's S3-compatible backend. The prepared
+region is EU Central (B2 has no Asia region); the bucket must be private, with a
+dedicated bucket-limited file list/read/write/delete key. Restic also requires
+S3 metadata reads (`listBuckets`, `readBuckets`) for the
+fixed-bucket client; these do not permit bucket mutation or other-bucket data access.
+Restic client-side encryption is required, and the repository password is separate from B2 credentials,
+delivered through root-only systemd credentials and escrowed independently offline.
+Retention proposal is 7 daily, 4 weekly, 6 monthly, with pruning gated on successful
+remote restore. Source scripts/templates are `implemented`; B2 account, bucket, key,
+encrypted snapshot and restore drill are not yet created or tested. Same-host archive
+checks do not prove off-host recovery. See
+[`PRODUCTION_IDENTITY_AND_BACKUP.md`](../../planning/PRODUCTION_IDENTITY_AND_BACKUP.md)
+and [`auth-verifier runbook`](../../implementation/deploy/auth-verifier/README.md).
+
+The historical evidence and status records below remain unchanged and retain the
+scope/time boundaries under which they were collected.
+
 Working evidence record, 26 September 2026. The M1 backend and frontend are **implemented, integrated and tested locally with simulated identities/SDK mocks** within the scope below. The latest backend provisioning-hardening run records **99 cases plus 26 subtests passed**. Subsequent keyless ADC/provider reads and the authorized primary-admin bootstrap are **verified live within their stated operator scope**. M1 as a whole is **not fully verified live or recorded as complete**: post-promotion real browser/API checks and the wider genuine-provider acceptance matrix remain pending. Historical local evidence records 86 backend cases plus 26 subtests, 14 mocked authentication-browser checks, seven API-client checks and six real-local-API cross-layer checks; demo regressions, the focused rerun and the latest full backend run are recorded separately, not combined into a unique grand total.
 
 The coordinator created recoverable pre-M1 checkpoints: implementation `c6818398d8e545834535afb08441f17eac3c2c6d` and documentation `47c10af9527ccc1425f7a8904210c55a72db10b7`. Concurrent working changes require their own evidence before they are described as integrated or tested. This documentation work does not commit, configure providers, bootstrap an admin, deploy or collect recordings.
