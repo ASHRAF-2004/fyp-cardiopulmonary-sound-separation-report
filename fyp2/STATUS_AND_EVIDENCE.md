@@ -1,5 +1,43 @@
 # Implementation status and evidence conventions
 
+## Superseding production prerequisite evidence — 27 September 2026
+
+This addendum supplements earlier M1/runtime snapshots without revising submitted
+FYP1 or reclassifying old mock/synthetic tests. Graphify was queryable, but its
+implementation index was at historical `main` commit `559ddba2…`, not the current
+M1/runtime branch; the exact Firebase source paths were inspected after that
+coverage gap was identified.
+
+The current backend `implemented` path verifies Firebase ID tokens with online
+revocation checking (`check_revoked=True`) and reads current Firebase Auth user
+records to require enabled and email-verified accounts for session/account sync
+and Admin role changes. It contains no runtime Firebase user create/update/delete,
+password/email-send or custom-claim operation. StethoFuse roles, status, ownership,
+grants, assignments and audit are backend/database controlled. This is a code-path
+inventory, not new live-provider acceptance or a production call log. Do not remove
+the online revocation/current-account checks as an optimization: signature-only
+verification would change the current disabled/revoked-session policy. Least
+privilege production permission remains Firebase Authentication Viewer (`users.get`)
+only; no IAM change has occurred.
+
+Production ADC is `blocked`: read-only host discovery found no Google-native workload
+identity or genuine external OIDC/SAML/X.509 issuer. True unattended keyless Firebase
+ADC cannot be completed on this host until a supported external workload identity
+source exists; the operator's browser/ADC and a service-account JSON key are not
+acceptable replacements. Local ADC packaging checks do not prove production ADC.
+
+Off-host recovery is also `blocked`: no configured remote target or StethoFuse
+backup repository was found. The new `implementation/deploy/backup-restic.sh` is
+prepared but not installed or tested against a remote. A private Backblaze B2 bucket
+plus Restic S3 backend is the conditional recommendation, pending region/privacy and
+cost approval. Same-host synthetic archive/restore evidence remains `tested` only
+for local packaging; no encrypted off-host backup/restore has been `tested`. No
+provider account, key, billing resource, real recording or production service was
+created/touched. The workspace-level operational decision record is
+`planning/PRODUCTION_IDENTITY_AND_BACKUP.md`; this separate report repository
+keeps the verified status here so its GitHub copy does not depend on a sibling
+checkout.
+
 M1 synchronization, 26 September 2026. These terms apply to the separate FYP2 working copy. They do not revise what the submitted FYP1 report claimed.
 
 | Status | Meaning | Required boundary |

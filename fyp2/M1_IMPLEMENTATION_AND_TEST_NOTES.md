@@ -263,3 +263,39 @@ for reproducible local commands.
 ## Remaining factual gaps
 
 Current FYP2 rubric/teaching plan/template and supervisor decisions; remaining final-hostname authorization, reset/verification action routing and wider provider-flow validation; post-promotion real browser/API and issued-token acceptance evidence; wider real-account sharing/review and recovery workflows beyond the named mocked/local checks; production routing, recovery, quotas, rate limits and retention/deletion; legacy ownership migration; owner review-feedback display/admin reassignment; physical capture device; candidate expert fidelity/checkpoints and controlled evaluation; genuine post-deployment feedback. See [source audit](provenance/M1_SOURCE_AUDIT.md). No new studies, participants or model scores are supplied here.
+
+## Superseding production Firebase identity and backup discovery — 27 September 2026
+
+Source inspection of the current implementation branch confirms that protected
+requests call Firebase Admin `verify_id_token(..., check_revoked=True)`. That SDK
+mode performs an Auth user-record read to reject revoked tokens and disabled users;
+the application also checks current provider verification/enabled state during
+account synchronization and before an Admin changes a role. No runtime Auth
+user-management writes, email sends or custom-claim writes are present. The
+Firebase Authentication Viewer role's `firebaseauth.users.get` permission is
+the only Firebase Auth permission currently justified. StethoFuse application
+roles/status/ownership/grants remain in its trusted backend store. No IAM change
+was made. See current source in `implementation/app/access_foundation/identity.py`,
+`implementation/app/m1/provider.py`, and `implementation/app/m1/api.py`.
+
+Graphify MCP was queried first, but the StethoFuse index remains at historical
+`main` `559ddba2…` and omits M1. Direct reads were limited to the three relevant
+source paths above. The host reports no Google VM/container identity, Kubernetes
+identity, or actual external OIDC/SAML/X.509 source. **Production keyless ADC is
+blocked** until a genuine source is provided or the auth-dependent backend is
+deliberately moved to a Google-hosted service identity. Developer ADC, copied
+browser sessions and service-account JSON keys are not production options.
+
+Read-only storage discovery found no remote filesystem/backup destination,
+Restic/Borg/rclone tooling, or StethoFuse backup configuration. Local `/srv` and
+`/var/backups` do not protect from host-disk loss. Restic-to-private-Backblaze-B2
+via S3 is the conditional recommendation, pending region/privacy and cost
+approval. The helper in `implementation/deploy/backup-restic.sh` is prepared,
+not installed, and has not made a remote backup. Existing local synthetic
+archive/restore evidence remains local-only; no encrypted off-host restore drill
+exists. Production deployment remains `planned`; both production ADC and remote
+restore prerequisites are `blocked`. No Firebase, IAM, billing, provider,
+production server, DNS, tunnel or service write occurred in this pass. The
+workspace-level operational decision record is
+`planning/PRODUCTION_IDENTITY_AND_BACKUP.md`; the FYP2 repository records the
+verified status above without a cross-repository link.
