@@ -15,6 +15,14 @@ integration. **Rights pending; native reproduction required before fine-tuning.*
 See [current diagnosis](ENSEMBLE_DESIGN_AND_EVALUATION.md). This supersedes the
 next-step guidance, not the historical scores or live M1 evidence, below.
 
+**28 September follow-up:** author clarification remains **PREPARED / NOT SENT**.
+Two research-only fallback candidates were identified (periodicity-informed
+NMF/LingoNMF, MIT source; Grooby neonatal NMF/NMCF, GPL-3.0 source); neither is
+selected or tested. Existing source-family split counts and locked test IDs are
+documented; no audio was read and no training/evaluation was run. The detailed
+status and risks are recorded in the implementation qualification note and the
+workspace handoff.
+
 ## Ensemble Phase A–D offline checkpoint — 27 September 2026 (supersedes design-only status below)
 
 **Implemented/tested offline, not integrated or deployed.** Released NeoSSNet

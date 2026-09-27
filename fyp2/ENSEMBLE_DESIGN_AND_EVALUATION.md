@@ -61,6 +61,33 @@ claim follows. Full contract, hashes, failure attribution, source links and next
 Luna task: [implementation reproduction report](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/NEOSSNET_REPRODUCTION_DIAGNOSIS.md).
 The older Phase-D and prospective material below remains historical context.
 
+## Follow-up qualification status — 28 September 2026
+
+**Author clarification: PREPARED / NOT SENT.** The contact in the original
+NeoSSNet repository is verified as `Yang.Poh@monash.edu`. The question set now
+covers code/checkpoint permissions, checkpoint-to-paper run identity, fixed
+channel order, a small lawful native fixture, and the notebook's metric and
+aggregation protocol. No email or permission request was sent.
+
+Two licensed research candidates are recorded for later qualification, not
+selected as replacement experts: (1) Torabi et al.'s periodicity-informed
+NMF/LingoNMF, whose author repository declares MIT and whose work includes
+clinical-manikin experiments; (2) Grooby et al.'s neonatal NMF/NMCF, whose
+author code is GPL-3.0 and whose reference-data/deployment obligations remain
+to be resolved. Neither has been tested here. Their reported metrics and
+conditions are not directly comparable with our fixed-label SI-SDR/SI-SDRi
+diagnostics. The 50/50 design remains frozen; membership and fine-tuning are
+unresolved.
+
+The local source manifest has 36 development, 9 validation and 5 test heart
+tracks; and 36 development, 5 validation and 9 test lung tracks. The current
+split is sound-family separated, not subject-level. Future model-selection and
+remixing must stay within partitions; pairwise remixes are correlated reuse of
+source files, not independent recordings. Existing held-out source IDs remain
+locked. This is a planned data protocol, not training or final evaluation.
+Detailed candidate caveats, frozen IDs and the draft email are in the workspace
+handoff; no audio or patient data was added to this repository.
+
 ## Earlier design and Phase-D context
 
 27 September 2026. **Designed and now implemented/tested offline through Phase D
