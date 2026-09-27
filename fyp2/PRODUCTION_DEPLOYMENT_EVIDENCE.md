@@ -13,6 +13,11 @@ FastAPI port `8000` is internal to the isolated Compose network. SQLite and priv
 media are separate protected bind mounts, not web assets. Axora uses its unchanged
 separate tunnel/network/services.
 
+A final transport check initially found plain HTTP serving the SPA. A Cloudflare
+Single Redirect scoped only to the StethoFuse hostname now sends HTTP to the same
+HTTPS path/query with 308. Zone-wide settings and Axora are unchanged. The
+implementation deployment receipt records the exact rule and rollback identifiers.
+
 FastAPI verifies the Firebase JWT signature/claims using public certificates,
 then presents the same token to Firebase Auth REST `accounts:lookup`. It validates
 the matching UID, enabled/verified state and `iat >= validSince` (seconds), then
