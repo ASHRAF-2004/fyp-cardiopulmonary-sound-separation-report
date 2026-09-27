@@ -1,5 +1,22 @@
 # Implementation status and evidence conventions
 
+## Latest backup evidence — 27 September 2026
+
+This update supersedes earlier statements in this file that B2/Restic remote
+setup or restore was blocked; it does not change the status of Firebase verifier
+deployment or submitted FYP1. The owner-created private bucket
+`stethofuse-prod-backup-927f5b7d` is in EU Central at
+`s3.eu-central-003.backblazeb2.com`. Restic `0.18.1` initialized its encrypted
+repository. A synthetic-only remote snapshot was checked and restored into an
+isolated temporary path; `restic check` reported no errors, SQLite
+`integrity_check` was `ok`, and manifest SHA-256, exact file-set and byte checks
+passed. Evidence is recorded in the implementation backup runbook. This is
+`tested` remote recovery for synthetic data only—not a production application
+backup, scheduled job, live deployment, or independent offline-password escrow
+recovery test. The 7/4/6 retention policy is prepared; pruning and the systemd
+timer remain disabled. No production DNS, Cloud Run/IAM, Firebase domain, Caddy,
+or application-service changes occurred.
+
 ## Security sprint checkpoint — 27 September 2026
 
 The local split identity boundary is **implemented, integrated and tested**:

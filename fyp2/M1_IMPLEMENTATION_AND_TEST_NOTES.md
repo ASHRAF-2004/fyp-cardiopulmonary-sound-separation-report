@@ -33,17 +33,19 @@ Firebase/local FastAPI acceptance remains valid evidence for that earlier local
 provider revision, but does not verify this new Cloud Run path. No Cloud Run/IAM,
 production route, Firebase domain or application deployment write occurred.
 
-The owner approved Backblaze B2 using Restic's S3-compatible backend. The prepared
-region is EU Central (B2 has no Asia region); the bucket must be private, with a
-dedicated bucket-limited file list/read/write/delete key. Restic also requires
-S3 metadata reads (`listBuckets`, `readBuckets`) for the
-fixed-bucket client; these do not permit bucket mutation or other-bucket data access.
-Restic client-side encryption is required, and the repository password is separate from B2 credentials,
-delivered through root-only systemd credentials and escrowed independently offline.
-Retention proposal is 7 daily, 4 weekly, 6 monthly, with pruning gated on successful
-remote restore. Source scripts/templates are `implemented`; B2 account, bucket, key,
-encrypted snapshot and restore drill are not yet created or tested. Same-host archive
-checks do not prove off-host recovery. See
+The owner created the private Backblaze B2 bucket `stethofuse-prod-backup-927f5b7d`
+in EU Central at `s3.eu-central-003.backblazeb2.com` and the bucket-restricted
+application key. Restic `0.18.1` initialized the encrypted S3 repository. On
+2026-09-27 the synthetic-only remote drill uploaded a snapshot, ran `restic check`
+with no errors, restored into an isolated temporary directory, and passed
+`PRAGMA integrity_check=ok`, SHA-256 manifest, exact file-set and byte-comparison
+checks. This is `tested` remote recovery evidence for synthetic data, not a backup
+of the running StethoFuse application, production deployment, scheduled backup, or
+offline-password-escrow recovery. Key ID, key secret, and Restic password are
+separate root-owned `0400` files delivered through systemd private credentials;
+their values are not recorded. Prepared retention remains 7 daily, 4 weekly, 6
+monthly, with pruning gated; no timer, prune marker, or production snapshot exists.
+Same-host archive checks alone do not prove off-host recovery. See
 [`PRODUCTION_IDENTITY_AND_BACKUP.md`](../../planning/PRODUCTION_IDENTITY_AND_BACKUP.md)
 and [`auth-verifier runbook`](../../implementation/deploy/auth-verifier/README.md).
 
