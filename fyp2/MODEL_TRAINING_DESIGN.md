@@ -96,7 +96,9 @@ demand. No large redundant WAV corpus; crops do not increase independent N.
 
 ## Chapters 5–6 — Planned training/evaluation methodology
 
-The trainer is **not implemented or run yet**. Baseline design:
+The T0–T4 data/model/objective and capped overfit runner are implemented offline.
+The **full baseline trainer/run (T5) is not implemented or started**. Its
+approved baseline configuration remains:
 
 - Fixed-label mean negative SI-SDR plus **5×source-RMS-normalized waveform L1**.
   SI-SDR uses mean removal and the audited1e-8 energy epsilon; uncentered L1
@@ -133,7 +135,28 @@ failures and runtime. Positive absolute scores and improvement for both sources
 are gates, not promises. With45 remixed pairs and few held-out families, avoid
 naïve225-independent-row significance claims; use descriptive paired evidence.
 
-### Bounded feasibility evidence — not trained results
+### T0–T4 offline pipeline evidence — not trained-model results
+
+The frozen T0–T4 pipeline is now **IMPLEMENTED OFFLINE** and the T4 capacity
+gate **PASSED** on exactly two predeclared development mixtures after100 CPU
+updates (13.90 seconds): every heart/lung case exceeded+10 dB SI-SDRi and
+reduced source-normalized waveform L1 by at least74.4%. This demonstrates only
+that the implementation can fit those two examples. It is **not** baseline
+training, validation performance, held-out evidence, or a separation-quality
+claim. The overfit checkpoint is excluded from future initialization.
+
+The source manifest was re-audited at T0:100 distinct IDs/hashes, no sound
+family crossing partitions, expected mono4-kHz PCM16/15-s headers. Development
+and validation waveforms were finite; test waveforms remained locked and were
+not decoded or scored. Deterministic training recipes (576 draws/epoch) and
+225 validation-only recipes were written outside Git. The pinned model forward
+and backward passed at645,681 parameters, with synthetic consistency error
+below2.4e−7. Five focused training-contract tests passed. Full baseline training
+and model selection remain **NOT STARTED**; there are no model results yet.
+Detailed run receipt is in the implementation's
+`docs/T0_T4_EXECUTION.md`.
+
+### Bounded feasibility evidence — design-only probe, not trained results
 
 Actual server: Ryzen5 9600X6-core/12-thread CPU,29 GiB RAM; Radeon RX9060XT16
 GiB exists, but Torch/torchaudio2.11.0 are CPU-only. No driver/dependency changes.
@@ -149,11 +172,10 @@ same capacity gate. No automatic paid compute, GPU setup or model search.
 
 ## Handoff and requirements traceability
 
-Luna first executes **T0–T4**: source/environment freeze → mixture generator →
-model wrapper → objective/evaluator → tiny capacity gate, then checkpoints.
-The full plan defines baseline, validation, bounded tuning, final freeze and
-one-shot test. About five focused pipeline contracts suffice; no new broad
-application regression campaign for this design update.
+T0–T4 are complete and checkpointed. **Next, owner review is required before
+T5 baseline training.** The full plan defines baseline, validation, bounded
+tuning, final freeze and one-shot test. No broad application regression was
+run; production and application behavior were not changed.
 
 Own artifacts belong in ignored `.local/training/stethofuse-tcn-v1/<run-id>/`
 with immutable config/manifest, recipes/RNG/version/device provenance, all
