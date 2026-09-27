@@ -1,5 +1,21 @@
 # Implementation status and evidence conventions
 
+## Superseding Firebase production-auth decision — 27 September 2026
+
+Cloud Run was stopped before deployment because Google Cloud billing requires
+an unavailable MYR 120 prepayment. Billing remains disabled; no Cloud Run,
+Artifact Registry, service account or custom role was created. The active planned production boundary is local FastAPI Firebase
+JWT verification followed by HTTPS Firebase Auth REST `accounts:lookup` with a
+server Web API key restricted only to Identity Toolkit. The implementation
+checks UID match, disabled/email verification state and the `validSince`
+revocation boundary, then continues into trusted local StethoFuse authorization.
+The focused auth/M1 regression passed 113 tests and 26 subtests (one
+non-failing pre-existing Starlette deprecation warning). The restricted key
+passed a harmless invalid-token reachability check. Real Admin/Staff REST
+lookup is pending, so this path
+is not yet `verified live`. No production deployment/routing changed. The prior
+Cloud Run discussion is superseded and retained only as decision history.
+
 ## Latest backup evidence — 27 September 2026
 
 This update supersedes earlier statements in this file that B2/Restic remote

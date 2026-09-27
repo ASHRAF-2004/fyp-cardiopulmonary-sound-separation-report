@@ -1,5 +1,16 @@
 # FYP2 requirements design code and evidence register
 
+## Production identity decision update — 27 September 2026
+
+The Cloud Run verifier path was superseded before deployment because Google
+Cloud billing requires an unavailable MYR 120 prepayment. Active planned
+architecture: FastAPI local Firebase JWT verification, token-authenticated
+Firebase Auth REST `accounts:lookup`, then trusted local role/ownership/grant
+authorization. Focused local tests pass and a restricted Identity Toolkit key
+reached the endpoint with a deliberately invalid token; real-account current
+user/revocation checks remain pending. No Google Cloud billing or production
+service was created. Do not treat historical Cloud Run notes below as current.
+
 M1 synchronization: 26 September 2026. Paths beginning `implementation/` are relative to the parent StethoFuse workspace; source report paths are relative to the documentation repository. R01-R18 retain the initial FYP2 summary history, not replacements for submitted F1-F15 / NF1-NF8 / UR1-UR8 / UC01-UC10. All 52 continuation-pack requirement IDs and their summary/historical relationships are in [requirements history](REQUIREMENTS_HISTORY.md).
 
 Use only the feature-status vocabulary **implemented**, **integrated**, **tested**, **verified live**, **planned**, **simulated**, **blocked**, with definitions in [status conventions](STATUS_AND_EVIDENCE.md). Prior “code present”, “demo” and “recorded test” wording below describes the preserved M0 snapshot; it maps respectively to implemented, simulated and tested-with-original-date, not live acceptance. Approval is a separate decision, and unverified means missing evidence rather than an extra completion status.

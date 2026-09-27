@@ -1,5 +1,23 @@
 # M1 identity and authorization implementation and test notes
 
+## Superseding Firebase auth update — 27 September 2026
+
+The planned Cloud Run verifier was stopped before deployment due to the
+MYR 120 Google Cloud billing prepayment requirement. Billing remains disabled;
+no Cloud Run, Artifact Registry, IAM role or production service identity was
+created. The current implementation uses local Firebase JWT verification and
+Firebase Auth REST `accounts:lookup` over HTTPS, with a separately API-restricted
+Identity Toolkit server key. It compares `localId` to the verified UID, rejects
+disabled/unverified users and tokens where `iat < validSince`, and fails closed
+on malformed/upstream failures. Local application roles and resource policy
+remain unchanged. The restricted key was verified only with a deliberately
+invalid token (`INVALID_ID_TOKEN`); real Admin/Staff REST lookups are pending.
+The focused REST/JWT suite passed 23 tests; the subsequent auth/M1 regression
+passed 113 tests and 26 subtests (one non-failing pre-existing Starlette
+deprecation warning). This is `implemented` and locally
+`tested`, not `verified live` or production-deployed. Preserve the Cloud Run
+implementation only as superseded history; do not provision it.
+
 ## Current production identity and backup design — 27 September 2026
 
 This dated addendum supersedes earlier production ADC/WIF options and does not
