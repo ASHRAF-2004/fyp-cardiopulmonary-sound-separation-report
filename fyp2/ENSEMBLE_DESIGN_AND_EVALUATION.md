@@ -128,11 +128,13 @@ ensemble improvement; it suggests performance/label applicability needs careful
 qualification before a held-out study. Author code labels NeoSSNet channel0
 heart/channel1 lung, but two selected manikin examples favour an opposite
 reference assignment; other probes do not establish a stable swap. No oracle
-permutation was used in scores or fusion. Five focused ensemble tests plus one
-boundary regression passed, along with two nearby baseline tests (8 focused);
+permutation was used in scores or fusion. Initially five focused ensemble tests,
+one boundary regression and two nearby baseline tests passed (8 focused);
 one subsequent nearby ML regression pass was 12/12 with pinned `vmdpy` present.
-No strict no-fallback VMD comparison is claimed. Exact artifacts, runtime,
-manifest limitations and
+A sixth ensemble test protects provenance without Git metadata; its addition
+and the final portability fix passed two targeted executions. The broader suite
+was not rerun for that metadata-only change. No strict no-fallback VMD
+comparison is claimed. Exact artifacts, runtime, manifest limitations and
 full per-source figures are in the implementation repository's
 [`docs/ENSEMBLE_OFFLINE_QUALIFICATION.md`](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/ENSEMBLE_OFFLINE_QUALIFICATION.md).
 
