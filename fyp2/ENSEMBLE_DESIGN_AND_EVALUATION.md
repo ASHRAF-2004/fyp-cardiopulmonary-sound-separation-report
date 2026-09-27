@@ -1,9 +1,11 @@
 # Ensemble design and planned evaluation — ADR E01
 
-27 September 2026. **Designed, not yet implemented or evaluated.** This is a
-bounded FYP2 design refinement, not a new participant study, implementation result,
-clinical claim or supervisor approval. StethoFuse's existing deployed security and
-recording application is unchanged; separation execution is still unavailable.
+27 September 2026. **Designed and now implemented/tested offline through Phase D
+on a small development-only qualification set; not integrated, deployed or finally
+evaluated.** This is not a new participant study, clinical claim or supervisor
+approval. StethoFuse's deployed application is unchanged; user-facing separation
+execution remains unavailable. The later offline evidence below supersedes the
+earlier prospective wording retained for context.
 
 The owner-supplied current academic title is **Development of a Machine
 Learning-Based System for Cardiopulmonary Sound Separation**. Earlier submitted
@@ -22,8 +24,9 @@ and the research claims made in FYP2.
 
 The author NeoSSNet repository's released weight/config/model-definition Git blobs
 match local copies at upstream revision `d97886b93bd2e71fd019c6b5073bb2dce2854ade`.
-No source/weight license was found in the inspected tree; permission and current
-environment loadability remain qualification gates. Full-paper experimental
+No source/weight license was found in the inspected tree; GitHub reports no
+declared license. Offline CPU loadability is now verified, while code/weight
+redistribution and deployment permission remain blocked. Full-paper experimental
 reproduction and neonatal-to-manikin generalisation are not established.
 
 Detailed source/version/hash/license/input-output findings are maintained in the
@@ -70,19 +73,26 @@ Original grants do not automatically expose new derived resources. Provenance
 captures code/model/config hashes, weights, preprocessing, device, timings,
 failures and output IDs. No ground truth means no user-facing accuracy score.
 
-## Chapter 5 — planned, not implementation findings
+## Chapter 5 — offline implementation; application integration planned
 
 Luna phases: artifact/data qualification → canonical adapters → fixed fusion →
 offline evaluation → durable jobs → protected result publication → existing UI
 workflow → worker packaging/evidence. Exact files, acceptance checks and rollback
 boundaries are in [`docs/ENSEMBLE_LUNA_HANDOFF.md`](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/ENSEMBLE_LUNA_HANDOFF.md).
-No new engine/API/worker/frontend/Compose implementation was produced in this sprint.
+The subsequent Phase A–D implementation added an offline-only engine with raw
+NeoSSNet and generic-NMF adapters, shared-gain canonicalisation, 10-s/8-s-hop
+overlap-add, fixed 0.5/0.5 complementary magnitude-mask fusion and failed-run
+provenance. The historical STFT first-sample loss was reproduced and repaired
+with centred padding/periodic Hann. There is **no API, worker, frontend or
+Compose integration** for this ensemble; existing production remains unchanged.
 
 ## Chapter 6 — planned evaluation and actual audit evidence
 
 HLS-CMDS is manikin data, not a patient study (Torabi et al., 2025). Publisher/creator
-metadata reports22,050Hz; all535 local WAV headers instead show4kHz mono PCM16,
-15s. Derivative provenance must be resolved. There are145 local mixed/source triples,
+README text reports22,050Hz, but the downloaded official HS/LS/Mix ZIPs contain
+535 mono 4-kHz PCM16 WAVs that match all535 local WAVs byte-for-byte by SHA-256.
+No local 22.05→4-kHz conversion occurred for those copies; earlier acquisition/
+conversion lineage is unknown. There are145 local mixed/source triples,
 but distinct filenames are not proof of independent templates or synchronised
 samplewise ground truth. Source-aware split manifests are absent; two historical
 CSV-named split files are Excel ZIPs and the test split is empty. Do not overwrite them.
@@ -93,7 +103,38 @@ round-trip lost an initial0.3-amplitude sample. Same-time two-gain fits on the t
 recorded triples left residual norms approximately0.999989/0.999764/0.999507 relative
 to the mixture. These are **contract diagnostics**, not separation scores; they
 justify fixing STFT boundaries and not assuming recorded references are additive.
-No NeoSSNet/VMD execution, model training, full benchmark or automated test suite ran.
+That statement describes the earlier design sprint. Since then, the pinned
+released NeoSSNet checkpoint has loaded strictly with Torch `weights_only=True`
+and returned two finite 10-s CPU outputs. GPU remains untested. VMD, model
+training and full-dataset benchmarking were not performed.
+
+**New six-mixture engineering qualification (not a held-out result):** the
+source-family split precedes mixing (heart families 6/2/2 and lung 4/1/1 for
+development/validation/test). Two development source pairs at −5/0/+5-dB ratios
+formed exact additive digital mixtures, with source hashes/gains in an ignored
+manifest. Six of six runs completed. Mean heart/lung SI-SDRi (dB), respectively:
+
+| Method | Heart | Lung |
+| --- | ---: | ---: |
+| NeoSSNet raw | −3.47 | −13.83 |
+| NeoSSNet projected control | −2.61 | −12.43 |
+| Generic NMF raw | −4.71 | −10.17 |
+| Generic NMF projected control | −4.62 | −9.88 |
+| Fixed Filter | −2.49 | −6.49 |
+| Fixed 50/50 ensemble | **−3.22** | **−10.20** |
+
+Thus this small, non-independent development probe does **not** establish
+ensemble improvement; it suggests performance/label applicability needs careful
+qualification before a held-out study. Author code labels NeoSSNet channel0
+heart/channel1 lung, but two selected manikin examples favour an opposite
+reference assignment; other probes do not establish a stable swap. No oracle
+permutation was used in scores or fusion. Five focused ensemble tests plus one
+boundary regression passed, along with two nearby baseline tests (8 focused);
+one subsequent nearby ML regression pass was 12/12 with pinned `vmdpy` present.
+No strict no-fallback VMD comparison is claimed. Exact artifacts, runtime,
+manifest limitations and
+full per-source figures are in the implementation repository's
+[`docs/ENSEMBLE_OFFLINE_QUALIFICATION.md`](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/ENSEMBLE_OFFLINE_QUALIFICATION.md).
 
 Primary quantitative evaluation will use exactly summed, source-labelled digital
 mixtures from provenance-checked isolated recordings. Group source families before
@@ -125,8 +166,9 @@ for lung. Worse ensemble results must be reported honestly.
 
 No ensemble improvement, production execution, real-time SLA, faithful published
 method reproduction, clinical benefit, user evaluation or supervisor approval is
-claimed. Permission, loadability, dataset lineage/independent grouping, corrected
-adapter contracts and worker resource measurements remain gates. This refinement
+claimed. CPU loadability and released-file identity are verified; redistribution
+permission, independent generalisation evidence, source-label applicability,
+GPU/worker resource measurements and final held-out evaluation remain gates. This refinement
 belongs in supervisor discussion; it was not validated by the original survey.
 
 ## References (APA 7)

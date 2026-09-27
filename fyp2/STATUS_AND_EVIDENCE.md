@@ -1,5 +1,23 @@
 # Implementation status and evidence conventions
 
+## Ensemble Phase A–D offline checkpoint — 27 September 2026 (supersedes design-only status below)
+
+**Implemented/tested offline, not integrated or deployed.** Released NeoSSNet
+strict CPU checkpoint load and 10-s shape/finite inference passed; GPU untested.
+All535 local HLS-CMDS WAVs match the official released 4-kHz PCM WAVs byte-for-byte;
+the README's22.05-kHz description does not match the released files. A frozen
+sound-type-family split and six exactly additive development mixtures were
+manifested. Corrected centred STFT, raw expert adapters and fixed50/50 original-
+mixture-phase fusion ran6/6 without shape/numerical failure. Focused tests:8
+passed; one nearby ML regression pass:12 passed with pinned `vmdpy`. Mean SI-SDRi on the tiny development probe was
+heart −3.22 dB, lung −10.20 dB for the ensemble: **no improvement shown**.
+This is engineering qualification, not a held-out FYP finding. NeoSSNet license/
+redistribution rights and its manikin source-label applicability remain unresolved.
+Worker/API/frontend separation and final evaluation remain not implemented/not
+evaluated. See [bounded evidence](ENSEMBLE_DESIGN_AND_EVALUATION.md) and the
+implementation [offline qualification report](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/ENSEMBLE_OFFLINE_QUALIFICATION.md).
+Production and submitted FYP1 remain unchanged.
+
 ## Ensemble architecture checkpoint — 27 September 2026
 
 **Designed; not yet implemented/evaluated:** [fixed 50/50 complementary TF-mask

@@ -1,5 +1,16 @@
 # FYP2 requirements design code and evidence register
 
+## Ensemble Phase A–D trace — 27 September 2026 (supersedes planned-only rows below)
+
+| Requirement | Offline implementation/evidence | Remaining gate |
+| --- | --- | --- |
+| R07/R08 required experts | `app/ml/ensemble_v1.py`: released NeoSSNet strict CPU load and generic NMF raw adapters; one10-s smoke for NeoSSNet | Code/weight redistribution permission and robust source-label applicability unresolved. No production expert availability claim. |
+| R09 fusion and failure | Centred periodic-Hann1024/256 STFT; fixed50/50 complementary masks on original mixture phase; one legacy boundary regression and fail-closed/overlap-focused checks | No worker-level deadline/restart/error persistence yet. |
+| R14 evaluation | Six exact additive development mixtures from two source-family-separated pairs; per-source SI-SDR/SI-SDRi, hashed source/gain manifest; ensemble heart −3.22 dB/lung −10.20 dB mean SI-SDRi | Small non-independent qualification only; no improvement claim, VMD comparator, untouched held-out study or clinical generalisation. |
+| R10/R03/R11/R12/R17 application, private results and runtime | Existing production M1 security unchanged; offline engine has no API/worker/output publication | Durable worker, protected derived results, resource qualification and separately reviewed deployment still planned. |
+
+See [offline design/evaluation evidence](ENSEMBLE_DESIGN_AND_EVALUATION.md).
+
 ## Ensemble design trace — 27 September 2026 (planned implementation)
 
 This updates only ensemble design/evaluation requirements, not completed live M1 evidence.
