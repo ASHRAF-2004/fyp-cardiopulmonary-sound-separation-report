@@ -50,6 +50,24 @@ in evidence; a bounded runtime-log scan found none. No broad regression suite wa
 repeated, and no new automated test functions were created during deployment.
 Operational HTTP/browser/backup checks are not a new theoretical test campaign.
 
+## Additional bounded action-link evidence (Chapter 6)
+
+A continuation check on 27 September 2026 exercised the deployed missing-reset
+link and deliberately invalid reset/verification links in separate tabs of normal
+external Chrome, preserving the Admin session. Real Firebase returned HTTP400
+`INVALID_OOB_CODE` for both invalid codes. The frontend removed the query, showed
+the invalid-link state without displaying the code, and did not expose a reset
+form or claim success. No email-send request occurred. Invalid-code rejection is
+**PRODUCTION + REAL FIREBASE; verified live**; missing-code handling is
+**PRODUCTION UI; tested**. This does not establish genuine expired-link behavior,
+successful password registration/login/reset, email delivery, or verification.
+No new automated test functions, account changes or broad suite reruns.
+
+The remaining mailbox-dependent checks require one owner-designated test email,
+not either established Google account. The owner types secrets and opens emails
+personally. After verification, that account may serve as the designated Analyst
+identity for later backend-enforced promotion/assignment acceptance.
+
 ## Backup and recovery (Chapters 4, 5, 6)
 
 Client-encrypted Restic uses the private B2 EU Central bucket via S3. The first
