@@ -1,5 +1,15 @@
 # M1 identity and authorization implementation and test notes
 
+## Production continuation — 27 September 2026
+
+The corrected release `921c40d` is now deployed. Real public Google Admin/Staff
+API status, UID/local-role mapping, owner/non-owner media access, restart
+persistence and the first encrypted B2 application snapshot passed. See
+[the exact production evidence and limitations](PRODUCTION_DEPLOYMENT_EVIDENCE.md).
+This supersedes earlier pending-production statements below; disabled/revoked
+edge cases remain MOCK evidence, and no broad suite was repeated. Cloud Run is
+not deployed; local JWT + Firebase REST current-account checking is the active path.
+
 ## Firebase REST parser correction — 27 September 2026
 
 The real Administrator session initially received HTTP 503 from `/api/auth/me`.

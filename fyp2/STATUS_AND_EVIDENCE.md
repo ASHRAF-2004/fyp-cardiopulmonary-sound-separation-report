@@ -1,5 +1,16 @@
 # Implementation status and evidence conventions
 
+## Current production checkpoint — 27 September 2026
+
+The isolated M1 application is deployed. Public Google Admin 200/Staff 403,
+private-media isolation, HTTPS/SPA/API and restart persistence are **verified
+live** within the scope in [production deployment evidence](PRODUCTION_DEPLOYMENT_EVIDENCE.md).
+The first encrypted production B2 snapshot completed; daily backups are enabled,
+pruning disabled. The active Firebase path is self-hosted JWT + REST lookup;
+Cloud Run/billing remain unused. The dated evidence supersedes all older
+not-deployed/not-installed/pending-real-REST statements below. Those older
+sections are historical snapshots, not current setup instructions.
+
 ## Superseding Firebase production-auth decision — 27 September 2026
 
 Cloud Run was stopped before deployment because Google Cloud billing requires

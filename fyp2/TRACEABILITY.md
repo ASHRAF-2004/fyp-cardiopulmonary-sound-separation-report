@@ -1,5 +1,18 @@
 # FYP2 requirements design code and evidence register
 
+## Current production trace — 27 September 2026
+
+R01/R02/R13 → JWT + Firebase REST current-account check → `app/m1/` identity and
+trusted account/role policy → real public Admin 200 / Staff 403 and matching UIDs.
+R03/R11 → private storage/owner-grant policy → recording/media API → public
+owner 200 / cross-owner (including Admin) 403 / anonymous 401 and matching bytes.
+R17 → isolated Compose/Tunnel + encrypted B2 → `implementation/deploy/` →
+HTTPS/SPA/health, restart persistence, first production snapshot and healthy
+unchanged Axora. Exact versions, boundaries and remaining gaps:
+[production evidence](PRODUCTION_DEPLOYMENT_EVIDENCE.md). This supersedes older
+pending-production/Cloud Run status below, without changing historical requirements
+or reclassifying local/mock evidence as production.
+
 ## Production identity decision update — 27 September 2026
 
 The Cloud Run verifier path was superseded before deployment because Google

@@ -1,4 +1,4 @@
-%% M1 target design, not a trace of a successful live run.
+%% Deployed M1 identity/resource flow; edge-case branches retain MOCK evidence.
 sequenceDiagram
     actor User
     participant Browser as StethoFuse browser
@@ -10,7 +10,9 @@ sequenceDiagram
     Browser->>Firebase: Provider authentication
     Firebase-->>Browser: Firebase user and ID token
     Browser->>API: Bearer ID token and resource ID
-    API->>Firebase: Official Admin SDK verification and current user check
+    API->>API: Verify JWT signature and required claims using public certificates
+    API->>Firebase: Auth REST accounts:lookup with same ID token
+    API->>API: Match UID, require enabled/verified user, compare iat and validSince
     alt Missing invalid revoked or disabled identity
         API-->>Browser: Sanitized denial, no protected data
     else Verified UID

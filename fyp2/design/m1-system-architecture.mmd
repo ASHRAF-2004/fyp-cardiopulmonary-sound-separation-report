@@ -1,11 +1,11 @@
-%% M1 current local architecture; ensemble execution and physical capture remain planned.
+%% Deployed M1 architecture; ensemble execution and physical capture remain planned.
 flowchart LR
   Person[Visitor / authenticated user]
   Browser[React + TypeScript browser]
   Google[Google Identity Provider]
   Firebase[Firebase Authentication]
   API[FastAPI M1 API]
-  Verifier[Firebase Admin SDK token and user verification]
+  Verifier[Local JWT verification and Firebase Auth REST current-user check]
   DB[(Trusted application SQLite data)]
   Files[(Private server media directory)]
   Ensemble[Ensemble separation subsystem]
@@ -16,6 +16,7 @@ flowchart LR
   Firebase -->|ID token| Browser
   Browser -->|Bearer token + resource request| API
   API --> Verifier
+  Verifier -->|Same token: accounts lookup| Firebase
   Verifier -->|Verified UID and current provider state| API
   API -->|Resolve role, owner, grant, assignment| DB
   API -->|Authorized opaque resource ID only| Files
