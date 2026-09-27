@@ -4,6 +4,17 @@ M1 synchronization, 26 September 2026. This is a controlled FYP2 change record, 
 
 ## Basis and corrections to earlier mappings
 
+Ensemble refinement, 27 September 2026: revised submitted §4.5.2/Table4.12,
+§4.5.3 (including §4.5.3.5 model selection), §4.5.4 and §5.1.3 supply the historical
+strategy/storage/implementation-plan foundation. FYP2 replaces ordinary-user
+individual selection with one internal fixed TF-mask ensemble; preserves individual
+baselines for research; adds raw-output compatibility, versioned provenance,
+durable jobs and a source-grouped controlled-mixture evaluation. See
+[the explicit design/evidence boundary](fyp2/ENSEMBLE_DESIGN_AND_EVALUATION.md)
+and R07–R10/R14 trace. The submitted text and original questionnaire are unchanged;
+this is a later engineering/research decision, not evidence participants requested
+or validated this particular fusion. Supervisor discussion is still required.
+
 The submitted PDF's contents pages vii-x and body were checked against the revised DOCX heading styles. Its Chapter 3 already contains **Healthcare Staff and Audio Analyst**, 53 questionnaire responses, 15 functional requirements, eight non-functional requirements and eight user requirements. The architecture pack's description of a single unspecified actor therefore describes an earlier baseline, not the submitted revision.
 
 Important section corrections:

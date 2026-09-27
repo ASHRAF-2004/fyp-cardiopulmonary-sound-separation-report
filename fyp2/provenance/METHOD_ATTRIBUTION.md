@@ -1,5 +1,25 @@
 # Candidate method attribution and verification gaps
 
+## Superseding ensemble audit — 27 September 2026
+
+[ADR E01 and evaluation plan](../ENSEMBLE_DESIGN_AND_EVALUATION.md) select fixed
+50/50 complementary TF magnitude-mask fusion, with released NeoSSNet + local
+generic NMF conditionally admitted. Upstream model/config/checkpoint identity now
+matches; source/weight reuse permission and current checkpoint loadability remain
+open. NMF and Fixed Filter ran one tiny synthetic probe. Full NMCF/DAE–NMF–VMD and
+the missing fine-tuned checkpoint are not members. Corrected STFT boundaries,
+4-kHz derivative provenance and source-family splits are qualification gates.
+No current separation-quality score or superiority result exists.
+
+This newer targeted author/publisher/code audit supersedes the unresolved identity
+and ensemble-selection status below where explicitly resolved. The 26 September
+sections remain historical snapshots: the live application now returns honest
+`ensemble_unavailable`, not a demo timer, and legacy routes are disabled.
+See [new verified bibliographic records](ensemble-references.bib); submitted
+references and FYP1 files remain unchanged.
+
+## Historical 26 September preparation snapshot
+
 Prepared 26 September 2026 from local primary-paper title/abstract pages, the revised bibliography and inspected code paths. This is not a new systematic search or a reproduction audit. No web metadata was substituted for the local sources, and no paper performance numbers are presented as StethoFuse results.
 
 ## Locally checked identities

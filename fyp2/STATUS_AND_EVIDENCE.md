@@ -1,5 +1,19 @@
 # Implementation status and evidence conventions
 
+## Ensemble architecture checkpoint — 27 September 2026
+
+**Designed; not yet implemented/evaluated:** [fixed 50/50 complementary TF-mask
+ensemble](ENSEMBLE_DESIGN_AND_EVALUATION.md), conditional released NeoSSNet + local
+NMF membership. No gate training. Source hashes match the author model release;
+reuse permission and loadability still require qualification. One offline NumPy
+probe established finite NMF/Fixed Filter output and a legacy STFT endpoint defect;
+three manikin source triples are not usable as-is additive targets. This is not a
+benchmark or new separation result. Zero automated tests added; no broad suite,
+model training, production access, dependency installation or deployment occurred.
+The next authorised implementation should begin with Luna Phase A qualification.
+All live security/backup evidence below remains unchanged; ensemble execution is
+still unavailable. Historical results are not upgraded to current FYP2 evidence.
+
 ## Current production checkpoint — 27 September 2026
 
 The isolated M1 application is deployed. Public Google Admin 200/Staff 403,

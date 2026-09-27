@@ -1,5 +1,21 @@
 # FYP2 requirements design code and evidence register
 
+## Ensemble design trace — 27 September 2026 (planned implementation)
+
+This updates only ensemble design/evaluation requirements, not completed live M1 evidence.
+The [design and research record](ENSEMBLE_DESIGN_AND_EVALUATION.md) is authoritative
+for this refinement; implementation ADR E01 supplies exact equations and interfaces.
+
+| Requirement | Design → current/proposed code | Required evidence / present status |
+| --- | --- | --- |
+| R07 one ensemble request | Existing owner-only `app/m1/api.py` job POST → proposed two-expert engine | Designed; route still503, no runtime implementation. No user algorithm selector. |
+| R08 expert provenance | Pinned original NeoSSNet + local NMF; new raw adapters reuse current DTOs | Code/artifact identity audited, NMF tiny execution only; permission/NeoSSNet loadability conditional. Missing fine-tune and complete literature hybrids excluded. |
+| R09 compatible fusion/failure | Boundary-safe common STFT → fixed complementary masks → shared-gain exports | Designed; legacy first-sample loss observed offline. Round-trip/finite/label/length and two-expert failure checks belong to implementation. |
+| R10 non-blocking processing | Existing `m1_jobs` + additive migration → single supervised worker | Planned; require atomic claim, interrupted-job state and API responsiveness. No duplicate legacy job database. |
+| R03/R11/R12 protected results | Existing result/file/resource tables → staged atomic publication, exact grants | Existing original-media evidence remains valid; generated-output grant/revoke/restart checks not yet available. |
+| R14 valid evaluation | Source-family split → controlled sums → same-pipeline per-source SI-SDR/SI-SDRi | Planned; local4k lineage/splits unresolved. Three recorded triples fail additive-reference probe; historical23-record scores not comparable evidence. |
+| R17 resource/backup safety | Future isolated worker → existing runtime and backup quiescence | Planned; CPU RSS/time measurement and all-writer backup quiescence required before a separately approved release. Production unchanged. |
+
 ## Current production trace — 27 September 2026
 
 R01/R02 → Firebase password-provider identity + application session onboarding →

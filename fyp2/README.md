@@ -11,6 +11,7 @@ Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](..
 - [M1 local guidance and source audit](provenance/M1_SOURCE_AUDIT.md)
 - [Source register and missing guidance](provenance/SOURCE_REGISTER.md)
 - [Candidate method attribution](provenance/METHOD_ATTRIBUTION.md)
+- [Selected ensemble design and planned evaluation](ENSEMBLE_DESIGN_AND_EVALUATION.md)
 - [Baseline preservation record](provenance/BASELINE.md)
 - [Separate build plan](BUILD_PLAN.md)
 
