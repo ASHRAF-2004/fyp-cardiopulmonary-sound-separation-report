@@ -151,7 +151,9 @@ and validation waveforms were finite; test waveforms remained locked and were
 not decoded or scored. Deterministic training recipes (576 draws/epoch) and
 225 validation-only recipes were written outside Git. The pinned model forward
 and backward passed at645,681 parameters, with synthetic consistency error
-below2.4e−7. Five focused training-contract tests passed. Full baseline training
+below2.4e−7. The whole-record wrapper implements10-s windows/8-s hop and passed
+a length/additivity check on synthetic input. Six focused training-contract
+tests passed. Full baseline training
 and model selection remain **NOT STARTED**; there are no model results yet.
 Detailed run receipt is in the implementation's
 `docs/T0_T4_EXECUTION.md`.
