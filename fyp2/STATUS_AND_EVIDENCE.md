@@ -1,5 +1,20 @@
 # Implementation status and evidence conventions
 
+## Own-model training design — 28 September 2026 (current ML direction)
+
+**DESIGNED / NOT YET TRAINED / NOT YET EVALUATED.** The owner selected an
+own-weight path independent of NeoSSNet author contact. [ADR T01](MODEL_TRAINING_DESIGN.md)
+specifies compact fixed-label Conv-TasNet(645,681 parameters), scratch training,
+CC-BY-4.0 HLS-CMDS sources, frozen family partitions, balanced additive mixtures,
+loss/maximin-source validation selection, CPU settings and one locked final
+evaluation. Only development-file statistics and tiny synthetic graph probes
+ran, with **zero optimizer steps**. No validation/test audio access, new
+automated tests or production changes. Graphify requested reauthentication;
+known current files were read narrowly. Historical diagnostic/metric caveats
+remain valid; the author-contact gate below is superseded **for our own model**,
+not retrospectively satisfied. NeoSSNet stays research-only and50/50 stays
+frozen/unqualified. Next: Luna T0–T4, then checkpoint.
+
 ## NeoSSNet reproducibility checkpoint — 27 September 2026
 
 **DEVELOPMENT DIAGNOSTIC / NOT FINAL.** Current target-domain expert qualification

@@ -1,5 +1,15 @@
 # Ensemble design and planned evaluation — ADR E01
 
+## Current own-model direction — 28 September 2026
+
+See [ADR T01: own separator training design](MODEL_TRAINING_DESIGN.md).
+The owner superseded waiting for NeoSSNet rights/native reproduction for our
+own compact fixed-label Conv-TasNet, trained from scratch with a licensed
+library and CC-BY-4.0 data. **DESIGNED, not yet trained/evaluated.** NeoSSNet
+stays research-only. The50/50 ensemble below is preserved/frozen, not replaced,
+tuned or integrated. New ensemble choices must earn their place on validation
+before final-test access. Older author-contact next steps are historical.
+
 ## Superseding reproduction diagnosis — 27 September 2026
 
 **DEVELOPMENT DIAGNOSTIC / NOT FINAL; Outcome D for current target expert
