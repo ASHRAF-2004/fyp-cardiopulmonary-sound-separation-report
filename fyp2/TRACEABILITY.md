@@ -2,6 +2,17 @@
 
 ## Current production trace — 27 September 2026
 
+R01/R02 → Firebase password-provider identity + application session onboarding →
+live auth UI and `/api/auth/session`, `/api/auth/me` → same verified UID, default
+Staff, refresh/logout/login, real recovery request, old-password denial and
+owner-entered new-password success. Registration click and verification-email
+delivery remain owner-reported; verified state is provider-confirmed.
+R02/R12/R13 → confirmed Admin role update + exact-resource grant/review policy →
+`/api/admin/users/{id}`, `/api/recordings/{id}/grants`, `/api/assignments/{id}/review`,
+`/api/grants/{id}` → production Analyst promotion/audit, fresh-login persistence,
+Admin403, scoped original-media/review200, unrelated-record403, revocation403 and
+retained history. No generated result/derived-media acceptance is inferred.
+
 R01/R02/R13 → JWT + Firebase REST current-account check → `app/m1/` identity and
 trusted account/role policy → real public Admin 200 / Staff 403 and matching UIDs.
 R03/R11 → private storage/owner-grant policy → recording/media API → public

@@ -11,6 +11,17 @@ Cloud Run/billing remain unused. The dated evidence supersedes all older
 not-deployed/not-installed/pending-real-REST statements below. Those older
 sections are historical snapshots, not current setup instructions.
 
+The dedicated password-provider account now supplies **verified live** login,
+session, recovery/password-rotation and default-Staff evidence. Its verified state
+was confirmed against Firebase; signup and original verification-email delivery
+are owner-reported, while the actual verification transition was not observed.
+Production Analyst promotion/audit, refresh/new-login persistence, Admin denial,
+exact-original-audio assignment/review, unrelated-record isolation, and revocation
+also passed. No production defect or code change was needed. Expired links remain
+NOT TESTED, disabled/revoked provider cases remain MOCK ONLY, and nonexistent
+generated outputs are NOT AVAILABLE / NOT TESTED. See the bounded evidence above;
+do not upgrade historical local/mock results or claim participant evaluation.
+
 ## Superseding Firebase production-auth decision — 27 September 2026
 
 Cloud Run was stopped before deployment because Google Cloud billing requires
