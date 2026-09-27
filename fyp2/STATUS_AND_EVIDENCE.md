@@ -12,8 +12,12 @@ isolated temporary path; `restic check` reported no errors, SQLite
 `integrity_check` was `ok`, and manifest SHA-256, exact file-set and byte checks
 passed. Evidence is recorded in the implementation backup runbook. This is
 `tested` remote recovery for synthetic data only—not a production application
-backup, scheduled job, live deployment, or independent offline-password escrow
-recovery test. The 7/4/6 retention policy is prepared; pruning and the systemd
+backup, scheduled job, or live deployment. On 27 September 2026 the owner
+independently entered the offline paper-copy Restic password; it unlocked the
+repository and restored the known synthetic file with its expected SHA-256. The
+installed password credential was not used, and temporary recovery files were
+removed. Offline password escrow recovery is **verified**. The 7/4/6 retention
+policy is prepared; pruning and the systemd
 timer remain disabled. No production DNS, Cloud Run/IAM, Firebase domain, Caddy,
 or application-service changes occurred.
 

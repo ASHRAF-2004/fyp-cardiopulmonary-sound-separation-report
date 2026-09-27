@@ -40,8 +40,13 @@ application key. Restic `0.18.1` initialized the encrypted S3 repository. On
 with no errors, restored into an isolated temporary directory, and passed
 `PRAGMA integrity_check=ok`, SHA-256 manifest, exact file-set and byte-comparison
 checks. This is `tested` remote recovery evidence for synthetic data, not a backup
-of the running StethoFuse application, production deployment, scheduled backup, or
-offline-password-escrow recovery. Key ID, key secret, and Restic password are
+of the running StethoFuse application, production deployment, or scheduled backup.
+On 2026-09-27, the owner independently entered the offline paper-copy Restic
+password through a hidden prompt; the existing encrypted repository unlocked and
+the known synthetic `runtime.env` restored with its expected SHA-256. The test
+did not use the installed password credential and removed its temporary credential
+and restore files. **Offline password escrow recovery is verified.** Key ID, key
+secret, and Restic password are
 separate root-owned `0400` files delivered through systemd private credentials;
 their values are not recorded. Prepared retention remains 7 daily, 4 weekly, 6
 monthly, with pruning gated; no timer, prune marker, or production snapshot exists.
