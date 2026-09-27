@@ -1,5 +1,34 @@
 # M1 identity and authorization implementation and test notes
 
+## Firebase REST parser correction — 27 September 2026
+
+The real Administrator session initially received HTTP 503 from `/api/auth/me`.
+Value-free diagnostics narrowed the rejection to the `disabled` field in a
+successful `accounts:lookup` response; local JWT verification, current UID match,
+and decimal-string `validSince` validation passed. Firebase's JSON response may
+omit a false boolean. The parser now defaults only an absent `disabled` field to
+false while still rejecting explicit null/non-boolean values. Required UID,
+verified-email and revocation checks remain unchanged (`iat < validSince`, both
+in seconds). Temporary diagnostics were removed after identifying the defect.
+
+The owner confirmed that the real Admin Users page loaded after the correction.
+The normal external Chrome acceptance session then independently returned
+`/api/auth/me` **200**, matching the Firebase UID to the active local `admin`
+account, and `/api/admin/users` **200**. Direct navigation to the Admin Users page
+loaded its Users heading without the unavailable state. The designated Staff
+account returned `/api/auth/me` **200**, matching its verified Firebase UID and
+active `healthcare_staff` role; `/api/admin/users` returned **403**, including a
+request containing a forged admin-role header. Direct Admin route navigation
+redirected to `/403`. Tokens stayed inside the browser and were not captured in
+evidence. This is **REAL FIREBASE + LOCAL BACKEND**, not production evidence.
+Thirteen focused **MOCK** REST tests passed; three cases were added
+to existing parameterized tests and no broad regression campaign was repeated.
+Production acceptance remains pending at this checkpoint. The corrected backend
+image `stethofuse/api:rest-parser-fix` built successfully from the locked runtime.
+
+Schema: [Firebase UserInfo](https://docs.cloud.google.com/identity-platform/docs/reference/rest/v1/UserInfo)
+and [ProtoJSON default-value omission](https://protobuf.dev/programming-guides/json/#presence-and-default-values).
+
 ## Superseding Firebase auth update — 27 September 2026
 
 The planned Cloud Run verifier was stopped before deployment due to the
