@@ -1,5 +1,20 @@
 # FYP2 requirements design code and evidence register
 
+## Reproduction qualification gate — 27 September 2026
+
+- R08 expert validity: strict released-checkpoint execution verified; one source
+  compatibility line restored. Target heart/lung qualification **fails**; code/
+  weight rights and native fold/run correspondence remain unresolved.
+- R14 trustworthy evaluation: independent fixed-label metric audited; float64
+  mutation/undefined-silence defects fixed. Six old +12 new correlated development
+  cases only. No PIT/data-dependent relabelling, held-out inspection, tuning or
+  final result. Published table/notebook metric discrepancy recorded explicitly.
+- R09 fusion remains0.5/0.5, not re-evaluated/tuned in this sprint. R10/application
+  wiring remains on hold pending expert qualification; fine-tuning is not yet
+  justified without native reproduction. Existing M1 requirements unchanged.
+
+Evidence and next gate: [reproduction section](ENSEMBLE_DESIGN_AND_EVALUATION.md).
+
 ## Ensemble Phase A–D trace — 27 September 2026 (supersedes planned-only rows below)
 
 | Requirement | Offline implementation/evidence | Remaining gate |

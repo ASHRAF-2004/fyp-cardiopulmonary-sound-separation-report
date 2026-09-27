@@ -1,5 +1,68 @@
 # Ensemble design and planned evaluation — ADR E01
 
+## Superseding reproduction diagnosis — 27 September 2026
+
+**DEVELOPMENT DIAGNOSTIC / NOT FINAL; Outcome D for current target expert
+qualification.** Native NeoSSNet reproduction is blocked, not proven successful
+or disproved. The implemented equal-weight fusion stays frozen, but its conditional
+NeoSSNet membership must be revisited before training, final evaluation or
+application wiring. Production and all held-out audio remain untouched.
+
+Chapter 2 interpretation: Poh et al. (2024), Table VII, labels16.00/14.46 dB as
+heart/lung SI-SDR;14.76 is lung SDR. The
+[author notebook](https://github.com/yangyipoh/Neonatal-Chest-Sound-Separation-using-Deep-Learning/blob/d97886b93bd2e71fd019c6b5073bb2dce2854ade/results.ipynb)
+displays that exact baseline row using **improvement columns**, with category
+medians averaged across three noise groups. Its released evaluator also calls
+the permutation-optimising `fast_bss_eval.si_sdr`; `return_perm=False` does not
+disable reassignment. These differences and the neonatal/manikin populations
+preclude direct comparison to our mean fixed-label absolute scores. This is a
+documented source discrepancy requiring clarification, not a silent correction
+of the paper or a reason to adopt reference-oracle evaluation.
+
+Chapters 4–6 evidence: strict released weights load (8,422,144 parameters,
+132 finite state entries, no missing/unexpected keys), eval mode and exact
+repeat/direct-call parity passed. One local positional-encoding edit had changed
+the second mask branch's shared input. Restoring author behavior changed the six
+lung means only−13.84→−13.81 dB; it did not repair separation. The evaluator now
+preserves float64 caller arrays and rejects undefined silent estimates rather
+than awarding0 dB. Independent fixed-label SI-SDR agrees within1.57e−7 dB on18
+diagnostic executions. Mean-removal differences are below5.42e−6 dB; correlation
+peaks show zero lag throughout, so no timing correction was applied.
+
+| Development cases / globally fixed mapping | Heart SI-SDR / SI-SDRi (dB) | Lung SI-SDR / SI-SDRi (dB) |
+| --- | ---: | ---: |
+| Original6, restored author forward, documented0H/1L | −3.48 / −3.47 | −13.81 / −13.79 |
+| Same6, one global1H/0L alternative | −5.72 / −5.70 | +0.23 / +0.24 |
+| Additional12 author-protocol **manikin surrogates**, documented0H/1L | −4.15 / −4.14 | −15.08 / −15.06 |
+| Same12, one global1H/0L alternative | −6.85 / −6.84 | −0.19 / −0.18 |
+| Native neonatal published-fold reproduction | NOT RUN | NOT RUN |
+
+The12 additional cases use only the same two frozen development source pairs,
+levels−10/0/+10 dB, and instantaneous/seeded three-tap convolutive NoNoise rules.
+They are correlated protocol surrogates, not new subjects or native data. The
+original six normalized inputs already match author mixing to7.16e−7 full scale.
+The source archive is4 kHz; earlier acquisition/conversion provenance remains
+unknown. “Projected” means reference-free magnitude masks applied to original
+mixture phase, not a target-dependent oracle. It restores additivity, not labels.
+The documented mapping is retained; neither global mapping qualifies both sources.
+
+**Domain shift is plausible, not experimentally demonstrated. Fine-tuning is not
+yet justified:** strong native performance has not been reproduced, so the
+owner's first training gate is unmet. The public weights are not linked by a
+manifest to the notebook's `all1` run or neonatal reference folds. A later
+author application contains a different stochastic model, not drop-in corrected
+weights; it was not downloaded/adopted. Complete code/weight reuse rights remain
+**PENDING RIGHTS**. A clarification request is prepared but not sent.
+
+Two new regression functions; focused8 passed; one nearby ML regression15 passed.
+18/18 executions had no shape/nonfinite failures. No ensemble-weight tuning,
+training, final FYP result, clinical claim, native reproduction or deployment
+claim follows. Full contract, hashes, failure attribution, source links and next
+Luna task: [implementation reproduction report](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/NEOSSNET_REPRODUCTION_DIAGNOSIS.md).
+The older Phase-D and prospective material below remains historical context.
+
+## Earlier design and Phase-D context
+
 27 September 2026. **Designed and now implemented/tested offline through Phase D
 on a small development-only qualification set; not integrated, deployed or finally
 evaluated.** This is not a new participant study, clinical claim or supervisor

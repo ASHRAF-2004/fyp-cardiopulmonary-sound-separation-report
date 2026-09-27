@@ -1,5 +1,20 @@
 # Implementation status and evidence conventions
 
+## NeoSSNet reproducibility checkpoint — 27 September 2026
+
+**DEVELOPMENT DIAGNOSTIC / NOT FINAL.** Current target-domain expert qualification
+fails (Outcome D); native reproduction remains blocked by author data/run-artifact
+availability. The table16.00/14.46 reference has a notebook improvement/aggregation
+discrepancy and permutation-capable metric, not a matched absolute comparison.
+Strict/eval/deterministic checkpoint checks pass; independent SI-SDR agrees.
+Restored author positional encoding and fixed metric mutation/silence handling;
+neither explains the large target deficit. Six rechecked +12 correlated manikin
+protocol surrogates remain poor; no source swap, lag or gain change was adopted.
+Two new tests, focused8/nearby regression15 passed. No training or application
+integration. **Rights pending; native reproduction required before fine-tuning.**
+See [current diagnosis](ENSEMBLE_DESIGN_AND_EVALUATION.md). This supersedes the
+next-step guidance, not the historical scores or live M1 evidence, below.
+
 ## Ensemble Phase A–D offline checkpoint — 27 September 2026 (supersedes design-only status below)
 
 **Implemented/tested offline, not integrated or deployed.** Released NeoSSNet
