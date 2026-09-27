@@ -155,6 +155,10 @@ below2.4e−7. The whole-record wrapper implements10-s windows/8-s hop and passe
 a length/additivity check on synthetic input. Six focused training-contract
 tests passed. Full baseline training
 and model selection remain **NOT STARTED**; there are no model results yet.
+The T4 execution used the then-uncommitted working tree at its recorded base
+HEAD; a clean source-tree snapshot was not captured. This reproducibility
+limitation is recorded in the run receipt, so this remains bounded engineering
+evidence rather than a clean-commit reproducibility result.
 Detailed run receipt is in the implementation's
 `docs/T0_T4_EXECUTION.md`.
 
