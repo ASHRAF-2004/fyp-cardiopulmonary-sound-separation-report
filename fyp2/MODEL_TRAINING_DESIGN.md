@@ -1,8 +1,8 @@
 # Own separator training design — ADR T01
 
-28 September 2026. **T7 COMPLETE; VALIDATION-ONLY ENSEMBLE DECISION COMPLETE;
-SMALL TCN STANDALONE SELECTED; T8 FREEZE PREPARED; FINAL TEST SEALED; NOT
-DEPLOYED.** This is Application-Based FYP2 methodology and validation evidence,
+28 September 2026. **MODEL TRAINING COMPLETE; BOUNDED VALIDATION TUNING COMPLETE;
+FINAL ENSEMBLE RECONSIDERATION COMPLETE; FINAL SEPARATOR FROZEN; HELD-OUT TEST
+NOT YET EXECUTED; NOT DEPLOYED.** This is Application-Based FYP2 methodology and validation evidence,
 not a held-out final result. Production and submitted FYP1 remain unchanged. The full
 [implementation training plan](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/STETHOFUSE_MODEL_TRAINING_PLAN.md)
 contains exact equations, baseline YAML, source manifest and Luna phases.
@@ -282,8 +282,13 @@ Existing Fixed Filter/NMF show weak and localized complementarity; no new
 fusion experiment is selected. The favorable TCN projection diagnostic is not
 automatically adopted as additional tuned postprocessing. Exact evidence and
 limitations are in [FINAL_ENSEMBLE_RECONSIDERATION.md](FINAL_ENSEMBLE_RECONSIDERATION.md).
-Next is metadata-only T8 freeze completion and owner review before T9. No final
-test, broad application regression or production change occurred.
+Frozen separator specification SHA-256:
+`3780292ae6ff1ea6415fc1bd9b4b045bb91d5443068e806b08e9cb39735a1e34`.
+Frozen implementation commit:
+`bfb44a61664a017bc538a2c07629032511f30fed`.
+The final separator and one-shot T9 protocol are frozen; execution awaits
+separate explicit owner approval. No final test, broad application regression
+or production change occurred.
 
 Own artifacts belong in ignored `.local/training/stethofuse-tcn-v1/<run-id>/`
 with immutable config/manifest, recipes/RNG/version/device provenance, all

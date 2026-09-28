@@ -1,7 +1,8 @@
 # Final validation-only ensemble reconsideration
 
-28 September 2026. **DECISION COMPLETE; T8 FREEZE PREPARED; FINAL TEST SEALED;
-NOT DEPLOYED.** Application-Based FYP2 design/validation evidence only. Submitted
+28 September 2026. **MODEL TRAINING COMPLETE; BOUNDED VALIDATION TUNING COMPLETE;
+FINAL ENSEMBLE RECONSIDERATION COMPLETE; FINAL SEPARATOR FROZEN; HELD-OUT TEST
+NOT YET EXECUTED; NOT DEPLOYED.** Application-Based FYP2 design/validation evidence only. Submitted
 FYP1 and production remain unchanged.
 
 ## Chapters 4–6 — decision and bounded evidence
@@ -101,14 +102,29 @@ component; the chosen application separator does not falsely advertise ensemble
 inference. No final Chapter 6 quality, clinical or broad generalization claim is
 supported by this record.
 
-Next is metadata-only T8 freeze completion: confirm the selected checkpoint,
-architecture, all preprocessing/window/consistency/label rules, exact metric
-source, pinned environment and the declared mixture/Fixed Filter/NMF comparator
-identities. There are no ensemble experts or weights to tune. The prepared
-freeze record lists hashes without opening test sources. Only after complete
-system freeze and explicit owner T9 approval should a test-only evaluator run
-the held-out protocol once. A disappointing test result cannot restart tuning.
-No final test or deployment is authorized by this document.
+T8 is complete. The frozen specification is
+[`research/configs/final_separator_v1.json`](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/research/configs/final_separator_v1.json),
+SHA-256 `3780292ae6ff1ea6415fc1bd9b4b045bb91d5443068e806b08e9cb39735a1e34`.
+Frozen implementation commit: `bfb44a61664a017bc538a2c07629032511f30fed`.
+It fixes the checkpoint, source/config/recipe identities, pinned CPU environment,
+PCM16-to-float convention, 4-kHz mono input, heart/lung output order, 10-s
+window/8-s hop/2-s overlap, padding, shared gain, mixture consistency and strict
+failure behavior. A synthetic 40,037-sample smoke inference loaded the checkpoint
+strictly, returned finite `[2, 40037]` outputs, and reconstructed the mixture to
+2.98e−8 maximum error.
+
+T9 is predeclared but **not executed** and requires separate owner approval.
+It consists of the 5×9 frozen test source pairs, five fixed lung/heart levels
+([-10,-5,0,5,10] dB), and full 15-s sources: 225 conditions. Use the frozen
+RMS-based additive mixture recipe, then evaluate mixture, selected TCN, Fixed
+Filter, and Generic NMF with fixed labels and common inference conditions. VMD
+and NeoSSNet are excluded for the qualifications documented in the spec.
+Report heart/lung SI-SDR and SI-SDRi, equal-family-pair macro means, pooled
+median/IQR, family/level breakdowns, failures, and inference/runtime. Preserve
+all condition rows; do not aggregate by silently dropping failures. The spec
+predeclares artifact handling, one-shot execution, and a stop/approval rule for
+any correction after a genuine software defect. Do not tune from test results
+or make clinical, patient-level or subject-independent claims.
 
 Exact protocol, per-level results, oracle limitations, hashes and T8 checklist:
 [implementation decision](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/FINAL_ENSEMBLE_RECONSIDERATION.md).
