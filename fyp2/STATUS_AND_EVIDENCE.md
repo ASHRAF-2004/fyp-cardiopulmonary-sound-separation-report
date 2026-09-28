@@ -1,19 +1,22 @@
 # Implementation status and evidence conventions
 
-## Current ML checkpoint — final model comparison complete, 29 September 2026
+## Current ML checkpoint — T9 final held-out evaluation complete, 29 September 2026
 
-**FINAL COMPARISON COMPLETE / BOTH TREATMENTS FAILED THE FROZEN GATE /
-HLS-ONLY T8 V2 RETAINED / T9 SEALED / NOT DEPLOYED.**
+**T9 HELD-OUT FINAL EVALUATION COMPLETE / FINAL MODEL HLS-ONLY T8 V2 /
+MODEL SELECTION CLOSED / FINAL TEST CONSUMED / NOT YET INTEGRATED.**
 
-[Final comparison execution evidence](FINAL_PRE_T9_MODEL_EXECUTION.md) records
-both authorized treatments under the five-fold/eight-family-pair protocol.
-Treatment A scored Heart/Lung SI-SDRi 2.504/2.399 dB, Q 2.399, balanced 2.452;
-it missed frozen ΔQ and Δbalanced thresholds by approximately 0.015/0.011 dB.
-Treatment B scored 2.082/2.017 dB, Q 2.017, balanced 2.049 and failed several
-frozen margins. Neither passes the conjunctive adoption gate. The exact winner
-rule therefore retains HLS-only T8 v2; no final refit or v3 was run. This is
-grouped non-test evidence only, not a T9 result. Model development ends at this
-branch; T9 remains separately authorized, sealed, and unexecuted.
+[T9 final held-out results](T9_FINAL_HELDOUT_EVALUATION.md) evaluate the frozen
+171,313-parameter HLS-only Conv-TasNet v2 on 225 prescribed conditions across
+five heart and nine lung sources at five levels. The evaluation finished for
+the exact four frozen methods with 900 rows and zero failures. Final model
+Heart/Lung SI-SDRi was 1.849/2.333 dB (family-pair macro); Fixed Filter was
+0.362/−2.447 dB and Generic NMF −2.466/−3.407 dB. These results describe this
+controlled HLS-CMDS manikin/source-family test only; the test is consumed and
+there is no post-test tuning or application integration in this checkpoint.
+
+The preceding [pre-T9 model-comparison record](FINAL_PRE_T9_MODEL_EXECUTION.md)
+remains the model-selection evidence: both treatments failed the unmodified
+gate, so v2—not Treatment A—was frozen before T9.
 
 [Frozen decision design and normative protocol](FINAL_MODEL_REPRESENTATION_REVIEW.md).
 
