@@ -1,5 +1,14 @@
 # M1 identity and authorization implementation and test notes
 
+## Superseding local ML milestone — 29 September 2026
+
+[Frozen-model integration](LOCAL_ML_INTEGRATION.md) documents actual local
+request/job/worker/result execution, private generated audio, provenance,
+capture and assigned review. Older unavailable separation/capture statements
+are superseded for the local branch only. The live M1 release is unchanged.
+No model training, T9 reuse or deployment occurred; historical provider/security
+evidence retains its original scope.
+
 ## Production continuation — 27 September 2026
 
 The corrected release `921c40d` is now deployed. Real public Google Admin/Staff

@@ -1,6 +1,25 @@
 # Implementation status and evidence conventions
 
-## Current ML checkpoint — T9 final held-out evaluation complete, 29 September 2026
+## Current application checkpoint — local frozen-model integration, 29 September 2026
+
+**IMPLEMENTED LOCALLY / TESTED LOCALLY / FINAL ML EVALUATION COMPLETE /
+PRODUCTION ML INTEGRATION NOT YET DEPLOYED.**
+
+[Local integration evidence](LOCAL_ML_INTEGRATION.md) connects record/upload,
+one separation action, durable jobs, one hash-verified CPU worker, private
+heart/lung WAVs, provenance and authorized review. Five focused tests/five
+real-local browser groups passed; the broader campaign resolved137 cases and26
+subtests passing, with14 mock browser groups passing. Harness corrections and
+failed attempts remain recorded. Generated outputs follow owner/exact-grant
+rules; admin has no blanket access. Capture used a fake microphone, not physical
+stethoscope hardware. No new real-provider or production acceptance is claimed.
+
+Frozen v2 and T9 evidence remain unchanged. Model selection is closed; T9 was
+not reused. No training/tuning. Existing production M1, owl/theme and FYP1 remain
+unchanged. Worker deployment/migration/provisioning require owner approval.
+This supersedes only older local integration-pending statuses below.
+
+## Completed ML checkpoint — T9 final held-out evaluation, 29 September 2026
 
 **T9 HELD-OUT FINAL EVALUATION COMPLETE / FINAL MODEL HLS-ONLY T8 V2 /
 MODEL SELECTION CLOSED / FINAL TEST CONSUMED / NOT YET INTEGRATED.**

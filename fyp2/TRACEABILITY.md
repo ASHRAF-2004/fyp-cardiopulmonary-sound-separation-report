@@ -1,6 +1,27 @@
 # FYP2 requirements design code and evidence register
 
-## Final representation/objective decision — 29 September 2026
+## Current final-model and local application trace — 29 September 2026
+
+This supersedes proposed-ensemble and integration-pending rows for the local
+branch. Historical requirements/negative results remain below; no FYP1 or
+questionnaire record is rewritten.
+
+| Requirement | Design → implementation | Actual evidence / remaining boundary |
+| --- | --- | --- |
+| R07/R08/R09 one request/method/failure | Frozen v2 → `app/m1/frozen_model.py`, unchanged inference | Exact hashes/171313 parameters/strict load; no substitute model; T9 separately complete |
+| R10 nonblocking durability | Existing jobs/results+migration002 → `processing_store.py`, `worker.py` |202, transactional claim, uniqueness, exclusive lock, bounded recovery; local pass |
+| R03/R11 private persistent outputs | Existing files/resources+protected media | Two finite60000-sample outputs, provenance, owner access/anonymous401/outsider403, restart/session persistence |
+| R02/R12/R13 grants/review/admin privacy | Existing UID/status/role/owner/exact-grant policy | Explicit analyst metadata/audio pass; non-assigned/revoked denied; admin not privileged for private audio |
+| R04/R05 record/upload | PCM validation+AudioWorklet→same API | Synthetic upload/fake microphone pass; physical hardware unverified |
+| R14 valid evaluation | Pre-test choice→one-shot T9→immutable record | Heart/Lung SI-SDRi1.849/2.333dB,225 conditions, zero failures; no reuse/tuning |
+| R15/R16 usability/visual identity | Existing components+live status/players | Five real-local browser groups and14 mock regression groups; owl/CSS/art unchanged; no clinical UAT |
+| R17 deployment/resource/recovery | One CPU worker+opt-in Compose/runbook | Local15s inference0.035s, peak process560.914MiB; deployment NOT performed |
+| R18 evidence integrity | Source/artifact hashes→chapter5/6/7 records | Training, non-test selection, final T9 and app acceptance separated; FYP1 preserved |
+
+See [local integration](LOCAL_ML_INTEGRATION.md), [T9](T9_FINAL_HELDOUT_EVALUATION.md)
+and [final model comparison](FINAL_PRE_T9_MODEL_EXECUTION.md).
+
+## Historical representation/objective design — 29 September 2026
 
 - R08/R09:390450-parameter complex-mask TF candidate and171313-parameter
   TCN+spectral objective defined; neither trained/selected as final. V2 preserved.

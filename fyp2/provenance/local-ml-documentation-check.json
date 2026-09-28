@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-29",
+  "scope": "FYP2 working HTML only; no FYP1 build or university submission certification",
+  "quarto_version": "1.10.18",
+  "browser_version": "151.0.7922.137",
+  "source": "fyp2/paper.qmd",
+  "source_sha256": "8dd84ed4fdb32e5cc5908674671347bb6fd247bedb68d2446bea348bf9a1f58c",
+  "html": "fyp2/_build/fyp2-preparation.html",
+  "html_sha256": "735632e3cce37ad8e8505ccf14490edc9af6c1021af3daaf70f20c2a2beb2a86",
+  "checks": "fyp2/output/playwright/ml-integration-final-2026-09-29/fyp2-html-check.json",
+  "checks_sha256": "ed7ad427cd38da68944fe110bc9af6ee98f8e89bcba486b5662c7b2fddae90cd",
+  "viewports": [1440, 360],
+  "headings_per_viewport": 8,
+  "horizontal_overflow": false,
+  "page_console_errors": 0,
+  "external_requests": 0,
+  "desktop_visual_inspection": "Readable sections and metric tables, no visible clipping/overlap",
+  "initial_check": "360px overflow with combined metric table; split by source without changing values; final check passed",
+  "generated_html_and_screenshots_committed": false,
+  "implementation_evidence_sha256": "b9804f256036143af9b35741bc9a6df7fab8f114e52bd1736358fbe69e323521"
+}

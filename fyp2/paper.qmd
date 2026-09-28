@@ -2,39 +2,69 @@
 title: "Machine Learning-Based System for Cardiopulmonary Sound Separation"
 subtitle: "FYP2 preparation outline"
 author: "AL-SALOUL, ASHRAF ALI HUSSEIN"
-date: "2026-09-26"
+date: "2026-09-29"
 output-file: fyp2-preparation.html
 ---
 
-This editable working starter follows the confirmed application-based seven-chapter structure in the local FYP Handbook T2610 and the M1 continuation pack. Current FYP2 rubric, template and submission instructions still need reconciliation. It is not a completed FYP2 report or final submission template. The existing FYP1 submission remains unchanged. StethoFuse is the product brand, not a replacement academic title. The confirmed production target is stethofuse.ashraf-alsaloul.com, not a claim of live deployment.
+This editable working report follows the confirmed application-based seven-chapter structure in the local FYP Handbook T2610 and the M1 continuation pack. Current rubric/template reconciliation remains open; this is not a final submission artifact. FYP1 and the registered academic title are unchanged. The existing authenticated M1 application is deployed; the newly completed ML integration is tested locally and is **not yet deployed**.
 
 # Introduction
 
-Develop the problem, objectives, scope, limitations, methodology and intended stakeholders using the submitted revision and the approved change record. Preserve the no-diagnosis boundary. Explain persistent multi-user recording management and the question of whether ensemble fusion helps; do not promise improvement.
+StethoFuse supports private recording management, heart/lung sound separation and authorized review, not diagnosis. Original objectives and stakeholder evidence remain those of the submitted revision and approved change history. Ensemble approaches were investigated, but the frozen final separator is a standalone compact Conv-TasNet. Research performance and application workflow acceptance are reported separately.
 
 # Literature Review
 
-Retain original review provenance and separately log any new search. Reconcile exact candidate papers, code, licenses, checkpoints and domain suitability before claiming named reproductions. Distinguish baseline NMF/VMD from literature-faithful NMF/NMCF and the complete DAE-NMF-VMD pipeline. No performance values are supplied in this starter.
+Original review provenance remains preserved. Generic NMF is not presented as a reproduction of literature-specific NMF/NMCF or a complete DAE-NMF-VMD pipeline. The own-model research chronology includes bounded Conv-TasNet tuning, rejected external clinical pretraining, rejected native-triplet supervision and a promising but unselected TF U-Net. Original method/dataset references remain in the source register; no new literature or unsupported published-score comparison is introduced by application integration.
 
 # Requirements Analysis
 
-Preserve the original 53-response questionnaire and limitations. Version original F/NF/UR/UC identifiers and link the 52 continuation requirements without erasing the initial R01-R18 summaries. Separate original elicitation, implementation-driven revision and planned post-deployment feedback. Add identity, backend ownership/roles, persistent audio, explicit review, administration and one ensemble request through the traceability register. Any new target-user findings require genuine evidence.
+The original 53-response questionnaire and its limitations are preserved. The traceability register connects original identifiers and continuation requirements to identity, backend ownership/roles, private audio, review and one separation action. The final selected method supersedes the earlier proposed ensemble implementation without erasing that design history. No new stakeholder feedback or clinical acceptance is claimed.
 
 # System Design
 
-Document context, roles/trust boundaries, use cases, activities, components, domain model, protected storage, job lifecycle and authorized sequences. The separation design must resolve output compatibility, alignment, scale, residual handling, fusion and expert failure policy. Produce new diagrams without overwriting historical sources.
+The current design reuses the existing Firebase identity boundary, FastAPI authorization and SQLite job/result/resource model. An owner requests separation, receives a durable job immediately and later retrieves authorized outputs. One offline CPU worker verifies and loads the frozen model once. Private files are verified before a single result-publication transaction. Exact resource grants remain authoritative; neither administrator status nor an unrelated job grants audio access. A failed model run fails visibly without an alternative method.
 
 # Implementation
 
-The pre-M1 foundations comprise a fictional frontend, a legacy FastAPI/SQLite individual-strategy workflow and a standalone access-control harness. M1 is integrating real authentication and protected application paths; its precise code/test status is maintained in the separate M1 implementation and test notes. Use implemented, integrated, tested, verified live, planned, simulated and blocked distinctly. Mocked identities do not prove real Firebase operation, and intended administrator email is not a UID or privilege rule. Synthetic audio, simulated jobs and candidate expert names do not establish real ensemble inference.
+The final model is HLS-only T8 v2: Conv-TasNet N64/B32/H64 with 171,313 parameters, trained before T9 from seed 20260928 for exactly 576 updates on 45 heart and 41 lung non-test sources. Application code verifies its checkpoint/specification hashes and pinned CPU environment, then calls the unchanged inference implementation: 4-kHz mono audio, 10-second windows, 8-second hop, 2-second overlap, fixed heart/lung outputs and equal-residual mixture consistency. There is no projection, ensemble or application training path.
+
+Record/upload, metadata review, one Separate action, queued/processing/ready/failed state and protected heart/lung playback are now implemented locally. SQLite transactions, an exclusive worker lock and a unique recording/model job identity prevent concurrent duplication. Interrupted work has one bounded retry; normal failures remain failed. Both private float32 WAVs and complete model/input/output/runtime provenance are linked atomically. Browser capture previews PCM WAV before using the same upload endpoint. Existing owl/theme/navigation and UID-based owner/grant/assignment rules are preserved.
+
+Exact code identities, migration, routes, failure behavior and deployment preparation are in [the local integration evidence](LOCAL_ML_INTEGRATION.md). The live M1 release remains unchanged; model provisioning, production migration and worker activation require separate owner approval.
 
 # Testing
 
-Keep prior demo browser evidence dated and scoped. Add actual unit/API/system/persistence/access tests and controlled held-out individual-versus-ensemble evaluation when authorized and run. Record heart/lung measurements separately, dataset splits, reference mapping, runtime and negative findings. Physical device tests, target-user acceptance and deployment recovery remain evidence gates.
+Training fit, non-test model selection, final held-out evaluation and application acceptance are distinct. The approximately 3.1-dB historical narrow validation is not the five-fold/eight-family-pair grouped control (Heart/Lung SI-SDRi 2.013/1.913 dB). Neither is a score for the final refitted endpoint. That endpoint's first held-out evidence is the completed one-shot T9 evaluation, which remains consumed and was not rerun for integration.
+
+The frozen 225-condition HLS-CMDS T9 family-pair macro results are shown by source.
+
+Heart (dB):
+
+| Method | SI-SDR | SI-SDRi |
+| --- | ---: | ---: |
+| Mixture | −0.037 | 0.000 |
+| Fixed Filter | 0.325 | 0.362 |
+| Generic NMF | −2.503 | −2.466 |
+| Conv-TasNet v2 | 1.813 | 1.849 |
+
+Lung (dB):
+
+| Method | SI-SDR | SI-SDRi |
+| --- | ---: | ---: |
+| Mixture | −0.037 | 0.000 |
+| Fixed Filter | −2.484 | −2.447 |
+| Generic NMF | −3.444 | −3.407 |
+| Conv-TasNet v2 | 2.296 | 2.333 |
+
+All four methods completed with zero failures. Under this controlled protocol only, Conv-TasNet improved both sources and exceeded these two comparators. The 225 correlated conditions comprise two family pairs, not 225 independent patients. [The frozen T9 record](T9_FINAL_HELDOUT_EVALUATION.md) contains family/level distributions, provenance and limitations.
+
+Local integration acceptance used generated PCM/fake microphone input and fictional identities, but the real API, database, private storage and frozen model. Five focused tests and five browser workflow groups passed; a broader campaign resolved 137 cases plus 26 subtests and 14 mock browser groups passing. Environment/harness failures and targeted corrections are preserved in the evidence, not hidden. Checks covered authorization/revocation, hash failure, inference/storage failure, restart recovery, duplicate prevention and persisted results. A 15-second generated input took about 0.035 seconds of inference with 560.914 MiB peak process RSS including test harness overhead; this is not a production SLA or quality measurement. Physical hardware, clinical/user acceptance and production ML deployment remain separate gates.
 
 # Conclusion
 
-Complete after implementation and test evidence is available. State achieved objectives, measured findings, limitations and remaining work without converting planned benefits into results.
+The final model and private end-to-end application path are implemented and tested locally. Their evidence supports controlled sound separation and authorized review, not diagnosis or patient-level clinical generalization. Limitations include the manikin domain, few independent families, synthetic mixtures, modest improvement and extreme source-level weaknesses. AV Block × Coarse Crackles was the harder T9 family pair; these observations did not trigger any retuning.
+
+External pretraining and native-triplet supervision were rejected for negative transfer. TF U-Net Treatment A improved all eight non-test pair means and all five fold Q scores, but its gains missed the predeclared +0.50-dB gates by approximately 0.0145 dB Q and 0.0114 dB balanced mean. The gate was respected; it was not evaluated on T9 or integrated. Further model research would require fresh independent evaluation. Current work stops for owner review of the prepared production deployment; no deployment, model change or T9 reuse is authorized by this completed milestone.
 
 # Preparation references {.unnumbered}
 

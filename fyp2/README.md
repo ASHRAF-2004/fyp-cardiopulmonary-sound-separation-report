@@ -8,6 +8,8 @@ Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](..
 - [Requirement history and continuation identifiers](REQUIREMENTS_HISTORY.md)
 - [Status and evidence conventions](STATUS_AND_EVIDENCE.md)
 - [M1 implementation and test notes](M1_IMPLEMENTATION_AND_TEST_NOTES.md)
+- [Final frozen-model local application integration](LOCAL_ML_INTEGRATION.md)
+- [Final T9 evidence (consumed, not rerun)](T9_FINAL_HELDOUT_EVALUATION.md)
 - [M1 local guidance and source audit](provenance/M1_SOURCE_AUDIT.md)
 - [Source register and missing guidance](provenance/SOURCE_REGISTER.md)
 - [Candidate method attribution](provenance/METHOD_ATTRIBUTION.md)

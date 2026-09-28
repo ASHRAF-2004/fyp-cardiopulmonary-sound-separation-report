@@ -1,5 +1,19 @@
 # Separate FYP2 authoring and build plan
 
+## Local ML evidence update — 29 September 2026
+
+The existing Quarto1.10.18 executable rendered only `fyp2/paper.qmd` after the
+new chapter5/6/7 evidence was added. No submitted/FYP1 input or revision script
+was executed. The first360px HTML check found the five-column metric table too
+wide; it was split into separate Heart/Lung three-column tables, with all frozen
+values unchanged. The first desktop capture remains in the ignored local QA
+directory. The final desktop1440px/mobile360px check passed: eight section
+headings, no horizontal overflow, no page/console errors or external requests.
+This is working-report HTML QA, not university submission layout certification.
+Raw QA: `fyp2/output/playwright/ml-integration-final-2026-09-29/` (ignored);
+the new screenshot directories are intentionally not committed. See the local
+integration record and compact build receipt for source/evidence hashes.
+
 This preparation does not rebuild or modify the submitted FYP1 report. The editable starter in this directory is a small, separately configured QMD outline; it is not synchronized report text and is not a verified final Word/PDF artifact.
 
 ## Inspected existing workflows
