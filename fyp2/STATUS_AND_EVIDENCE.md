@@ -1,6 +1,43 @@
 # Implementation status and evidence conventions
 
-## Current ML checkpoint — pre-T9 diagnosis, 28 September 2026
+## Current ML checkpoint — external-data pilot and HLS-only refit, 29 September 2026
+
+**EXTERNAL DATA QUALIFIED / EXTERNAL TRANSFER PILOT FAILED ADOPTION /
+HLS-ONLY FINAL REFIT COMPLETE / REPLACEMENT T8 FROZEN /
+T9 SEALED / NOT DEPLOYED.**
+
+[External-data programme evidence](EXTERNAL_DATA_TRAINING.md) supersedes the
+older next-step statements below. CirCor/SPRSound contributed qualified
+imperfect Tier-B targets, not isolated clean references. The frozen pilot
+trained for 2,304 updates and completed matched HLS non-test grouped-family
+transfer evaluation. At the preselected 576-update HLS budget, macro heart/lung
+SI-SDRi was 2.013/1.913 dB for HLS-only control versus 1.860/1.586 dB for external-
+pretrained treatment; Q fell 0.328 dB. Only 3/8 family-pair balanced means and 1/5 fold
+Q scores improved. The unchanged adoption gate failed despite zero numerical
+failures. No full external scale-up, additional capacity variant or rescue
+tuning was executed. Historical approximately 3.1 dB original-split performance
+is not directly comparable to these broader held-out-family folds.
+
+The qualified fallback then completed one fresh HLS-only refit on 45 heart/41 lung
+non-test sources, seed 20260928, exactly 576 updates, 75.179 s, peak 1,012.695 MiB,
+zero numerical failures. It started from clean implementation
+`7eefa37100bb40d878d48b84b3811557ce98512b`; no external checkpoint or optimizer
+state was loaded. Endpoint SHA-256:
+`1f7e549ba53240bc085221e4eed1f935bb7c330e9a66cfab4c183c8f096c2658`.
+This endpoint has not been assigned held-out performance or claimed superior
+to original T8. The separate `final_separator_v2.json` anchors it and records
+version 1 as superseded before T9, while preserving version 1 bytes, checkpoint
+and provenance. New specification SHA-256:
+`2573ae06b11aafc595a4cdb179e3ab0c9f7fbe37859863dcd36a5d8c70210b1b`.
+Strict-load and synthetic-only shape/finite/consistency checks passed. The full
+T9 protocol and inference behavior remain unchanged. READY FOR T9 WITH
+ORIGINAL/HLS-ONLY T8 (version 2), pending separate execution authorization.
+
+**T9 has not been opened or scored.** No application/frontend integration,
+demographic input/classifier, production change or deployment occurred. FYP1
+remains unchanged. Stop before T9 even after replacement-freeze completion.
+
+## Pre-T9 diagnosis — 28 September 2026 (historical checkpoint)
 
 **T8 PRESERVED / DIAGNOSIS COMPLETE / ONE INTERVENTION DESIGNED, NOT EXECUTED /
 T9 SEALED / NOT DEPLOYED.** [Diagnosis and planned handoff](PRE_T9_PLATEAU_DIAGNOSIS.md)
