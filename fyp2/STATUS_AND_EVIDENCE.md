@@ -1,6 +1,20 @@
 # Implementation status and evidence conventions
 
-## Current ML checkpoint — native HLS pilot complete, 29 September 2026
+## Current ML checkpoint — final model comparison designed, 29 September 2026
+
+**T8 V2 FROZEN / FINAL MODEL REPRESENTATION REVIEW DESIGNED /
+TREATMENTS NOT YET TRAINED / T9 SEALED / NOT DEPLOYED.**
+
+[Final representation/objective review](FINAL_MODEL_REPRESENTATION_REVIEW.md)
+predeclares two final treatments:390450-parameter complex-mask TF U-Net with
+existing loss; unchanged171313-parameter TCN plus single-resolution log1p
+spectral loss,lambda6. Tiny analytical/gradient/shape probes used zero optimizer
+steps. Five-fold control reuse and the strict multi-family adoption gate are
+frozen. No full treatment, capacity training, final refit or newT8 was executed.
+V2 remains the fallback. If neither treatment later passes, model development
+ends. This is the latest planning checkpoint, not new performance evidence.
+
+## Native HLS pilot complete, 29 September 2026 (preserved checkpoint)
 
 **NATIVE FORENSICS COMPLETE / QUALIFIED WAVEFORM PILOT FAILED ADOPTION /
 HLS-ONLY T8 V2 RETAINED / T9 SEALED / NOT DEPLOYED.**

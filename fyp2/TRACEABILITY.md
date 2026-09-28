@@ -1,5 +1,15 @@
 # FYP2 requirements design code and evidence register
 
+## Final representation/objective decision — 29 September 2026
+
+- R08/R09:390450-parameter complex-mask TF candidate and171313-parameter
+  TCN+spectral objective defined; neither trained/selected as final. V2 preserved.
+- R14: exact STFT/loss/lambda/initialization,576-update five-fold control reuse,
+  adoption/ranking rules and conditional sole-endpoint refit predeclared.
+  Analytical probes only,zero optimizer updates; no final-test claims.
+- R10 application integration and all production/frontend work remain excluded.
+  T9 sealed. See [final bounded model review](FINAL_MODEL_REPRESENTATION_REVIEW.md).
+
 ## Native HLS audit and bounded transfer result — 29 September 2026
 
 - R08 source/expert validity:535-file release and145triplet mapping verified;
