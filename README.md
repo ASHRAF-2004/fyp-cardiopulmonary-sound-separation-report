@@ -1,5 +1,10 @@
 # FYP1 Report: Cardiopulmonary Sound Separation
 
+FYP2 model evidence is maintained separately under `fyp2/`. The latest
+pre-T9 model-comparison result is
+[`fyp2/FINAL_PRE_T9_MODEL_EXECUTION.md`](fyp2/FINAL_PRE_T9_MODEL_EXECUTION.md);
+the comparison retained HLS-only T8 v2 and did not access the held-out test.
+
 ## Project Information
 
 | Item | Details |

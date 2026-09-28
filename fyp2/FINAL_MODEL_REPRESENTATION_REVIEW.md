@@ -1,7 +1,9 @@
-# Final pre-T9 model representation/objective review
+# Final pre-T9 model representation/objective review — design record
 
-29 September 2026. **T8 V2 FROZEN / FINAL REPRESENTATION REVIEW DESIGNED /
-TREATMENTS NOT YET TRAINED / T9 SEALED / NOT DEPLOYED.**
+29 September 2026. This file preserves the **pre-execution design**. The two
+authorized treatments have since run and neither passed the frozen adoption
+gate. See [the execution record](FINAL_PRE_T9_MODEL_EXECUTION.md). The result
+is **HLS-only T8 V2 retained / T9 sealed / not deployed**.
 
 Implementation planning/probe commit:
 `c582159e80540a83197ba57071f1468b276f721b`.

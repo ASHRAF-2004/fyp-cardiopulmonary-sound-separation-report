@@ -1,18 +1,21 @@
 # Implementation status and evidence conventions
 
-## Current ML checkpoint — final model comparison designed, 29 September 2026
+## Current ML checkpoint — final model comparison complete, 29 September 2026
 
-**T8 V2 FROZEN / FINAL MODEL REPRESENTATION REVIEW DESIGNED /
-TREATMENTS NOT YET TRAINED / T9 SEALED / NOT DEPLOYED.**
+**FINAL COMPARISON COMPLETE / BOTH TREATMENTS FAILED THE FROZEN GATE /
+HLS-ONLY T8 V2 RETAINED / T9 SEALED / NOT DEPLOYED.**
 
-[Final representation/objective review](FINAL_MODEL_REPRESENTATION_REVIEW.md)
-predeclares two final treatments:390450-parameter complex-mask TF U-Net with
-existing loss; unchanged171313-parameter TCN plus single-resolution log1p
-spectral loss,lambda6. Tiny analytical/gradient/shape probes used zero optimizer
-steps. Five-fold control reuse and the strict multi-family adoption gate are
-frozen. No full treatment, capacity training, final refit or newT8 was executed.
-V2 remains the fallback. If neither treatment later passes, model development
-ends. This is the latest planning checkpoint, not new performance evidence.
+[Final comparison execution evidence](FINAL_PRE_T9_MODEL_EXECUTION.md) records
+both authorized treatments under the five-fold/eight-family-pair protocol.
+Treatment A scored Heart/Lung SI-SDRi 2.504/2.399 dB, Q 2.399, balanced 2.452;
+it missed frozen ΔQ and Δbalanced thresholds by approximately 0.015/0.011 dB.
+Treatment B scored 2.082/2.017 dB, Q 2.017, balanced 2.049 and failed several
+frozen margins. Neither passes the conjunctive adoption gate. The exact winner
+rule therefore retains HLS-only T8 v2; no final refit or v3 was run. This is
+grouped non-test evidence only, not a T9 result. Model development ends at this
+branch; T9 remains separately authorized, sealed, and unexecuted.
+
+[Frozen decision design and normative protocol](FINAL_MODEL_REPRESENTATION_REVIEW.md).
 
 ## Native HLS pilot complete, 29 September 2026 (preserved checkpoint)
 
