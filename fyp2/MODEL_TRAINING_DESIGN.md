@@ -1,18 +1,21 @@
 # Own separator training design — ADR T01
 
-28 September 2026. **BASELINE TRAINED; VALIDATION EVALUATED; TUNING DESIGNED /
-NOT EXECUTED; FINAL TEST SEALED; NOT DEPLOYED.** This is Application-Based FYP2 methodology and
-validation evidence, not a held-out final result. Production and submitted FYP1
-remain unchanged. The full
+28 September 2026. **BASELINE AND ONE T7 WIDTH VARIANT TRAINED; ONE SEED
+CONFIRMATION COMPLETED; VALIDATION EVIDENCE ONLY; FINAL TEST SEALED; NOT
+DEPLOYED.** This is Application-Based FYP2 methodology and validation evidence,
+not a held-out final result. Production and submitted FYP1 remain unchanged. The full
 [implementation training plan](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/STETHOFUSE_MODEL_TRAINING_PLAN.md)
 contains exact equations, baseline YAML, source manifest and Luna phases.
 
 ## Chapter 2 — Architecture decision and provenance
 
-Select **StethoFuse-ConvTasNet-4k-v1**: compact non-causal waveform separation,
-trained from scratch, fixed output0=heart/output1=lung. It uses torchaudio2.11.0
-ConvTasNet (BSD-2-Clause), our target-free mixture-consistency wrapper, and our
-training process/weights. No NeoSSNet code/weights in this production path.
+Select the **StethoFuse-ConvTasNet-4k** compact non-causal waveform-separation
+family, trained from scratch with fixed output0=heart/output1=lung. It uses
+torchaudio2.11.0 ConvTasNet (BSD-2-Clause), our target-free mixture-consistency
+wrapper, and our training process/weights. The original 645,681-parameter
+profile is the baseline control; the smaller 171,313-parameter profile narrowly
+ranked first on the frozen validation selector and is the current research
+candidate. Neither is deployed. No NeoSSNet code/weights are in this path.
 
 Luo and Mesgarani (2019) support learned waveform encoding/decoding and dilated
 depthwise temporal separation for speech, **not demonstrated cardiopulmonary
@@ -164,14 +167,14 @@ hash are in the implementation execution receipt.
 
 **The final test partition remains sealed:** no test audio was decoded, no test
 recipes were generated, and no test metrics were computed. The model is not
-integrated or deployed. Owner review is required before any T7 tuning, final
-freeze, or one-shot test.
+integrated or deployed. Owner review is required before any final freeze or
+one-shot test.
 
-### T7 saved-log diagnosis and tuning decision — not executed
+### T7 width experiment and one seed confirmation — validation only
 
-The baseline remains **KEEP BASELINE**, the valid first trained candidate and
-control. This decision read existing metric/recipe JSON only: no model run,
-audio access, new tests, test-set access or production change.
+The baseline remains a valid control. The predeclared small-width profile was
+evaluated offline after the bounded gate passed. This is validation evidence,
+not a final-test result or a production model selection.
 
 | Validation family pair | Conditions | Heart mean SI-SDRi | Lung mean SI-SDRi |
 | --- | ---: | ---: | ---: |
@@ -200,27 +203,34 @@ per-component gradient or validation-L1 history was saved. Overfit/generalizatio
 pressure is plausible, but excessive capacity is not established; narrow
 validation coverage and family/level heterogeneity limit the causal conclusion.
 
-**One T7 variant:** the already-designed N64/B32/H64 Conv-TasNet, **170,545
-parameters**, scratch seed **20260928**. Width is the only primary factor;
-depth/context, loss coefficient 5, AdamW/decay/LR/scheduler, sampling, labels,
-inference and stopping remain fixed. This tests capacity sensitivity; it may
-underfit or lose. The owner's later request permits this profile as a tuning
-hypothesis, extending its original resource-only purpose. It must pass the same
-bounded two-development-example capacity gate before fresh full training.
-**Variant 2: NONE.** No evidence specifically selects a loss, decay or new
-augmentation experiment; preserve the small validation-selection budget.
+The sole variant used the smaller N64/B32/H64 Conv-TasNet, scratch seed
+**20260928**. Its actual pinned-library count is **171,313 parameters** (the
+design estimate was 170,545); width alone changed. It passed the two-example
+development gate and was then trained fresh for 17 epochs, selecting epoch 8.
+Validation macro H/L SI-SDRi was **3.101/3.130 dB**, Q **3.101 dB**, balanced
+mean **3.116 dB**, zero failures. The existing 645,681-parameter baseline
+scored Q **3.035 dB** and mean **3.057 dB**. The small profile's margins
+(+0.066 dB Q, +0.059 dB mean) are descriptive only given two family-pair
+groups; they do not establish superiority. Both small-model sources improved
+on average. Family-pair and relative-level details, runtime and checkpoint
+hash are preserved in the linked implementation decision record.
 
-Select configuration with unchanged weaker-source Q and average tie-break;
-baseline remains eligible. Then run **one confirmation seed 20260929** for that
-configuration, changing initialization and keyed training draws, not validation.
-Keep its original **20260928** checkpoint; never choose the more favorable seed.
-The confirmation assesses stochastic sensitivity, not independent-family
-generalization. Instability requires owner review, not extra seeds or tuning.
+Configuration selection occurred on seed 20260928 **before** one fresh
+seed-20260929 robustness confirmation. That run selected epoch 4 (16 epochs),
+with H/L SI-SDRi **3.332/3.328 dB**, Q **3.328 dB**, balanced mean **3.330 dB**,
+zero failures. Its higher score does not replace the canonical seed-20260928
+checkpoint. Across only two family-pair groups and correlated level conditions,
+the family/level behavior differs enough that seed robustness is **UNCERTAIN**,
+not established. No second variant or further seed was run. Variant 2 remains
+**NONE**; the loss, optimizer, sampler and all other settings stayed frozen.
 
 Exact evidence, deltas, hashes, future runner changes and stop criteria:
 [T7 decision](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/T7_TUNING_DECISION.md)
 and [Luna handoff](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/T7_LUNA_HANDOFF.md).
-No T7 result or superiority claim exists yet.
+The small configuration is the selected validation candidate for subsequent
+system-level validation work, not a final model. No superiority, clinical
+performance, subject/device generalization, or deployment claim is supported.
+The final test remains sealed.
 
 ### T0–T4 offline pipeline evidence — not trained-model results
 
@@ -266,10 +276,11 @@ same capacity gate. No automatic paid compute, GPU setup or model search.
 
 ## Handoff and requirements traceability
 
-T0–T6 are complete and checkpointed; T7 is designed, not executed. **Next,
-owner review/authorization is required before executing the one-variant T7
-handoff.** Stop after comparison and one seed confirmation. No broad application
-regression was run; production and application behavior were not changed.
+T0–T7 are complete and checkpointed. **Next, separately authorize the
+validation-only ensemble reconsideration before freezing the complete
+separation system and opening the held-out test once.** No ensemble was
+evaluated during T7. No broad application regression was run; production and
+application behavior were not changed.
 
 Own artifacts belong in ignored `.local/training/stethofuse-tcn-v1/<run-id>/`
 with immutable config/manifest, recipes/RNG/version/device provenance, all
