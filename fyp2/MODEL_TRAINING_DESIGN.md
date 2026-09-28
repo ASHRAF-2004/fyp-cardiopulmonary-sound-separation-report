@@ -1,8 +1,9 @@
 # Own separator training design — ADR T01
 
-28 September 2026. **DESIGNED / PLANNED / NOT YET TRAINED / NOT YET EVALUATED.**
-This is Application-Based FYP2 design/methodology, not Chapter5/6 training or
-separation results. Production and submitted FYP1 remain unchanged. The full
+28 September 2026. **DESIGNED; BASELINE TRAINED; VALIDATION EVALUATED; FINAL
+TEST NOT RUN; NOT DEPLOYED.** This is Application-Based FYP2 methodology and
+validation evidence, not a held-out final result. Production and submitted FYP1
+remain unchanged. The full
 [implementation training plan](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/STETHOFUSE_MODEL_TRAINING_PLAN.md)
 contains exact equations, baseline YAML, source manifest and Luna phases.
 
@@ -94,11 +95,10 @@ cycles balanced within each family; batch4 gives144 steps. Save source IDs/
 hashes, seeds, starts, gains and generated-array hashes. Generate mixtures on
 demand. No large redundant WAV corpus; crops do not increase independent N.
 
-## Chapters 5–6 — Planned training/evaluation methodology
+## Chapters 5–6 — Training/evaluation methodology and baseline evidence
 
-The T0–T4 data/model/objective and capped overfit runner are implemented offline.
-The **full baseline trainer/run (T5) is not implemented or started**. Its
-approved baseline configuration remains:
+The T0–T4 pipeline and T5 CPU baseline are implemented and executed offline.
+The approved baseline configuration used was:
 
 - Fixed-label mean negative SI-SDR plus **5×source-RMS-normalized waveform L1**.
   SI-SDR uses mean removal and the audited1e-8 energy epsilon; uncentered L1
@@ -135,6 +135,34 @@ failures and runtime. Positive absolute scores and improvement for both sources
 are gates, not promises. With45 remixed pairs and few held-out families, avoid
 naïve225-independent-row significance claims; use descriptive paired evidence.
 
+### T5/T6 baseline validation evidence — not final test
+
+The fresh-seed CPU baseline completed **20 epochs** and stopped under the
+configured 12-epoch early-stopping policy; best checkpoint was epoch8. Frozen
+selection used 225 validation-only conditions in two family-pair groups. Best
+family-pair macro results were Heart SI-SDR **3.031 dB**, SI-SDRi **3.035 dB**;
+Lung SI-SDR **3.075 dB**, SI-SDRi **3.079 dB**. The weaker-source selector was
+**3.035 dB**, tie-break mean **3.057 dB**; validation had zero failures. Both
+source SI-SDRi values were positive and close, but condition-level spread was
+substantial and only two family-pair groups contribute. These are limited
+development/validation findings, not final test results, subject-independent
+generalization, or a claim of clinical or comparative superiority.
+
+Training loss declined from1.397 (epoch1) to−3.706 (epoch20), while the best
+validation selector occurred at epoch8 and fluctuated afterward. LR followed
+the configured plateau schedule:0.001 through epoch6,0.0005 through12,0.00025
+through17, and0.000125 through20. Runtime was1,243.5s (20.72min), peak RSS
+2,078MiB on CPU. No nonfinite loss/gradient and zero validation failures were
+recorded. The run used fresh seed20260928 initialization; the T4 checkpoint was
+not loaded. Six existing focused training-contract tests passed; no new test
+campaign or application regression ran. Full run provenance and checkpoint
+hash are in the implementation execution receipt.
+
+**The final test partition remains sealed:** no test audio was decoded, no test
+recipes were generated, and no test metrics were computed. The model is not
+integrated or deployed. Owner review is required before any T7 tuning, final
+freeze, or one-shot test.
+
 ### T0–T4 offline pipeline evidence — not trained-model results
 
 The frozen T0–T4 pipeline is now **IMPLEMENTED OFFLINE** and the T4 capacity
@@ -153,8 +181,7 @@ not decoded or scored. Deterministic training recipes (576 draws/epoch) and
 and backward passed at645,681 parameters, with synthetic consistency error
 below2.4e−7. The whole-record wrapper implements10-s windows/8-s hop and passed
 a length/additivity check on synthetic input. Six focused training-contract
-tests passed. Full baseline training
-and model selection remain **NOT STARTED**; there are no model results yet.
+tests passed.
 The T4 execution used the then-uncommitted working tree at its recorded base
 HEAD; a clean source-tree snapshot was not captured. This reproducibility
 limitation is recorded in the run receipt, so this remains bounded engineering
@@ -171,17 +198,18 @@ Synthetic sizing probes only: final retained probe measured645,681 parameters,
 MiB process peak RSS at2 threads. Shapes/finite gradients/repeatability passed;
 weights unchanged, **zero optimizer steps**. Not quality/throughput guarantees.
 
-Estimate1.5–4 h for a CPU80-epoch baseline; replace with measured timing after3
-epochs. Stop/checkpoint above8-h projection or4-GiB memory. A single resource
+The first baseline took20.72min for20 epochs including per-epoch validation;
+observed epoch duration was about60–63s and peak RSS2,078MiB. This is a measured
+single-run observation, not a guarantee for another host. Stop/checkpoint above
+8-h projection or4-GiB memory. A single resource
 fallback uses the same TCN at N64/B32/H64(170,545 parameters), subject to the
 same capacity gate. No automatic paid compute, GPU setup or model search.
 
 ## Handoff and requirements traceability
 
-T0–T4 are complete and checkpointed. **Next, owner review is required before
-T5 baseline training.** The full plan defines baseline, validation, bounded
-tuning, final freeze and one-shot test. No broad application regression was
-run; production and application behavior were not changed.
+T0–T6 are complete and checkpointed. **Next, owner review is required before
+T7 tuning, final freeze, or the one-shot held-out test.** No broad application
+regression was run; production and application behavior were not changed.
 
 Own artifacts belong in ignored `.local/training/stethofuse-tcn-v1/<run-id>/`
 with immutable config/manifest, recipes/RNG/version/device provenance, all
