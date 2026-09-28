@@ -1,7 +1,7 @@
 # Own separator training design — ADR T01
 
-28 September 2026. **BASELINE AND ONE T7 WIDTH VARIANT TRAINED; ONE SEED
-CONFIRMATION COMPLETED; VALIDATION EVIDENCE ONLY; FINAL TEST SEALED; NOT
+28 September 2026. **T7 COMPLETE; VALIDATION-ONLY ENSEMBLE DECISION COMPLETE;
+SMALL TCN STANDALONE SELECTED; T8 FREEZE PREPARED; FINAL TEST SEALED; NOT
 DEPLOYED.** This is Application-Based FYP2 methodology and validation evidence,
 not a held-out final result. Production and submitted FYP1 remain unchanged. The full
 [implementation training plan](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/STETHOFUSE_MODEL_TRAINING_PLAN.md)
@@ -276,11 +276,14 @@ same capacity gate. No automatic paid compute, GPU setup or model search.
 
 ## Handoff and requirements traceability
 
-T0–T7 are complete and checkpointed. **Next, separately authorize the
-validation-only ensemble reconsideration before freezing the complete
-separation system and opening the held-out test once.** No ensemble was
-evaluated during T7. No broad application regression was run; production and
-application behavior were not changed.
+T0–T7 and the subsequent validation-only ensemble reconsideration are complete.
+**Decision B selects the original seed20260928 small TCN waveform standalone.**
+Existing Fixed Filter/NMF show weak and localized complementarity; no new
+fusion experiment is selected. The favorable TCN projection diagnostic is not
+automatically adopted as additional tuned postprocessing. Exact evidence and
+limitations are in [FINAL_ENSEMBLE_RECONSIDERATION.md](FINAL_ENSEMBLE_RECONSIDERATION.md).
+Next is metadata-only T8 freeze completion and owner review before T9. No final
+test, broad application regression or production change occurred.
 
 Own artifacts belong in ignored `.local/training/stethofuse-tcn-v1/<run-id>/`
 with immutable config/manifest, recipes/RNG/version/device provenance, all
@@ -295,8 +298,9 @@ baseline → bounded T7 → selected configuration → seed confirmation →
 **validation-only ensemble decision (legacy T10 moved before T8/T9)** → freeze
 the complete separation system → one owner-authorized held-out test. Do not
 test the single model and then use that result to choose/tune an ensemble;
-after testing, a newly tuned system needs untouched evaluation data. Ensemble requirement/default choice
-remains a later owner/FYP decision. Authentication, roles, jobs, storage,
+after testing, a newly tuned system needs untouched evaluation data. The
+ensemble is retained as an honestly reported research comparison; the selected
+application separator is standalone. Authentication, roles, jobs, storage,
 frontend, backups and production routing are unchanged. No clinical or
 superiority claim is made. Sources are recorded in
 [`provenance/ensemble-references.bib`](provenance/ensemble-references.bib).
