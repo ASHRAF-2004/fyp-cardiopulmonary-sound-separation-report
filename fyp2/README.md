@@ -12,6 +12,7 @@ Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](..
 - [Source register and missing guidance](provenance/SOURCE_REGISTER.md)
 - [Candidate method attribution](provenance/METHOD_ATTRIBUTION.md)
 - [Selected ensemble design and planned evaluation](ENSEMBLE_DESIGN_AND_EVALUATION.md)
+- [Pre-T9 generalization diagnosis and planned family-qualified refit](PRE_T9_PLATEAU_DIAGNOSIS.md)
 - [Baseline preservation record](provenance/BASELINE.md)
 - [Separate build plan](BUILD_PLAN.md)
 

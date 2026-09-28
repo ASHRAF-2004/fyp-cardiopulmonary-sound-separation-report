@@ -1,5 +1,10 @@
 # Own separator training design — ADR T01
 
+**Current continuation:** [pre-T9 diagnosis](PRE_T9_PLATEAU_DIAGNOSIS.md) classifies
+the limitation as DATA-LIMITED (medium confidence) and designs one grouped-family
+budget qualification →all-non-test refit. It has **not been executed**. The T8
+artifact below remains unchanged; T9 is on hold for owner review, not authorized.
+
 28 September 2026. **MODEL TRAINING COMPLETE; BOUNDED VALIDATION TUNING COMPLETE;
 FINAL ENSEMBLE RECONSIDERATION COMPLETE; FINAL SEPARATOR FROZEN; HELD-OUT TEST
 NOT YET EXECUTED; NOT DEPLOYED.** This is Application-Based FYP2 methodology and validation evidence,

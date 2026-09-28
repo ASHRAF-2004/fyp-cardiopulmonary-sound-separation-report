@@ -1,6 +1,18 @@
 # Implementation status and evidence conventions
 
-## Own-model training design — 28 September 2026 (current ML direction)
+## Current ML checkpoint — pre-T9 diagnosis, 28 September 2026
+
+**T8 PRESERVED / DIAGNOSIS COMPLETE / ONE INTERVENTION DESIGNED, NOT EXECUTED /
+T9 SEALED / NOT DEPLOYED.** [Diagnosis and planned handoff](PRE_T9_PLATEAU_DIAGNOSIS.md)
+supersede older next-step statements below. Data-limited generalization is the
+most supported classification (medium confidence); no objective, dB scaling,
+severe receptive-field or harmful-consistency defect was found. Family-held-out
+budget qualification then one conditional all-non-test refit is planned, not run.
+Zero optimizer updates this sprint; no test, application or production access.
+T8 spec/checkpoint hashes remain unchanged. Stop for owner review before any
+intervention and, separately, before T9. Historical findings remain preserved.
+
+## Own-model training design — 28 September 2026 (historical design checkpoint)
 
 **DESIGNED / NOT YET TRAINED / NOT YET EVALUATED.** The owner selected an
 own-weight path independent of NeoSSNet author contact. [ADR T01](MODEL_TRAINING_DESIGN.md)

@@ -1,5 +1,9 @@
 # Final validation-only ensemble reconsideration
 
+**Later pre-test review:** [plateau diagnosis](PRE_T9_PLATEAU_DIAGNOSIS.md) retains
+standalone/consistency/no-projection decisions. It proposes one future family-
+qualified refit; no intervention or T9 has run. Existing T8 bytes remain unchanged.
+
 28 September 2026. **MODEL TRAINING COMPLETE; BOUNDED VALIDATION TUNING COMPLETE;
 FINAL ENSEMBLE RECONSIDERATION COMPLETE; FINAL SEPARATOR FROZEN; HELD-OUT TEST
 NOT YET EXECUTED; NOT DEPLOYED.** Application-Based FYP2 design/validation evidence only. Submitted
