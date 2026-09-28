@@ -13,6 +13,8 @@ Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](..
 - [Candidate method attribution](provenance/METHOD_ATTRIBUTION.md)
 - [Selected ensemble design and planned evaluation](ENSEMBLE_DESIGN_AND_EVALUATION.md)
 - [Pre-T9 generalization diagnosis and planned family-qualified refit](PRE_T9_PLATEAU_DIAGNOSIS.md)
+- [External-data transfer result and HLS-only fallback](EXTERNAL_DATA_TRAINING.md)
+- [HLS native-triplet audit and completed negative pilot](HLS_NATIVE_TRIPLETS.md)
 - [Baseline preservation record](provenance/BASELINE.md)
 - [Separate build plan](BUILD_PLAN.md)
 

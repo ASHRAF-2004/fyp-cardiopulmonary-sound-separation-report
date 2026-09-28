@@ -1,6 +1,32 @@
 # Implementation status and evidence conventions
 
-## Current ML checkpoint — external-data pilot and HLS-only refit, 29 September 2026
+## Current ML checkpoint — native HLS pilot complete, 29 September 2026
+
+**NATIVE FORENSICS COMPLETE / QUALIFIED WAVEFORM PILOT FAILED ADOPTION /
+HLS-ONLY T8 V2 RETAINED / T9 SEALED / NOT DEPLOYED.**
+
+[Native HLS audit and pilot](HLS_NATIVE_TRIPLETS.md) is the latest pre-test
+checkpoint. Of145 triplets,45 were excluded without audio access. Of100
+assessed,27 had strong same-time common-gain closure;26 remained after exact
+deduplication. They add26 reference-file hashes, not new families or proven
+patients. Their acquisition/generation process is not sufficiently documented
+to claim new real-acoustic-mixture supervision. The other73 did not train.
+
+One fixed-weight treatment completed five matched576-update family folds from
+clean implementation `ff2f09e85f3bf67587015971d0ef20fcffdbb5f8`, seed20260928.
+Heart/lung macro SI-SDRi was2.050/0.832dB versus2.013/1.913dB control;
+Q fell1.082dB and balanced mean fell0.522dB. Only3/8pair means and2/5foldQ
+scores improved; zero numerical failures. Severe Fine Crackles lung regressions
+were finite negative transfer, not a demonstrated implementation defect.
+All frozen gate clauses except numerical-failure protection failed.
+
+No rescue tuning, native final refit, v3, additional seed or ensemble followed.
+The existing v2 specification/checkpoint hashes below remain unchanged, with
+v1 preserved. **READY FOR T9 WITH HLS-ONLY T8 V2**, pending separate owner
+authorization. No T9 audio, recipes, metrics or results; no production,
+application/frontend, demographic classifier or FYP1 changes.
+
+## External-data pilot and HLS-only refit, 29 September 2026 (preserved checkpoint)
 
 **EXTERNAL DATA QUALIFIED / EXTERNAL TRANSFER PILOT FAILED ADOPTION /
 HLS-ONLY FINAL REFIT COMPLETE / REPLACEMENT T8 FROZEN /

@@ -1,5 +1,22 @@
 # FYP2 requirements design code and evidence register
 
+## Native HLS audit and bounded transfer result — 29 September 2026
+
+- R08 source/expert validity:535-file release and145triplet mapping verified;
+  45triplets conservatively sealed/excluded,100assessed,26deduplicated affine-
+  additive triplets qualified. Exact reuse and a rejected cross-class label
+  contradiction prevent blanket clean/native-reference claims. No new families.
+- R14 reproducibility: committed protocol, fixed seed20260928/576updates,
+  unchanged synthetic stream plus0.25-weight native waveform loss, five matched
+  family folds/eightpairmeans. GateFAIL: ΔQ−1.082dB, ΔM−0.522dB, zero numerical
+  failures. Artifact/recipe/hash/family guards verified; no rescue rerun.
+- R08/R09 final separator: retain existing171313-parameter HLS-onlyv2; no v3,
+  projection, fusion or model-selection change. R10 integration remains separate
+  and unexecuted. T9 remains sealed; no production/frontend/FYP1 mutation.
+
+Evidence: [native audit and completed pilot](HLS_NATIVE_TRIPLETS.md).
+This updates the current ML checkpoint without rewriting earlier decisions.
+
 ## Reproduction qualification gate — 27 September 2026
 
 - R08 expert validity: strict released-checkpoint execution verified; one source
