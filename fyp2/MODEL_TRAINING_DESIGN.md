@@ -1,7 +1,7 @@
 # Own separator training design — ADR T01
 
-28 September 2026. **DESIGNED; BASELINE TRAINED; VALIDATION EVALUATED; FINAL
-TEST NOT RUN; NOT DEPLOYED.** This is Application-Based FYP2 methodology and
+28 September 2026. **BASELINE TRAINED; VALIDATION EVALUATED; TUNING DESIGNED /
+NOT EXECUTED; FINAL TEST SEALED; NOT DEPLOYED.** This is Application-Based FYP2 methodology and
 validation evidence, not a held-out final result. Production and submitted FYP1
 remain unchanged. The full
 [implementation training plan](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/STETHOFUSE_MODEL_TRAINING_PLAN.md)
@@ -111,8 +111,8 @@ The approved baseline configuration used was:
 - First intentionally overfit two fixed development mixtures: ≤400 updates/
   10 min; each source/case SI-SDRi≥10 dB and normalized L1 reduction≥50%.
   Failure blocks baseline. Discard those fitted weights and initialize afresh.
-- At most two diagnosed single-factor variants and one optional seed-sensitivity
-  run after baseline. No broad sweep or test feedback.
+- T7 decision below selects one smaller-width variant and one predeclared
+  seed-sensitivity run. No second variant, broad sweep or test feedback.
 
 Validation:45 pairs ×five levels(−10,−5,0,5,10)=225 **correlated conditions**,
 full15 s, no random crop. Score each source using the same mixture and reference.
@@ -121,8 +121,9 @@ Macro-average SI-SDRi across family-pair groups equally; call these H and L.
 weaker source. Also show pooled mean/median/IQR, each level/family, runtime and
 failures. Only two validation family-pair groups exist; do not overstate support.
 
-Test IDs/hashes and the same45-pair/five-level/full15-s recipe are frozen now,
-but test waveforms remain unopened. Freeze code/model/config/preprocessing/
+Test IDs/hashes and the 45-pair/five-level/full15-s recipe specification are
+frozen; no test recipes have been generated and test waveforms remain unopened.
+Freeze code/model/config/preprocessing/
 labels/comparator list before **one held-out final evaluation**. Never tune,
 early-stop, cherry-pick or debug on test. Poor results do not authorize reuse;
 only a disclosed genuine implementation defect may justify a corrected rerun.
@@ -150,8 +151,11 @@ generalization, or a claim of clinical or comparative superiority.
 
 Training loss declined from1.397 (epoch1) to−3.706 (epoch20), while the best
 validation selector occurred at epoch8 and fluctuated afterward. LR followed
-the configured plateau schedule:0.001 through epoch6,0.0005 through12,0.00025
-through17, and0.000125 through20. Runtime was1,243.5s (20.72min), peak RSS
+the configured plateau schedule. LR used for training was 0.001 in epochs 1–7,
+0.0005 in 8–13, 0.00025 in 14–18, and 0.000125 in 19–20. This corrects the
+earlier prose: logs record post-validation LR, so reductions after epochs
+7/13/18 affect the next epoch. No numerical result or artifact changed.
+Runtime was1,243.5s (20.72min), peak RSS
 2,078MiB on CPU. No nonfinite loss/gradient and zero validation failures were
 recorded. The run used fresh seed20260928 initialization; the T4 checkpoint was
 not loaded. Six existing focused training-contract tests passed; no new test
@@ -162,6 +166,61 @@ hash are in the implementation execution receipt.
 recipes were generated, and no test metrics were computed. The model is not
 integrated or deployed. Owner review is required before any T7 tuning, final
 freeze, or one-shot test.
+
+### T7 saved-log diagnosis and tuning decision — not executed
+
+The baseline remains **KEEP BASELINE**, the valid first trained candidate and
+control. This decision read existing metric/recipe JSON only: no model run,
+audio access, new tests, test-set access or production change.
+
+| Validation family pair | Conditions | Heart mean SI-SDRi | Lung mean SI-SDRi |
+| --- | ---: | ---: | ---: |
+| Late Diastolic Murmur × Fine Crackles | 150 | 3.847 dB | 3.713 dB |
+| Tachycardia × Fine Crackles | 75 | 2.223 dB | 2.445 dB |
+
+These two groups receive equal macro weight; 225 correlated conditions are
+not 225 independent examples. Both group averages improve both sources, but
+Tachycardia contains 23/28 negative heart-improvement conditions. Pooled H/L
+SI-SDRi median is 2.973/2.848 dB, IQR 3.877/4.581 dB. At −10 dB lung/heart
+level, macro heart improvement is −0.267 dB; at +10 dB, macro lung improvement
+is −0.517 dB. The already-dominant source sometimes worsens while the quieter
+source improves yet remains poor in absolute SI-SDR. Negative improvement is
+not a runtime failure. No conditions were removed or reweighted.
+
+Training gain draws cover the range approximately uniformly; no silent-crop
+retries were recorded. All validation crops are fixed full 15 seconds. There
+is no demonstrated gain-coverage defect justifying new augmentation/sampling.
+
+From epoch 8 to 20, mean negative SI-SDR changes −4.313→−5.535 and unweighted
+normalized L1 0.420→0.366. The 5×L1 contribution drops 2.098→1.829;
+approximately 82% of the total-loss improvement comes from SI-SDR. Both
+objectives improve while validation plateaus; this does not support reducing
+the L1 coefficient. Scalar magnitudes are not gradient attribution, and no
+per-component gradient or validation-L1 history was saved. Overfit/generalization
+pressure is plausible, but excessive capacity is not established; narrow
+validation coverage and family/level heterogeneity limit the causal conclusion.
+
+**One T7 variant:** the already-designed N64/B32/H64 Conv-TasNet, **170,545
+parameters**, scratch seed **20260928**. Width is the only primary factor;
+depth/context, loss coefficient 5, AdamW/decay/LR/scheduler, sampling, labels,
+inference and stopping remain fixed. This tests capacity sensitivity; it may
+underfit or lose. The owner's later request permits this profile as a tuning
+hypothesis, extending its original resource-only purpose. It must pass the same
+bounded two-development-example capacity gate before fresh full training.
+**Variant 2: NONE.** No evidence specifically selects a loss, decay or new
+augmentation experiment; preserve the small validation-selection budget.
+
+Select configuration with unchanged weaker-source Q and average tie-break;
+baseline remains eligible. Then run **one confirmation seed 20260929** for that
+configuration, changing initialization and keyed training draws, not validation.
+Keep its original **20260928** checkpoint; never choose the more favorable seed.
+The confirmation assesses stochastic sensitivity, not independent-family
+generalization. Instability requires owner review, not extra seeds or tuning.
+
+Exact evidence, deltas, hashes, future runner changes and stop criteria:
+[T7 decision](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/T7_TUNING_DECISION.md)
+and [Luna handoff](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/T7_LUNA_HANDOFF.md).
+No T7 result or superiority claim exists yet.
 
 ### T0–T4 offline pipeline evidence — not trained-model results
 
@@ -207,8 +266,9 @@ same capacity gate. No automatic paid compute, GPU setup or model search.
 
 ## Handoff and requirements traceability
 
-T0–T6 are complete and checkpointed. **Next, owner review is required before
-T7 tuning, final freeze, or the one-shot held-out test.** No broad application
+T0–T6 are complete and checkpointed; T7 is designed, not executed. **Next,
+owner review/authorization is required before executing the one-variant T7
+handoff.** Stop after comparison and one seed confirmation. No broad application
 regression was run; production and application behavior were not changed.
 
 Own artifacts belong in ignored `.local/training/stethofuse-tcn-v1/<run-id>/`
@@ -219,8 +279,12 @@ notices; this document is not deployment approval.
 
 The50/50 NeoSSNet+NMF candidate stays **implemented offline / frozen /
 unqualified / not deployed / no demonstrated advantage**. Any new ensemble
-choice must use validation **before** the final test; after that, a newly tuned
-ensemble needs untouched evaluation data. Ensemble requirement/default choice
+choice must use validation **before** the final test. Explicit future order:
+baseline → bounded T7 → selected configuration → seed confirmation →
+**validation-only ensemble decision (legacy T10 moved before T8/T9)** → freeze
+the complete separation system → one owner-authorized held-out test. Do not
+test the single model and then use that result to choose/tune an ensemble;
+after testing, a newly tuned system needs untouched evaluation data. Ensemble requirement/default choice
 remains a later owner/FYP decision. Authentication, roles, jobs, storage,
 frontend, backups and production routing are unchanged. No clinical or
 superiority claim is made. Sources are recorded in
