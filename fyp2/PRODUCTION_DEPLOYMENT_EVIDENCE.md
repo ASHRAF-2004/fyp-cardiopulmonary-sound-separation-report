@@ -159,3 +159,36 @@ implementation repository's `deploy/PRODUCTION_2026-09-27.md`.
   still planned and must follow actual deployment/use, not be attributed to FYP1.
 - Submitted `report/Submission/` is unchanged. The academic title and original
   literature/survey findings are unchanged.
+
+## Production ML deployment and focused acceptance — 29 September 2026
+
+This dated addendum supersedes only earlier statements that the frozen ML
+integration, generated outputs, and worker were still planned. It does not
+rewrite the 27 September M1 deployment evidence or claim clinical readiness.
+The deployed implementation is `c96c7cb147833daba88e99596dd71d3f814274e9`.
+The active model remains HLS-only T8 v2, Compact Conv-TasNet N64/B32/H64,
+171,313 parameters, checkpoint SHA-256
+`1f7e549ba53240bc085221e4eed1f935bb7c330e9a66cfab4c183c8f096c2658`, spec
+SHA-256 `2573ae06b11aafc595a4cdb179e3ab0c9f7fbe37859863dcd36a5d8c70210b1b`.
+No model, preprocessing, inference, authorization policy, frontend, routing,
+Firebase, or Axora changes were made during acceptance.
+
+| Requirement / acceptance | Production observation | Evidence classification |
+| --- | --- | --- |
+| Record → job → worker → result | Existing non-patient synthetic 15-second WAV produced a queued job, worker processing and succeeded result. Repeated Separate reused the same job/result. Heart and Lung are separate private 4-kHz mono WAV resources of 60,000 samples; the original input hash was unchanged. | PRODUCTION + REAL FIREBASE; verified live. Earlier happy-path checks were not repeated unnecessarily. |
+| Frozen model/provenance | Checkpoint/spec hashes matched the frozen values; 171,313 parameters, CPU execution, correct model ID, output identities/hashes and provenance were persisted. Worker resumed `ready` after backup. | PRODUCTION; verified live. |
+| Anonymous / owner privacy | Anonymous output requests returned `401`; the owner retained access through the existing owner flow. | PRODUCTION + REAL FIREBASE; verified live. |
+| Exact Heart grant and positive Analyst case | Owner created one `read` grant to active verified Audio Analyst `7fc12b955f01462e9206342c6cdc45d4`, scoped only to Heart resource `8474305741ba488dbf5069774df41bf3`. Analyst opened the explicit-grant recording and loaded Heart through protected media. The authorized resource view omitted Lung. | PRODUCTION + REAL FIREBASE; verified live. |
+| Original grant `403` | The first owner grant used a mistyped recipient ID ending `...45d`; the actual account ID ends `...45d4`. The store correctly rejected the nonexistent recipient. The retry used the verified ID; no policy or code change was needed. | TEST/HARNESS ID ERROR; corrected without security change. |
+| Revocation / sibling privacy / Admin | Owner revoked exact Heart grant. Database retains `grant.created` and `grant.revoked` audit events. After fresh sign-in, Analyst received permission denial on the recording. A signed-in Administrator without a grant received the same denial. Lung was never included in the Heart-only authorized-resource view. | PRODUCTION + REAL FIREBASE; verified live. Prior production fixture evidence separately verifies unassigned/unrelated access denial. |
+| SSH host identity | Target was same host `ashraf@axora-server`, `127.0.1.1:22`. Presented ED25519 SHA-256 `SHA256:hIbbjk+nwo69eiGn2kj4pb6Ott98VHsVYlN2GgEhLVs` matched the locally read server public-key fingerprint. Exact key was trusted with strict checking. SSH user authentication itself was unavailable, so the already-authorized root-only local systemd backup procedure was used; no SSH bypass. | Host identity verified out of band; SSH user login not used. |
+| Post-acceptance encrypted backup | Restic/B2 snapshot `e133d7db3c3db4758db266135674c45515746462bb30ef37eed7fa3865a75e1b`, 29 September 2026, contains `/srv/stethofuse/data`, `/private`, `/models` and runtime config. Backup stopped web/API/one ML worker together, succeeded, and verified services resumed. Isolated data/private restore passed manifest/hash/file-set/byte checks and SQLite integrity; isolated model restore passed checkpoint/spec `SHA256SUMS`. Pruning remains disabled. | ENCRYPTED REMOTE BACKUP + ISOLATED RESTORE; verified live. |
+| Health / non-impact | StethoFuse public `/health` and Axora public `https://axora.management/` returned `200`; StethoFuse API/web and ML worker were healthy/ready, Axora app/Caddy remained healthy. No Axora data/service was included in backup or changed. | PRODUCTION; verified live. |
+
+The detailed receipt, initial interrupted-attempt chronology, artifact facts,
+backup restore results, and operational safeguards are in the implementation
+repository's
+[`PRODUCTION_ML_ACCEPTANCE_2026-09-29.md`](../../implementation/docs/PRODUCTION_ML_ACCEPTANCE_2026-09-29.md).
+The model remains not clinically validated; physical-stethoscope qualification
+is still separate. No T9 audio was used for this acceptance, and T9 was not
+rerun.

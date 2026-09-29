@@ -142,6 +142,28 @@ The table preserves the **pre-M1 baseline** so route migrations do not erase the
 | R15-R16 | Approved styling/owl preserved; explicit demo kept separate from live-default runtime | Separate `tested` regressions: 16 simulated workflows, five actual public-homepage and six owl checks; 1,282 selected protected files match the pre-M1 checkpoint. Not target-user UAT or blanket visual/accessibility approval. |
 | R17-R18 | Confirmed StethoFuse hostname, seven-chapter report structure, requirement history and separate evidence provenance | The isolated Compose runtime remains locally tested historically. Current production identity design is a self-hosted API with local Firebase JWT checks plus an unprovisioned minimal Cloud Run current-user/revocation service; no production IAM/service write occurred. Backblaze B2 + Restic S3 is approved but no account/bucket/key/repository exists and no remote restore has been tested. Production is `planned`; no DNS/tunnel/Caddy/Firebase-domain/service deployment. 217 original report files remain the preservation baseline; current university term/rubric/template and feedback evidence remain open. See [production identity/backup decision](../../planning/PRODUCTION_IDENTITY_AND_BACKUP.md). |
 
+### Current production ML continuation — 29 September 2026
+
+The dated 27 September production/M1 baseline above remains historical. Its
+production status statements are superseded only for the already-authorized
+frozen ML continuation by
+[production ML acceptance evidence](PRODUCTION_DEPLOYMENT_EVIDENCE.md#production-ml-deployment-and-focused-acceptance--29-september-2026):
+the unchanged final T8 v2 maps to the M1 durable job/result/resource tables;
+the owner-only request creates/reuses a persisted job; one CPU worker verifies
+and loads the frozen checkpoint, writes private Heart/Lung resources and records
+provenance; protected endpoints use the existing owner/exact-grant semantics.
+The acceptance recording was synthetic and non-patient. Owner, anonymous,
+assigned Analyst, exact Heart scope, post-revocation Analyst, and Admin-without-
+grant outcomes were observed through production Firebase sessions. A mistyped
+recipient ID caused the initial correct `403`; the verified recipient ID then
+created the exact Heart grant. No code/policy change was needed. Post-acceptance
+Restic/B2 snapshot and isolated restore checks passed, including SQLite
+integrity and both model artifact hashes. This closes the production separation
+and backup acceptance trace for the deployed system; it does not establish
+clinical effectiveness, patient-level generalization or physical-device
+qualification. Axora's existing public root remained `200` and its services
+were untouched.
+
 ### Confirmed account provisioning and use-case actors
 
 The user confirmed that an existing admin may promote accounts. R-AUTH-07 and R-ROLE-01 therefore remain unchanged: public verified onboarding creates `healthcare_staff`, never a self-selected analyst/admin. R-ROLE-02 permits admin-assigned `audio_analyst`. R-ROLE-03 distinguishes the trusted first-admin bootstrap from subsequent authenticated, confirmed and audited admin promotion. Sign-in uses the shared Firebase flow and retrieves the persisted role; it does not confer a new privileged role. This agrees with the current backend/API and live admin UI, so no operator-only restriction is asserted.
