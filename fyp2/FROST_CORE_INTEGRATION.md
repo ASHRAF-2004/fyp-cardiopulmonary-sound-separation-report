@@ -100,7 +100,7 @@ authorization.
 
 ## Local owner-review follow-up — 1 October 2026
 
-Owner review is in progress, not accepted. A bounded frontend revision adds an
+At the time of that revision, owner review was in progress, not accepted. It adds an
 Original/Heart/Lung before-and-after technical table, immediate animated
 request/queued/processing feedback, and the owner-requested locked Coming soon
 microphone option. Upload remains available; historical fake-microphone evidence
@@ -120,3 +120,14 @@ exit0; Frost/Midnight and desktop/mobile images were inspected. No new job/model
 run, authorization change, production deployment, T9 access or review-data removal.
 Implementation receipt: `implementation/docs/FROST_OWNER_FEEDBACK.md`. Frozen ML
 results and remaining identity/privacy/Insights/flight milestones are unchanged.
+
+## Subsequent owner approval and bounded continuation — 1 October 2026
+
+The owner approved the integrated core/feedback UI (“looks good. go to next step”)
+and requested continuation to the next working review point. The subsequent LOCAL
+identity/profile foundation is implemented/tested, not deployed:
+[actual evidence and boundary](LOCAL_IDENTITY_FOUNDATION.md). It allocates real
+handles/public references in a separate schema3 review DB while preserving the
+original session, UID-based permissions and unchanged audio/model. This new slice
+still needs owner hands-on review. Handle login/sharing, avatar/account-data services,
+Insights and genuine flight remain pending; production approval is not implied.

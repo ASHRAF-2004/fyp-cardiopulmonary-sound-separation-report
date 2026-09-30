@@ -1,5 +1,18 @@
 # FYP2 requirements design code and evidence register
 
+## Current LOCAL identity/profile trace — 1 October 2026
+
+| Requirement | Design → actual implementation | Evidence and boundary |
+|---|---|---|
+| R02/R13 identity/access | Existing Firebase UID/policy → additive003 public metadata and authenticated profile PATCH |109 backend passes +26 subtests; stable references, one change/collision/race/strict fields; role/exact-grant/Admin privacy unchanged |
+| R15/R16 usable identity | Approved Frost profile/settings → actual @handle/USR and copyable/searchable REC |6 browser/client groups +3 read-only follow-ups, visually inspected desktop/mobile/tablet/Midnight; no preview identity fallback |
+| R03/R11 private media | Existing resource authority and unchanged worker/files → public presentation metadata only |10 private artifact hashes and4 recordings/3 results preserved; authorized automatic playback still works |
+| R18 reproducibility | Core/feedback owner approval → bounded LOCAL namespace and hashed evidence |Original schema2 review preserved; new schema3 clone, two standalone builds0; new identity slice awaits owner review, not deployed |
+
+See [local identity foundation](LOCAL_IDENTITY_FOUNDATION.md). No production backfill,
+provider/rule change, training or T9 reuse. Handle sharing/login, avatar/data services,
+notifications/Insights/flight remain pending. Historical traces below are preserved.
+
 ## Current owner-approved Frost core trace — local integration, 30 September 2026
 
 | Requirement | Existing authority → approved interface | Actual evidence and boundary |
