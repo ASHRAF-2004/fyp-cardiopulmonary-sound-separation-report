@@ -1,6 +1,21 @@
 # FYP2 requirements design code and evidence register
 
-## Current UX design trace — local proof, 30 September 2026
+## Current owner-approved Frost core trace — local integration, 30 September 2026
+
+| Requirement | Existing authority → approved interface | Actual evidence and boundary |
+|---|---|---|
+| R04/R05 capture/upload | Existing AudioWorklet/PCM/upload API → approved New recording/review → persisted Library | Real synthetic M0001 upload and fake-microphone save; no physical-device qualification |
+| R07/R10 separation/durability | Existing idempotent POST job → same DB/CPU worker → real stage/detail | Queued/processing/ready, duplicate reuse and refresh/new session pass; no new pipeline/research |
+| R03/R11/R12 private media | Existing UID/exact-resource authority → automatic approved players/analysis/download | Anonymous/unrelated deny; Heart-only no siblings/analysis; revocation/sign-out cleanup; unchanged artifact download |
+| R15/R16 approved usability | Owner-approved polish-v1 → fixture-free Frost shell/Library/player/charts → local app |17 real-local groups,14 separate mock account regression groups,2 final contact checks; desktop/mobile/tablet/Midnight review, both builds0 |
+| R02/R13 identity/roles | Existing LiveAppProvider/Firebase contract and working settings/reviews/Admin | No provider/rule/schema changes or invented handles/public IDs; mock account checks identified, no new live-provider claim |
+| R14/R17/R18 integrity/deployment | Frozen v2/T9/production preserved → concise local execution and hashed receipts | New interface not deployed; owner review next. No T9 reuse, ML/Axora/production change; identity/account/Insights/flight pending |
+
+See [core execution](FROST_CORE_INTEGRATION.md). Approval closes the visual decision,
+not the deferred full handoff or deployment. Local test identities do not represent
+production accounts or patient data.
+
+## Historical UX design trace — isolated proof, 30 September 2026
 
 | Requirement | Design → implementation | Evidence and boundary |
 | --- | --- | --- |

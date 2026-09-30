@@ -1,9 +1,16 @@
-# Frost Studio — local four-screen design proof, 30 September 2026
+# Frost Studio — owner-approved design and local core, 30 September 2026
 
-**DIRECTION OWNER-APPROVED / FINAL POLISH REVIEW PENDING / NOT DEPLOYED.**
-This checkpoint is a product/design proof, not full application implementation,
-stakeholder usability feedback or another ML experiment. Existing production ML
-acceptance and the consumed T9 evaluation remain final and unchanged.
+**POLISH-V1 OWNER APPROVED / CORE INTEGRATED AND TESTED LOCALLY / NEW UI NOT DEPLOYED.**
+The owner explicitly approved the final polish and authorized only core workflow
+integration. [Completed local core evidence](FROST_CORE_INTEGRATION.md) distinguishes
+17 real-local groups from14 SDK/API mock groups and2 final contact checks, both
+standalone builds exit0. Existing production ML/T9 remain unchanged. No clinical,
+physical-device or stakeholder usability claim. Owner review of the integrated
+interface is next; remaining identity/account services and deployment are deferred.
+
+The following sections preserve the earlier isolated four-screen proof and its
+pre-approval boundary. Their pending-approval wording is historical, superseded
+only by the explicit approval and bounded core checkpoint above.
 
 ## Bounded final polish revision, v1.1
 
@@ -89,7 +96,7 @@ qualification is still separate; clinical validation is not claimed.
 - [Seven-law audit](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/UX_LAWS_AUDIT.md)
 - [Visual references](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/UX_VISUAL_REFERENCES.md)
 - [Visual/engineering checkpoint](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/UX_DESIGN_REVIEW.md)
-- [Prepared, not-started Luna handoff](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/UX_LUNA_HANDOFF.md)
+- [Selective core progress and deferred Luna handoff](https://github.com/ASHRAF-2004/Machine-Learning-Based-System-for-Cardiopulmonary-Sound-Separation/blob/fyp2/application/docs/UX_LUNA_HANDOFF.md)
 
 Screenshots/raw browser reports stay in ignored project-local evidence, not
 production assets. Source and compact receipts are versioned; final Git/PAUSE

@@ -1,6 +1,24 @@
 # Implementation status and evidence conventions
 
-## Current UX checkpoint — local design proof, 30 September 2026
+## Current UX checkpoint — owner-approved core integration, 30 September 2026
+
+**POLISH-V1 OWNER APPROVED / CORE IMPLEMENTED, INTEGRATED AND TESTED LOCALLY /
+NEW INTERFACE NOT DEPLOYED / READY FOR OWNER REVIEW.**
+
+[Core execution evidence](FROST_CORE_INTEGRATION.md) proves the real local
+upload/capture→Library→durable Separate→private players→measured analysis path,
+using the unchanged existing API/SQLite/storage/frozen CPU worker. Seventeen
+real-local groups,14 separately labelled mocked account regressions and2 final
+layout checks passed; both standalone builds exit0. Local identity uses the
+existing test-only verifier/SDK seam, not a production bypass or live Firebase.
+Owner approval closed the design; no remaining-service or deployment authority.
+
+Existing production ML acceptance/backup and final consumed T9 evidence are
+unchanged. This is a newly integrated LOCAL interface, not a new live release.
+Handles/IDs/account services/global Insights/asset-gated flight remain pending.
+STOP for owner review; physical-device/clinical qualification is still unclaimed.
+
+## Historical UX checkpoint — local design proof, 30 September 2026
 
 **FOUR REPRESENTATIVE SCREENS IMPLEMENTED LOCALLY / DESIGN INTERNALLY FROZEN /
 OWNER VISUAL APPROVAL PENDING / REDESIGN NOT DEPLOYED.**
