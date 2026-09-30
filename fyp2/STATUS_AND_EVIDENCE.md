@@ -1,5 +1,28 @@
 # Implementation status and evidence conventions
 
+## Current UX checkpoint — local design proof, 30 September 2026
+
+**FOUR REPRESENTATIVE SCREENS IMPLEMENTED LOCALLY / DESIGN INTERNALLY FROZEN /
+OWNER VISUAL APPROVAL PENDING / REDESIGN NOT DEPLOYED.**
+
+[Frost Studio design evidence](UX_DESIGN_REVIEW.md) proves Overview, consolidated
+Library, ready detail with custom audio/actual signal analysis, and six-section
+Profile & settings. Frost/Midnight/mobile screenshots, focused12-group checks
+and normal build passed. Owner-directed green owl eyes, whole-page tracking and
+leafy-perch contact are local only. Flight remains asset-gated; real identity/
+privacy service migration and remaining app are not yet implemented.
+
+The [completed production ML acceptance](PRODUCTION_DEPLOYMENT_EVIDENCE.md)
+remains the live baseline: deployed integration, role/privacy acceptance and
+encrypted post-acceptance backup were verified on29 September. The older local
+“not yet deployed” statuses below are historical, not a reversal of deployment.
+Frozen v2/T9/Firebase/private-resource authority/backups/Axora are unchanged.
+No T9 reuse, training, production redesign or submitted FYP1 change occurred.
+
+Owner screenshot approval is the next UX gate; Luna/full implementation and
+deployment are not started automatically. Physical-device/clinical qualification
+remain unclaimed.
+
 ## Current application checkpoint — local frozen-model integration, 29 September 2026
 
 **IMPLEMENTED LOCALLY / TESTED LOCALLY / FINAL ML EVALUATION COMPLETE /

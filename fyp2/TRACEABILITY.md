@@ -1,5 +1,21 @@
 # FYP2 requirements design code and evidence register
 
+## Current UX design trace — local proof, 30 September 2026
+
+| Requirement | Design → implementation | Evidence and boundary |
+| --- | --- | --- |
+| R15/R16 usability/visual identity | Seven laws → Frost Studio tokens/reusable shell → four isolated React screens | Seven final desktop/mobile/Midnight screenshots inspected, twelve focused UI groups and build pass; owner visual approval pending, not stakeholder feedback |
+| R04/R05 low-friction capture | One New recording action → existing capture/upload contract in prepared handoff | Choice/layout designed; no new microphone/upload route or physical-device qualification claimed |
+| R03/R11 privacy | Automatic protected media + abort/revoke + explicit scopes | Local401/403 presentation tests; existing backend/live private-media semantics unchanged; no new live qualification |
+| R02/R12/R13 identity/access | Internal Firebase UID retained; local handle/public-ID/share prototypes | Actual server migration/handle resolver not implemented; exact grants/analyst/Admin privacy preserved |
+| R07–R14 separation/evaluation | Frozen Conv-TasNet v2 and consumed T9 remain final | No model change, training, test reuse or fabricated per-recording accuracy |
+| R17 deployment/recovery | Existing completed production release retained | Redesign not deployed; worker/private storage/backups/Axora untouched |
+| R18 evidence integrity | Spec/law audit/visual references/five-axis review/compact hashes/Luna phases | Local proof and future service work distinguished; FYP1/history unchanged |
+
+See [design review](UX_DESIGN_REVIEW.md) and the preserved production acceptance
+addendum. This local design checkpoint does not reverse the completed production
+deployment, and does not upgrade mock UI checks to live authorization evidence.
+
 ## Current final-model and local application trace — 29 September 2026
 
 This supersedes proposed-ensemble and integration-pending rows for the local

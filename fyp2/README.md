@@ -7,6 +7,7 @@ Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](..
 - [Requirements design code and evidence register](TRACEABILITY.md)
 - [Requirement history and continuation identifiers](REQUIREMENTS_HISTORY.md)
 - [Status and evidence conventions](STATUS_AND_EVIDENCE.md)
+- [Frost Studio four-screen design proof — owner review pending, not deployed](UX_DESIGN_REVIEW.md)
 - [M1 implementation and test notes](M1_IMPLEMENTATION_AND_TEST_NOTES.md)
 - [Final frozen-model local application integration](LOCAL_ML_INTEGRATION.md)
 - [Final T9 evidence (consumed, not rerun)](T9_FINAL_HELDOUT_EVALUATION.md)
