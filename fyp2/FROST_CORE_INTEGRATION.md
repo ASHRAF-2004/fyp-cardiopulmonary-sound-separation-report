@@ -97,3 +97,26 @@ and genuine owl flight (**ASSET-GATED — NOT IMPLEMENTED**). Existing productio
 functionality is distinct from this newly integrated local interface. STOP for
 owner review; deployment and next account/identity/data milestone need separate
 authorization.
+
+## Local owner-review follow-up — 1 October 2026
+
+Owner review is in progress, not accepted. A bounded frontend revision adds an
+Original/Heart/Lung before-and-after technical table, immediate animated
+request/queued/processing feedback, and the owner-requested locked Coming soon
+microphone option. Upload remains available; historical fake-microphone evidence
+above remains valid as earlier test evidence, not current product availability.
+
+The review now uses the eligible raw HLS-CMDS Mix/M0001.wav recording, not the
+procedural tone fixture used for earlier application mechanics. That earlier
+fixture was not used for frozen ML training or T9. The raw file's measured crest
+factor is14.2dB; the existing local Heart/Lung outputs measure14.6/14.9dB. These
+values describe peaks versus average signal energy, not separation accuracy or
+clinical validity. Clean matching references are needed to measure separation
+quality. Transparent low-level/clipping checks are not substitutes for that evidence.
+
+Six focused groups pass: four read-only real-local artifact/UI groups and two
+explicitly mocked status/revocation presentation groups. Both standalone builds
+exit0; Frost/Midnight and desktop/mobile images were inspected. No new job/model
+run, authorization change, production deployment, T9 access or review-data removal.
+Implementation receipt: `implementation/docs/FROST_OWNER_FEEDBACK.md`. Frozen ML
+results and remaining identity/privacy/Insights/flight milestones are unchanged.
