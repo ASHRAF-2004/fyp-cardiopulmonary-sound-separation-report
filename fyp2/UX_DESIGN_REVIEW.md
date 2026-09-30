@@ -1,9 +1,35 @@
 # Frost Studio — local four-screen design proof, 30 September 2026
 
-**DESIGN INTERNALLY FROZEN / OWNER VISUAL APPROVAL PENDING / NOT DEPLOYED.**
+**DIRECTION OWNER-APPROVED / FINAL POLISH REVIEW PENDING / NOT DEPLOYED.**
 This checkpoint is a product/design proof, not full application implementation,
 stakeholder usability feedback or another ML experiment. Existing production ML
 acceptance and the consumed T9 evaluation remain final and unchanged.
+
+## Bounded final polish revision, v1.1
+
+The owner retained Frost Studio and authorized only six refinements: shared
+translucent material depth/highlight with solid controls;12% lower iris chroma;
+one coherent shared/weekly Overview rail; clear Appearance heading/helper;
+discoverable0–200% playback with100 midpoint and Boost indicator; preview
+warnings owned by the isolated entry rather than unconditional shell copy.
+IA, typography, green palette, owl/perch contact, page-wide tracking, DSP and
+private-media/authentication contracts remain unchanged.
+
+New versioned screenshots under implementation's ignored
+`frontend/output/playwright/ux-review/polish-v1/` preserve the previous references.
+The seven principal previews, Privacy & data,900px tablet, both owl close-ups,
+actual150% desktop/200% mobile and full-page Overview were visually inspected.
+The12 focused groups passed once, including keyboard volume, no gain/theme
+layout resize, denial/cleanup/reduced motion and mobile navigation clearance.
+The normal application and isolated preview builds ran as separate finite
+commands and both exited0. No repeated ML/backend campaign or Lighthouse audit.
+
+This proves local visuals and prototype interactions, not backend identity,
+sharing, export/delete/unlink or notification completion. Final owner review
+must precede any remaining-app implementation. Owl flight remains
+**ASSET-GATED — NOT IMPLEMENTED**. No production, ML, T9, authentication, user
+data, production identity migration or Axora change occurred. Earlier v1
+verification below is preserved as history, not relabelled as this polish run.
 
 ## What was actually implemented locally
 
