@@ -1,5 +1,18 @@
 # FYP2 requirements design code and evidence register
 
+## Current LOCAL compact-detail / handle-sharing trace — 1 October 2026
+
+| Requirement | Design → actual implementation | Evidence and boundary |
+|---|---|---|
+| R02/R13 controlled access | Existing UID/owner/exact-grant policy → confirmed exact @handle adapter | Owner-only lookup, no email/UID/directory, safe durable bounds, stale/reassigned handle guard; Admin privacy unchanged |
+| R15/R16 usable review | Approved Frost components → key technical facts + See more / See less; actual recipient identity | Full provenance preserved; three active permissions first, history disclosed; desktop/mobile/tablet/Midnight visually checked |
+| R03/R11 private media | Existing resource authority → unchanged exact Heart grant/revocation | Real Heart playback allowed; Original/Lung/result denied; revoked subsequent access denied and audited |
+| R18 reproducibility | Bounded local follow-up → separate persistent namespace + hashes | 117 passes + 26 subtests, 4 real browser groups + 1 delayed actual-response check, 2 read-only groups; both builds exit 0; owner review pending, not deployed |
+
+See [local sharing refinement](LOCAL_SHARING_REFINEMENT.md). This supersedes older
+pending-handle-sharing notes for this narrow local slice only. No new schema,
+production account changes, training, T9 reuse or full account milestone.
+
 ## Current LOCAL identity/profile trace — 1 October 2026
 
 | Requirement | Design → actual implementation | Evidence and boundary |

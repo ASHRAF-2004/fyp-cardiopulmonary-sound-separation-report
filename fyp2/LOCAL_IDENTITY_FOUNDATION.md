@@ -1,5 +1,10 @@
 # Frost Studio — LOCAL identity foundation, 1 October 2026
 
+Subsequent owner-requested local refinement:
+[concise details and handle sharing](LOCAL_SHARING_REFINEMENT.md) replaces the
+legacy recipient-ID form with confirmed exact @handle sharing. The foundation
+record below remains historical; UID/roles/private-resource authority is unchanged.
+
 **IMPLEMENTED / TESTED LOCALLY — READY FOR OWNER REVIEW. NOT DEPLOYED.**
 The owner approved the integrated core/feedback interface (“looks good. go to
 next step”) and asked continuation to the next reviewable slice. This covers LOCAL
