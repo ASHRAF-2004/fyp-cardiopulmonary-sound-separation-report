@@ -1,6 +1,19 @@
 # FYP2 requirements design code and evidence register
 
-## Current LOCAL Shared & assigned / review trace — 1 October 2026
+## Current LOCAL owner feedback / role-purpose trace — 2 October 2026
+
+| Requirement | Actual link | Evidence / boundary |
+|---|---|---|
+| R12 collaboration/review | Owner exact @handle assignment → existing Analyst GET/PUT → owner-only GET recording reviews | Real UI assign/save/read, refresh/new session, saved source/author/outcome; latest version per assignment, no clinical claim |
+| R02/R13 privacy | Canonical owner-before-SELECT; unchanged reviewer/exact-resource/expiry/revocation predicates | 78 backend passes; anonymous/unrelated/nonowner Admin/reviewer denied owner feedback; saved history persists but future reviewer access denied |
+| R15/R16 usability | Approved Frost → Analyst assigned-work Overview + compact owner feedback/disclosure | 6 real browser groups +1 labelled transport fault,8 mock client checks,8 inspected responsive/theme captures; no fake data or new design |
+| R18 evidence | Earlier Shared & assigned owner approval → bounded local feedback loop and retained role windows | Separate builds0, hashed receipts,4200 isolated namespace; THIS follow-up needs owner review, not deployed |
+
+See [local review feedback](LOCAL_REVIEW_FEEDBACK.md). Common audio/separation/
+analysis tools remain appropriate for both roles; the Analyst addition is controlled
+assigned-review publication, not an extra model or blanket private access.
+
+## Earlier LOCAL Shared & assigned / review trace — 1 October 2026
 
 | Requirement | Design → actual implementation | Evidence and boundary |
 |---|---|---|
