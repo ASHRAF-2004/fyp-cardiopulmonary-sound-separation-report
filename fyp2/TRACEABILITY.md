@@ -1,5 +1,19 @@
 # FYP2 requirements design code and evidence register
 
+## Current LOCAL Shared & assigned / review trace — 1 October 2026
+
+| Requirement | Design → actual implementation | Evidence and boundary |
+|---|---|---|
+| R02/R13 controlled review | Existing analyst/exact-grant/active-owner predicate → joined assignment/review context | 69 backend passes; unrelated/Admin/expired/revoked/owner-status denials; no schema/policy change |
+| R03/R11 private media | Existing protected player/result/analysis → exact assigned view | Original-only allowed; result-only no Heart/Lung; revoked dirty-save denies and clears UI; no sibling bypass |
+| R15/R16 usable review | Approved Frost → one Shared & assigned page, titles/scopes, three rows/more/less, real notes | 4 real browser groups +1 labelled transport fault; saved refresh/new session, keyboard, personally inspected desktop/mobile/tablet/Midnight |
+| R18 reproducibility | Owner approved prior sharing → bounded L5 and retained manual review | Both standalone builds0; 9 final captures/hashed receipts, ten private files unchanged, new4199 copy; THIS slice awaits owner review, not deployed |
+
+See [local shared reviews](LOCAL_SHARED_REVIEWS.md). Prior compact-details/handle
+sharing is owner approved (“ok good next”). This new slice is local technical
+evidence, not a claim that the owner already accepted it, clinical validation,
+production rollout or completed historical-review/account-data services.
+
 ## Current LOCAL compact-detail / handle-sharing trace — 1 October 2026
 
 | Requirement | Design → actual implementation | Evidence and boundary |
