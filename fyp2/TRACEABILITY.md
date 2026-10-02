@@ -7,7 +7,7 @@
 | R12 collaboration | Current exact assignments → bounded saved Analyst history + owner feedback | Revoked/expired/unavailable sources are hidden from reviewer; owner retains saved observations |
 | R02/R13 privacy | Canonical active actor → own-Library SQL / role-and-exact review scope | Admin has no global audio/activity aggregate; no sibling authority, email or UID in saved-history projection |
 | R15/R16 usability | Frozen Frost components → real Insights,3-item history/more/less | Inspected desktop/mobile/tablet/Midnight; actual dates/counts, accessible disclosure, unavailable ≠ zero/demo |
-| R18 evidence/release | Owner continuation → final regression/review → conditional backed-up release |174 passes +26 subtests/4 optional skips;8 MOCK client checks;3 real groups +1 labelled fault; separate builds0. No deployment proof yet |
+| R18 evidence/release | Owner continuation → final regression/review → backed-up corrected release |174 passes +26 subtests/4 optional skips;20 focused post-packaging checks; isolated image migration; source b6ee625 deployed, schema3 and old data/files preserved, encrypted restore verified. Signed-in Frost live acceptance pending |
 
 See [continuation record](FROST_RELEASE_COMPLETION.md). Later account-policy/assets
 gates remain pending. Latest owner request supersedes prior intermediate review/

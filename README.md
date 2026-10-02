@@ -6,6 +6,12 @@ The test was evaluated once with frozen HLS-only T8 v2, then consumed; no
 post-test tuning or production integration is claimed. The pre-T9 selection
 record is [`fyp2/FINAL_PRE_T9_MODEL_EXECUTION.md`](fyp2/FINAL_PRE_T9_MODEL_EXECUTION.md).
 
+Subsequent application work is recorded separately in
+[`fyp2/FROST_RELEASE_COMPLETION.md`](fyp2/FROST_RELEASE_COMPLETION.md): the reviewed
+Frost interface is operationally deployed with verified encrypted recovery
+anchors, while new signed-in live acceptance and gated account services remain
+explicitly pending. This does not change the consumed T9 evidence or FYP1 report.
+
 ## Project Information
 
 | Item | Details |
