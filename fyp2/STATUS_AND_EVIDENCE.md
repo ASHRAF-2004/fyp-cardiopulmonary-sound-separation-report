@@ -1,5 +1,19 @@
 # Implementation status and evidence conventions
 
+## Current continuation — 2 October 2026
+
+**OWNER REQUESTED PUSH/MERGE/DEPLOYMENT / TESTED FROST RELEASE INCREMENT READY /
+DEPLOYMENT EXECUTION STILL PENDING AT THIS CHECKPOINT.**
+
+[Continuation evidence](FROST_RELEASE_COMPLETION.md) connects real saved-review
+history and own-Library Insights with existing exact-grant/UID authority. Earlier
+local core/identity/sharing/analyst feedback are retained. 174 passes +26 subtests,
+4 optional skips,8 MOCK client checks,3 real-local browser groups +1 labelled
+transport fault, visually inspected responsive/theme captures and both finite
+builds0. No invented owner test. Account/notification/security/assets gates remain
+explicitly pending; this is not clinical validation or complete lifecycle services.
+Older statuses below are historical checkpoints, not the current release decision.
+
 ## Current UX checkpoint — owner-approved core integration, 30 September 2026
 
 **POLISH-V1 OWNER APPROVED / CORE IMPLEMENTED, INTEGRATED AND TESTED LOCALLY /

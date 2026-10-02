@@ -1,5 +1,18 @@
 # FYP2 requirements design code and evidence register
 
+## Current continuation trace — 2 October 2026
+
+| Requirement | Actual implementation | Verified boundary |
+|---|---|---|
+| R12 collaboration | Current exact assignments → bounded saved Analyst history + owner feedback | Revoked/expired/unavailable sources are hidden from reviewer; owner retains saved observations |
+| R02/R13 privacy | Canonical active actor → own-Library SQL / role-and-exact review scope | Admin has no global audio/activity aggregate; no sibling authority, email or UID in saved-history projection |
+| R15/R16 usability | Frozen Frost components → real Insights,3-item history/more/less | Inspected desktop/mobile/tablet/Midnight; actual dates/counts, accessible disclosure, unavailable ≠ zero/demo |
+| R18 evidence/release | Owner continuation → final regression/review → conditional backed-up release |174 passes +26 subtests/4 optional skips;8 MOCK client checks;3 real groups +1 labelled fault; separate builds0. No deployment proof yet |
+
+See [continuation record](FROST_RELEASE_COMPLETION.md). Later account-policy/assets
+gates remain pending. Latest owner request supersedes prior intermediate review/
+no-merge/no-deploy stops, not privacy, scientific freeze or recovery safeguards.
+
 ## Current LOCAL owner feedback / role-purpose trace — 2 October 2026
 
 | Requirement | Actual link | Evidence / boundary |
