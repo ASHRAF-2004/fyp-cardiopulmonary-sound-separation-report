@@ -92,7 +92,7 @@ web/API/worker. A smallest safe isolated post restore proves schema3/integrity o
 expected counts and both frozen artifact hashes;12 private files are listed in
 the snapshot. Live storage was not overwritten; no pruning/snapshot deletion.
 
-**New signed-in Frost production acceptance is pending real owner sign-in.**
+**At the operational-release checkpoint, new signed-in Frost acceptance was pending.**
 A dedicated visible Chrome window rendered the official login without test SDK
 or interception. No password/token was requested or read. Anonymous Insights/
 history401 and operational health are verified; prior completed production ML/
@@ -107,3 +107,43 @@ now differs only for the repository's README/.gitignore, intentionally extended
 by earlier FYP2 evidence/ignored-artifact commits. The remaining215 historical
 files all match byte-for-byte. No historical file was reset, regenerated or
 replaced to make that check pass; FYP1 submitted material remains preserved.
+
+## Live production Staff workflow / remaining role gate
+
+The owner subsequently signed in with the existing production Staff identity
+`@ivoryfinch` using the normal existing Brave profile. Google had refused the
+dedicated automated Chrome session; no security bypass, credential/profile copying
+or Firebase configuration/code change was used. This is real Firebase acceptance,
+not the fictional local identity seam.
+
+The actual browser uploaded the recorded HLS-CMDS **M0001.wav** mixture, explicitly
+labelled non-patient/no-T9. Its complete hash matches the existing manifest, which
+marks it eligible non-test. It is not mathematical test tones, training or a new
+held-out performance experiment. `REC-GCD3-P6HBEG` progressed through the visible
+Starting indicator and durable queued job `JOB-6SB3-VQNK8F` to Ready result
+`RES-8H8V-J0VREG`, one worker attempt. CPU inference0.145538s and processing0.256122s
+are single-job observations, not service guarantees. Actual deployed code remains
+b6ee625 and both frozen model/spec hashes are unchanged.
+
+All three private audio lanes load automatically. Both outputs are finite4-kHz
+mono float32 with60,000 samples. Seeking, one-source playback and keyboard100/150/
+200% Boost were exercised, then restored to the initial100%. The downloaded Heart
+WAV matches its stored hash. The actual before/after table shows measured crest
+factors14.2/14.6/14.9dB for Original/Heart/Lung; these describe peaks above average
+energy, not separation accuracy. Refresh preserves the result; Library/Insights
+agree with the database's5 owned recordings and4 Ready results. Schema3 integrity
+is ok with zero foreign-key errors.
+
+The owner used exact-handle lookup for `@blueheron` and created only a Heart read
+grant and exact result-review assignment `ASN-133J-S0Q42V`; grant audits persist.
+Original/Lung were not granted. Live Analyst/sibling-access, saved review/history,
+owner feedback and revocation/denial checks await the real Analyst sign-in in a
+separate normal Brave window. The temporary grants remain active solely for this
+pending check. Final post-acceptance backup is also pending; the earlier verified
+post-release snapshot predates this new recording. Do not claim full live role
+acceptance, new owner hands-on approval, clinical validation or all planned
+features complete. No source/model/auth/routing/Axora change or T9 access occurred.
+
+Ignored implementation receipt `frontend/output/playwright/frost-production-live-v1/staff-receipt.json`
+has SHA-256 `42fe75cdb2896b8079020669c0796a3a810ceef243c1ada7d230f7d0622298da`.
+Historical T9 evidence and remaining account/asset gates above are unchanged.
