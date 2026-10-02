@@ -1,0 +1,34 @@
+%% Deployed M1 architecture; ensemble execution and physical capture remain planned.
+flowchart LR
+  Person[Visitor / authenticated user]
+  Browser[React + TypeScript browser]
+  Google[Google Identity Provider]
+  Firebase[Firebase Authentication]
+  API[FastAPI M1 API]
+  Verifier[Local JWT verification and Firebase Auth REST current-user check]
+  DB[(Trusted application SQLite data)]
+  Files[(Private server media directory)]
+  Ensemble[Ensemble separation subsystem]
+
+  Person --> Browser
+  Browser -->|Email/password or Google flow| Firebase
+  Google --> Firebase
+  Firebase -->|ID token| Browser
+  Browser -->|Bearer token + resource request| API
+  API --> Verifier
+  Verifier -->|Same token: accounts lookup| Firebase
+  Verifier -->|Verified UID and current provider state| API
+  API -->|Resolve role, owner, grant, assignment| DB
+  API -->|Authorized opaque resource ID only| Files
+  Files -->|Authorized bytes| API
+  API --> Browser
+  API -.->|503 until executor is connected| Ensemble
+
+  subgraph Trust[Trust boundary]
+    API
+    Verifier
+    DB
+    Files
+  end
+  note[Admin role grants safe account metadata only; audio still requires ownership or explicit grant.]
+  DB --- note

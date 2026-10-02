@@ -1,0 +1,25 @@
+%% Observed deployment on 2026-09-27. Cloud Run is superseded, not deployed.
+flowchart LR
+  Browser[Browser HTTPS] --> CF[Cloudflare]
+  Browser --> Firebase[Firebase Authentication]
+  CF --> Tunnel[Dedicated stethofuse-production tunnel]
+  Tunnel -->|127.0.0.1:8088| Caddy[StethoFuse Caddy and React SPA]
+  Caddy -->|Same-origin /api| API[FastAPI internal port 8000]
+  API -->|JWT public certificates and REST accounts lookup| Firebase
+  API --> DB[(Trusted SQLite roles and ownership)]
+  API --> Private[(Authorized private media)]
+  Backup[Restic systemd backup] -->|Client-encrypted S3| B2[Private Backblaze B2 EU Central]
+  DB --> Backup
+  Private --> Backup
+  subgraph Host[Self-hosted Linux server]
+    Tunnel
+    Backup
+    subgraph Isolated[Isolated StethoFuse Compose network]
+      Caddy
+      API
+    end
+    DB
+    Private
+    Axora[Separate Axora tunnel and services unchanged]
+  end
+  CF -->|Unchanged axora.management route| Axora

@@ -1,0 +1,31 @@
+%% Deployed M1 identity/resource flow; edge-case branches retain MOCK evidence.
+sequenceDiagram
+    actor User
+    participant Browser as StethoFuse browser
+    participant Firebase as Firebase Authentication
+    participant API as FastAPI protected endpoint
+    participant Store as Trusted account and grant store
+    participant Media as Private server media
+    User->>Browser: Sign in through selected provider
+    Browser->>Firebase: Provider authentication
+    Firebase-->>Browser: Firebase user and ID token
+    Browser->>API: Bearer ID token and resource ID
+    API->>API: Verify JWT signature and required claims using public certificates
+    API->>Firebase: Auth REST accounts:lookup with same ID token
+    API->>API: Match UID, require enabled/verified user, compare iat and validSince
+    alt Missing invalid revoked or disabled identity
+        API-->>Browser: Sanitized denial, no protected data
+    else Verified UID
+        API->>Store: Resolve UID and current account status
+        Note over API,Store: Controlled onboarding defaults to healthcare_staff
+        API->>Store: Check current role and owner or active scoped grant
+        alt Object permission denied
+            API-->>Browser: Forbidden or non-disclosing not found
+        else Authorized operation
+            API->>Media: Resolve approved resource and open private file
+            Media-->>API: Authorized bytes
+            API-->>Browser: Protected response
+        end
+    end
+    Note over API,Store: Admin metadata permission does not bypass private-media checks
+    Note over User,Store: First-admin bootstrap is a separate trusted operator action after real UID verification and approval, never an email rule or public request

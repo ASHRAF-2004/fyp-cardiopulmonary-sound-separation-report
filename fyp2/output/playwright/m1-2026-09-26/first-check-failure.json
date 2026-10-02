@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-26",
+  "scope": "M1 preparation HTML, not application testing",
+  "command": "node fyp2/verify-html.mjs m1-2026-09-26",
+  "exitCode": 1,
+  "failure": "mobile: horizontal overflow",
+  "viewportWidth": 360,
+  "documentScrollWidth": 391,
+  "selector": "#implementation > p",
+  "paragraphClientWidth": 309,
+  "paragraphScrollWidth": 366,
+  "cause": "Unbroken M1_IMPLEMENTATION_AND_TEST_NOTES.md filename in body prose",
+  "correction": "Used readable prose in the paragraph; retained inline-code filename in the references section",
+  "beforeScreenshot": "before-wrap-mobile.png",
+  "rerunEvidence": "fyp2-html-check.json"
+}
