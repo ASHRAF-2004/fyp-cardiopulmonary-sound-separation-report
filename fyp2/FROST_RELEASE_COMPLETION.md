@@ -1,5 +1,66 @@
 # Frost Studio continuation and release evidence — 2 October 2026
 
+## Current live completion — 3 October 2026
+
+**PRODUCTION ML INTEGRATION DEPLOYED; LIVE RECORDED NON-PATIENT END-TO-END AND
+ROLE/PRIVACY ACCEPTANCE PASSED; POST-ACCEPTANCE BACKUP VERIFIED.** This supersedes
+the dated pending checkpoints preserved below, not the historical ML results or
+remaining account/device/asset gates. Source running in production remains
+`b6ee625abe0f4d8d5b2b136398656b4c810e8f83`; no redeployment or code/auth change
+was needed to complete acceptance.
+
+Real Firebase Staff, Analyst and Admin accounts were signed in by the owner in
+separate ordinary Brave windows. Analyst `@blueheron` could review exact assignment
+`ASN-133J-S0Q42V` and separately granted Heart audio with real measured analysis.
+Original/Lung were not exposed. The Analyst saved a clearly labelled nonclinical
+acceptance note as Reviewed; the DB/audit, saved-review history and owner feedback
+all persisted. This demonstrates a useful role distinction: assigned observations
+and feedback, not a different separator or clinical authority.
+
+| Live boundary | Verified outcome |
+|---|---|
+| Owner | Existing recorded-M0001 upload/Ready/private three-source/playback/download/refresh evidence retained |
+| Anonymous | Heart/Lung protected endpoints 401 |
+| Exact Heart grant | Heart audio/analysis available; no Original/Lung sibling exposure |
+| Heart revoked, exact review retained | Subsequent Heart request denied and sensitive media/plots/metrics cleared; review metadata still allowed without audio |
+| Exact review revoked | Refresh denied; private review state cleared; saved Analyst history empty |
+| Unassigned authenticated Analyst | Denied after revocation |
+| Owner feedback after revocation | Saved note remains, marked Access revoked |
+| Admin without grant | Protected result denies access and exposes no private content |
+
+The owner UI revoked only the two temporary acceptance grants; both revoke audits
+are present and no active temporary grant remains. Previous data/notes/results
+were retained. Native screenshots were inspected; authenticated request-status
+numbers were not captured with DevTools and are not invented. Revocation cannot
+recall bytes already downloaded. No permission policy was broadened.
+
+The existing encrypted Restic/B2 procedure quiesced only StethoFuse web/API/worker
+and resumed them healthy/ready, 3 October 08:22:30–08:22:51+08, exit 0. Remote snapshot
+`31779753cf3e23348e7f05a6713428d11ce1388479a0ff9a20604ec05453809d`
+contains DB/private outputs/model bundle/runtime configuration. All 15 private files
+are listed; the three acceptance audio hashes and frozen checkpoint/spec hashes
+match remote content. A small isolated DB/model restore proves schema 3/integrity
+ok, zero foreign-key errors, preserved saved review/revocations/completed job and
+matching model hashes. Live paths were not overwritten; no snapshots were deleted
+or pruning enabled. The worker resumed; StethoFuse API and Axora both 200, tunnel
+and backup timer active. No Axora change or new backup infrastructure.
+
+Final ignored implementation receipt
+`frontend/output/playwright/frost-production-live-v1/completion-receipt.json`
+has SHA-256 `07ca30f68c27749e3c7948fcb8e68f32960dc0642a969a729906abf0b538ad7e`.
+It references the immutable partial receipts instead of concealing interrupted
+sign-in/acceptance checkpoints. This is agent-operated live acceptance with
+owner-entered real sign-ins, not newly reported hands-on owner approval or clinical
+validation. No T9 rerun, training, model/inference, approved UI/owl or Firebase
+policy change. No application regression/build rerun for this evidence-only
+completion. The existing project-local Quarto rendered the updated working report
+to HTML as one finite documentation command, exit 0; no dependency was installed.
+
+Avatar persistence, real notifications, export/unlink/delete and secure handle
+login remain unavailable; deletion/provider retention decisions remain an owner
+gate. Owl flight is **ASSET-GATED — NOT IMPLEMENTED**. Physical stethoscope
+qualification and clinical validation remain separate and are not claimed.
+
 The owner approved polish-v1 and the earlier working core/sharing/review slices,
 then explicitly waived further intermediate review stops and requested push,
 merge and deployment. The design and scientific model-selection decisions remain

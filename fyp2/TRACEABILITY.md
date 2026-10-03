@@ -1,5 +1,20 @@
 # FYP2 requirements design code and evidence register
 
+## Current LIVE Frost acceptance trace — 3 October 2026
+
+| Requirement | Actual end-to-end link | Verified live boundary |
+|---|---|---|
+| R07/R10/R11 separation/durability/media | Recorded eligible non-test M0001 → durable CPU job → private Ready Original/Heart/Lung | One completed attempt, finite 4-kHz/60000-sample outputs, unchanged download/hash, refresh persistence; no new accuracy claim |
+| R12 collaboration | Exact @handle owner grants → Analyst review/save/history → owner feedback | Real Firebase accounts; saved note/audit persist; owner retains feedback after revocation |
+| R02/R03/R13 privacy | Existing UID/exact resource authority → protected audio/review/analysis | No Original/Lung sibling exposure; anonymous 401; revoked Analyst and ungranted Admin denied; sensitive UI/history clears |
+| R17/R18 recovery/evidence | Existing writer quiescence → encrypted B2 snapshot → small isolated restore → resumed services | Snapshot 31779753, 15 private files, DB/review/revocations/model/audio hashes verified; StethoFuse/Axora 200, worker ready; no live overwrite/pruning |
+
+See [completed release/acceptance evidence](FROST_RELEASE_COMPLETION.md). The
+owner supplied real-account sign-ins; these are agent-operated checks, not a newly
+invented owner hands-on approval. Account-policy, flight-asset and physical-device/
+clinical gates remain pending. Dated partial traces below retain their original
+scope and are superseded only where this completion provides actual evidence.
+
 ## Current continuation trace — 2 October 2026
 
 | Requirement | Actual implementation | Verified boundary |
