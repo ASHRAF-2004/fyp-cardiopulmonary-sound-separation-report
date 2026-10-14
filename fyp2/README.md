@@ -9,6 +9,7 @@ Start with [the report outline](../FYP2_OUTLINE.md) and [the FYP1 change map](..
 - [Status and evidence conventions](STATUS_AND_EVIDENCE.md)
 - [Frost Studio approved four-screen design proof](UX_DESIGN_REVIEW.md)
 - [Frost Studio completion/release continuation](FROST_RELEASE_COMPLETION.md)
+- [User-readiness account, home theme and owl qualification — 15 October 2026](USER_READINESS_20261015.md)
 - [M1 implementation and test notes](M1_IMPLEMENTATION_AND_TEST_NOTES.md)
 - [Final frozen-model local application integration](LOCAL_ML_INTEGRATION.md)
 - [Final T9 evidence (consumed, not rerun)](T9_FINAL_HELDOUT_EVALUATION.md)

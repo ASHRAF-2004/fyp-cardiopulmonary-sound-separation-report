@@ -1,5 +1,26 @@
 # Implementation status and evidence conventions
 
+## Current continuation — 15 October 2026
+
+**USER-READINESS SOURCE AND EXACT IMAGES QUALIFIED; COORDINATOR RECOVERY-PROFILE
+HANDOFF REQUIRED BEFORE PRODUCTION CUTOVER.**
+
+[Current evidence](USER_READINESS_20261015.md) records the public Frost/Midnight
+theme, genuine winged owl arrival and approved gaze handoff, protected persistent
+profile photos, actual metadata export, explicitly confirmed permanent owned-data
+deletion, and in-app processing/review/sharing updates. Owner policy answers are
+recorded. Native isolated tests: 195 passes plus 26 subtests; eight account browser
+flows, five owl lifecycle groups, eight API-client checks, both-theme responsive
+checks and production/UX builds pass. Exact API/web images also pass cold startup
+on protected copies of the existing schema-3 database and 15 private files.
+
+Shared-host migration, warm startup, current-release HTTPS/auth/model/worker/SQLite
+and encrypted restoration passed; the old source VM is disabled and retained for
+recovery. Windows cold boot was not performed. No T9 rerun, training, model/worker
+change, clinical qualification or new real-provider acceptance is claimed. Older
+dated lifecycle/flight gates below are historical; unsupported handle login/provider
+linking and physical microphone qualification remain separate work.
+
 ## Current continuation — 2 October 2026
 
 **OWNER REQUESTED PUSH/MERGE/DEPLOYMENT / TESTED FROST RELEASE INCREMENT READY /
