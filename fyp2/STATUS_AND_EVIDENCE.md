@@ -1,5 +1,18 @@
 # Implementation status and evidence conventions
 
+## Live deployment — 15 October 2026
+
+**USER-READINESS RELEASE IS LIVE AT STETHOFUSE.ASHRAF-ALSALOUL.COM.**
+
+[Live cutover evidence](USER_READINESS_LIVE_20261015.md) supersedes the preparation
+handoff below. Exact source ffea2a2 was deployed under the coordinator's exclusive
+lock after a fresh native/encrypted/independent Windows restore. All original SQLite
+logical content, 15 private files, models/configuration/permissions and all 12 other
+application container IDs were preserved. Six real public HTTPS browser groups,
+normal SDK rendering, anonymous access denial and enabled startup checks pass.
+The current shared post-release backup/restoration receipt accompanies that record.
+No new credentialed sign-in, production deletion, clinical claim or T9 rerun is invented.
+
 ## Current continuation — 15 October 2026
 
 **USER-READINESS SOURCE AND EXACT IMAGES QUALIFIED; COORDINATOR RECOVERY-PROFILE

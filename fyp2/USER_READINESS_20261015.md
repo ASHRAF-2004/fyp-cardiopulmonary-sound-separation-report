@@ -1,5 +1,8 @@
 # User-readiness qualification checkpoint
 
+**Now deployed.** See the [live release receipt](USER_READINESS_LIVE_20261015.md).
+The earlier preparation checkpoint below is retained as dated evidence.
+
 Implementation source: ffea2a2da753aed6fd784cf43a5b2da005bab1ab,
 [StethoFuse PR #10](https://github.com/ASHRAF-2004/StethoFuse/pull/10).
 Qualification PASS; production cutover is awaiting the coordinator's exact-image
