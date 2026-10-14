@@ -12,6 +12,12 @@ Frost interface is operationally deployed with verified encrypted recovery
 anchors, while new signed-in live acceptance and gated account services remain
 explicitly pending. This does not change the consumed T9 evidence or FYP1 report.
 
+The [15 October user-readiness qualification](fyp2/USER_READINESS_20261015.md)
+supersedes the dated account/flight gates: supported account lifecycle, in-app
+updates, home-theme parity and genuine owl arrival now pass isolated software and
+exact-image checks. Shared-host migration is complete; this new application cutover
+awaits its coordinator recovery-profile handoff. The submitted FYP1 remains unchanged.
+
 ## Project Information
 
 | Item | Details |
